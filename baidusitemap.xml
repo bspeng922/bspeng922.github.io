@@ -4,28 +4,8 @@
 
     
   <url>
-    <loc>http://pystack.org/2017/11/14/angularjs_notes/</loc>
-    <lastmod>2017-11-14T06:48:41.487Z</lastmod>
-    <data>
-        <display>
-        <title>AngularJS Notes</title>
-        <pubTime>2017-11-14T06:48:35.000Z</pubTime>
-        
-        <tag>AngularJS</tag>
-         
-         
-           
-             
-              <breadCrumb title="Web" url="http://pystack.org/categories/Web/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://pystack.org/2017/11/14/cloud-init-notes/</loc>
-    <lastmod>2017-11-14T06:45:42.381Z</lastmod>
+    <loc>http://pystack.org/2017/11/14/cloud_init_notes/</loc>
+    <lastmod>2017-11-14T07:12:17.582Z</lastmod>
     <data>
         <display>
         <title>Cloud Init notes</title>
@@ -41,6 +21,26 @@
            
              
               <breadCrumb title="openstack" url="http://pystack.org/categories/openstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2017/11/14/angularjs_notes/</loc>
+    <lastmod>2017-11-14T06:48:41.487Z</lastmod>
+    <data>
+        <display>
+        <title>AngularJS Notes</title>
+        <pubTime>2017-11-14T06:48:35.000Z</pubTime>
+        
+        <tag>AngularJS</tag>
+         
+         
+           
+             
+              <breadCrumb title="Web" url="http://pystack.org/categories/Web/"/>
           
         </display>
     </data>
