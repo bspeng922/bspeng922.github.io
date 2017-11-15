@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pystack.org/2016/11/14/compile-spice-client-on-arm-platform/images/intltool-too-old.png">
 <meta property="og:image" content="http://pystack.org/2016/11/14/compile-spice-client-on-arm-platform/images/spice-protocol-too-old.png">
-<meta property="og:updated_time" content="2017-11-15T03:16:51.519Z">
+<meta property="og:updated_time" content="2017-11-15T03:18:20.029Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在ARM平台上编译Virt Viewer">
 <meta name="twitter:description" content="libusb123./configure  --host=arm-linuxmakemake install usbredir123./configure  --host=arm-linuxmakemake install spice-gtk123./configure --host=arm-linux --enable-usbredir=yes --enable-smartcard=no --w">
@@ -179,6 +179,7 @@
         <h2 id="libusb"><a href="#libusb" class="headerlink" title="libusb"></a>libusb</h2><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure  --host=arm-linux</span><br><span class="line"><span class="built_in">make</span></span><br><span class="line"><span class="built_in">make</span> install</span><br></pre></td></tr></table></figure>
 <h2 id="usbredir"><a href="#usbredir" class="headerlink" title="usbredir"></a>usbredir</h2><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure  --host=arm-linux</span><br><span class="line"><span class="built_in">make</span></span><br><span class="line"><span class="built_in">make</span> install</span><br></pre></td></tr></table></figure>
 <h2 id="spice-gtk"><a href="#spice-gtk" class="headerlink" title="spice-gtk"></a>spice-gtk</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure <span class="attribute">--host</span>=arm-linux <span class="attribute">--enable-usbredir</span>=<span class="literal">yes</span> <span class="attribute">--enable-smartcard</span>=<span class="literal">no</span> <span class="attribute">--with-gtk</span>=3.0</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="virt-viewer"><a href="#virt-viewer" class="headerlink" title="virt-viewer"></a>virt-viewer</h2><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">./configure</span> <span class="params">--host=arm-linux</span> <span class="params">--with-gtk=3</span>.0 <span class="params">--with-spice-gtk</span></span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
 <h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><ul>
 <li>configure: error: cannot run C compiled programs.</li>
