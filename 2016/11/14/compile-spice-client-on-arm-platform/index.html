@@ -6,19 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://pystack.org">
-  <title>Archives: 2017/11 | Pystack.org</title>
+  <title>在ARM平台上编译Virt Viewer | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="My Blog">
-<meta name="keywords" content="python,openstack,cloud,nova,neutron,keystone,horizon,vmware,cinder,heat,docker,zun,vbscript,前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Pystack.org">
-<meta property="og:url" content="http://pystack.org/archives/2017/11/index.html">
+  <meta name="description" content="libusb123./configure  --host=arm-linuxmakemake install usbredir123./configure  --host=arm-linuxmakemake install spice-gtk123./configure --host=arm-linux --enable-usbredir=yes --enable-smartcard=no --w">
+<meta name="keywords" content="Spice,Virt-viewer,ARM,Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在ARM平台上编译Virt Viewer">
+<meta property="og:url" content="http://pystack.org/2016/11/14/compile-spice-client-on-arm-platform/index.html">
 <meta property="og:site_name" content="Pystack.org">
-<meta property="og:description" content="My Blog">
+<meta property="og:description" content="libusb123./configure  --host=arm-linuxmakemake install usbredir123./configure  --host=arm-linuxmakemake install spice-gtk123./configure --host=arm-linux --enable-usbredir=yes --enable-smartcard=no --w">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://pystack.org/2016/11/14/compile-spice-client-on-arm-platform/images/intltool-too-old.png">
+<meta property="og:image" content="http://pystack.org/2016/11/14/compile-spice-client-on-arm-platform/images/spice-protocol-too-old.png">
+<meta property="og:updated_time" content="2017-11-15T03:16:51.519Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pystack.org">
-<meta name="twitter:description" content="My Blog">
+<meta name="twitter:title" content="在ARM平台上编译Virt Viewer">
+<meta name="twitter:description" content="libusb123./configure  --host=arm-linuxmakemake install usbredir123./configure  --host=arm-linuxmakemake install spice-gtk123./configure --host=arm-linux --enable-usbredir=yes --enable-smartcard=no --w">
+<meta name="twitter:image" content="http://pystack.org/2016/11/14/compile-spice-client-on-arm-platform/images/intltool-too-old.png">
   
     <link rel="alternative" href="/atom.xml" title="Pystack.org" type="application/atom+xml">
   
@@ -152,185 +156,243 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-compile-spice-client-on-arm-platform" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      在ARM平台上编译Virt Viewer
+    </h1>
+  
+
+        
+        <a href="/2016/11/14/compile-spice-client-on-arm-platform/" class="archive-article-date">
+  	<time datetime="2016-11-14T06:48:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-14</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="libusb"><a href="#libusb" class="headerlink" title="libusb"></a>libusb</h2><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure  --host=arm-linux</span><br><span class="line"><span class="built_in">make</span></span><br><span class="line"><span class="built_in">make</span> install</span><br></pre></td></tr></table></figure>
+<h2 id="usbredir"><a href="#usbredir" class="headerlink" title="usbredir"></a>usbredir</h2><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure  --host=arm-linux</span><br><span class="line"><span class="built_in">make</span></span><br><span class="line"><span class="built_in">make</span> install</span><br></pre></td></tr></table></figure>
+<h2 id="spice-gtk"><a href="#spice-gtk" class="headerlink" title="spice-gtk"></a>spice-gtk</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure <span class="attribute">--host</span>=arm-linux <span class="attribute">--enable-usbredir</span>=<span class="literal">yes</span> <span class="attribute">--enable-smartcard</span>=<span class="literal">no</span> <span class="attribute">--with-gtk</span>=3.0</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<h2 id="virt-viewer"><a href="#virt-viewer" class="headerlink" title="virt-viewer"></a>virt-viewer</h2><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">./configure</span> <span class="params">--host=arm-linux</span> <span class="params">--with-gtk=3</span>.0 <span class="params">--with-spice-gtk</span></span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><ul>
+<li>configure: error: cannot run C compiled programs.</li>
+</ul>
+<p>在ARM上编译需要指定host参数</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">./configure</span> <span class="params">--host=arm-linux</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>configure: error: Your intltool is too old.  You need intltool 0.40.0 or later</li>
+</ul>
+<p><img src="images/intltool-too-old.png" alt=""></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="builtin-name">get</span> install intltool</span><br></pre></td></tr></table></figure>
+<ul>
+<li>configure: error: Package requirements (spice-protocol &gt;= 0.12.10) were not met</li>
+</ul>
+<p><img src="images/spice-protocol-too-old.png" alt=""></p>
+<p>下载最新版的spice-protocol（下载地址：<a href="https://packages.debian.org/search?keywords=spice-protocol&amp;searchon=names&amp;suite=all&amp;section=all" target="_blank" rel="external">https://packages.debian.org/search?keywords=spice-protocol&amp;searchon=names&amp;suite=all&amp;section=all</a>），并更新即可</p>
+<ul>
+<li>configure: error: Package requirements (openssl) were not met:</li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="builtin-name">get</span> install openssl</span><br><span class="line">apt-<span class="builtin-name">get</span> install libssl-dev</span><br></pre></td></tr></table></figure>
+<ul>
+<li>configure: error: Package requirements (gtk+-3.0 &gt;= 2.91.3) were not met</li>
+</ul>
+<p>checking for GTK… no<br>configure: error: Package requirements (gtk+-3.0 &gt;= 2.91.3) were not met:</p>
+<p>No package ‘gtk+-3.0’ found</p>
+<p>Consider adjusting the PKG_CONFIG_PATH environment variable if you<br>installed software in a non-standard prefix.</p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="built_in">get</span> install libgtk<span class="number">-3</span>-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>configure: error: libjpeg not found</li>
+</ul>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="built_in">get</span> install libjpeg-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>configure: error: Package requirements (celt051 &gt;= 0.5.1.1) were not met</li>
+</ul>
+<p>下载celt051，并编译安装</p>
+<ul>
+<li>configure: error: Package requirements (libxml-2.0 &gt;= 2.6.0) were not met</li>
+</ul>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="built_in">get</span> install libxml2-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>configure: error: spice-gtk requested but not found</li>
+</ul>
+<p>spice编译的有问题，ARM 默认使用/bin/sh，使用/bin/bash打包会有问题！！！    </p>
+<ul>
+<li>虚拟机 spice://192.168.13.11:5900 的未知图形类型</li>
+</ul>
+<p>这个是因为 ARM 版本 virt-viewer 默认只支持VNC的虚拟机，需要重新编译安装virt-viewer</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/14/angularjs-notes/" class="archive-article-date">
-  	<time datetime="2017-11-14T06:48:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/14/angularjs-notes/">AngularJS Notes</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">AngularJS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spice</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Virt-viewer</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ARM</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
+        			<a href="/categories/Spice//" class="article-tag-list-link color1">Spice</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://pystack.org/2016/11/14/compile-spice-client-on-arm-platform/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/14/ubuntu-with-wnda3100v2/" class="archive-article-date">
-  	<time datetime="2017-11-14T06:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-14</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2017/11/14/cloud-init-notes/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Cloud Init notes
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/14/ubuntu-with-wnda3100v2/">Ubuntu安装Netgare WNDA3100v2 USB网卡驱动</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Ubuntu</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">WNDA3100v2</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">USB网卡</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/14/cloud-init-notes/" class="archive-article-date">
-  	<time datetime="2017-11-14T03:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/14/cloud-init-notes/">Cloud Init notes</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">cloud-init</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">cloudbase-init</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/openstack//" class="article-tag-list-link color5">openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -354,8 +416,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

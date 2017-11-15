@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://pystack.org">
-  <title>Pystack</title>
+  <title>Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="My Blog">
 <meta name="keywords" content="python,openstack,cloud,nova,neutron,keystone,horizon,vmware,cinder,heat,docker,zun,vbscript,前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Pystack">
+<meta property="og:title" content="Pystack.org">
 <meta property="og:url" content="http://pystack.org/index.html">
-<meta property="og:site_name" content="Pystack">
+<meta property="og:site_name" content="Pystack.org">
 <meta property="og:description" content="My Blog">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pystack">
+<meta name="twitter:title" content="Pystack.org">
 <meta name="twitter:description" content="My Blog">
   
-    <link rel="alternative" href="/atom.xml" title="Pystack" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Pystack.org" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -437,6 +437,152 @@
 
 
   
+    <article id="post-compile-spice-client-on-arm-platform" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/14/compile-spice-client-on-arm-platform/">在ARM平台上编译Virt Viewer</a>
+    </h1>
+  
+
+        
+        <a href="/2016/11/14/compile-spice-client-on-arm-platform/" class="archive-article-date">
+  	<time datetime="2016-11-14T06:48:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="libusb"><a href="#libusb" class="headerlink" title="libusb"></a>libusb</h2><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure  --host=arm-linux</span><br><span class="line"><span class="built_in">make</span></span><br><span class="line"><span class="built_in">make</span> install</span><br></pre></td></tr></table></figure>
+<h2 id="usbredir"><a href="#usbredir" class="headerlink" title="usbredir"></a>usbredir</h2><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure  --host=arm-linux</span><br><span class="line"><span class="built_in">make</span></span><br><span class="line"><span class="built_in">make</span> install</span><br></pre></td></tr></table></figure>
+<h2 id="spice-gtk"><a href="#spice-gtk" class="headerlink" title="spice-gtk"></a>spice-gtk</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure <span class="attribute">--host</span>=arm-linux <span class="attribute">--enable-usbredir</span>=<span class="literal">yes</span> <span class="attribute">--enable-smartcard</span>=<span class="literal">no</span> <span class="attribute">--with-gtk</span>=3.0</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<h2 id="virt-viewer"><a href="#virt-viewer" class="headerlink" title="virt-viewer"></a>virt-viewer</h2><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">./configure</span> <span class="params">--host=arm-linux</span> <span class="params">--with-gtk=3</span>.0 <span class="params">--with-spice-gtk</span></span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><ul>
+<li>configure: error: cannot run C compiled programs.</li>
+</ul>
+<p>在ARM上编译需要指定host参数</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">./configure</span> <span class="params">--host=arm-linux</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>configure: error: Your intltool is too old.  You need intltool 0.40.0 or later</li>
+</ul>
+<p><img src="images/intltool-too-old.png" alt=""></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="builtin-name">get</span> install intltool</span><br></pre></td></tr></table></figure>
+<ul>
+<li>configure: error: Package requirements (spice-protocol &gt;= 0.12.10) were not met</li>
+</ul>
+<p><img src="images/spice-protocol-too-old.png" alt=""></p>
+<p>下载最新版的spice-protocol（下载地址：<a href="https://packages.debian.org/search?keywords=spice-protocol&amp;searchon=names&amp;suite=all&amp;section=all" target="_blank" rel="external">https://packages.debian.org/search?keywords=spice-protocol&amp;searchon=names&amp;suite=all&amp;section=all</a>），并更新即可</p>
+<ul>
+<li>configure: error: Package requirements (openssl) were not met:</li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="builtin-name">get</span> install openssl</span><br><span class="line">apt-<span class="builtin-name">get</span> install libssl-dev</span><br></pre></td></tr></table></figure>
+<ul>
+<li>configure: error: Package requirements (gtk+-3.0 &gt;= 2.91.3) were not met</li>
+</ul>
+<p>checking for GTK… no<br>configure: error: Package requirements (gtk+-3.0 &gt;= 2.91.3) were not met:</p>
+<p>No package ‘gtk+-3.0’ found</p>
+<p>Consider adjusting the PKG_CONFIG_PATH environment variable if you<br>installed software in a non-standard prefix.</p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="built_in">get</span> install libgtk<span class="number">-3</span>-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>configure: error: libjpeg not found</li>
+</ul>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="built_in">get</span> install libjpeg-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>configure: error: Package requirements (celt051 &gt;= 0.5.1.1) were not met</li>
+</ul>
+<p>下载celt051，并编译安装</p>
+<ul>
+<li>configure: error: Package requirements (libxml-2.0 &gt;= 2.6.0) were not met</li>
+</ul>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="built_in">get</span> install libxml2-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>configure: error: spice-gtk requested but not found</li>
+</ul>
+<p>spice编译的有问题，ARM 默认使用/bin/sh，使用/bin/bash打包会有问题！！！    </p>
+<ul>
+<li>虚拟机 spice://192.168.13.11:5900 的未知图形类型</li>
+</ul>
+<p>这个是因为 ARM 版本 virt-viewer 默认只支持VNC的虚拟机，需要重新编译安装virt-viewer</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spice</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Virt-viewer</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ARM</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Spice//" class="article-tag-list-link color1">Spice</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/11/14/compile-spice-client-on-arm-platform/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
 
 
@@ -450,11 +596,12 @@
     		&copy; 2017 moose
     	</div>
       	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      		Pystack
       	</div>
     </div>
   </div>
 </footer>
+
     </div>
     <script>
 	var yiliaConfig = {
@@ -543,6 +690,22 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Spice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Virt-viewer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ARM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">

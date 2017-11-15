@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Pystack</title>
+  <title>Pystack.org</title>
   <icon>https://www.gravatar.com/avatar/dd7bd216caddfcf24542754b94eb988d</icon>
   <subtitle>Time waits for no one.</subtitle>
   <link href="/atom.xml" rel="self"/>
@@ -93,6 +93,37 @@
       <category term="openstack" scheme="http://pystack.org/tags/openstack/"/>
     
       <category term="cloudbase-init" scheme="http://pystack.org/tags/cloudbase-init/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在ARM平台上编译Virt Viewer</title>
+    <link href="http://pystack.org/2016/11/14/compile-spice-client-on-arm-platform/"/>
+    <id>http://pystack.org/2016/11/14/compile-spice-client-on-arm-platform/</id>
+    <published>2016-11-14T06:48:35.000Z</published>
+    <updated>2017-11-15T03:16:51.519Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="libusb"><a href="#libusb" class="headerlink" title="libusb"></a>libusb</h2><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure  --host=arm-linux</span><br><span class="line"><span class="built_in">make</span></span><br><span class="line"><span class="built_in">make</span> install</span><br></pre></td></tr></table></figure><h2 id="usbredir"><a href="#usbredir" class="headerlink" title="usbredir"></a>usbredir</h2><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure  --host=arm-linux</span><br><span class="line"><span class="built_in">make</span></span><br><span class="line"><span class="built_in">make</span> install</span><br></pre></td></tr></table></figure><h2 id="spice-gtk"><a href="#spice-gtk" class="headerlink" title="spice-gtk"></a>spice-gtk</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure <span class="attribute">--host</span>=arm-linux <span class="attribute">--enable-usbredir</span>=<span class="literal">yes</span> <span class="attribute">--enable-smartcard</span>=<span class="literal">no</span> <span class="attribute">--with-gtk</span>=3.0</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure><h2 id="virt-viewer"><a href="#virt-viewer" class="headerlink" title="virt-viewer"></a>virt-viewer</h2><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">./configure</span> <span class="params">--host=arm-linux</span> <span class="params">--with-gtk=3</span>.0 <span class="params">--with-spice-gtk</span></span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure><h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><ul><li>configure: error: cannot run C compiled programs.</li></ul><p>在ARM上编译需要指定host参数</p><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">./configure</span> <span class="params">--host=arm-linux</span></span><br></pre></td></tr></table></figure><ul><li>configure: error: Your intltool is too old.  You need intltool 0.40.0 or later</li></ul><p><img src="images/intltool-too-old.png" alt=""></p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="builtin-name">get</span> install intltool</span><br></pre></td></tr></table></figure><ul><li>configure: error: Package requirements (spice-protocol &gt;= 0.12.10) were not met</li></ul><p><img src="images/spice-protocol-too-old.png" alt=""></p><p>下载最新版的spice-protocol（下载地址：<a href="https://packages.debian.org/search?keywords=spice-protocol&amp;searchon=names&amp;suite=all&amp;section=all" target="_blank" rel="external">https://packages.debian.org/search?keywords=spice-protocol&amp;searchon=names&amp;suite=all&amp;section=all</a>），并更新即可</p><ul><li>configure: error: Package requirements (openssl) were not met:</li></ul><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="builtin-name">get</span> install openssl</span><br><span class="line">apt-<span class="builtin-name">get</span> install libssl-dev</span><br></pre></td></tr></table></figure><ul><li>configure: error: Package requirements (gtk+-3.0 &gt;= 2.91.3) were not met</li></ul><p>checking for GTK… no<br>configure: error: Package requirements (gtk+-3.0 &gt;= 2.91.3) were not met:</p><p>No package ‘gtk+-3.0’ found</p><p>Consider adjusting the PKG_CONFIG_PATH environment variable if you<br>installed software in a non-standard prefix.</p><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="built_in">get</span> install libgtk<span class="number">-3</span>-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure><ul><li>configure: error: libjpeg not found</li></ul><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="built_in">get</span> install libjpeg-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure><ul><li>configure: error: Package requirements (celt051 &gt;= 0.5.1.1) were not met</li></ul><p>下载celt051，并编译安装</p><ul><li>configure: error: Package requirements (libxml-2.0 &gt;= 2.6.0) were not met</li></ul><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="built_in">get</span> install libxml2-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure><ul><li>configure: error: spice-gtk requested but not found</li></ul><p>spice编译的有问题，ARM 默认使用/bin/sh，使用/bin/bash打包会有问题！！！    </p><ul><li>虚拟机 spice://192.168.13.11:5900 的未知图形类型</li></ul><p>这个是因为 ARM 版本 virt-viewer 默认只支持VNC的虚拟机，需要重新编译安装virt-viewer</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;libusb&quot;&gt;&lt;a href=&quot;#libusb&quot; class=&quot;headerlink&quot; title=&quot;libusb&quot;&gt;&lt;/a&gt;libusb&lt;/h2&gt;&lt;figure class=&quot;highlight gauss&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gut
+      
+    
+    </summary>
+    
+      <category term="Spice" scheme="http://pystack.org/categories/Spice/"/>
+    
+    
+      <category term="Spice" scheme="http://pystack.org/tags/Spice/"/>
+    
+      <category term="Virt-viewer" scheme="http://pystack.org/tags/Virt-viewer/"/>
+    
+      <category term="ARM" scheme="http://pystack.org/tags/ARM/"/>
+    
+      <category term="Linux" scheme="http://pystack.org/tags/Linux/"/>
     
   </entry>
   
