@@ -4,6 +4,32 @@
 
     
   <url>
+    <loc>http://pystack.org/2016/11/14/compile-virt-viewer-with-mingw/</loc>
+    <lastmod>2017-11-16T01:53:33.612Z</lastmod>
+    <data>
+        <display>
+        <title>使用MinGW编译Virt-Viewer</title>
+        <pubTime>2016-11-14T06:48:35.000Z</pubTime>
+        
+        <tag>Spice</tag>
+         
+        <tag>Virt-viewer</tag>
+         
+        <tag>Linux</tag>
+         
+        <tag>MinGW</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spice" url="http://pystack.org/categories/Spice/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://pystack.org/2016/11/14/compile-spice-client-on-arm-platform/</loc>
     <lastmod>2017-11-15T03:20:29.897Z</lastmod>
     <data>

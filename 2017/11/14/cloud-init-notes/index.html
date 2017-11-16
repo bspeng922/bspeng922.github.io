@@ -180,10 +180,10 @@
 <p>User-data can be given by the user at instance launch time.This is done via the –user-data or –user-data-file argument to ec2-run-instances for example.</p>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>cloud init 使用的前提是镜像中已经安装了cloud-init 包，如果使用python代码（三个双引号）动态生成 user-data，需要注意的是行前一定不要留有空格，否则脚本不能执行！</p>
 <h3 id="执行shell脚本"><a href="#执行shell脚本" class="headerlink" title="执行shell脚本"></a>执行shell脚本</h3><p>Begins with: #! or Content-Type: text/x-shellscript when using a MIME archive.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cat myscript.sh</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line">echo "Hello World.  The time is now $(date -R)!" | tee /root/output.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cat myscript.sh</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>!/bin/sh</span><br><span class="line">echo "Hello World.  The time is now $(date -R)!" | tee /root/output.txt</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>修改ubuntu的默认密码，并开启ssh密码登录</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line">passwd ubuntu&lt;&lt;EOF</span><br><span class="line">ubuntu</span><br><span class="line">ubuntu</span><br><span class="line">EOF</span><br><span class="line">sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config</span><br><span class="line">service ssh restart</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/sh</span><br><span class="line">passwd ubuntu&lt;&lt;EOF</span><br><span class="line">ubuntu</span><br><span class="line">ubuntu</span><br><span class="line">EOF</span><br><span class="line">sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config</span><br><span class="line">service ssh restart</span><br></pre></td></tr></table></figure>
 <h3 id="执行cloud-config配置"><a href="#执行cloud-config配置" class="headerlink" title="执行cloud-config配置"></a>执行cloud-config配置</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cloud-config</span></span><br><span class="line"><span class="attr">ssh_pwauth:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">disable_root:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">user:</span> <span class="string">root</span></span><br><span class="line"><span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line"><span class="attr">chpasswd:</span></span><br><span class="line"><span class="attr">  expire:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>首先, 这个文件把一般云主机里面的 ssh 密码认证打开, 默认关闭的<br>然后, 通过 disable_root 允许 root 认证, 默认关闭<br>将 root 的密码设置为 abc123<br>如果不设置 chpasswd 的 expire 为 false, 那么登陆的时候会提示马上修改密码才能进去</p>
@@ -552,10 +552,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
               </li>
              
@@ -581,6 +577,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
               </li>
              
               <li class="article-tag-list-item">
