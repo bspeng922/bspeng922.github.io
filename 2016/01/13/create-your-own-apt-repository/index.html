@@ -16,15 +16,15 @@
 <meta property="og:site_name" content="Pystack.org">
 <meta property="og:description" content="创建私有的apt-get源一共有四步：  Install dpkg-dev，apache2 Put the packages in apache web directory Run dpkg-scanpackages to create Packages.gz file Add a line to your sources.list pointing at your repository   In">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://pystack.org/2016/01/13/create-your-own-apt-repository/images/cp-debs.png">
-<meta property="og:image" content="http://pystack.org/2016/01/13/create-your-own-apt-repository/images/debs-in-apache.png">
-<meta property="og:image" content="http://pystack.org/2016/01/13/create-your-own-apt-repository/images/create-packages-gz.png">
-<meta property="og:image" content="http://pystack.org/2016/01/13/create-your-own-apt-repository/images/sources-file.png">
-<meta property="og:updated_time" content="2017-11-16T02:04:47.568Z">
+<meta property="og:image" content="http://pystack.org/assets/img/cp-debs.png">
+<meta property="og:image" content="http://pystack.org/assets/img/debs-in-apache.png">
+<meta property="og:image" content="http://pystack.org/assets/img/create-packages-gz.png">
+<meta property="og:image" content="http://pystack.org/assets/img/sources-file.png">
+<meta property="og:updated_time" content="2017-11-16T02:15:41.093Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="创建私有APT源">
 <meta name="twitter:description" content="创建私有的apt-get源一共有四步：  Install dpkg-dev，apache2 Put the packages in apache web directory Run dpkg-scanpackages to create Packages.gz file Add a line to your sources.list pointing at your repository   In">
-<meta name="twitter:image" content="http://pystack.org/2016/01/13/create-your-own-apt-repository/images/cp-debs.png">
+<meta name="twitter:image" content="http://pystack.org/assets/img/cp-debs.png">
   
     <link rel="alternative" href="/atom.xml" title="Pystack.org" type="application/atom+xml">
   
@@ -192,15 +192,16 @@
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install dpkg-dev -y</span><br><span class="line">sudo apt-<span class="builtin-name">get</span> install apache2 -y</span><br></pre></td></tr></table></figure>
 <h3 id="Create-Repository-directory-amp-Copy-packages"><a href="#Create-Repository-directory-amp-Copy-packages" class="headerlink" title="Create Repository directory &amp; Copy packages"></a>Create Repository directory &amp; Copy packages</h3><p>将所有的deb包拷贝到apache的web目录下面，并且保证别的机器能够访问到。</p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># mkdir -p <span class="regexp">/var/</span>www<span class="regexp">/html/</span>debs<span class="regexp">/amd64/</span>     </span><br><span class="line"># cp <span class="regexp">/var/</span>cache<span class="regexp">/apt/</span>archives<span class="comment">/*.deb /var/www/html/debs/amd64/</span></span><br></pre></td></tr></table></figure>
-<p><img src="images/cp-debs.png" alt=""></p>
+<a id="more"></a>
+<p><img src="/assets/img/cp-debs.png" alt=""></p>
 <p>拷贝完成后，可以通过浏览器测试一下是否能够正常访问。</p>
-<p><img src="images/debs-in-apache.png" alt=""></p>
+<p><img src="/assets/img/debs-in-apache.png" alt=""></p>
 <h3 id="Create-a-Packages-gz-file"><a href="#Create-a-Packages-gz-file" class="headerlink" title="Create a Packages.gz file"></a>Create a Packages.gz file</h3><p>Packages.gz 文件是一个目录文件，里面包含当前源所有的包信息。每次加入新的包都需要重新生成 Packages.gz 文件。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">cd</span> /var/www/html/debs/</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> dpkg-scanpackages amd64 | gzip -9c &gt; amd64/Packages.gz</span></span><br></pre></td></tr></table></figure>
-<p><img src="images/create-packages-gz.png" alt=""></p>
+<p><img src="/assets/img/create-packages-gz.png" alt=""></p>
 <h3 id="Make-the-repository-known-to-APT"><a href="#Make-the-repository-known-to-APT" class="headerlink" title="Make the repository known to APT"></a>Make the repository known to APT</h3><p>到目前为止，apt-get源已经搭建完成，接下来只需要在其他机器上配置当前私有源即可使用。</p>
 <figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># vim /etc/apt/sources.list</span></span><br><span class="line">deb http:<span class="comment">//10.10.52.72/debs/ amd64/</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># apt-get update</span></span><br></pre></td></tr></table></figure>
-<p><img src="images/sources-file.png" alt=""></p>
+<p><img src="/assets/img/sources-file.png" alt=""></p>
 <blockquote>
 <p>如果要将apt源搭建到centos上，只需要将debs目录拷贝到centos上的web目录下即可，对应的IP地址也需要修改为centos的地址。</p>
 </blockquote>
