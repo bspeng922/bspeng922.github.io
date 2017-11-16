@@ -6,23 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://pystack.org">
-  <title>使用MinGW编译Virt-Viewer | Pystack.org</title>
+  <title>安装Openstack ZUN模块 | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Mingw简介MinGW是Minimalist GUN for Windows的缩写。MinGW提供了一套开发环境，用来开发Microsoft windows本地应用。 MinGW提供了一套完全开源的编程工具集，不需要依赖于第三方的C运行DLL，就可以开发Windows本地应用。当然MinGW还是依赖于microsoft提供的几个操作系统DLL，比如MSVCRT.DLL。 MinGW 编译器提供了">
-<meta name="keywords" content="Spice,Virt-viewer,Linux,MinGW">
+  <meta name="description" content="安装 zunhttps://review.openstack.org/#/c/504537/11/doc/source/install/controller-install-ubuntu.rst https://review.openstack.org/#/c/504537/11/doc/source/install/compute-install-ubuntu.rst 安装网络驱动 kuryr-">
+<meta name="keywords" content="openstack,zun,docker,kuryr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用MinGW编译Virt-Viewer">
-<meta property="og:url" content="http://pystack.org/2016/11/14/compile-virt-viewer-with-mingw/index.html">
+<meta property="og:title" content="安装Openstack ZUN模块">
+<meta property="og:url" content="http://pystack.org/2017/10/14/install-openstack-zun/index.html">
 <meta property="og:site_name" content="Pystack.org">
-<meta property="og:description" content="Mingw简介MinGW是Minimalist GUN for Windows的缩写。MinGW提供了一套开发环境，用来开发Microsoft windows本地应用。 MinGW提供了一套完全开源的编程工具集，不需要依赖于第三方的C运行DLL，就可以开发Windows本地应用。当然MinGW还是依赖于microsoft提供的几个操作系统DLL，比如MSVCRT.DLL。 MinGW 编译器提供了">
+<meta property="og:description" content="安装 zunhttps://review.openstack.org/#/c/504537/11/doc/source/install/controller-install-ubuntu.rst https://review.openstack.org/#/c/504537/11/doc/source/install/compute-install-ubuntu.rst 安装网络驱动 kuryr-">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://pystack.org/2016/11/14/compile-virt-viewer-with-mingw/images/glit-genmashal-not-found.png">
-<meta property="og:image" content="http://pystack.org/2016/11/14/compile-virt-viewer-with-mingw/images/failed-to-create-pipe-service.png">
-<meta property="og:updated_time" content="2017-11-16T01:53:33.612Z">
+<meta property="og:updated_time" content="2017-11-16T02:12:15.705Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用MinGW编译Virt-Viewer">
-<meta name="twitter:description" content="Mingw简介MinGW是Minimalist GUN for Windows的缩写。MinGW提供了一套开发环境，用来开发Microsoft windows本地应用。 MinGW提供了一套完全开源的编程工具集，不需要依赖于第三方的C运行DLL，就可以开发Windows本地应用。当然MinGW还是依赖于microsoft提供的几个操作系统DLL，比如MSVCRT.DLL。 MinGW 编译器提供了">
-<meta name="twitter:image" content="http://pystack.org/2016/11/14/compile-virt-viewer-with-mingw/images/glit-genmashal-not-found.png">
+<meta name="twitter:title" content="安装Openstack ZUN模块">
+<meta name="twitter:description" content="安装 zunhttps://review.openstack.org/#/c/504537/11/doc/source/install/controller-install-ubuntu.rst https://review.openstack.org/#/c/504537/11/doc/source/install/compute-install-ubuntu.rst 安装网络驱动 kuryr-">
   
     <link rel="alternative" href="/atom.xml" title="Pystack.org" type="application/atom+xml">
   
@@ -156,20 +153,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-compile-virt-viewer-with-mingw" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-install-openstack-zun" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      使用MinGW编译Virt-Viewer
+      安装Openstack ZUN模块
     </h1>
   
 
         
-        <a href="/2016/11/14/compile-virt-viewer-with-mingw/" class="archive-article-date">
-  	<time datetime="2016-11-14T06:48:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-14</time>
+        <a href="/2017/10/14/install-openstack-zun/" class="archive-article-date">
+  	<time datetime="2017-10-14T03:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-14</time>
 </a>
         
         <!--<span id="busuanzi_container_page_pv">
@@ -179,48 +176,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Mingw简介"><a href="#Mingw简介" class="headerlink" title="Mingw简介"></a>Mingw简介</h3><p>MinGW是Minimalist GUN for Windows的缩写。MinGW提供了一套开发环境，用来开发Microsoft windows本地应用。</p>
-<p>MinGW提供了一套完全开源的编程工具集，不需要依赖于第三方的C运行DLL，就可以开发Windows本地应用。当然MinGW还是依赖于microsoft提供的几个操作系统DLL，比如MSVCRT.DLL。</p>
-<p>MinGW 编译器提供了对Microsoft C Runtime的以及一些语言特定runtimes的访问。MinGW的Minimalist，就体现在这里，MinGW没有尝试提供一个POSIX runtime 环境。</p>
-<h3 id="安装Mingw编译环境"><a href="#安装Mingw编译环境" class="headerlink" title="安装Mingw编译环境"></a>安装Mingw编译环境</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install </span>mingw* libtool* auto-<span class="keyword">buildrequires </span>intltool glib2-devel icoutils msitools</span><br></pre></td></tr></table></figure>
-<h3 id="编译安装usbredir"><a href="#编译安装usbredir" class="headerlink" title="编译安装usbredir"></a>编译安装usbredir</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> libusb*</span><br><span class="line"></span><br><span class="line">mingw64-configure</span><br><span class="line">mingw64-make</span><br><span class="line">mingw64-make <span class="keyword">install</span></span><br></pre></td></tr></table></figure>
-<h3 id="编译安装spice-gtk"><a href="#编译安装spice-gtk" class="headerlink" title="编译安装spice-gtk"></a>编译安装spice-gtk</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> pixman*</span><br><span class="line">yum <span class="keyword">install</span> openssl*</span><br><span class="line">yum <span class="keyword">install</span> gtk2-devel</span><br><span class="line">yum <span class="keyword">install</span> pulseaudio</span><br><span class="line">yum <span class="keyword">install</span> pulseaudio-devel</span><br><span class="line">yum <span class="keyword">install</span> pulseaudio-libs-devel</span><br><span class="line">yum <span class="keyword">install</span> libjpeg*</span><br><span class="line">yum <span class="keyword">install</span> libusb*</span><br><span class="line">yum <span class="keyword">install</span> usbredir*</span><br><span class="line">yum <span class="keyword">install</span> *gudev*</span><br><span class="line"></span><br><span class="line">mingw64-configure <span class="comment">--enable-usbredir=yes --enable-smartcard=no --with-gtk=3.0</span></span><br><span class="line">mingw64-make</span><br><span class="line">mingw64-make <span class="keyword">install</span></span><br></pre></td></tr></table></figure>
-<h3 id="Virt-Viewer汉化"><a href="#Virt-Viewer汉化" class="headerlink" title="Virt-Viewer汉化"></a>Virt-Viewer汉化</h3><p>virtviewer使用的是gettex的方案是标准的linux里国际化的方案，只要在代码里设置好正确的locale，绑定好正确的textdomain就可以了。<br>对应的汉化文件为po/zh_CN.po，需要修改翻译内容，修改这个文件即可。</p>
-<p>修改源码中virt-viewer-util.c文件的方法virt_viewer_util_init</p>
-<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setlocale(<span class="name">LC_ALL</span>, <span class="string">"zh_CN"</span>)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
-<p>因为为windows系统，还需要修改国际化文件所在的目录（默认为Linux的/usr/share/locale）</p>
-<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bindtextdomain(<span class="name">GETTEXT_PACKAGE</span>, <span class="string">"../share/locale/"</span>)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
-<p>这样即可完成对virt-viewer的汉化</p>
-<h3 id="编译安装Virt-viewer"><a href="#编译安装Virt-viewer" class="headerlink" title="编译安装Virt-viewer"></a>编译安装Virt-viewer</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> libxml*</span><br><span class="line">yum <span class="keyword">install</span> spice-gtk*</span><br><span class="line"></span><br><span class="line">mingw64-configure  <span class="comment">--with-gtk=3.0 --with-spice-gtk</span></span><br><span class="line">mingw64-make</span><br><span class="line">mingw64-make <span class="keyword">install</span></span><br></pre></td></tr></table></figure>
-<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><ul>
-<li>glib-genmashal: command not found</li>
-</ul>
-<p><img src="images/glit-genmashal-not-found.png" alt="glit-genmashal not found"></p>
-<p>这是因为缺少glib2-devel，yum安装一下就可以了</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> glib2-devel</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Failed to create service named pipe</li>
-</ul>
-<p><img src="images/failed-to-create-pipe-service.png" alt="failed to create pipe service"></p>
-<p>这是因为usbdk没有安装，到官网下载最新的usbdk安装即可，要注意的是windows7 64位系统，需要安装 <strong>Windows6.1-KB3033929-x64.msu</strong> 更新，否则会导致usb键盘鼠标都不能用！！！</p>
-<p>USBDK下载地址：<a href="http://www.spice-space.org/download/windows/UsbDk/" target="_blank" rel="external">http://www.spice-space.org/download/windows/UsbDk/</a></p>
-<ul>
-<li>提示mingw-spice-protocal 版本太低</li>
-</ul>
-<p>只要下载新版本的mingw-spice-protocal更新一下就可以了</p>
-<p>mingw-spice-protocol-0.12.11下载地址：<a href="http://koji.fedoraproject.org/koji/buildinfo?buildID=744124" target="_blank" rel="external">http://koji.fedoraproject.org/koji/buildinfo?buildID=744124</a></p>
-<ul>
-<li>Virt-Viewer菜单定制</li>
-</ul>
-<p>修改share\virt-viewer\ui\virt-viewer.xml文件，删除child，即可删除对应的菜单项</p>
-<ul>
-<li>修改标题栏</li>
-</ul>
-<p>修改 src\remote_viewer_main.c 文件，将 Remote Viewer改为其他字符串即可。</p>
-<p>###　参考</p>
-<blockquote>
-<p><a href="http://blog.sina.com.cn/s/blog_7a9cc5930102wb7k.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_7a9cc5930102wb7k.html</a><br><a href="http://www.isjian.com/2015/08/spice-kvm-usbredir-qxl-2/" target="_blank" rel="external">http://www.isjian.com/2015/08/spice-kvm-usbredir-qxl-2/</a></p>
-</blockquote>
+        <h3 id="安装-zun"><a href="#安装-zun" class="headerlink" title="安装 zun"></a>安装 zun</h3><p><a href="https://review.openstack.org/#/c/504537/11/doc/source/install/controller-install-ubuntu.rst" target="_blank" rel="external">https://review.openstack.org/#/c/504537/11/doc/source/install/controller-install-ubuntu.rst</a></p>
+<p><a href="https://review.openstack.org/#/c/504537/11/doc/source/install/compute-install-ubuntu.rst" target="_blank" rel="external">https://review.openstack.org/#/c/504537/11/doc/source/install/compute-install-ubuntu.rst</a></p>
+<h3 id="安装网络驱动-kuryr-libnetwork"><a href="#安装网络驱动-kuryr-libnetwork" class="headerlink" title="安装网络驱动 kuryr-libnetwork"></a>安装网络驱动 kuryr-libnetwork</h3><p><a href="https://docs.openstack.org/kuryr-libnetwork/latest/install/compute-install-ubuntu.html" target="_blank" rel="external">https://docs.openstack.org/kuryr-libnetwork/latest/install/compute-install-ubuntu.html</a></p>
+<h3 id="安装UI-zun-ui"><a href="#安装UI-zun-ui" class="headerlink" title="安装UI zun-ui"></a>安装UI zun-ui</h3><p><a href="https://docs.openstack.org/zun-ui/latest/install/index.html#manual-installation" target="_blank" rel="external">https://docs.openstack.org/zun-ui/latest/install/index.html#manual-installation</a></p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">usage: zun create [-n &lt;name&gt;] [--cpu &lt;cpu&gt;] [-m &lt;memory&gt;] [-e &lt;<span class="attribute">KEY</span>=VALUE&gt;]</span><br><span class="line">                  [--workdir &lt;workdir&gt;] [--rm] [--label &lt;<span class="attribute">KEY</span>=VALUE&gt;]</span><br><span class="line">                  [--image-pull-policy &lt;policy&gt;] [--restart &lt;restart&gt;] [-i]</span><br><span class="line">                  [--image-driver &lt;image_driver&gt;]</span><br><span class="line">                  [--security-group &lt;security-group&gt;] [--hint &lt;<span class="attribute">key</span>=value&gt;]</span><br><span class="line">                  [--net &lt;auto, <span class="attribute">network</span>=network, <span class="attribute">port</span>=port-uuid,v4-fixed-ip=ip-addr,v6-fixed-ip=ip-addr&gt;]</span><br><span class="line">                  [--runtime &lt;runtime&gt;] [--hostname &lt;hostname&gt;]</span><br><span class="line">                  &lt;image&gt; <span class="built_in">..</span>.</span><br><span class="line"></span><br><span class="line">usage: zun <span class="builtin-name">run</span> [-n &lt;name&gt;] [--cpu &lt;cpu&gt;] [-m &lt;memory&gt;] [-e &lt;<span class="attribute">KEY</span>=VALUE&gt;]</span><br><span class="line">               [--workdir &lt;workdir&gt;] [--rm] [--label &lt;<span class="attribute">KEY</span>=VALUE&gt;]</span><br><span class="line">               [--image-pull-policy &lt;policy&gt;] [--restart &lt;restart&gt;] [-i]</span><br><span class="line">               [--image-driver &lt;image_driver&gt;]</span><br><span class="line">               [--security-group &lt;security-group&gt;] [--hint &lt;<span class="attribute">key</span>=value&gt;]</span><br><span class="line">               [--net &lt;auto, <span class="attribute">network</span>=network, <span class="attribute">port</span>=port-uuid,v4-fixed-ip=ip-addr,v6-fixed-ip=ip-addr&gt;]</span><br><span class="line">               [--runtime &lt;runtime&gt;] [--hostname &lt;hostname&gt;]</span><br><span class="line">               &lt;image&gt; <span class="built_in">..</span>.</span><br><span class="line"></span><br><span class="line">def container_create(request, **kwargs):</span><br><span class="line">    args, <span class="builtin-name">run</span> = _cleanup_params(CONTAINER_CREATE_ATTRS, <span class="literal">True</span>, **kwargs)</span><br><span class="line">    response = None</span><br><span class="line">    <span class="keyword">if</span> run:</span><br><span class="line">        response = zunclient(request).containers.<span class="builtin-name">run</span>(*<span class="number">*a</span>rgs)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        response = zunclient(request).containers.create(*<span class="number">*a</span>rgs)</span><br><span class="line">    return response</span><br><span class="line"></span><br><span class="line"><span class="comment">### 创建并启动容器</span></span><br><span class="line">openstack appcontainer <span class="builtin-name">run</span> --name container --net <span class="attribute">network</span>=<span class="variable">$NET_ID</span> cirros<span class="built_in"> ping </span>8.8.8.8</span><br><span class="line"></span><br><span class="line"><span class="comment">### 容器列表</span></span><br><span class="line">openstack appcontainer list</span><br><span class="line">zun image-list </span><br><span class="line"></span><br><span class="line"><span class="comment">### 进入容器bash</span></span><br><span class="line">openstack appcontainer exec --interactive container /bin/sh</span><br><span class="line"></span><br><span class="line"><span class="comment">### 停止容器</span></span><br><span class="line">openstack appcontainer stop container</span><br><span class="line"></span><br><span class="line"><span class="comment">### 删除容器</span></span><br><span class="line">openstack appcontainer delete container</span><br><span class="line"></span><br><span class="line"><span class="comment">### 拷贝文件</span></span><br><span class="line">zun cp container:src_path dest_path|-</span><br><span class="line">zun cp src_path|- container:dest_path</span><br><span class="line"></span><br><span class="line">--------------------------------------------</span><br><span class="line"></span><br><span class="line"><span class="comment">### 创建网络</span></span><br><span class="line">neutron API</span><br><span class="line"></span><br><span class="line"><span class="comment">### 创建路由</span></span><br><span class="line">neutron API</span><br><span class="line"></span><br><span class="line"><span class="comment">### 绑定端口</span></span><br><span class="line">neutron API</span><br><span class="line"></span><br><span class="line"><span class="comment">### 从镜像创建容器</span></span><br><span class="line"> zun <span class="builtin-name">run</span> --name ubuntu-web --net <span class="attribute">network</span>=df94a80d-62a9-4551-ae6b-8d0af3f44fc2 ubuntu-webbb tail -f /etc/hosts</span><br><span class="line"></span><br><span class="line"><span class="comment">### 绑定浮动IP</span></span><br><span class="line">申请浮动IP  --  获取容器网络port id</span><br><span class="line"></span><br><span class="line">Container Addresses</span><br><span class="line">&#123; <span class="string">"df94a80d-62a9-4551-ae6b-8d0af3f44fc2"</span>: [ &#123; <span class="string">"version"</span>: 4, <span class="string">"addr"</span>: <span class="string">"172.16.1.14"</span>, <span class="string">"port"</span>: <span class="string">"eb6cafe1-c19c-4555-826d-7188e903566e"</span> &#125; ] &#125;</span><br><span class="line"></span><br><span class="line">neutron  floatingip-associate 32c35af6-9d72-416a-a8cc-220522106452 b3f02c2e-aa76-4db6-b8dc-7defcf67b5a3</span><br><span class="line"></span><br><span class="line">floating-ip 设备id（device id） -  端口ID</span><br><span class="line">1. 创建端口（指定网络） -- 创建容器（指定端口） -- 生成浮动IP -- 绑定浮动IP</span><br><span class="line">2. 创建容器（指定网络） -- 创建容器 -- 查找端口 -- 生成浮动IP  -- 绑定浮动IP</span><br><span class="line"></span><br><span class="line"><span class="comment">### 容器初始化</span></span><br><span class="line"> 拼接初始化脚本文件 -- 拷贝zip文件到容器中 -- 执行初始化 （解压zip文件  -- 执行安装脚本 -- 执行init脚本）</span><br><span class="line"></span><br><span class="line"><span class="comment">### 从容器转为镜像</span></span><br><span class="line"> zun commit ubuntuc ubuntu-webbb    </span><br><span class="line"> ---- zun pull ubuntu-webbb ----</span><br><span class="line"></span><br><span class="line"><span class="comment">### 从docker file生成镜像 (暂不支持)</span></span><br><span class="line"> TODO</span><br></pre></td></tr></table></figure>
+<h3 id="zun-commit-后的镜像磁盘格式为qcow2"><a href="#zun-commit-后的镜像磁盘格式为qcow2" class="headerlink" title="zun commit 后的镜像磁盘格式为qcow2"></a>zun commit 后的镜像磁盘格式为qcow2</h3><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">python2</span>.7/<span class="title">site</span>-<span class="title">packages</span>/<span class="title">zun</span>/<span class="title">image</span>/<span class="title">glance</span>/<span class="title">driver</span>.<span class="title">py</span></span></span><br><span class="line"></span><br><span class="line">change qcow2 to raw</span><br></pre></td></tr></table></figure>
 
       
 
@@ -255,19 +216,19 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spice</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Virt-viewer</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">zun</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MinGW</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kuryr</a>
         		</li>
       		
 		</ul>
@@ -279,7 +240,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Spice//" class="article-tag-list-link color1">Spice</a>
+        			<a href="/categories/openstack//" class="article-tag-list-link color5">openstack</a>
         		</li>
       		
 		</ul>
@@ -334,7 +295,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://pystack.org/2016/11/14/compile-virt-viewer-with-mingw/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://pystack.org/2017/10/14/install-openstack-zun/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -348,15 +309,20 @@
   
 <nav id="article-nav">
   
-    <a href="/2016/11/14/compile-virt-viewer-on-arm-platform/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/11/14/cloud-init-notes/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          在ARM平台上编译Virt Viewer
+          Cloud Init notes
         
       </div>
     </a>
   
+  
+    <a href="/2016/11/14/compile-virt-viewer-on-arm-platform/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">在ARM平台上编译Virt Viewer</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -522,6 +488,26 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">APT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">zun</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
               </li>
              
               <li class="article-tag-list-item">

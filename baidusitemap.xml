@@ -4,6 +4,102 @@
 
     
   <url>
+    <loc>http://pystack.org/2017/10/14/install-openstack-zun/</loc>
+    <lastmod>2017-11-16T02:12:15.705Z</lastmod>
+    <data>
+        <display>
+        <title>安装Openstack ZUN模块</title>
+        <pubTime>2017-10-14T03:39:24.000Z</pubTime>
+        
+        <tag>openstack</tag>
+         
+        <tag>zun</tag>
+         
+        <tag>docker</tag>
+         
+        <tag>kuryr</tag>
+         
+         
+           
+             
+              <breadCrumb title="openstack" url="http://pystack.org/categories/openstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2016/01/14/create-your-own-yum-repository/</loc>
+    <lastmod>2017-11-16T02:05:04.928Z</lastmod>
+    <data>
+        <display>
+        <title>创建私有YUM源</title>
+        <pubTime>2016-01-14T02:36:12.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+        <tag>YUM</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://pystack.org/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2016/01/13/create-your-own-apt-repository/</loc>
+    <lastmod>2017-11-16T02:04:47.568Z</lastmod>
+    <data>
+        <display>
+        <title>创建私有APT源</title>
+        <pubTime>2016-01-13T02:36:12.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+        <tag>APT</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://pystack.org/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2016/11/13/compile-virt-viewer-with-mingw/</loc>
+    <lastmod>2017-11-16T01:58:27.215Z</lastmod>
+    <data>
+        <display>
+        <title>使用MinGW编译Virt-Viewer</title>
+        <pubTime>2016-11-13T06:48:35.000Z</pubTime>
+        
+        <tag>Spice</tag>
+         
+        <tag>Virt-viewer</tag>
+         
+        <tag>Linux</tag>
+         
+        <tag>MinGW</tag>
+         
+         
+           
+             
+              <breadCrumb title="Spice" url="http://pystack.org/categories/Spice/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://pystack.org/2016/11/14/compile-virt-viewer-on-arm-platform/</loc>
     <lastmod>2017-11-16T01:57:48.252Z</lastmod>
     <data>
@@ -18,32 +114,6 @@
         <tag>ARM</tag>
          
         <tag>Linux</tag>
-         
-         
-           
-             
-              <breadCrumb title="Spice" url="http://pystack.org/categories/Spice/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://pystack.org/2016/11/14/compile-virt-viewer-with-mingw/</loc>
-    <lastmod>2017-11-16T01:53:33.612Z</lastmod>
-    <data>
-        <display>
-        <title>使用MinGW编译Virt-Viewer</title>
-        <pubTime>2016-11-14T06:48:35.000Z</pubTime>
-        
-        <tag>Spice</tag>
-         
-        <tag>Virt-viewer</tag>
-         
-        <tag>Linux</tag>
-         
-        <tag>MinGW</tag>
          
          
            
