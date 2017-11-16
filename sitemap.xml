@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://pystack.org/2016/11/14/compile-virt-viewer-with-mingw/</loc>
+    <loc>http://pystack.org/2016/11/14/compile-virt-viewer-on-arm-platform/</loc>
     
-    <lastmod>2017-11-16T01:53:33.612Z</lastmod>
+    <lastmod>2017-11-16T01:57:48.252Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://pystack.org/2016/11/14/compile-spice-client-on-arm-platform/</loc>
+    <loc>http://pystack.org/2016/11/14/compile-virt-viewer-with-mingw/</loc>
     
-    <lastmod>2017-11-15T03:20:29.897Z</lastmod>
+    <lastmod>2017-11-16T01:53:33.612Z</lastmod>
     
   </url>
   

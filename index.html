@@ -371,7 +371,7 @@
 <p>User-data can be given by the user at instance launch time.This is done via the –user-data or –user-data-file argument to ec2-run-instances for example.</p>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>cloud init 使用的前提是镜像中已经安装了cloud-init 包，如果使用python代码（三个双引号）动态生成 user-data，需要注意的是行前一定不要留有空格，否则脚本不能执行！</p>
 <h3 id="执行shell脚本"><a href="#执行shell脚本" class="headerlink" title="执行shell脚本"></a>执行shell脚本</h3><p>Begins with: #! or Content-Type: text/x-shellscript when using a MIME archive.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cat myscript.sh</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>!/bin/sh</span><br><span class="line">echo "Hello World.  The time is now $(date -R)!" | tee /root/output.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cat myscript.sh</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line">echo "Hello World.  The time is now $(date -R)!" | tee /root/output.txt</span><br></pre></td></tr></table></figure>
         
           <a class="article-more-a" href="/2017/11/14/cloud-init-notes/#more">more >></a>
         
@@ -446,19 +446,19 @@
 
 
   
-    <article id="post-compile-spice-client-on-arm-platform" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-compile-virt-viewer-on-arm-platform" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/14/compile-spice-client-on-arm-platform/">在ARM平台上编译Virt Viewer</a>
+      <a class="article-title" href="/2016/11/14/compile-virt-viewer-on-arm-platform/">在ARM平台上编译Virt Viewer</a>
     </h1>
   
 
         
-        <a href="/2016/11/14/compile-spice-client-on-arm-platform/" class="archive-article-date">
+        <a href="/2016/11/14/compile-virt-viewer-on-arm-platform/" class="archive-article-date">
   	<time datetime="2016-11-14T06:48:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-14</time>
 </a>
         
@@ -473,7 +473,7 @@
 <h2 id="usbredir"><a href="#usbredir" class="headerlink" title="usbredir"></a>usbredir</h2><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure  --host=arm-linux</span><br><span class="line"><span class="built_in">make</span></span><br><span class="line"><span class="built_in">make</span> install</span><br></pre></td></tr></table></figure>
 <h2 id="spice-gtk"><a href="#spice-gtk" class="headerlink" title="spice-gtk"></a>spice-gtk</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure <span class="attribute">--host</span>=arm-linux <span class="attribute">--enable-usbredir</span>=<span class="literal">yes</span> <span class="attribute">--enable-smartcard</span>=<span class="literal">no</span> <span class="attribute">--with-gtk</span>=3.0</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
         
-          <a class="article-more-a" href="/2016/11/14/compile-spice-client-on-arm-platform/#more">more >></a>
+          <a class="article-more-a" href="/2016/11/14/compile-virt-viewer-on-arm-platform/#more">more >></a>
         
       
 
@@ -520,7 +520,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/14/compile-spice-client-on-arm-platform/">展开全文 >></a>
+          <a class="article-more-a" href="/2016/11/14/compile-virt-viewer-on-arm-platform/">展开全文 >></a>
         </p>
       
 
@@ -793,6 +793,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
               </li>
              
@@ -818,10 +822,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
               </li>
              
               <li class="article-tag-list-item">
