@@ -2,6 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://pystack.org/2012/09/20/download-and-execute-files-from-ftp/</loc>
+    
+    <lastmod>2017-11-27T09:38:56.091Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pystack.org/2015/03/26/opera-browser-bookmark-converter/</loc>
+    
+    <lastmod>2017-11-27T09:38:25.607Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pystack.org/2012/01/10/repairing-corrupted-windows-event-log-files/</loc>
+    
+    <lastmod>2017-11-27T09:36:32.860Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pystack.org/2012/01/10/log-file-segmentation/</loc>
+    
+    <lastmod>2017-11-27T09:35:47.416Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pystack.org/2012/02/26/calculate-md5-value-for-large-file/</loc>
+    
+    <lastmod>2017-11-27T09:08:53.499Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pystack.org/2016/03/26/add-monitoring-page-for-openstack-instance/</loc>
+    
+    <lastmod>2017-11-27T08:56:14.583Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pystack.org/2016/03/21/kwm-windows7-cpus-is-inconsistent/</loc>
+    
+    <lastmod>2017-11-27T08:51:06.131Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://pystack.org/2017/10/10/errors-while-installing-openstack-magnum/</loc>
     
     <lastmod>2017-11-16T02:33:21.353Z</lastmod>

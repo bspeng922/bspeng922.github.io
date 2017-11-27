@@ -4,6 +4,170 @@
 
     
   <url>
+    <loc>http://pystack.org/2012/09/20/download-and-execute-files-from-ftp/</loc>
+    <lastmod>2017-11-27T09:38:56.091Z</lastmod>
+    <data>
+        <display>
+        <title>VBScript下载并执行FTP上的文件</title>
+        <pubTime>2012-09-20T15:39:24.000Z</pubTime>
+        
+        <tag>vbs</tag>
+         
+        <tag>ftp</tag>
+         
+         
+           
+             
+              <breadCrumb title="Windows" url="http://pystack.org/categories/Windows/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2015/03/26/opera-browser-bookmark-converter/</loc>
+    <lastmod>2017-11-27T09:38:25.607Z</lastmod>
+    <data>
+        <display>
+        <title>Opera浏览器书签转换器</title>
+        <pubTime>2015-03-26T13:39:24.000Z</pubTime>
+        
+        <tag>Opera</tag>
+         
+        <tag>IE</tag>
+         
+        <tag>wxpython</tag>
+         
+        <tag>pywin32</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://pystack.org/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2012/01/10/repairing-corrupted-windows-event-log-files/</loc>
+    <lastmod>2017-11-27T09:36:32.860Z</lastmod>
+    <data>
+        <display>
+        <title>修复损坏的Windows事件日志文件</title>
+        <pubTime>2012-01-10T05:39:24.000Z</pubTime>
+        
+        <tag>Windows</tag>
+         
+        <tag>python</tag>
+         
+        <tag>事件日志</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://pystack.org/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2012/01/10/log-file-segmentation/</loc>
+    <lastmod>2017-11-27T09:35:47.416Z</lastmod>
+    <data>
+        <display>
+        <title>日志文件分割</title>
+        <pubTime>2012-01-10T15:39:24.000Z</pubTime>
+        
+        <tag>python</tag>
+         
+        <tag>文件分割</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://pystack.org/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2012/02/26/calculate-md5-value-for-large-file/</loc>
+    <lastmod>2017-11-27T09:08:53.499Z</lastmod>
+    <data>
+        <display>
+        <title>计算大文件MD5值</title>
+        <pubTime>2012-02-26T05:39:24.000Z</pubTime>
+        
+        <tag>md5</tag>
+         
+        <tag>large file</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://pystack.org/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2016/03/26/add-monitoring-page-for-openstack-instance/</loc>
+    <lastmod>2017-11-27T08:56:14.583Z</lastmod>
+    <data>
+        <display>
+        <title>为Instance添加监控页面</title>
+        <pubTime>2016-03-26T13:39:24.000Z</pubTime>
+        
+        <tag>Openstack</tag>
+         
+        <tag>ceilometer</tag>
+         
+        <tag>highcharts</tag>
+         
+         
+           
+             
+              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2016/03/21/kwm-windows7-cpus-is-inconsistent/</loc>
+    <lastmod>2017-11-27T08:51:06.131Z</lastmod>
+    <data>
+        <display>
+        <title>KVM Windows7设备管理器与任务管理器示CPU核数不一致</title>
+        <pubTime>2016-03-21T13:39:24.000Z</pubTime>
+        
+        <tag>Openstack</tag>
+         
+        <tag>Windows</tag>
+         
+        <tag>KVM</tag>
+         
+         
+           
+             
+              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://pystack.org/2017/10/10/errors-while-installing-openstack-magnum/</loc>
     <lastmod>2017-11-16T02:33:21.353Z</lastmod>
     <data>
