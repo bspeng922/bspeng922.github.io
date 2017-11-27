@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://pystack.org">
   <title>Ubuntu安装Netgare WNDA3100v2 USB网卡驱动 | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 插上usb网卡使用lsusb命令可以看到对应的设备信息12345678910$ lsusbBus 004 Device 002: ID 8087:8000 Intel Corp. Bus 004 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hubBus 003 Device 002: ID 8087:8008 Intel Corp.">
+  <meta name="description" content="1. 插上usb网卡使用lsusb命令可以看到对应的设备信息 12345678910$ lsusbBus 004 Device 002: ID 8087:8000 Intel Corp. Bus 004 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hubBus 003 Device 002: ID 8087:8008 Intel Corp.">
 <meta name="keywords" content="Ubuntu,WNDA3100v2,USB网卡">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu安装Netgare WNDA3100v2 USB网卡驱动">
 <meta property="og:url" content="http://pystack.org/2015/11/14/ubuntu-with-wnda3100v2/index.html">
 <meta property="og:site_name" content="Pystack.org">
-<meta property="og:description" content="1. 插上usb网卡使用lsusb命令可以看到对应的设备信息12345678910$ lsusbBus 004 Device 002: ID 8087:8000 Intel Corp. Bus 004 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hubBus 003 Device 002: ID 8087:8008 Intel Corp.">
+<meta property="og:description" content="1. 插上usb网卡使用lsusb命令可以看到对应的设备信息 12345678910$ lsusbBus 004 Device 002: ID 8087:8000 Intel Corp. Bus 004 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hubBus 003 Device 002: ID 8087:8008 Intel Corp.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pystack.org/assets/img/new-conn-tab.png">
 <meta property="og:image" content="http://pystack.org/assets/img/conn-type-tab.png">
@@ -23,10 +23,10 @@
 <meta property="og:image" content="http://pystack.org/assets/img/wifi-ip4-tab.png">
 <meta property="og:image" content="http://pystack.org/assets/img/conn-hidden-tab.png">
 <meta property="og:image" content="http://pystack.org/assets/img/wifi-err.png">
-<meta property="og:updated_time" content="2017-11-16T02:32:17.898Z">
+<meta property="og:updated_time" content="2017-11-27T09:42:10.982Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu安装Netgare WNDA3100v2 USB网卡驱动">
-<meta name="twitter:description" content="1. 插上usb网卡使用lsusb命令可以看到对应的设备信息12345678910$ lsusbBus 004 Device 002: ID 8087:8000 Intel Corp. Bus 004 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hubBus 003 Device 002: ID 8087:8008 Intel Corp.">
+<meta name="twitter:description" content="1. 插上usb网卡使用lsusb命令可以看到对应的设备信息 12345678910$ lsusbBus 004 Device 002: ID 8087:8000 Intel Corp. Bus 004 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hubBus 003 Device 002: ID 8087:8008 Intel Corp.">
 <meta name="twitter:image" content="http://pystack.org/assets/img/new-conn-tab.png">
   
     <link rel="alternative" href="/atom.xml" title="Pystack.org" type="application/atom+xml">
@@ -184,17 +184,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-插上usb网卡"><a href="#1-插上usb网卡" class="headerlink" title="1. 插上usb网卡"></a>1. 插上usb网卡</h2><p>使用lsusb命令可以看到对应的设备信息<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> lsusb</span></span><br><span class="line">Bus 004 Device 002: ID 8087:8000 Intel Corp. </span><br><span class="line">Bus 004 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br><span class="line">Bus 003 Device 002: ID 8087:8008 Intel Corp. </span><br><span class="line">Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br><span class="line">Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub</span><br><span class="line">Bus 001 Device 004: ID 413c:2107 Dell Computer Corp. </span><br><span class="line">Bus 001 Device 003: ID 04ca:0061 Lite-On Technology Corp. </span><br><span class="line">Bus 001 Device 006: ID 0846:9011 NetGear, Inc. WNDA3100v2 802.11abgn [Broadcom BCM4323]</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br></pre></td></tr></table></figure></p>
-<p>使用iwconfig命令会发现找不到wlan的信息<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> iwconfig</span></span><br><span class="line">eth0      no wireless extensions.</span><br><span class="line"></span><br><span class="line">lo        no wireless extensions.</span><br></pre></td></tr></table></figure></p>
+        <h2 id="1-插上usb网卡"><a href="#1-插上usb网卡" class="headerlink" title="1. 插上usb网卡"></a>1. 插上usb网卡</h2><p>使用lsusb命令可以看到对应的设备信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> lsusb</span></span><br><span class="line">Bus 004 Device 002: ID 8087:8000 Intel Corp. </span><br><span class="line">Bus 004 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br><span class="line">Bus 003 Device 002: ID 8087:8008 Intel Corp. </span><br><span class="line">Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br><span class="line">Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub</span><br><span class="line">Bus 001 Device 004: ID 413c:2107 Dell Computer Corp. </span><br><span class="line">Bus 001 Device 003: ID 04ca:0061 Lite-On Technology Corp. </span><br><span class="line">Bus 001 Device 006: ID 0846:9011 NetGear, Inc. WNDA3100v2 802.11abgn [Broadcom BCM4323]</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br></pre></td></tr></table></figure>
+<p>使用iwconfig命令会发现找不到wlan的信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> iwconfig</span></span><br><span class="line">eth0      no wireless extensions.</span><br><span class="line"></span><br><span class="line">lo        no wireless extensions.</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h2 id="2-安装网卡驱动"><a href="#2-安装网卡驱动" class="headerlink" title="2. 安装网卡驱动"></a>2. 安装网卡驱动</h2><p>驱动下载地址：<a href="http://media.cdn.ubuntu-de.org/forum/attachments/37/11/2955302-Broadcom_bcm43xx_USB_32_64bit_v3.tar.gz" target="_blank" rel="external">2955302-Broadcom_bcm43xx_USB_32_64bit_v3.tar.gz</a><br>或者 <a href="http://pan.baidu.com/s/1i3zx06x" target="_blank" rel="external">http://pan.baidu.com/s/1i3zx06x</a></p>
-<p>下载后解压会得到下面几个文件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ll</span></span><br><span class="line">total 1448</span><br><span class="line">drwxrwx--- 2 moose moose   4096  3月 15  2012 ./</span><br><span class="line">drwxr-xr-x 6 moose moose   4096 11月  4 13:54 ../</span><br><span class="line">-rwxrwx--- 1 moose moose  41078  6月  7  2011 bcmn43xx32.inf*</span><br><span class="line">-rwxrwx--- 1 moose moose 632576  9月  4  2010 bcmn43xx32.sys*</span><br><span class="line">-rwxrwx--- 1 moose moose  41078  3月 15  2012 bcmn43xx64.inf*</span><br><span class="line">-rwxrwx--- 1 moose moose 747008  9月  4  2010 bcmn43xx64.sys*</span><br></pre></td></tr></table></figure></p>
-<p>安装ndisgtk<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install ndisgtk</span></span><br></pre></td></tr></table></figure></p>
-<p>安装驱动<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo ndiswrapper -i bcmn43xx64.inf</span></span><br></pre></td></tr></table></figure></p>
-<p>检查驱动是否安装成功<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ndiswrapper -l</span></span><br><span class="line">bcmn43xx64 : driver installed</span><br><span class="line">    device (0846:9011) present</span><br></pre></td></tr></table></figure></p>
-<h2 id="3-加载驱动模块"><a href="#3-加载驱动模块" class="headerlink" title="3. 加载驱动模块"></a>3. 加载驱动模块</h2><p>成功安装驱动之后就可以用命令加载驱动模块<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo depmod -a</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo modprobe ndiswrapper</span></span><br></pre></td></tr></table></figure></p>
-<p>加载的过程中可以使用tail命令来查看错误信息<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> tail -f /var/<span class="built_in">log</span>/messages</span></span><br></pre></td></tr></table></figure></p>
-<p>加载完成后再次执行iwconfig命令，即可以看到新加的wlan0信息<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> iwconfig</span></span><br><span class="line">eth0      no wireless extensions.</span><br><span class="line"></span><br><span class="line">wlan0     IEEE 802.11g  ESSID:off/any  </span><br><span class="line">          Mode:Managed  Frequency:2.412 GHz  Access Point: Not-Associated   </span><br><span class="line">          Bit Rate:300 Mb/s   Tx-Power:32 dBm   </span><br><span class="line">          RTS thr:2347 B   Fragment thr:2346 B   </span><br><span class="line">          Power Management:off</span><br><span class="line">          Link Quality:0  Signal level:0  Noise level:0</span><br><span class="line">          Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0</span><br><span class="line">          Tx excessive retries:0  Invalid misc:0   Missed beacon:0</span><br><span class="line"></span><br><span class="line">lo        no wireless extensions.</span><br></pre></td></tr></table></figure></p>
+<p>下载后解压会得到下面几个文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ll</span></span><br><span class="line">total 1448</span><br><span class="line">drwxrwx--- 2 moose moose   4096  3月 15  2012 ./</span><br><span class="line">drwxr-xr-x 6 moose moose   4096 11月  4 13:54 ../</span><br><span class="line">-rwxrwx--- 1 moose moose  41078  6月  7  2011 bcmn43xx32.inf*</span><br><span class="line">-rwxrwx--- 1 moose moose 632576  9月  4  2010 bcmn43xx32.sys*</span><br><span class="line">-rwxrwx--- 1 moose moose  41078  3月 15  2012 bcmn43xx64.inf*</span><br><span class="line">-rwxrwx--- 1 moose moose 747008  9月  4  2010 bcmn43xx64.sys*</span><br></pre></td></tr></table></figure>
+<p>安装ndisgtk</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install ndisgtk</span></span><br></pre></td></tr></table></figure>
+<p>安装驱动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo ndiswrapper -i bcmn43xx64.inf</span></span><br></pre></td></tr></table></figure>
+<p>检查驱动是否安装成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ndiswrapper -l</span></span><br><span class="line">bcmn43xx64 : driver installed</span><br><span class="line">    device (0846:9011) present</span><br></pre></td></tr></table></figure>
+<h2 id="3-加载驱动模块"><a href="#3-加载驱动模块" class="headerlink" title="3. 加载驱动模块"></a>3. 加载驱动模块</h2><p>成功安装驱动之后就可以用命令加载驱动模块</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo depmod -a</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo modprobe ndiswrapper</span></span><br></pre></td></tr></table></figure>
+<p>加载的过程中可以使用tail命令来查看错误信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> tail -f /var/<span class="built_in">log</span>/messages</span></span><br></pre></td></tr></table></figure>
+<p>加载完成后再次执行iwconfig命令，即可以看到新加的wlan0信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> iwconfig</span></span><br><span class="line">eth0      no wireless extensions.</span><br><span class="line"></span><br><span class="line">wlan0     IEEE 802.11g  ESSID:off/any  </span><br><span class="line">          Mode:Managed  Frequency:2.412 GHz  Access Point: Not-Associated   </span><br><span class="line">          Bit Rate:300 Mb/s   Tx-Power:32 dBm   </span><br><span class="line">          RTS thr:2347 B   Fragment thr:2346 B   </span><br><span class="line">          Power Management:off</span><br><span class="line">          Link Quality:0  Signal level:0  Noise level:0</span><br><span class="line">          Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0</span><br><span class="line">          Tx excessive retries:0  Invalid misc:0   Missed beacon:0</span><br><span class="line"></span><br><span class="line">lo        no wireless extensions.</span><br></pre></td></tr></table></figure>
 <p>现在就可以通过NetworkManager来连接无线网络了。</p>
 <blockquote>
 <p>参考地址: <a href="https://help.ubuntu.com/community/WifiDocs/Driver/Ndiswrapper" target="_blank" rel="external">https://help.ubuntu.com/community/WifiDocs/Driver/Ndiswrapper</a></p>
@@ -213,7 +222,8 @@
 <p>–&gt; 点击IPv4 Settings面板，选择Method为 <strong>Shared to other computers</strong> </p>
 <p><img src="/assets/img/wifi-ip4-tab.png" alt=""></p>
 <p>–&gt; 点击Save保存</p>
-<h2 id="3-编辑wifi配置文件"><a href="#3-编辑wifi配置文件" class="headerlink" title="3. 编辑wifi配置文件"></a>3. 编辑wifi配置文件</h2><p>将 <strong>mode=infrastructure</strong> 改为 <strong>mode=ap</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Netgare 为你刚才配置的Connection name</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo vim /etc/NetworkManager/system-connections/Netgare</span></span><br><span class="line">[connection]</span><br><span class="line">id=Netgare</span><br><span class="line">uuid=da436c01-1a3f-4d9d-910c-04d3c68ef5f0</span><br><span class="line">type=802-11-wireless</span><br><span class="line"></span><br><span class="line">[802-11-wireless]</span><br><span class="line">ssid=Ubuntu Wifi</span><br><span class="line">mode=infrastructure</span><br><span class="line">mac-address=44:94:FC:21:01:77</span><br><span class="line">security=802-11-wireless-security</span><br><span class="line"></span><br><span class="line">[802-11-wireless-security]</span><br><span class="line">key-mgmt=wpa-psk</span><br><span class="line">psk=123456789</span><br><span class="line"></span><br><span class="line">[ipv4]</span><br><span class="line">method=shared</span><br><span class="line"></span><br><span class="line">[ipv6]</span><br><span class="line">method=auto</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-编辑wifi配置文件"><a href="#3-编辑wifi配置文件" class="headerlink" title="3. 编辑wifi配置文件"></a>3. 编辑wifi配置文件</h2><p>将 <strong>mode=infrastructure</strong> 改为 <strong>mode=ap</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Netgare 为你刚才配置的Connection name</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo vim /etc/NetworkManager/system-connections/Netgare</span></span><br><span class="line">[connection]</span><br><span class="line">id=Netgare</span><br><span class="line">uuid=da436c01-1a3f-4d9d-910c-04d3c68ef5f0</span><br><span class="line">type=802-11-wireless</span><br><span class="line"></span><br><span class="line">[802-11-wireless]</span><br><span class="line">ssid=Ubuntu Wifi</span><br><span class="line">mode=infrastructure</span><br><span class="line">mac-address=44:94:FC:21:01:77</span><br><span class="line">security=802-11-wireless-security</span><br><span class="line"></span><br><span class="line">[802-11-wireless-security]</span><br><span class="line">key-mgmt=wpa-psk</span><br><span class="line">psk=123456789</span><br><span class="line"></span><br><span class="line">[ipv4]</span><br><span class="line">method=shared</span><br><span class="line"></span><br><span class="line">[ipv6]</span><br><span class="line">method=auto</span><br></pre></td></tr></table></figure>
 <h2 id="4-启用无线网络"><a href="#4-启用无线网络" class="headerlink" title="4. 启用无线网络"></a>4. 启用无线网络</h2><p>点击 <strong>Enable Wifi</strong>, 连接刚创建的wifi网络( <em>Ubuntu Wifi</em> )。如果找不到刚创建的网络，就点击 <strong>Connect to Hidden Wi-Fi Network…</strong>， 选择刚创建的wifi网络( <em>Ubuntu Wifi</em> )即可。<br><img src="/assets/img/conn-hidden-tab.png" alt=""></p>
 <p>不过，楼主的测试并没有成功……<br>提示 <em>(32) Access Point (AP) mode is not supported by this device.</em><br><img src="/assets/img/wifi-err.png" alt=""></p>
 <blockquote>
@@ -552,14 +562,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vbs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
               </li>
              
@@ -573,14 +575,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,6 +602,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
               </li>
              
@@ -621,6 +619,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">USB网卡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vbs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
             
             <div class="clearfix"></div>

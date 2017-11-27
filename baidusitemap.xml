@@ -4,6 +4,54 @@
 
     
   <url>
+    <loc>http://pystack.org/2015/11/14/ubuntu-with-wnda3100v2/</loc>
+    <lastmod>2017-11-27T09:42:10.982Z</lastmod>
+    <data>
+        <display>
+        <title>Ubuntu安装Netgare WNDA3100v2 USB网卡驱动</title>
+        <pubTime>2015-11-14T06:39:24.000Z</pubTime>
+        
+        <tag>Ubuntu</tag>
+         
+        <tag>WNDA3100v2</tag>
+         
+        <tag>USB网卡</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://pystack.org/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2016/03/21/kwm-windows7-cpus-is-inconsistent/</loc>
+    <lastmod>2017-11-27T09:41:10.714Z</lastmod>
+    <data>
+        <display>
+        <title>KVM Windows7设备管理器与任务管理器示CPU核数不一致</title>
+        <pubTime>2016-03-21T13:39:24.000Z</pubTime>
+        
+        <tag>Openstack</tag>
+         
+        <tag>Windows</tag>
+         
+        <tag>KVM</tag>
+         
+         
+           
+             
+              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://pystack.org/2012/09/20/download-and-execute-files-from-ftp/</loc>
     <lastmod>2017-11-27T09:38:56.091Z</lastmod>
     <data>
@@ -59,9 +107,9 @@
         <title>修复损坏的Windows事件日志文件</title>
         <pubTime>2012-01-10T05:39:24.000Z</pubTime>
         
-        <tag>Windows</tag>
-         
         <tag>python</tag>
+         
+        <tag>Windows</tag>
          
         <tag>事件日志</tag>
          
@@ -144,30 +192,6 @@
 
     
   <url>
-    <loc>http://pystack.org/2016/03/21/kwm-windows7-cpus-is-inconsistent/</loc>
-    <lastmod>2017-11-27T08:51:06.131Z</lastmod>
-    <data>
-        <display>
-        <title>KVM Windows7设备管理器与任务管理器示CPU核数不一致</title>
-        <pubTime>2016-03-21T13:39:24.000Z</pubTime>
-        
-        <tag>Openstack</tag>
-         
-        <tag>Windows</tag>
-         
-        <tag>KVM</tag>
-         
-         
-           
-             
-              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://pystack.org/2017/10/10/errors-while-installing-openstack-magnum/</loc>
     <lastmod>2017-11-16T02:33:21.353Z</lastmod>
     <data>
@@ -205,30 +229,6 @@
            
              
               <breadCrumb title="Web" url="http://pystack.org/categories/Web/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://pystack.org/2015/11/14/ubuntu-with-wnda3100v2/</loc>
-    <lastmod>2017-11-16T02:32:17.898Z</lastmod>
-    <data>
-        <display>
-        <title>Ubuntu安装Netgare WNDA3100v2 USB网卡驱动</title>
-        <pubTime>2015-11-14T06:39:24.000Z</pubTime>
-        
-        <tag>Ubuntu</tag>
-         
-        <tag>WNDA3100v2</tag>
-         
-        <tag>USB网卡</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://pystack.org/categories/Linux/"/>
           
         </display>
     </data>

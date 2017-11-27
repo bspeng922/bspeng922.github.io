@@ -803,7 +803,6 @@
 <p>启动命令：</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kvm -m 2048 -smp 4 -drive <span class="attribute">file</span>=win7_x64_pure,if=virtio -net nic,<span class="attribute">model</span>=virtio -net<span class="built_in"> user </span>-usb -usbdevice tablet -soundhw ac97 -vga qxl -boot d -nographic -vnc :0</span><br></pre></td></tr></table></figure>
 <p>任务管理器：</p>
-<p><img src="/assets/img/image-tm.png" alt=""></p>
         
           <a class="article-more-a" href="/2016/03/21/kwm-windows7-cpus-is-inconsistent/#more">more >></a>
         
@@ -1107,8 +1106,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-插上usb网卡"><a href="#1-插上usb网卡" class="headerlink" title="1. 插上usb网卡"></a>1. 插上usb网卡</h2><p>使用lsusb命令可以看到对应的设备信息<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> lsusb</span></span><br><span class="line">Bus 004 Device 002: ID 8087:8000 Intel Corp. </span><br><span class="line">Bus 004 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br><span class="line">Bus 003 Device 002: ID 8087:8008 Intel Corp. </span><br><span class="line">Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br><span class="line">Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub</span><br><span class="line">Bus 001 Device 004: ID 413c:2107 Dell Computer Corp. </span><br><span class="line">Bus 001 Device 003: ID 04ca:0061 Lite-On Technology Corp. </span><br><span class="line">Bus 001 Device 006: ID 0846:9011 NetGear, Inc. WNDA3100v2 802.11abgn [Broadcom BCM4323]</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br></pre></td></tr></table></figure></p>
-<p>使用iwconfig命令会发现找不到wlan的信息<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> iwconfig</span></span><br><span class="line">eth0      no wireless extensions.</span><br><span class="line"></span><br><span class="line">lo        no wireless extensions.</span><br></pre></td></tr></table></figure></p>
+        <h2 id="1-插上usb网卡"><a href="#1-插上usb网卡" class="headerlink" title="1. 插上usb网卡"></a>1. 插上usb网卡</h2><p>使用lsusb命令可以看到对应的设备信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> lsusb</span></span><br><span class="line">Bus 004 Device 002: ID 8087:8000 Intel Corp. </span><br><span class="line">Bus 004 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br><span class="line">Bus 003 Device 002: ID 8087:8008 Intel Corp. </span><br><span class="line">Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br><span class="line">Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub</span><br><span class="line">Bus 001 Device 004: ID 413c:2107 Dell Computer Corp. </span><br><span class="line">Bus 001 Device 003: ID 04ca:0061 Lite-On Technology Corp. </span><br><span class="line">Bus 001 Device 006: ID 0846:9011 NetGear, Inc. WNDA3100v2 802.11abgn [Broadcom BCM4323]</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br></pre></td></tr></table></figure>
+<p>使用iwconfig命令会发现找不到wlan的信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> iwconfig</span></span><br><span class="line">eth0      no wireless extensions.</span><br><span class="line"></span><br><span class="line">lo        no wireless extensions.</span><br></pre></td></tr></table></figure>
         
           <a class="article-more-a" href="/2015/11/14/ubuntu-with-wnda3100v2/#more">more >></a>
         
@@ -1353,14 +1354,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vbs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
               </li>
              
@@ -1374,14 +1367,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1409,6 +1394,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
               </li>
              
@@ -1422,6 +1411,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">USB网卡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vbs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
             
             <div class="clearfix"></div>

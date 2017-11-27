@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://pystack.org/2015/11/14/ubuntu-with-wnda3100v2/</loc>
+    
+    <lastmod>2017-11-27T09:42:10.982Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pystack.org/2016/03/21/kwm-windows7-cpus-is-inconsistent/</loc>
+    
+    <lastmod>2017-11-27T09:41:10.714Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://pystack.org/2012/09/20/download-and-execute-files-from-ftp/</loc>
     
     <lastmod>2017-11-27T09:38:56.091Z</lastmod>
@@ -44,13 +58,6 @@
   </url>
   
   <url>
-    <loc>http://pystack.org/2016/03/21/kwm-windows7-cpus-is-inconsistent/</loc>
-    
-    <lastmod>2017-11-27T08:51:06.131Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://pystack.org/2017/10/10/errors-while-installing-openstack-magnum/</loc>
     
     <lastmod>2017-11-16T02:33:21.353Z</lastmod>
@@ -61,13 +68,6 @@
     <loc>http://pystack.org/2015/05/14/angularjs-notes/</loc>
     
     <lastmod>2017-11-16T02:32:24.618Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pystack.org/2015/11/14/ubuntu-with-wnda3100v2/</loc>
-    
-    <lastmod>2017-11-16T02:32:17.898Z</lastmod>
     
   </url>
   
