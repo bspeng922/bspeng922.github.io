@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://pystack.org">
   <title>修复损坏的Windows事件日志文件 | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在A机器上导出的日志（*.Evt）文件在A机器上可以直接读取，但是我将A机器上的日志文件拷贝到B机器上打开的时候，就会提示文件已损坏。 解决办法：  1.首先找到 0x11111111222222223333333344444444 将之后16bytes 抄下，这16bytes会在0x28000000前， 2.回到文件开头，把这16bytes从第17byte开始复写到32byte， 3.最后再改第">
+  <meta name="description" content="说明在A机器上导出的日志（*.Evt）文件在A机器上可以直接读取，但是我将A机器上的日志文件拷贝到B机器上打开的时候，就会提示文件已损坏。 解决办法：  1.首先找到 0x11111111222222223333333344444444 将之后16bytes 抄下，这16bytes会在0x28000000前， 2.回到文件开头，把这16bytes从第17byte开始复写到32byte， 3.最后再">
 <meta name="keywords" content="Windows,python,事件日志">
 <meta property="og:type" content="article">
 <meta property="og:title" content="修复损坏的Windows事件日志文件">
 <meta property="og:url" content="http://pystack.org/2012/01/10/repairing-corrupted-windows-event-log-files/index.html">
 <meta property="og:site_name" content="Pystack.org">
-<meta property="og:description" content="在A机器上导出的日志（*.Evt）文件在A机器上可以直接读取，但是我将A机器上的日志文件拷贝到B机器上打开的时候，就会提示文件已损坏。 解决办法：  1.首先找到 0x11111111222222223333333344444444 将之后16bytes 抄下，这16bytes会在0x28000000前， 2.回到文件开头，把这16bytes从第17byte开始复写到32byte， 3.最后再改第">
+<meta property="og:description" content="说明在A机器上导出的日志（*.Evt）文件在A机器上可以直接读取，但是我将A机器上的日志文件拷贝到B机器上打开的时候，就会提示文件已损坏。 解决办法：  1.首先找到 0x11111111222222223333333344444444 将之后16bytes 抄下，这16bytes会在0x28000000前， 2.回到文件开头，把这16bytes从第17byte开始复写到32byte， 3.最后再">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-27T09:56:54.739Z">
+<meta property="og:updated_time" content="2017-11-27T10:04:20.076Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="修复损坏的Windows事件日志文件">
-<meta name="twitter:description" content="在A机器上导出的日志（*.Evt）文件在A机器上可以直接读取，但是我将A机器上的日志文件拷贝到B机器上打开的时候，就会提示文件已损坏。 解决办法：  1.首先找到 0x11111111222222223333333344444444 将之后16bytes 抄下，这16bytes会在0x28000000前， 2.回到文件开头，把这16bytes从第17byte开始复写到32byte， 3.最后再改第">
+<meta name="twitter:description" content="说明在A机器上导出的日志（*.Evt）文件在A机器上可以直接读取，但是我将A机器上的日志文件拷贝到B机器上打开的时候，就会提示文件已损坏。 解决办法：  1.首先找到 0x11111111222222223333333344444444 将之后16bytes 抄下，这16bytes会在0x28000000前， 2.回到文件开头，把这16bytes从第17byte开始复写到32byte， 3.最后再">
   
     <link rel="alternative" href="/atom.xml" title="Pystack.org" type="application/atom+xml">
   
@@ -176,7 +176,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在A机器上导出的日志（*.Evt）文件在A机器上可以直接读取，但是我将A机器上的日志文件拷贝到B机器上打开的时候，就会提示文件已损坏。</p>
+        <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>在A机器上导出的日志（*.Evt）文件在A机器上可以直接读取，但是我将A机器上的日志文件拷贝到B机器上打开的时候，就会提示文件已损坏。</p>
 <p>解决办法：</p>
 <blockquote>
 <p>1.首先找到 0x11111111222222223333333344444444 将之后16bytes 抄下，这16bytes会在0x28000000前，</p>
@@ -450,6 +450,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Openstack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ceilometer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">highcharts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
               </li>
              
@@ -494,11 +506,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">APT</a>
+                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
+                <a href="javascript:void(0)" class="js-tag color4">APT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -523,10 +535,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Openstack</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,14 +583,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">USB网卡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ceilometer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">highcharts</a>
               </li>
             
             <div class="clearfix"></div>

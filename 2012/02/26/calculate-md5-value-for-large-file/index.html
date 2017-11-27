@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://pystack.org">
   <title>计算大文件MD5值 | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="对于小文件，可以直接全部读进内存进行计算，如果是大文件的话，直接读入内存进行计算会导致内存消耗过大，甚至整个电脑卡死住，所以需要分块计算md5.">
+  <meta name="description" content="说明对于小文件，可以直接全部读进内存进行计算，如果是大文件的话，直接读入内存进行计算会导致内存消耗过大，甚至整个电脑卡死住，所以需要分块计算md5.">
 <meta name="keywords" content="md5,large file">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算大文件MD5值">
 <meta property="og:url" content="http://pystack.org/2012/02/26/calculate-md5-value-for-large-file/index.html">
 <meta property="og:site_name" content="Pystack.org">
-<meta property="og:description" content="对于小文件，可以直接全部读进内存进行计算，如果是大文件的话，直接读入内存进行计算会导致内存消耗过大，甚至整个电脑卡死住，所以需要分块计算md5.">
+<meta property="og:description" content="说明对于小文件，可以直接全部读进内存进行计算，如果是大文件的话，直接读入内存进行计算会导致内存消耗过大，甚至整个电脑卡死住，所以需要分块计算md5.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-27T09:08:53.499Z">
+<meta property="og:updated_time" content="2017-11-27T10:05:26.220Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算大文件MD5值">
-<meta name="twitter:description" content="对于小文件，可以直接全部读进内存进行计算，如果是大文件的话，直接读入内存进行计算会导致内存消耗过大，甚至整个电脑卡死住，所以需要分块计算md5.">
+<meta name="twitter:description" content="说明对于小文件，可以直接全部读进内存进行计算，如果是大文件的话，直接读入内存进行计算会导致内存消耗过大，甚至整个电脑卡死住，所以需要分块计算md5.">
   
     <link rel="alternative" href="/atom.xml" title="Pystack.org" type="application/atom+xml">
   
@@ -176,7 +176,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>对于小文件，可以直接全部读进内存进行计算，如果是大文件的话，直接读入内存进行计算会导致内存消耗过大，甚至整个电脑卡死住，所以需要分块计算md5.</p>
+        <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>对于小文件，可以直接全部读进内存进行计算，如果是大文件的话，直接读入内存进行计算会导致内存消耗过大，甚至整个电脑卡死住，所以需要分块计算md5.</p>
 <a id="more"></a>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">from hashlib import md5</span><br><span class="line">import <span class="built_in">time</span></span><br><span class="line">import <span class="built_in">os</span></span><br><span class="line"></span><br><span class="line">def calMD5(str):</span><br><span class="line">    m = md5()</span><br><span class="line">    m.update(str)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> m.hexdigest()</span><br><span class="line"></span><br><span class="line">def calMD5ForFile(file):</span><br><span class="line">    statinfo = <span class="built_in">os</span>.stat(file)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> int(statinfo.st_size)/(<span class="number">1024</span>*<span class="number">1024</span>) &gt;= <span class="number">1000</span> :</span><br><span class="line">        <span class="built_in">print</span> <span class="string">"File size &gt; 1000, move to big file..."</span></span><br><span class="line">        <span class="keyword">return</span> calMD5ForBigFile(file)</span><br><span class="line"></span><br><span class="line">    m = md5()</span><br><span class="line">    f = <span class="built_in">open</span>(file, <span class="string">'rb'</span>)</span><br><span class="line">    m.update(f.<span class="built_in">read</span>())</span><br><span class="line">    f.<span class="built_in">close</span>()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> m.hexdigest()</span><br><span class="line"></span><br><span class="line">def calMD5ForFolder(dir,MD5File):</span><br><span class="line">    outfile = <span class="built_in">open</span>(MD5File,<span class="string">'w'</span>)</span><br><span class="line">    <span class="keyword">for</span> root, subdirs, files <span class="keyword">in</span> <span class="built_in">os</span>.walk(dir):</span><br><span class="line">        <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">            filefullpath = <span class="built_in">os</span>.<span class="built_in">path</span>.join(root, file)</span><br><span class="line">            <span class="string">""</span><span class="string">"print filefullpath"</span><span class="string">""</span></span><br><span class="line"></span><br><span class="line">            filerelpath = <span class="built_in">os</span>.<span class="built_in">path</span>.relpath(filefullpath, dir)</span><br><span class="line">            md5 = calMD5ForFile(filefullpath)</span><br><span class="line">            outfile.<span class="built_in">write</span>(filerelpath+<span class="string">' '</span>+md5+<span class="string">"\n"</span>)</span><br><span class="line">    outfile.<span class="built_in">close</span>()</span><br><span class="line"></span><br><span class="line">def calMD5ForBigFile(file):</span><br><span class="line">    m = md5()</span><br><span class="line">    f = <span class="built_in">open</span>(file, <span class="string">'rb'</span>)</span><br><span class="line">    buffer = <span class="number">8192</span>    # why is <span class="number">8192</span> | <span class="number">8192</span> is fast than <span class="number">2048</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">        chunk = f.<span class="built_in">read</span>(buffer)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> chunk : <span class="keyword">break</span></span><br><span class="line">        m.update(chunk)</span><br><span class="line"></span><br><span class="line">    f.<span class="built_in">close</span>()</span><br><span class="line">    <span class="keyword">return</span> m.hexdigest()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    #<span class="built_in">print</span> calMD5(<span class="string">"Hello World!"</span>)</span><br><span class="line"></span><br><span class="line">    t = <span class="built_in">time</span>.<span class="built_in">time</span>()</span><br><span class="line">    <span class="built_in">print</span> calMD5ForFile(<span class="string">"E:\\OS\\ubuntu-11.04-desktop-i386.iso"</span>)</span><br><span class="line">    <span class="built_in">print</span> <span class="built_in">time</span>.<span class="built_in">time</span>() - t</span><br><span class="line">    t = <span class="built_in">time</span>.<span class="built_in">time</span>()</span><br><span class="line">    <span class="built_in">print</span> calMD5ForBigFile(<span class="string">"E:\\OS\\ubuntu-11.04-desktop-i386.iso"</span>)</span><br><span class="line">    <span class="built_in">print</span> <span class="built_in">time</span>.<span class="built_in">time</span>() - t,<span class="string">"\n"</span></span><br><span class="line"></span><br><span class="line">    t = <span class="built_in">time</span>.<span class="built_in">time</span>()</span><br><span class="line">    <span class="built_in">print</span> calMD5ForFile(<span class="string">"E:\\OS\\ubuntu-12.04-desktop-amd64.iso"</span>)</span><br><span class="line">    <span class="built_in">print</span> <span class="built_in">time</span>.<span class="built_in">time</span>() - t</span><br><span class="line">    t = <span class="built_in">time</span>.<span class="built_in">time</span>()</span><br><span class="line">    <span class="built_in">print</span> calMD5ForBigFile(<span class="string">"E:\\OS\\ubuntu-12.04-desktop-amd64.iso"</span>)</span><br><span class="line">    <span class="built_in">print</span> <span class="built_in">time</span>.<span class="built_in">time</span>() - t,<span class="string">"\n"</span></span><br><span class="line"></span><br><span class="line">    t = <span class="built_in">time</span>.<span class="built_in">time</span>()</span><br><span class="line">    <span class="built_in">print</span> calMD5ForFile(<span class="string">"D:\\Virtual Machines\\Ubuntu 64-bit\\Ubuntu 64-bit-s001.vmdk"</span>)</span><br><span class="line">    <span class="built_in">print</span> <span class="built_in">time</span>.<span class="built_in">time</span>() - t</span><br><span class="line">    t = <span class="built_in">time</span>.<span class="built_in">time</span>()</span><br><span class="line">    <span class="built_in">print</span> calMD5ForBigFile(<span class="string">"D:\\Virtual Machines\\Ubuntu 64-bit\\Ubuntu 64-bit-s001.vmdk"</span>)</span><br><span class="line">    <span class="built_in">print</span> <span class="built_in">time</span>.<span class="built_in">time</span>() - t,<span class="string">"\n"</span></span><br></pre></td></tr></table></figure>
 
@@ -444,6 +444,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Openstack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ceilometer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">highcharts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
               </li>
              
@@ -488,11 +500,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">APT</a>
+                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
+                <a href="javascript:void(0)" class="js-tag color4">APT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -517,10 +529,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Openstack</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,14 +577,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">USB网卡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ceilometer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">highcharts</a>
               </li>
             
             <div class="clearfix"></div>

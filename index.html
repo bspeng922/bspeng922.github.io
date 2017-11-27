@@ -695,7 +695,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
+        <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
 <li>在html页面加入图表div</li>
 </ol>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"instance_id"</span> hidden=<span class="string">"hidden"</span>&gt;&#123;&#123; instance.<span class="built_in">id</span> &#125;&#125;&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"monitor"</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"cpucontainer"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"ramcontainer"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"diskcontainer"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"diskiocontainer"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"netiocontainer"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure>
@@ -799,7 +799,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>使用kvm创建Windows7 x64镜像，上传到openstack，创建云主机后发现系统内的CPU核数和分配的核数不一致。</p>
+        <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>使用kvm创建Windows7 x64镜像，上传到openstack，创建云主机后发现系统内的CPU核数和分配的核数不一致。</p>
 <p>启动命令：</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kvm -m 2048 -smp 4 -drive <span class="attribute">file</span>=win7_x64_pure,if=virtio -net nic,<span class="attribute">model</span>=virtio -net<span class="built_in"> user </span>-usb -usbdevice tablet -soundhw ac97 -vga qxl -boot d -nographic -vnc :0</span><br></pre></td></tr></table></figure>
 <p>任务管理器：</p>
@@ -900,7 +900,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>创建YUM源的步骤和创建apt-get源的步骤一样。</p>
+        <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>创建YUM源的步骤和创建apt-get源的步骤一样。</p>
 <ol>
 <li>Install “createrepo”, httpd</li>
 <li>Create Repository directory &amp; Copy Packages to apache web directory</li>
@@ -1002,7 +1002,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>创建私有的apt-get源一共有四步：</p>
+        <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>创建私有的apt-get源一共有四步：</p>
 <ol>
 <li>Install dpkg-dev，apache2</li>
 <li>Put the packages in apache web directory</li>
@@ -1290,6 +1290,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Openstack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ceilometer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">highcharts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
               </li>
              
@@ -1334,11 +1346,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">APT</a>
+                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
+                <a href="javascript:void(0)" class="js-tag color4">APT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1363,10 +1375,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Openstack</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1415,14 +1423,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">USB网卡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ceilometer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">highcharts</a>
               </li>
             
             <div class="clearfix"></div>

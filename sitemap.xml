@@ -2,9 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://pystack.org/2016/03/26/add-monitoring-page-for-openstack-instance/</loc>
+    
+    <lastmod>2017-11-27T10:06:03.709Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pystack.org/2015/05/14/angularjs-notes/</loc>
+    
+    <lastmod>2017-11-27T10:05:55.581Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pystack.org/2012/02/26/calculate-md5-value-for-large-file/</loc>
+    
+    <lastmod>2017-11-27T10:05:26.220Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pystack.org/2016/01/13/create-your-own-apt-repository/</loc>
+    
+    <lastmod>2017-11-27T10:04:59.196Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pystack.org/2016/01/14/create-your-own-yum-repository/</loc>
+    
+    <lastmod>2017-11-27T10:04:50.572Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pystack.org/2016/03/21/kwm-windows7-cpus-is-inconsistent/</loc>
+    
+    <lastmod>2017-11-27T10:04:27.628Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://pystack.org/2012/01/10/repairing-corrupted-windows-event-log-files/</loc>
     
-    <lastmod>2017-11-27T09:56:54.739Z</lastmod>
+    <lastmod>2017-11-27T10:04:20.076Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pystack.org/2015/03/26/opera-browser-bookmark-converter/</loc>
+    
+    <lastmod>2017-11-27T10:04:03.596Z</lastmod>
     
   </url>
   
@@ -23,20 +72,6 @@
   </url>
   
   <url>
-    <loc>http://pystack.org/2016/03/21/kwm-windows7-cpus-is-inconsistent/</loc>
-    
-    <lastmod>2017-11-27T09:41:10.714Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pystack.org/2015/03/26/opera-browser-bookmark-converter/</loc>
-    
-    <lastmod>2017-11-27T09:38:25.607Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://pystack.org/2012/01/10/log-file-segmentation/</loc>
     
     <lastmod>2017-11-27T09:35:47.416Z</lastmod>
@@ -44,30 +79,9 @@
   </url>
   
   <url>
-    <loc>http://pystack.org/2012/02/26/calculate-md5-value-for-large-file/</loc>
-    
-    <lastmod>2017-11-27T09:08:53.499Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pystack.org/2016/03/26/add-monitoring-page-for-openstack-instance/</loc>
-    
-    <lastmod>2017-11-27T08:56:14.583Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://pystack.org/2017/10/10/errors-while-installing-openstack-magnum/</loc>
     
     <lastmod>2017-11-16T02:33:21.353Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pystack.org/2015/05/14/angularjs-notes/</loc>
-    
-    <lastmod>2017-11-16T02:32:24.618Z</lastmod>
     
   </url>
   
@@ -82,20 +96,6 @@
     <loc>http://pystack.org/2016/06/14/cloud-init-notes/</loc>
     
     <lastmod>2017-11-16T02:32:03.194Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pystack.org/2016/01/13/create-your-own-apt-repository/</loc>
-    
-    <lastmod>2017-11-16T02:18:57.519Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pystack.org/2016/01/14/create-your-own-yum-repository/</loc>
-    
-    <lastmod>2017-11-16T02:15:53.317Z</lastmod>
     
   </url>
   
