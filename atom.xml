@@ -490,9 +490,9 @@
       <category term="Python" scheme="http://pystack.org/categories/Python/"/>
     
     
-      <category term="python" scheme="http://pystack.org/tags/python/"/>
-    
       <category term="Windows" scheme="http://pystack.org/tags/Windows/"/>
+    
+      <category term="python" scheme="http://pystack.org/tags/python/"/>
     
       <category term="事件日志" scheme="http://pystack.org/tags/%E4%BA%8B%E4%BB%B6%E6%97%A5%E5%BF%97/"/>
     

@@ -9,13 +9,12 @@
   <title>修复损坏的Windows事件日志文件 | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="在A机器上导出的日志（*.Evt）文件在A机器上可以直接读取，但是我将A机器上的日志文件拷贝到B机器上打开的时候，就会提示文件已损坏。 解决办法：  首先找到 0x11111111222222223333333344444444 将之后16bytes 抄下，这16bytes会在0x28000000前，  回到文件开头，把这16bytes从第17byte开始复写到32byte，  最后再改第37by">
-<meta name="keywords" content="python,Windows,事件日志">
+<meta name="keywords" content="Windows,python,事件日志">
 <meta property="og:type" content="article">
 <meta property="og:title" content="修复损坏的Windows事件日志文件">
 <meta property="og:url" content="http://pystack.org/2012/01/10/repairing-corrupted-windows-event-log-files/index.html">
 <meta property="og:site_name" content="Pystack.org">
 <meta property="og:description" content="在A机器上导出的日志（*.Evt）文件在A机器上可以直接读取，但是我将A机器上的日志文件拷贝到B机器上打开的时候，就会提示文件已损坏。 解决办法：  首先找到 0x11111111222222223333333344444444 将之后16bytes 抄下，这16bytes会在0x28000000前，  回到文件开头，把这16bytes从第17byte开始复写到32byte，  最后再改第37by">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-11-27T09:36:32.860Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="修复损坏的Windows事件日志文件">
@@ -223,11 +222,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Windows</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Windows</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -517,6 +516,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vbs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
               </li>
              
@@ -530,6 +537,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -557,10 +572,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
               </li>
              
@@ -574,18 +585,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">USB网卡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vbs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
             
             <div class="clearfix"></div>
