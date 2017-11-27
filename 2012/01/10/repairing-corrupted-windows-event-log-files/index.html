@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://pystack.org/2012/01/10/repairing-corrupted-windows-event-log-files/index.html">
 <meta property="og:site_name" content="Pystack.org">
 <meta property="og:description" content="在A机器上导出的日志（*.Evt）文件在A机器上可以直接读取，但是我将A机器上的日志文件拷贝到B机器上打开的时候，就会提示文件已损坏。 解决办法：  首先找到 0x11111111222222223333333344444444 将之后16bytes 抄下，这16bytes会在0x28000000前，  回到文件开头，把这16bytes从第17byte开始复写到32byte，  最后再改第37by">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-11-27T09:36:32.860Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="修复损坏的Windows事件日志文件">
