@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://pystack.org/2012/09/20/download-and-execute-files-from-ftp/</loc>
+    <lastmod>2017-11-28T06:01:57.732Z</lastmod>
+    <data>
+        <display>
+        <title>VBScript下载并执行FTP上的文件</title>
+        <pubTime>2012-09-20T15:39:24.000Z</pubTime>
+        
+        <tag>vbs</tag>
+         
+        <tag>ftp</tag>
+         
+         
+           
+             
+              <breadCrumb title="Windows" url="http://pystack.org/categories/Windows/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://pystack.org/2014/03/22/install-vdagent-on-windows-guest/</loc>
     <lastmod>2017-11-28T05:59:27.492Z</lastmod>
     <data>
@@ -316,28 +338,6 @@
 
     
   <url>
-    <loc>http://pystack.org/2012/09/20/download-and-execute-files-from-ftp/</loc>
-    <lastmod>2017-11-27T09:47:49.141Z</lastmod>
-    <data>
-        <display>
-        <title>VBScript下载并执行FTP上的文件</title>
-        <pubTime>2012-09-20T15:39:24.000Z</pubTime>
-        
-        <tag>vbs</tag>
-         
-        <tag>ftp</tag>
-         
-         
-           
-             
-              <breadCrumb title="Windows" url="http://pystack.org/categories/Windows/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://pystack.org/2015/11/14/ubuntu-with-wnda3100v2/</loc>
     <lastmod>2017-11-27T09:42:10.982Z</lastmod>
     <data>
@@ -469,9 +469,9 @@
          
         <tag>Virt-viewer</tag>
          
-        <tag>Linux</tag>
-         
         <tag>MinGW</tag>
+         
+        <tag>Linux</tag>
          
          
            
@@ -495,9 +495,9 @@
          
         <tag>Virt-viewer</tag>
          
-        <tag>ARM</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>ARM</tag>
          
          
            

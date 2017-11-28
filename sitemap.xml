@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://pystack.org/2012/09/20/download-and-execute-files-from-ftp/</loc>
+    
+    <lastmod>2017-11-28T06:01:57.732Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://pystack.org/2014/03/22/install-vdagent-on-windows-guest/</loc>
     
     <lastmod>2017-11-28T05:59:27.492Z</lastmod>
@@ -89,13 +96,6 @@
     <loc>http://pystack.org/2015/03/26/opera-browser-bookmark-converter/</loc>
     
     <lastmod>2017-11-27T10:04:03.596Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pystack.org/2012/09/20/download-and-execute-files-from-ftp/</loc>
-    
-    <lastmod>2017-11-27T09:47:49.141Z</lastmod>
     
   </url>
   
