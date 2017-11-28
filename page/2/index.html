@@ -350,20 +350,20 @@
 
 
   
-    <article id="post-mariadb-configuration" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-install-vdagent-on-windows-guest" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/03/14/mariadb-configuration/">Mariab修改最大连接数</a>
+      <a class="article-title" href="/2014/03/22/install-vdagent-on-windows-guest/">Openstack windows guest安装spice-guest-tools</a>
     </h1>
   
 
         
-        <a href="/2014/03/14/mariadb-configuration/" class="archive-article-date">
-  	<time datetime="2014-03-13T19:19:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-03-14</time>
+        <a href="/2014/03/22/install-vdagent-on-windows-guest/" class="archive-article-date">
+  	<time datetime="2014-03-21T19:19:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-03-22</time>
 </a>
         
         <!--<span id="busuanzi_container_page_pv">
@@ -373,13 +373,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>1.编辑/usr/lib/systemd/system/mariadb.service，在[Service]项最后加上以下两行：</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">LimitNOFILE</span>=<span class="number">65535</span></span><br><span class="line"><span class="attr">LimitNPROC</span>=<span class="number">65535</span></span><br></pre></td></tr></table></figure>
-<p>2.编辑/etc/my.cnf和/etc/my.cnf.d/mariadb-server.cnf，在[mysqld]项最后加上下面一行：</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">max_connections</span>=<span class="number">10240</span></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2014/03/14/mariadb-configuration/#more">more >></a>
-        
+        <h3 id="Windows-guest-内存显示不准"><a href="#Windows-guest-内存显示不准" class="headerlink" title="Windows guest 内存显示不准"></a>Windows guest 内存显示不准</h3><p>windows虚拟机启动后，使用libvirt api无法获取准确的内存使用率，也无法使用ballon， 需要安装spice-guest-tools，启动vdagent，vdservice 才能获得准确的内存使用情况，ballon才能正常使用。</p>
+<p>安装前：</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root<span class="variable">@compute3</span><span class="symbol">:~</span><span class="comment"># virsh dommemstat 51</span></span><br><span class="line">actual <span class="number">8388608</span></span><br><span class="line">rss <span class="number">8438800</span></span><br></pre></td></tr></table></figure>
+<p>安装后：</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root@compute3:~# virsh dommemstat <span class="number">51</span></span><br><span class="line">actual <span class="number">8388608</span></span><br><span class="line">swap_in <span class="number">0</span></span><br><span class="line">swap_out <span class="number">0</span></span><br><span class="line">major_fault <span class="number">32</span></span><br><span class="line">minor_fault <span class="number">9761</span></span><br><span class="line">unused <span class="number">7361896</span></span><br><span class="line">available <span class="number">8388208</span></span><br><span class="line">rss <span class="number">8435844</span></span><br></pre></td></tr></table></figure>
+<h3 id="vdagent进程CPU使用率过高"><a href="#vdagent进程CPU使用率过高" class="headerlink" title="vdagent进程CPU使用率过高"></a>vdagent进程CPU使用率过高</h3><p>安装spice-guest-tools之后，查看任务管理器发现，vdagent那个进程cpu使用率一直是50%，结果就是虚拟机非常的卡，解决办法是将xml文件中的 channel 由pty 改为 spicevmc即可。</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">python2</span>.7/<span class="title">site</span>-<span class="title">packages</span>/<span class="title">nova</span>/<span class="title">virt</span>/<span class="title">libvirt</span>/<span class="title">config</span>.<span class="title">py</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LibvirtConfigGuestCharBase</span>(<span class="title">LibvirtConfigGuestDevice</span>):</span></span><br><span class="line"></span><br><span class="line">     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span></span>(<span class="keyword">self</span>, **kwargs):</span><br><span class="line">         <span class="keyword">super</span>(LibvirtConfigGuestCharBase, <span class="keyword">self</span>).__init__(**kwargs)</span><br><span class="line"></span><br><span class="line">    *        <span class="keyword">self</span>.<span class="keyword">type</span> = <span class="string">"pty"</span></span><br><span class="line">    -        <span class="keyword">self</span>.<span class="keyword">type</span> = <span class="string">"spicevmc"</span></span><br></pre></td></tr></table></figure>
+
       
 
       
@@ -392,15 +393,27 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mariadb</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">libvirt</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">最大连接数</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">kvm</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">spice</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ballon</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">vdagent</a>
         		</li>
       		
 		</ul>
@@ -412,7 +425,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Database//" class="article-tag-list-link color4">Database</a>
+        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
         		</li>
       		
 		</ul>
@@ -421,7 +434,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2014/03/14/mariadb-configuration/">展开全文 >></a>
+          <a class="article-more-a" href="/2014/03/22/install-vdagent-on-windows-guest/">展开全文 >></a>
         </p>
       
 
@@ -529,6 +542,107 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2014/03/14/pyinstaller-notes/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-mariadb-configuration" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/14/mariadb-configuration/">Mariab修改最大连接数</a>
+    </h1>
+  
+
+        
+        <a href="/2014/03/14/mariadb-configuration/" class="archive-article-date">
+  	<time datetime="2014-03-13T19:19:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-03-14</time>
+</a>
+        
+        <!--<span id="busuanzi_container_page_pv">
+           阅读<span id="busuanzi_value_page_pv"></span>次
+        </span>-->
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>1.编辑/usr/lib/systemd/system/mariadb.service，在[Service]项最后加上以下两行：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">LimitNOFILE</span>=<span class="number">65535</span></span><br><span class="line"><span class="attr">LimitNPROC</span>=<span class="number">65535</span></span><br></pre></td></tr></table></figure>
+<p>2.编辑/etc/my.cnf和/etc/my.cnf.d/mariadb-server.cnf，在[mysqld]项最后加上下面一行：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">max_connections</span>=<span class="number">10240</span></span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2014/03/14/mariadb-configuration/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mariadb</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">最大连接数</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Database//" class="article-tag-list-link color4">Database</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2014/03/14/mariadb-configuration/">展开全文 >></a>
         </p>
       
 
@@ -1060,113 +1174,9 @@
 
 
   
-    <article id="post-repairing-corrupted-windows-event-log-files" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/01/10/repairing-corrupted-windows-event-log-files/">修复损坏的Windows事件日志文件</a>
-    </h1>
-  
-
-        
-        <a href="/2012/01/10/repairing-corrupted-windows-event-log-files/" class="archive-article-date">
-  	<time datetime="2012-01-10T05:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-01-10</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>在A机器上导出的日志（*.Evt）文件在A机器上可以直接读取，但是我将A机器上的日志文件拷贝到B机器上打开的时候，就会提示文件已损坏。</p>
-<p>解决办法：</p>
-<blockquote>
-<p>1.首先找到 0x11111111222222223333333344444444 将之后16bytes 抄下，这16bytes会在0x28000000前，</p>
-<p>2.回到文件开头，把这16bytes从第17byte开始复写到32byte，</p>
-<p>3.最后再改第37byte的值为 0x08，就可以读进事件管理器了。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2012/01/10/repairing-corrupted-windows-event-log-files/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Windows</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">事件日志</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2012/01/10/repairing-corrupted-windows-event-log-files/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -1294,18 +1304,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">openstack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spice</a>
               </li>
              
@@ -1319,6 +1317,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">openstack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1355,6 +1365,26 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">libvirt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">kvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">spice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ballon</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">vdagent</a>
               </li>
              
               <li class="article-tag-list-item">

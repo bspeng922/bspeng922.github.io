@@ -4,6 +4,36 @@
 
     
   <url>
+    <loc>http://pystack.org/2014/03/22/install-vdagent-on-windows-guest/</loc>
+    <lastmod>2017-11-28T05:55:58.036Z</lastmod>
+    <data>
+        <display>
+        <title>Openstack windows guest安装spice-guest-tools</title>
+        <pubTime>2014-03-21T19:19:24.000Z</pubTime>
+        
+        <tag>openstack</tag>
+         
+        <tag>libvirt</tag>
+         
+        <tag>kvm</tag>
+         
+        <tag>spice</tag>
+         
+        <tag>ballon</tag>
+         
+        <tag>vdagent</tag>
+         
+         
+           
+             
+              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://pystack.org/2014/03/14/mariadb-configuration/</loc>
     <lastmod>2017-11-28T02:52:06.039Z</lastmod>
     <data>
