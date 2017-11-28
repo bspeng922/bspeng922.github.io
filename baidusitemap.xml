@@ -393,9 +393,9 @@
         
         <tag>openstack</tag>
          
-        <tag>docker</tag>
-         
         <tag>Magnum</tag>
+         
+        <tag>docker</tag>
          
          
            
@@ -417,9 +417,9 @@
         
         <tag>openstack</tag>
          
-        <tag>zun</tag>
-         
         <tag>docker</tag>
+         
+        <tag>zun</tag>
          
         <tag>kuryr</tag>
          
@@ -469,9 +469,9 @@
          
         <tag>Virt-viewer</tag>
          
-        <tag>MinGW</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>MinGW</tag>
          
          
            
@@ -495,9 +495,9 @@
          
         <tag>Virt-viewer</tag>
          
-        <tag>Linux</tag>
-         
         <tag>ARM</tag>
+         
+        <tag>Linux</tag>
          
          
            
