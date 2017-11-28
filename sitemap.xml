@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://pystack.org/2012/02/14/calling-function-from-string-with-the-functions-name/</loc>
+    
+    <lastmod>2017-11-28T07:03:38.630Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://pystack.org/2012/09/20/download-and-execute-files-from-ftp/</loc>
     
     <lastmod>2017-11-28T06:01:57.732Z</lastmod>

@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://pystack.org/2012/02/14/calling-function-from-string-with-the-functions-name/</loc>
+    <lastmod>2017-11-28T07:03:38.630Z</lastmod>
+    <data>
+        <display>
+        <title>calling function from string with the function’s name</title>
+        <pubTime>2012-02-14T05:19:24.000Z</pubTime>
+        
+        <tag>python</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://pystack.org/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://pystack.org/2012/09/20/download-and-execute-files-from-ftp/</loc>
     <lastmod>2017-11-28T06:01:57.732Z</lastmod>
     <data>
@@ -133,9 +153,9 @@
         <title>pyinstaller使用笔记</title>
         <pubTime>2014-03-13T19:19:24.000Z</pubTime>
         
-        <tag>openstack</tag>
-         
         <tag>python</tag>
+         
+        <tag>openstack</tag>
          
         <tag>pyinstaller</tag>
          
@@ -295,9 +315,9 @@
         <title>修复损坏的Windows事件日志文件</title>
         <pubTime>2012-01-10T05:39:24.000Z</pubTime>
         
-        <tag>Windows</tag>
-         
         <tag>python</tag>
+         
+        <tag>Windows</tag>
          
         <tag>事件日志</tag>
          
