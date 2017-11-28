@@ -4,6 +4,50 @@
 
     
   <url>
+    <loc>http://pystack.org/2014/11/26/install-virtio-driver-for-windows-xp/</loc>
+    <lastmod>2017-11-28T08:26:11.715Z</lastmod>
+    <data>
+        <display>
+        <title>Openstack无法启动windows xp镜像</title>
+        <pubTime>2014-11-26T13:39:24.000Z</pubTime>
+        
+        <tag>Openstack</tag>
+         
+        <tag>windows xp</tag>
+         
+        <tag>virtio</tag>
+         
+         
+           
+             
+              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2012/02/14/python-class-loader/</loc>
+    <lastmod>2017-11-28T07:28:57.882Z</lastmod>
+    <data>
+        <display>
+        <title>How to Dynamically Load Modules or Classes</title>
+        <pubTime>2012-02-14T06:19:24.000Z</pubTime>
+        
+        <tag>python</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://pystack.org/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://pystack.org/2012/11/14/use-terminator-to-replace-default-terminal/</loc>
     <lastmod>2017-11-28T07:22:15.330Z</lastmod>
     <data>
@@ -19,26 +63,6 @@
            
              
               <breadCrumb title="Linux" url="http://pystack.org/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://pystack.org/2012/02/14/python-class-loader/</loc>
-    <lastmod>2017-11-28T07:21:38.358Z</lastmod>
-    <data>
-        <display>
-        <title>How to Dynamically Load Modules or Classes</title>
-        <pubTime>2012-02-14T06:19:24.000Z</pubTime>
-        
-        <tag>python</tag>
-         
-         
-           
-             
-              <breadCrumb title="Python" url="http://pystack.org/categories/Python/"/>
           
         </display>
     </data>
@@ -433,9 +457,9 @@
         
         <tag>openstack</tag>
          
-        <tag>docker</tag>
-         
         <tag>Magnum</tag>
+         
+        <tag>docker</tag>
          
          
            
@@ -457,9 +481,9 @@
         
         <tag>openstack</tag>
          
-        <tag>zun</tag>
-         
         <tag>docker</tag>
+         
+        <tag>zun</tag>
          
         <tag>kuryr</tag>
          
@@ -509,9 +533,9 @@
          
         <tag>Virt-viewer</tag>
          
-        <tag>MinGW</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>MinGW</tag>
          
          
            
@@ -535,9 +559,9 @@
          
         <tag>Virt-viewer</tag>
          
-        <tag>Linux</tag>
-         
         <tag>ARM</tag>
+         
+        <tag>Linux</tag>
          
          
            

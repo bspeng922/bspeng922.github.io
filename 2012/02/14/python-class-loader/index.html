@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pystack.org">
 <meta property="og:description" content="Using the import Magic MethodThe easiest way to do this sort of thing is to use the “magic” method, import. In fact, if you did a Google search on this topic, that’s probably the first method you’ll f">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-28T07:21:38.358Z">
+<meta property="og:updated_time" content="2017-11-28T07:28:57.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Dynamically Load Modules or Classes">
 <meta name="twitter:description" content="Using the import Magic MethodThe easiest way to do this sort of thing is to use the “magic” method, import. In fact, if you did a Google search on this topic, that’s probably the first method you’ll f">
@@ -179,7 +179,7 @@
         <h3 id="Using-the-import-Magic-Method"><a href="#Using-the-import-Magic-Method" class="headerlink" title="Using the import Magic Method"></a>Using the <strong>import</strong> Magic Method</h3><p>The easiest way to do this sort of thing is to use the “magic” method, <strong>import</strong>. In fact, if you did a Google search on this topic, that’s probably the first method you’ll find. Here’s the basic methodology:</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module = __import__(module_name)</span><br><span class="line">my_class = getattr(module, class_name)</span><br><span class="line">instance = my_class()</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h3 id="ClassLoader-in-Openstack"><a href="#ClassLoader-in-Openstack" class="headerlink" title="ClassLoader in Openstack"></a>ClassLoader in Openstack</h3><figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> ClassLoader(<span class="keyword">object</span>):</span><br><span class="line"></span><br><span class="line">    def load<span class="number">_</span><span class="keyword">class</span>(self, <span class="keyword">class</span><span class="number">_p</span>ath):</span><br><span class="line">        LOG.debug(<span class="string">'Loading class \'</span>%s\<span class="string">''</span> % <span class="keyword">class</span><span class="number">_p</span>ath)</span><br><span class="line">        parts = <span class="keyword">class</span><span class="number">_p</span>ath.rsplit(<span class="string">'.'</span>, <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">module</span> = <span class="number">__</span><span class="keyword">import</span><span class="number">__</span>(parts[<span class="number">0</span>], fromlist=parts[<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> getattr(<span class="keyword">module</span>, parts[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">    def load<span class="number">_m</span>odule(self, path):</span><br><span class="line">        <span class="keyword">module</span><span class="number">_n</span>ame, file<span class="number">_</span>ext = os.path.splitext(os.path.split(path)[-<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> file<span class="number">_</span>ext.lower() == <span class="string">'.py'</span>:</span><br><span class="line">            <span class="keyword">module</span> = imp.load<span class="number">_</span>source(<span class="keyword">module</span><span class="number">_n</span>ame, path)</span><br><span class="line">        elif file<span class="number">_</span>ext.lower() == <span class="string">'.pyc'</span>:</span><br><span class="line">            <span class="keyword">module</span> = imp.load<span class="number">_</span>compiled(<span class="keyword">module</span><span class="number">_n</span>ame, path)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">module</span></span><br></pre></td></tr></table></figure>
+<h3 id="ClassLoader-in-Openstack"><a href="#ClassLoader-in-Openstack" class="headerlink" title="ClassLoader in Openstack"></a>ClassLoader in Openstack</h3><figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> ClassLoader(<span class="keyword">object</span>):</span><br><span class="line"></span><br><span class="line">    def load<span class="number">_</span><span class="keyword">class</span>(self, <span class="keyword">class</span><span class="number">_p</span>ath):</span><br><span class="line">        LOG.debug(<span class="string">'Loading class \'</span>%s\<span class="string">''</span> % <span class="keyword">class</span><span class="number">_p</span>ath)</span><br><span class="line">        parts = <span class="keyword">class</span><span class="number">_p</span>ath.rsplit(<span class="string">'.'</span>, <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">module</span> = <span class="number">__</span><span class="keyword">import</span><span class="number">__</span>(parts[<span class="number">0</span>], fromlist=parts[<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> getattr(<span class="keyword">module</span>, parts[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">    def load<span class="number">_m</span>odule(self, path):</span><br><span class="line">        <span class="keyword">module</span><span class="number">_n</span>ame, file<span class="number">_</span>ext = os.path.splitext(os.path.split(path)[-<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> file<span class="number">_</span>ext.lower() == <span class="string">'.py'</span>:</span><br><span class="line">            <span class="keyword">module</span> = imp.load<span class="number">_</span>source(<span class="keyword">module</span><span class="number">_n</span>ame, path)</span><br><span class="line">        elif file<span class="number">_</span>ext.lower() == <span class="string">'.pyc'</span>:</span><br><span class="line">            <span class="keyword">module</span> = imp.load<span class="number">_</span>compiled(<span class="keyword">module</span><span class="number">_n</span>ame, path)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">module</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def load<span class="number">_p</span>lugins(stage):</span><br><span class="line">    plugins = []</span><br><span class="line">    cl = classloader.ClassLoader()</span><br><span class="line">    <span class="keyword">for</span> <span class="keyword">class</span><span class="number">_p</span>ath <span class="keyword">in</span> CONF.plugins:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">class</span><span class="number">_p</span>ath <span class="keyword">in</span> OLD<span class="number">_P</span>LUGINS:</span><br><span class="line">            <span class="keyword">new</span><span class="number">_</span><span class="keyword">class</span><span class="number">_p</span>ath = OLD<span class="number">_P</span>LUGINS[<span class="keyword">class</span><span class="number">_p</span>ath]</span><br><span class="line">            LOG.warn(<span class="string">"Old plugin module %r was found. The new name is %r. "</span></span><br><span class="line">                     <span class="string">"The old name will not be supported starting with "</span></span><br><span class="line">                     <span class="string">"cloudbaseinit 1.0"</span>, <span class="keyword">class</span><span class="number">_p</span>ath, <span class="keyword">new</span><span class="number">_</span><span class="keyword">class</span><span class="number">_p</span>ath)</span><br><span class="line">            <span class="keyword">class</span><span class="number">_p</span>ath = <span class="keyword">new</span><span class="number">_</span><span class="keyword">class</span><span class="number">_p</span>ath</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            plugin<span class="number">_</span>cls = cl.load<span class="number">_</span><span class="keyword">class</span>(<span class="keyword">class</span><span class="number">_p</span>ath)</span><br><span class="line">            <span class="keyword">if</span> not stage or plugin<span class="number">_</span>cls.execution<span class="number">_</span>stage == stage:</span><br><span class="line">                plugin = plugin<span class="number">_</span>cls()</span><br><span class="line">                plugins.append(plugin)</span><br><span class="line">        except ImportError:</span><br><span class="line">            LOG.error(<span class="string">"Could not import plugin module %r"</span>, <span class="keyword">class</span><span class="number">_p</span>ath)</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">return</span> plugins</span><br></pre></td></tr></table></figure>
 <p>参考地址： <a href="https://www.blog.pythonlibrary.org/2012/07/31/advanced-python-how-to-dynamically-load-modules-or-classes/" target="_blank" rel="external">advanced-python-how-to-dynamically-load-modules-or-classes/</a></p>
 
       
@@ -454,10 +454,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">md5</a>
               </li>
              
@@ -466,7 +462,27 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Spice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Virt-viewer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ARM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -482,23 +498,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Virt-viewer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ARM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -507,18 +507,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">YUM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">zun</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -531,6 +519,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,6 +546,22 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">zun</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">virtio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
@@ -574,11 +582,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
+                <a href="javascript:void(0)" class="js-tag color1">最大连接数</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">最大连接数</a>
+                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
               </li>
              
               <li class="article-tag-list-item">

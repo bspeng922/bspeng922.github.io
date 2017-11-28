@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://pystack.org/2012/11/14/use-terminator-to-replace-default-terminal/</loc>
+    <loc>http://pystack.org/2014/11/26/install-virtio-driver-for-windows-xp/</loc>
     
-    <lastmod>2017-11-28T07:22:15.330Z</lastmod>
+    <lastmod>2017-11-28T08:26:11.715Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://pystack.org/2012/02/14/python-class-loader/</loc>
     
-    <lastmod>2017-11-28T07:21:38.358Z</lastmod>
+    <lastmod>2017-11-28T07:28:57.882Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pystack.org/2012/11/14/use-terminator-to-replace-default-terminal/</loc>
+    
+    <lastmod>2017-11-28T07:22:15.330Z</lastmod>
     
   </url>
   
