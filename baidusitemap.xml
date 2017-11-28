@@ -4,6 +4,54 @@
 
     
   <url>
+    <loc>http://pystack.org/2014/03/14/mariadb-configuration/</loc>
+    <lastmod>2017-11-28T02:52:06.039Z</lastmod>
+    <data>
+        <display>
+        <title>Mariab修改最大连接数</title>
+        <pubTime>2014-03-13T19:19:24.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+        <tag>mariadb</tag>
+         
+        <tag>最大连接数</tag>
+         
+         
+           
+             
+              <breadCrumb title="Database" url="http://pystack.org/categories/Database/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2014/03/14/mysql-master-master/</loc>
+    <lastmod>2017-11-28T02:41:09.276Z</lastmod>
+    <data>
+        <display>
+        <title>Mariadb主主配置</title>
+        <pubTime>2014-03-13T19:19:24.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+        <tag>mariadb</tag>
+         
+        <tag>master-master</tag>
+         
+         
+           
+             
+              <breadCrumb title="Database" url="http://pystack.org/categories/Database/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://pystack.org/2012/11/14/use-terminator-to-replace-ubuntu-default-terminal/</loc>
     <lastmod>2017-11-28T02:30:17.165Z</lastmod>
     <data>
