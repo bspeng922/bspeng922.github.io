@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://pystack.org/2014/03/22/install-vdagent-on-windows-guest/</loc>
-    <lastmod>2017-11-28T05:55:58.036Z</lastmod>
+    <lastmod>2017-11-28T05:59:27.492Z</lastmod>
     <data>
         <display>
         <title>Openstack windows guest安装spice-guest-tools</title>
@@ -393,9 +393,9 @@
         
         <tag>openstack</tag>
          
-        <tag>Magnum</tag>
-         
         <tag>docker</tag>
+         
+        <tag>Magnum</tag>
          
          
            
@@ -417,9 +417,9 @@
         
         <tag>openstack</tag>
          
-        <tag>docker</tag>
-         
         <tag>zun</tag>
+         
+        <tag>docker</tag>
          
         <tag>kuryr</tag>
          

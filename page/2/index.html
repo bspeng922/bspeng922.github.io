@@ -376,11 +376,9 @@
         <h3 id="Windows-guest-内存显示不准"><a href="#Windows-guest-内存显示不准" class="headerlink" title="Windows guest 内存显示不准"></a>Windows guest 内存显示不准</h3><p>windows虚拟机启动后，使用libvirt api无法获取准确的内存使用率，也无法使用ballon， 需要安装spice-guest-tools，启动vdagent，vdservice 才能获得准确的内存使用情况，ballon才能正常使用。</p>
 <p>安装前：</p>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root<span class="variable">@compute3</span><span class="symbol">:~</span><span class="comment"># virsh dommemstat 51</span></span><br><span class="line">actual <span class="number">8388608</span></span><br><span class="line">rss <span class="number">8438800</span></span><br></pre></td></tr></table></figure>
-<p>安装后：</p>
-<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root@compute3:~# virsh dommemstat <span class="number">51</span></span><br><span class="line">actual <span class="number">8388608</span></span><br><span class="line">swap_in <span class="number">0</span></span><br><span class="line">swap_out <span class="number">0</span></span><br><span class="line">major_fault <span class="number">32</span></span><br><span class="line">minor_fault <span class="number">9761</span></span><br><span class="line">unused <span class="number">7361896</span></span><br><span class="line">available <span class="number">8388208</span></span><br><span class="line">rss <span class="number">8435844</span></span><br></pre></td></tr></table></figure>
-<h3 id="vdagent进程CPU使用率过高"><a href="#vdagent进程CPU使用率过高" class="headerlink" title="vdagent进程CPU使用率过高"></a>vdagent进程CPU使用率过高</h3><p>安装spice-guest-tools之后，查看任务管理器发现，vdagent那个进程cpu使用率一直是50%，结果就是虚拟机非常的卡，解决办法是将xml文件中的 channel 由pty 改为 spicevmc即可。</p>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">python2</span>.7/<span class="title">site</span>-<span class="title">packages</span>/<span class="title">nova</span>/<span class="title">virt</span>/<span class="title">libvirt</span>/<span class="title">config</span>.<span class="title">py</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LibvirtConfigGuestCharBase</span>(<span class="title">LibvirtConfigGuestDevice</span>):</span></span><br><span class="line"></span><br><span class="line">     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span></span>(<span class="keyword">self</span>, **kwargs):</span><br><span class="line">         <span class="keyword">super</span>(LibvirtConfigGuestCharBase, <span class="keyword">self</span>).__init__(**kwargs)</span><br><span class="line"></span><br><span class="line">    *        <span class="keyword">self</span>.<span class="keyword">type</span> = <span class="string">"pty"</span></span><br><span class="line">    -        <span class="keyword">self</span>.<span class="keyword">type</span> = <span class="string">"spicevmc"</span></span><br></pre></td></tr></table></figure>
-
+        
+          <a class="article-more-a" href="/2014/03/22/install-vdagent-on-windows-guest/#more">more >></a>
+        
       
 
       
@@ -1304,6 +1302,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">openstack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spice</a>
               </li>
              
@@ -1317,18 +1327,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">openstack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1352,7 +1350,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
+                <a href="javascript:void(0)" class="js-tag color4">zun</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1360,11 +1358,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">zun</a>
+                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
+                <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
               </li>
              
               <li class="article-tag-list-item">
