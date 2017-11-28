@@ -4,11 +4,53 @@
 
     
   <url>
-    <loc>http://pystack.org/2012/02/14/calling-function-from-string-with-the-functions-name/</loc>
-    <lastmod>2017-11-28T07:03:38.630Z</lastmod>
+    <loc>http://pystack.org/2012/11/14/use-terminator-to-replace-default-terminal/</loc>
+    <lastmod>2017-11-28T07:22:15.330Z</lastmod>
     <data>
         <display>
-        <title>calling function from string with the function’s name</title>
+        <title>使用termainator替换ubuntu默认终端</title>
+        <pubTime>2012-11-14T06:39:24.000Z</pubTime>
+        
+        <tag>Ubuntu</tag>
+         
+        <tag>terminator</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://pystack.org/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2012/02/14/python-class-loader/</loc>
+    <lastmod>2017-11-28T07:21:38.358Z</lastmod>
+    <data>
+        <display>
+        <title>How to Dynamically Load Modules or Classes</title>
+        <pubTime>2012-02-14T06:19:24.000Z</pubTime>
+        
+        <tag>python</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://pystack.org/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2012/02/14/calling-function-from-the-functions-name/</loc>
+    <lastmod>2017-11-28T07:19:27.953Z</lastmod>
+    <data>
+        <display>
+        <title>calling function from a string with the function’s name</title>
         <pubTime>2012-02-14T05:19:24.000Z</pubTime>
         
         <tag>python</tag>
@@ -117,28 +159,6 @@
            
              
               <breadCrumb title="Database" url="http://pystack.org/categories/Database/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://pystack.org/2012/11/14/use-terminator-to-replace-ubuntu-default-terminal/</loc>
-    <lastmod>2017-11-28T02:30:17.165Z</lastmod>
-    <data>
-        <display>
-        <title>使用termainator替换ubuntu默认终端</title>
-        <pubTime>2012-11-14T06:39:24.000Z</pubTime>
-        
-        <tag>Ubuntu</tag>
-         
-        <tag>terminator</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux" url="http://pystack.org/categories/Linux/"/>
           
         </display>
     </data>
@@ -413,9 +433,9 @@
         
         <tag>openstack</tag>
          
-        <tag>Magnum</tag>
-         
         <tag>docker</tag>
+         
+        <tag>Magnum</tag>
          
          
            
@@ -437,9 +457,9 @@
         
         <tag>openstack</tag>
          
-        <tag>docker</tag>
-         
         <tag>zun</tag>
+         
+        <tag>docker</tag>
          
         <tag>kuryr</tag>
          
@@ -489,9 +509,9 @@
          
         <tag>Virt-viewer</tag>
          
-        <tag>Linux</tag>
-         
         <tag>MinGW</tag>
+         
+        <tag>Linux</tag>
          
          
            
@@ -515,9 +535,9 @@
          
         <tag>Virt-viewer</tag>
          
-        <tag>ARM</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>ARM</tag>
          
          
            

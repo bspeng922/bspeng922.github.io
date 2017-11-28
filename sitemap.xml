@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://pystack.org/2012/02/14/calling-function-from-string-with-the-functions-name/</loc>
+    <loc>http://pystack.org/2012/11/14/use-terminator-to-replace-default-terminal/</loc>
     
-    <lastmod>2017-11-28T07:03:38.630Z</lastmod>
+    <lastmod>2017-11-28T07:22:15.330Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pystack.org/2012/02/14/python-class-loader/</loc>
+    
+    <lastmod>2017-11-28T07:21:38.358Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pystack.org/2012/02/14/calling-function-from-the-functions-name/</loc>
+    
+    <lastmod>2017-11-28T07:19:27.953Z</lastmod>
     
   </url>
   
@@ -33,13 +47,6 @@
     <loc>http://pystack.org/2014/03/14/mysql-master-master/</loc>
     
     <lastmod>2017-11-28T02:41:09.276Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pystack.org/2012/11/14/use-terminator-to-replace-ubuntu-default-terminal/</loc>
-    
-    <lastmod>2017-11-28T02:30:17.165Z</lastmod>
     
   </url>
   
