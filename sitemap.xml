@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://pystack.org/2017/11/26/enable-neutron-qos/</loc>
+    
+    <lastmod>2017-12-01T07:55:58.224Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pystack.org/2017/10/14/install-openstack-zun/</loc>
+    
+    <lastmod>2017-11-30T11:55:50.699Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://pystack.org/2014/11/26/install-virtio-driver-for-windows-xp/</loc>
     
     <lastmod>2017-11-28T08:29:24.907Z</lastmod>
@@ -138,13 +152,6 @@
     <loc>http://pystack.org/2017/10/10/errors-while-installing-openstack-magnum/</loc>
     
     <lastmod>2017-11-16T02:33:21.353Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pystack.org/2017/10/14/install-openstack-zun/</loc>
-    
-    <lastmod>2017-11-16T02:32:16.250Z</lastmod>
     
   </url>
   
