@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://pystack.org/2017/11/26/enable-neutron-qos/</loc>
-    <lastmod>2017-12-01T07:55:58.224Z</lastmod>
+    <lastmod>2017-12-01T07:58:37.258Z</lastmod>
     <data>
         <display>
         <title>配置neutron qos</title>
@@ -37,9 +37,9 @@
         
         <tag>openstack</tag>
          
-        <tag>zun</tag>
-         
         <tag>docker</tag>
+         
+        <tag>zun</tag>
          
         <tag>kuryr</tag>
          
@@ -507,9 +507,9 @@
         
         <tag>openstack</tag>
          
-        <tag>docker</tag>
-         
         <tag>Magnum</tag>
+         
+        <tag>docker</tag>
          
          
            
