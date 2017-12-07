@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://pystack.org/2017/11/26/unable-to-boot-kali-linux-by-kvm/</loc>
+    
+    <lastmod>2017-12-07T11:30:39.065Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://pystack.org/2017/11/26/enable-neutron-qos/</loc>
     
-    <lastmod>2017-12-01T07:58:37.258Z</lastmod>
+    <lastmod>2017-12-06T07:58:48.742Z</lastmod>
     
   </url>
   

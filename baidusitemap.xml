@@ -4,8 +4,32 @@
 
     
   <url>
+    <loc>http://pystack.org/2017/11/26/unable-to-boot-kali-linux-by-kvm/</loc>
+    <lastmod>2017-12-07T11:30:39.065Z</lastmod>
+    <data>
+        <display>
+        <title>Openstack无法启动kali linux</title>
+        <pubTime>2017-11-26T13:39:24.000Z</pubTime>
+        
+        <tag>Openstack</tag>
+         
+        <tag>kvm</tag>
+         
+        <tag>kali linux</tag>
+         
+         
+           
+             
+              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://pystack.org/2017/11/26/enable-neutron-qos/</loc>
-    <lastmod>2017-12-01T07:58:37.258Z</lastmod>
+    <lastmod>2017-12-06T07:58:48.742Z</lastmod>
     <data>
         <display>
         <title>配置neutron qos</title>
@@ -37,9 +61,9 @@
         
         <tag>openstack</tag>
          
-        <tag>docker</tag>
-         
         <tag>zun</tag>
+         
+        <tag>docker</tag>
          
         <tag>kuryr</tag>
          
@@ -507,9 +531,9 @@
         
         <tag>openstack</tag>
          
-        <tag>Magnum</tag>
-         
         <tag>docker</tag>
+         
+        <tag>Magnum</tag>
          
          
            
