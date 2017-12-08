@@ -474,9 +474,9 @@
     <link href="http://pystack.org/2014/11/25/openstack-import-vmdk-and-vdi-image/"/>
     <id>http://pystack.org/2014/11/25/openstack-import-vmdk-and-vdi-image/</id>
     <published>2014-11-25T13:39:24.000Z</published>
-    <updated>2017-12-08T06:59:37.327Z</updated>
+    <updated>2017-12-08T07:02:30.136Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Virtualbox"><a href="#Virtualbox" class="headerlink" title="Virtualbox"></a>Virtualbox</h2><ol><li><strong>系统安装前准备</strong></li></ol><p>Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE</p><p><img src="/assets/img/virtualbox-disk.png" alt=""></p><ol><li><strong>安装操作系统</strong></li></ol><p>过程略</p><a id="more"></a><ol><li><strong>修改镜像元数据</strong></li></ol><p>镜像 –&gt; 更新元数据，修改硬盘和网卡类型：</p><pre><code>hw_disk_bus    idehw_vif_model    rtl8139</code></pre><p><img src="/assets/img/image-metadata.png" alt=""></p><h2 id="VMware"><a href="#VMware" class="headerlink" title="VMware"></a>VMware</h2><ol><li><strong>安装windows</strong></li></ol><p>系统安装过程略，安装完成后需要手动修改一下注册表。</p><p>下载<a href="/assets/img/MergeIDE.zip">MergeIDE.zip</a>压缩包到虚拟机，执行 MergeIDE.bat 文件即可。</p><ol><li><strong>修改镜像元数据</strong></li></ol><p>镜像 –&gt; 更新元数据，修改硬盘和网卡类型：(同Virtualbox第三步)</p><pre><code>hw_disk_bus    idehw_vif_model    rtl8139</code></pre>]]></content>
+    <content type="html"><![CDATA[<h2 id="Virtualbox"><a href="#Virtualbox" class="headerlink" title="Virtualbox"></a>Virtualbox</h2><ol><li><strong>系统安装前准备</strong></li></ol><p>Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE</p><p><img src="/assets/img/virtualbox-disk.png" alt=""></p><ol><li><strong>安装操作系统</strong></li></ol><p>过程略</p><a id="more"></a><ol><li><strong>修改镜像元数据</strong></li></ol><p>镜像 –&gt; 更新元数据，修改硬盘和网卡类型：</p><pre><code>hw_disk_bus    idehw_vif_model    rtl8139</code></pre><p><img src="/assets/img/image-metadata.png" alt=""></p><h2 id="VMware"><a href="#VMware" class="headerlink" title="VMware"></a>VMware</h2><ol><li><strong>安装windows</strong></li></ol><p>系统安装过程略，安装完成后需要手动修改一下注册表。</p><p>下载<a href="/assets/img/MergeIDE.zip">MergeIDE.zip</a>压缩包到虚拟机，执行 MergeIDE.bat 文件即可。</p><ol><li><strong>修改镜像元数据</strong></li></ol><p>镜像 –&gt; 更新元数据，修改硬盘和网卡类型：(同Virtualbox第三步)</p><pre><code>hw_disk_bus    idehw_vif_model    rtl8139</code></pre><p>注： 本文只针对windows，linux可以直接导入</p>]]></content>
     
     <summary type="html">
     
@@ -540,35 +540,6 @@
   </entry>
   
   <entry>
-    <title>Mariab修改最大连接数</title>
-    <link href="http://pystack.org/2014/03/14/mariadb-configuration/"/>
-    <id>http://pystack.org/2014/03/14/mariadb-configuration/</id>
-    <published>2014-03-13T19:19:24.000Z</published>
-    <updated>2017-11-28T02:52:06.039Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>1.编辑/usr/lib/systemd/system/mariadb.service，在[Service]项最后加上以下两行：</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">LimitNOFILE</span>=<span class="number">65535</span></span><br><span class="line"><span class="attr">LimitNPROC</span>=<span class="number">65535</span></span><br></pre></td></tr></table></figure><p>2.编辑/etc/my.cnf和/etc/my.cnf.d/mariadb-server.cnf，在[mysqld]项最后加上下面一行：</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">max_connections</span>=<span class="number">10240</span></span><br></pre></td></tr></table></figure><a id="more"></a><p>3.重启服务</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">service mariadb restart</span><br></pre></td></tr></table></figure><p>4.查看支持最大连接数：</p><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [(none)]&gt; show <span class="keyword">variables</span> like <span class="comment">"max_connections"</span>;</span><br></pre></td></tr></table></figure><p><img src="/assets/img/mysql-max-conn.jpg" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;步骤&quot;&gt;&lt;a href=&quot;#步骤&quot; class=&quot;headerlink&quot; title=&quot;步骤&quot;&gt;&lt;/a&gt;步骤&lt;/h2&gt;&lt;p&gt;1.编辑/usr/lib/systemd/system/mariadb.service，在[Service]项最后加上以下两行：&lt;/p&gt;
-&lt;figure class=&quot;highlight ini&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;LimitNOFILE&lt;/span&gt;=&lt;span class=&quot;number&quot;&gt;65535&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;LimitNPROC&lt;/span&gt;=&lt;span class=&quot;number&quot;&gt;65535&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;2.编辑/etc/my.cnf和/etc/my.cnf.d/mariadb-server.cnf，在[mysqld]项最后加上下面一行：&lt;/p&gt;
-&lt;figure class=&quot;highlight ini&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;max_connections&lt;/span&gt;=&lt;span class=&quot;number&quot;&gt;10240&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Database" scheme="http://pystack.org/categories/Database/"/>
-    
-    
-      <category term="mysql" scheme="http://pystack.org/tags/mysql/"/>
-    
-      <category term="mariadb" scheme="http://pystack.org/tags/mariadb/"/>
-    
-      <category term="最大连接数" scheme="http://pystack.org/tags/%E6%9C%80%E5%A4%A7%E8%BF%9E%E6%8E%A5%E6%95%B0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Mariadb主主配置</title>
     <link href="http://pystack.org/2014/03/14/mysql-master-master/"/>
     <id>http://pystack.org/2014/03/14/mysql-master-master/</id>
@@ -596,6 +567,35 @@
       <category term="mariadb" scheme="http://pystack.org/tags/mariadb/"/>
     
       <category term="master-master" scheme="http://pystack.org/tags/master-master/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mariab修改最大连接数</title>
+    <link href="http://pystack.org/2014/03/14/mariadb-configuration/"/>
+    <id>http://pystack.org/2014/03/14/mariadb-configuration/</id>
+    <published>2014-03-13T19:19:24.000Z</published>
+    <updated>2017-11-28T02:52:06.039Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>1.编辑/usr/lib/systemd/system/mariadb.service，在[Service]项最后加上以下两行：</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">LimitNOFILE</span>=<span class="number">65535</span></span><br><span class="line"><span class="attr">LimitNPROC</span>=<span class="number">65535</span></span><br></pre></td></tr></table></figure><p>2.编辑/etc/my.cnf和/etc/my.cnf.d/mariadb-server.cnf，在[mysqld]项最后加上下面一行：</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">max_connections</span>=<span class="number">10240</span></span><br></pre></td></tr></table></figure><a id="more"></a><p>3.重启服务</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">service mariadb restart</span><br></pre></td></tr></table></figure><p>4.查看支持最大连接数：</p><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [(none)]&gt; show <span class="keyword">variables</span> like <span class="comment">"max_connections"</span>;</span><br></pre></td></tr></table></figure><p><img src="/assets/img/mysql-max-conn.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;步骤&quot;&gt;&lt;a href=&quot;#步骤&quot; class=&quot;headerlink&quot; title=&quot;步骤&quot;&gt;&lt;/a&gt;步骤&lt;/h2&gt;&lt;p&gt;1.编辑/usr/lib/systemd/system/mariadb.service，在[Service]项最后加上以下两行：&lt;/p&gt;
+&lt;figure class=&quot;highlight ini&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;LimitNOFILE&lt;/span&gt;=&lt;span class=&quot;number&quot;&gt;65535&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;LimitNPROC&lt;/span&gt;=&lt;span class=&quot;number&quot;&gt;65535&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;2.编辑/etc/my.cnf和/etc/my.cnf.d/mariadb-server.cnf，在[mysqld]项最后加上下面一行：&lt;/p&gt;
+&lt;figure class=&quot;highlight ini&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;max_connections&lt;/span&gt;=&lt;span class=&quot;number&quot;&gt;10240&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Database" scheme="http://pystack.org/categories/Database/"/>
+    
+    
+      <category term="mysql" scheme="http://pystack.org/tags/mysql/"/>
+    
+      <category term="mariadb" scheme="http://pystack.org/tags/mariadb/"/>
+    
+      <category term="最大连接数" scheme="http://pystack.org/tags/%E6%9C%80%E5%A4%A7%E8%BF%9E%E6%8E%A5%E6%95%B0/"/>
     
   </entry>
   
