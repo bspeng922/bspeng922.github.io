@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="http://pystack.org">
   <title>Openstack导入VMDK和VDI镜像 | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Virtualbox 系统安装前准备  Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE   安装操作系统  过程略">
+  <meta name="description" content="Virtualbox 系统安装前准备  Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE">
 <meta name="keywords" content="Openstack,windows,vmdk,vdi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Openstack导入VMDK和VDI镜像">
 <meta property="og:url" content="http://pystack.org/2014/11/25/openstack-import-vmdk-and-vdi-image/index.html">
 <meta property="og:site_name" content="Pystack.org">
-<meta property="og:description" content="Virtualbox 系统安装前准备  Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE   安装操作系统  过程略">
+<meta property="og:description" content="Virtualbox 系统安装前准备  Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pystack.org/assets/img/virtualbox-disk.png">
 <meta property="og:image" content="http://pystack.org/assets/img/image-metadata.png">
-<meta property="og:updated_time" content="2017-12-08T07:02:30.136Z">
+<meta property="og:updated_time" content="2017-12-08T07:04:48.170Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Openstack导入VMDK和VDI镜像">
-<meta name="twitter:description" content="Virtualbox 系统安装前准备  Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE   安装操作系统  过程略">
+<meta name="twitter:description" content="Virtualbox 系统安装前准备  Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE">
 <meta name="twitter:image" content="http://pystack.org/assets/img/virtualbox-disk.png">
   
     <link rel="alternative" href="/atom.xml" title="Pystack.org" type="application/atom+xml">
@@ -179,35 +179,35 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Virtualbox"><a href="#Virtualbox" class="headerlink" title="Virtualbox"></a>Virtualbox</h2><ol>
+        <h2 id="Virtualbox"><a href="#Virtualbox" class="headerlink" title="Virtualbox"></a>Virtualbox</h2><ul>
 <li><strong>系统安装前准备</strong></li>
-</ol>
+</ul>
 <p>Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE</p>
 <p><img src="/assets/img/virtualbox-disk.png" alt=""></p>
-<ol>
-<li><strong>安装操作系统</strong></li>
-</ol>
-<p>过程略</p>
 <a id="more"></a>
-<ol>
+<ul>
+<li><strong>安装操作系统</strong></li>
+</ul>
+<p>过程略</p>
+<ul>
 <li><strong>修改镜像元数据</strong></li>
-</ol>
+</ul>
 <p>镜像 –&gt; 更新元数据，修改硬盘和网卡类型：</p>
 <pre><code>hw_disk_bus    ide
 hw_vif_model    rtl8139
 </code></pre><p><img src="/assets/img/image-metadata.png" alt=""></p>
-<h2 id="VMware"><a href="#VMware" class="headerlink" title="VMware"></a>VMware</h2><ol>
+<h2 id="VMware"><a href="#VMware" class="headerlink" title="VMware"></a>VMware</h2><ul>
 <li><strong>安装windows</strong></li>
-</ol>
+</ul>
 <p>系统安装过程略，安装完成后需要手动修改一下注册表。</p>
 <p>下载<a href="/assets/img/MergeIDE.zip">MergeIDE.zip</a>压缩包到虚拟机，执行 MergeIDE.bat 文件即可。</p>
-<ol>
+<ul>
 <li><strong>修改镜像元数据</strong></li>
-</ol>
+</ul>
 <p>镜像 –&gt; 更新元数据，修改硬盘和网卡类型：(同Virtualbox第三步)</p>
 <pre><code>hw_disk_bus    ide
 hw_vif_model    rtl8139
-</code></pre><p>注： 本文只针对windows，linux可以直接导入</p>
+</code></pre><p><strong>注： 本文只针对windows，linux可以直接导入</strong></p>
 
       
 
@@ -561,6 +561,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vbs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">YUM</a>
               </li>
              
@@ -578,14 +586,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vbs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,6 +633,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -642,10 +646,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">最大连接数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
               </li>
              
               <li class="article-tag-list-item">
