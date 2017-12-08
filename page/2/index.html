@@ -870,19 +870,19 @@
 
 
   
-    <article id="post-pyinstaller-notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-mariadb-configuration" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/03/14/pyinstaller-notes/">pyinstaller使用笔记</a>
+      <a class="article-title" href="/2014/03/14/mariadb-configuration/">Mariab修改最大连接数</a>
     </h1>
   
 
         
-        <a href="/2014/03/14/pyinstaller-notes/" class="archive-article-date">
+        <a href="/2014/03/14/mariadb-configuration/" class="archive-article-date">
   	<time datetime="2014-03-13T19:19:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-03-14</time>
 </a>
         
@@ -893,10 +893,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="使用pyinstaller打包openstack程序"><a href="#使用pyinstaller打包openstack程序" class="headerlink" title="使用pyinstaller打包openstack程序"></a>使用pyinstaller打包openstack程序</h2><p>由于pyinstaller不支持pkg_resources，打包完运行的时候总是提示setuptools包有问题，可以等打包完成后手动将对应的包拷贝过去(dist-info目录也需要)。</p>
-<p>可以正常打包，打包后运行的时候提示错误信息如下，可以看到错误在 “login.py”, line 5，这一行刚好是引用keystoneclient的包</p>
+        <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>1.编辑/usr/lib/systemd/system/mariadb.service，在[Service]项最后加上以下两行：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">LimitNOFILE</span>=<span class="number">65535</span></span><br><span class="line"><span class="attr">LimitNPROC</span>=<span class="number">65535</span></span><br></pre></td></tr></table></figure>
+<p>2.编辑/etc/my.cnf和/etc/my.cnf.d/mariadb-server.cnf，在[mysqld]项最后加上下面一行：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">max_connections</span>=<span class="number">10240</span></span><br></pre></td></tr></table></figure>
         
-          <a class="article-more-a" href="/2014/03/14/pyinstaller-notes/#more">more >></a>
+          <a class="article-more-a" href="/2014/03/14/mariadb-configuration/#more">more >></a>
         
       
 
@@ -910,23 +912,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mariadb</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pyinstaller</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">arm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Inno Setup</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">最大连接数</a>
         		</li>
       		
 		</ul>
@@ -938,7 +932,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
+        			<a href="/categories/Database//" class="article-tag-list-link color4">Database</a>
         		</li>
       		
 		</ul>
@@ -947,7 +941,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2014/03/14/pyinstaller-notes/">展开全文 >></a>
+          <a class="article-more-a" href="/2014/03/14/mariadb-configuration/">展开全文 >></a>
         </p>
       
 
@@ -1080,19 +1074,19 @@
 
 
   
-    <article id="post-mariadb-configuration" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-pyinstaller-notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/03/14/mariadb-configuration/">Mariab修改最大连接数</a>
+      <a class="article-title" href="/2014/03/14/pyinstaller-notes/">pyinstaller使用笔记</a>
     </h1>
   
 
         
-        <a href="/2014/03/14/mariadb-configuration/" class="archive-article-date">
+        <a href="/2014/03/14/pyinstaller-notes/" class="archive-article-date">
   	<time datetime="2014-03-13T19:19:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-03-14</time>
 </a>
         
@@ -1103,12 +1097,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>1.编辑/usr/lib/systemd/system/mariadb.service，在[Service]项最后加上以下两行：</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">LimitNOFILE</span>=<span class="number">65535</span></span><br><span class="line"><span class="attr">LimitNPROC</span>=<span class="number">65535</span></span><br></pre></td></tr></table></figure>
-<p>2.编辑/etc/my.cnf和/etc/my.cnf.d/mariadb-server.cnf，在[mysqld]项最后加上下面一行：</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">max_connections</span>=<span class="number">10240</span></span><br></pre></td></tr></table></figure>
+        <h2 id="使用pyinstaller打包openstack程序"><a href="#使用pyinstaller打包openstack程序" class="headerlink" title="使用pyinstaller打包openstack程序"></a>使用pyinstaller打包openstack程序</h2><p>由于pyinstaller不支持pkg_resources，打包完运行的时候总是提示setuptools包有问题，可以等打包完成后手动将对应的包拷贝过去(dist-info目录也需要)。</p>
+<p>可以正常打包，打包后运行的时候提示错误信息如下，可以看到错误在 “login.py”, line 5，这一行刚好是引用keystoneclient的包</p>
         
-          <a class="article-more-a" href="/2014/03/14/mariadb-configuration/#more">more >></a>
+          <a class="article-more-a" href="/2014/03/14/pyinstaller-notes/#more">more >></a>
         
       
 
@@ -1122,15 +1114,23 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mariadb</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">最大连接数</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pyinstaller</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">arm</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Inno Setup</a>
         		</li>
       		
 		</ul>
@@ -1142,7 +1142,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Database//" class="article-tag-list-link color4">Database</a>
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -1151,7 +1151,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2014/03/14/mariadb-configuration/">展开全文 >></a>
+          <a class="article-more-a" href="/2014/03/14/pyinstaller-notes/">展开全文 >></a>
         </p>
       
 
@@ -1299,6 +1299,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
               </li>
              
@@ -1308,22 +1312,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">large file</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">openstack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1343,7 +1331,23 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">openstack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">APT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1383,26 +1387,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">virtio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">libvirt</a>
               </li>
              
@@ -1420,6 +1404,26 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vdagent</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">virtio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1500,10 +1504,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">terminator</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
               </li>
             
             <div class="clearfix"></div>
