@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://pystack.org/2014/11/25/openstack-import-vmdk-and-vdi-image/</loc>
+    
+    <lastmod>2017-12-08T06:52:56.761Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://pystack.org/2017/11/26/unable-to-boot-kali-linux-by-kvm/</loc>
     
     <lastmod>2017-12-08T05:51:52.849Z</lastmod>

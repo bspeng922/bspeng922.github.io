@@ -654,6 +654,132 @@
 
 
   
+    <article id="post-openstack-import-vmdk-and-vdi-image" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/25/openstack-import-vmdk-and-vdi-image/">Openstack导入VMDK and VDI镜像</a>
+    </h1>
+  
+
+        
+        <a href="/2014/11/25/openstack-import-vmdk-and-vdi-image/" class="archive-article-date">
+  	<time datetime="2014-11-25T13:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-11-25</time>
+</a>
+        
+        <!--<span id="busuanzi_container_page_pv">
+           阅读<span id="busuanzi_value_page_pv"></span>次
+        </span>-->
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Virtualbox"><a href="#Virtualbox" class="headerlink" title="Virtualbox"></a>Virtualbox</h2><ol>
+<li><strong>系统安装前准备</strong></li>
+</ol>
+<p>Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE</p>
+<p><img src="/assets/img/virtualbox-disk.png" alt=""></p>
+<ol>
+<li><strong>安装操作系统</strong></li>
+</ol>
+<p>过程略</p>
+<ol>
+<li><strong>修改镜像元数据</strong></li>
+</ol>
+<p>镜像 –&gt; 更新元数据，修改硬盘和网卡类型：</p>
+<pre><code>hw_disk_bus    ide
+hw_vif_model    rtl8139
+</code></pre><p><img src="/assets/img/image-metadata.png" alt=""></p>
+<h2 id="VMware"><a href="#VMware" class="headerlink" title="VMware"></a>VMware</h2><ol>
+<li><strong>安装windows</strong></li>
+</ol>
+<p>系统安装过程略，安装完成后需要手动修改一下注册表。</p>
+<p>下载<a href="/assets/img/MergeIDE.zip">MergeIDE.zip</a>压缩包到虚拟机，执行 MergeIDE.bat 文件即可。</p>
+<ol>
+<li><strong>修改镜像元数据</strong></li>
+</ol>
+<p>镜像 –&gt; 更新元数据，修改硬盘和网卡类型：(同Virtualbox第三步)</p>
+<pre><code>hw_disk_bus    ide
+hw_vif_model    rtl8139
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">windows</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">vmdk</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vdi</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2014/11/25/openstack-import-vmdk-and-vdi-image/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-install-vdagent-on-windows-guest" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1010,11 +1136,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -1048,103 +1174,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2014/03/14/pyinstaller-notes/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-use-terminator-to-replace-default-terminal" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/11/14/use-terminator-to-replace-default-terminal/">使用termainator替换ubuntu默认终端</a>
-    </h1>
-  
-
-        
-        <a href="/2012/11/14/use-terminator-to-replace-default-terminal/" class="archive-article-date">
-  	<time datetime="2012-11-14T06:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-11-14</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install terminator</span><br><span class="line"></span><br><span class="line">or</span><br><span class="line"></span><br><span class="line">sudo yum install terminator</span><br></pre></td></tr></table></figure>
-<h3 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h3><blockquote>
-<p>Ctrl+Shift+E    垂直分割窗口<br>Ctrl+Shift+O    水平分割窗口<br>F11             全屏<br>Ctrl+Shift+C    复制<br>Ctrl+Shift+V    粘贴<br>Ctrl+Shift+N    或者 Ctrl+Tab 在分割的各窗口之间切换<br>Ctrl+Shift+X    将分割的某一个窗口放大至全屏使用<br>Ctrl+Shift+Z    从放大至全屏的某一窗口回到多窗格界面</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2012/11/14/use-terminator-to-replace-default-terminal/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Ubuntu</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">terminator</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2012/11/14/use-terminator-to-replace-default-terminal/">展开全文 >></a>
         </p>
       
 
@@ -1304,10 +1333,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spice</a>
               </li>
              
@@ -1336,19 +1361,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">APT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">neutron</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">qos</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1361,6 +1382,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ftp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">neutron</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">qos</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1416,6 +1445,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -1428,7 +1461,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
+                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">vmdk</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vdi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1448,10 +1493,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pyinstaller</a>
               </li>
              
@@ -1461,10 +1502,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Inno Setup</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kali linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1481,6 +1518,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">USB网卡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kali linux</a>
               </li>
              
               <li class="article-tag-list-item">

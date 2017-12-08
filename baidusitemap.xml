@@ -4,6 +4,32 @@
 
     
   <url>
+    <loc>http://pystack.org/2014/11/25/openstack-import-vmdk-and-vdi-image/</loc>
+    <lastmod>2017-12-08T06:52:56.761Z</lastmod>
+    <data>
+        <display>
+        <title>Openstack导入VMDK and VDI镜像</title>
+        <pubTime>2014-11-25T13:39:24.000Z</pubTime>
+        
+        <tag>Openstack</tag>
+         
+        <tag>windows</tag>
+         
+        <tag>vmdk</tag>
+         
+        <tag>vdi</tag>
+         
+         
+           
+             
+              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://pystack.org/2017/11/26/unable-to-boot-kali-linux-by-kvm/</loc>
     <lastmod>2017-12-08T05:51:52.849Z</lastmod>
     <data>
@@ -271,9 +297,9 @@
         <title>pyinstaller使用笔记</title>
         <pubTime>2014-03-13T19:19:24.000Z</pubTime>
         
-        <tag>python</tag>
-         
         <tag>openstack</tag>
+         
+        <tag>python</tag>
          
         <tag>pyinstaller</tag>
          
