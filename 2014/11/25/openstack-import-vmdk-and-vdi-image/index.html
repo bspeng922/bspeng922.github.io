@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="http://pystack.org">
   <title>Openstack导入VMDK and VDI镜像 | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Virtualbox 系统安装前准备  Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE   安装操作系统  过程略  修改镜像元数据  镜像 –&amp;gt; 更新元数据，修改硬盘和网卡类型： hw_disk_bus    ide hw_vif_model    rtl8139  VMware 安装windows  系统安装过程略，安装完成后">
+  <meta name="description" content="Virtualbox 系统安装前准备  Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE   安装操作系统  过程略">
 <meta name="keywords" content="Openstack,windows,vmdk,vdi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Openstack导入VMDK and VDI镜像">
 <meta property="og:url" content="http://pystack.org/2014/11/25/openstack-import-vmdk-and-vdi-image/index.html">
 <meta property="og:site_name" content="Pystack.org">
-<meta property="og:description" content="Virtualbox 系统安装前准备  Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE   安装操作系统  过程略  修改镜像元数据  镜像 –&amp;gt; 更新元数据，修改硬盘和网卡类型： hw_disk_bus    ide hw_vif_model    rtl8139  VMware 安装windows  系统安装过程略，安装完成后">
+<meta property="og:description" content="Virtualbox 系统安装前准备  Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE   安装操作系统  过程略">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pystack.org/assets/img/virtualbox-disk.png">
 <meta property="og:image" content="http://pystack.org/assets/img/image-metadata.png">
-<meta property="og:updated_time" content="2017-12-08T06:52:56.761Z">
+<meta property="og:updated_time" content="2017-12-08T06:59:11.484Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Openstack导入VMDK and VDI镜像">
-<meta name="twitter:description" content="Virtualbox 系统安装前准备  Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE   安装操作系统  过程略  修改镜像元数据  镜像 –&amp;gt; 更新元数据，修改硬盘和网卡类型： hw_disk_bus    ide hw_vif_model    rtl8139  VMware 安装windows  系统安装过程略，安装完成后">
+<meta name="twitter:description" content="Virtualbox 系统安装前准备  Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE   安装操作系统  过程略">
 <meta name="twitter:image" content="http://pystack.org/assets/img/virtualbox-disk.png">
   
     <link rel="alternative" href="/atom.xml" title="Pystack.org" type="application/atom+xml">
@@ -188,6 +188,7 @@
 <li><strong>安装操作系统</strong></li>
 </ol>
 <p>过程略</p>
+<a id="more"></a>
 <ol>
 <li><strong>修改镜像元数据</strong></li>
 </ol>
@@ -511,11 +512,27 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">md5</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">large file</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">openstack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,22 +549,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">openstack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -695,6 +696,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kali linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
               </li>
              
@@ -704,10 +709,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">USB网卡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kali linux</a>
               </li>
              
               <li class="article-tag-list-item">

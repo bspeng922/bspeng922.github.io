@@ -474,18 +474,21 @@
     <link href="http://pystack.org/2014/11/25/openstack-import-vmdk-and-vdi-image/"/>
     <id>http://pystack.org/2014/11/25/openstack-import-vmdk-and-vdi-image/</id>
     <published>2014-11-25T13:39:24.000Z</published>
-    <updated>2017-12-08T06:52:56.761Z</updated>
+    <updated>2017-12-08T06:59:11.484Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Virtualbox"><a href="#Virtualbox" class="headerlink" title="Virtualbox"></a>Virtualbox</h2><ol><li><strong>系统安装前准备</strong></li></ol><p>Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE</p><p><img src="/assets/img/virtualbox-disk.png" alt=""></p><ol><li><strong>安装操作系统</strong></li></ol><p>过程略</p><ol><li><strong>修改镜像元数据</strong></li></ol><p>镜像 –&gt; 更新元数据，修改硬盘和网卡类型：</p><pre><code>hw_disk_bus    idehw_vif_model    rtl8139</code></pre><p><img src="/assets/img/image-metadata.png" alt=""></p><h2 id="VMware"><a href="#VMware" class="headerlink" title="VMware"></a>VMware</h2><ol><li><strong>安装windows</strong></li></ol><p>系统安装过程略，安装完成后需要手动修改一下注册表。</p><p>下载<a href="/assets/img/MergeIDE.zip">MergeIDE.zip</a>压缩包到虚拟机，执行 MergeIDE.bat 文件即可。</p><ol><li><strong>修改镜像元数据</strong></li></ol><p>镜像 –&gt; 更新元数据，修改硬盘和网卡类型：(同Virtualbox第三步)</p><pre><code>hw_disk_bus    idehw_vif_model    rtl8139</code></pre>]]></content>
+    <content type="html"><![CDATA[<h2 id="Virtualbox"><a href="#Virtualbox" class="headerlink" title="Virtualbox"></a>Virtualbox</h2><ol><li><strong>系统安装前准备</strong></li></ol><p>Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE</p><p><img src="/assets/img/virtualbox-disk.png" alt=""></p><ol><li><strong>安装操作系统</strong></li></ol><p>过程略</p><a id="more"></a><ol><li><strong>修改镜像元数据</strong></li></ol><p>镜像 –&gt; 更新元数据，修改硬盘和网卡类型：</p><pre><code>hw_disk_bus    idehw_vif_model    rtl8139</code></pre><p><img src="/assets/img/image-metadata.png" alt=""></p><h2 id="VMware"><a href="#VMware" class="headerlink" title="VMware"></a>VMware</h2><ol><li><strong>安装windows</strong></li></ol><p>系统安装过程略，安装完成后需要手动修改一下注册表。</p><p>下载<a href="/assets/img/MergeIDE.zip">MergeIDE.zip</a>压缩包到虚拟机，执行 MergeIDE.bat 文件即可。</p><ol><li><strong>修改镜像元数据</strong></li></ol><p>镜像 –&gt; 更新元数据，修改硬盘和网卡类型：(同Virtualbox第三步)</p><pre><code>hw_disk_bus    idehw_vif_model    rtl8139</code></pre>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h2 id=&quot;Virtualbox&quot;&gt;&lt;a href=&quot;#Virtualbox&quot; class=&quot;headerlink&quot; title=&quot;Virtualbox&quot;&gt;&lt;/a&gt;Virtualbox&lt;/h2&gt;&lt;ol&gt;
+      &lt;h2 id=&quot;Virtualbox&quot;&gt;&lt;a href=&quot;#Virtualbox&quot; class=&quot;headerlink&quot; title=&quot;Virtualbox&quot;&gt;&lt;/a&gt;Virtualbox&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;系统安装前准备&lt;/strong&gt;&lt;/li&gt;
-&lt;/
-      
+&lt;/ol&gt;
+&lt;p&gt;Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/virtualbox-disk.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;安装操作系统&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;过程略&lt;/p&gt;
     
     </summary>
     
@@ -615,9 +618,9 @@
       <category term="Python" scheme="http://pystack.org/categories/Python/"/>
     
     
-      <category term="openstack" scheme="http://pystack.org/tags/openstack/"/>
-    
       <category term="python" scheme="http://pystack.org/tags/python/"/>
+    
+      <category term="openstack" scheme="http://pystack.org/tags/openstack/"/>
     
       <category term="pyinstaller" scheme="http://pystack.org/tags/pyinstaller/"/>
     
