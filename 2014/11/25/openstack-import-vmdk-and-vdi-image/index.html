@@ -8,21 +8,22 @@
   <link rel="dns-prefetch" href="http://pystack.org">
   <title>Openstack导入VMDK和VDI镜像 | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Virtualbox 系统安装前准备  Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE">
+  <meta name="description" content="说明Vmware或者Virtualbox 的windows虚拟机直接导入openstack，启动时系统会出现蓝屏错误(0x0000007B)  主要是因为硬盘驱动器类型不同造成的，在虚拟机导入到openstack前需要手动进行一些配置。">
 <meta name="keywords" content="Openstack,windows,vmdk,vdi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Openstack导入VMDK和VDI镜像">
 <meta property="og:url" content="http://pystack.org/2014/11/25/openstack-import-vmdk-and-vdi-image/index.html">
 <meta property="og:site_name" content="Pystack.org">
-<meta property="og:description" content="Virtualbox 系统安装前准备  Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE">
+<meta property="og:description" content="说明Vmware或者Virtualbox 的windows虚拟机直接导入openstack，启动时系统会出现蓝屏错误(0x0000007B)  主要是因为硬盘驱动器类型不同造成的，在虚拟机导入到openstack前需要手动进行一些配置。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://pystack.org/assets/img/windows-blue.jpg">
 <meta property="og:image" content="http://pystack.org/assets/img/virtualbox-disk.png">
 <meta property="og:image" content="http://pystack.org/assets/img/image-metadata.png">
-<meta property="og:updated_time" content="2017-12-08T07:04:48.170Z">
+<meta property="og:updated_time" content="2017-12-08T07:16:45.057Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Openstack导入VMDK和VDI镜像">
-<meta name="twitter:description" content="Virtualbox 系统安装前准备  Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE">
-<meta name="twitter:image" content="http://pystack.org/assets/img/virtualbox-disk.png">
+<meta name="twitter:description" content="说明Vmware或者Virtualbox 的windows虚拟机直接导入openstack，启动时系统会出现蓝屏错误(0x0000007B)  主要是因为硬盘驱动器类型不同造成的，在虚拟机导入到openstack前需要手动进行一些配置。">
+<meta name="twitter:image" content="http://pystack.org/assets/img/windows-blue.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Pystack.org" type="application/atom+xml">
   
@@ -179,12 +180,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Virtualbox"><a href="#Virtualbox" class="headerlink" title="Virtualbox"></a>Virtualbox</h2><ul>
+        <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>Vmware或者Virtualbox 的windows虚拟机直接导入openstack，启动时系统会出现蓝屏错误(0x0000007B)</p>
+<p><img src="/assets/img/windows-blue.jpg" alt=""></p>
+<p>主要是因为硬盘驱动器类型不同造成的，在虚拟机导入到openstack前需要手动进行一些配置。</p>
+<a id="more"></a>
+<h2 id="Virtualbox"><a href="#Virtualbox" class="headerlink" title="Virtualbox"></a>Virtualbox</h2><ul>
 <li><strong>系统安装前准备</strong></li>
 </ul>
 <p>Virtualbox默认的Storage Controller为SATA，需要在虚拟机安装前手动修改为IDE</p>
 <p><img src="/assets/img/virtualbox-disk.png" alt=""></p>
-<a id="more"></a>
 <ul>
 <li><strong>安装操作系统</strong></li>
 </ul>
@@ -553,11 +557,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
+                <a href="javascript:void(0)" class="js-tag color4">APT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">APT</a>
+                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -566,10 +570,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ftp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -597,26 +597,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">libvirt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">kvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">spice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ballon</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vdagent</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
               </li>
              
@@ -634,6 +614,26 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">libvirt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">kvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">spice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ballon</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">vdagent</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -714,6 +714,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">terminator</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
               </li>
             
             <div class="clearfix"></div>
