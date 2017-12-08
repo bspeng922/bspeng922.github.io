@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://pystack.org">
   <title>Openstack无法启动kali linux | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="问题通过KVM安装kali linux时一切正常，但是安装完成后重启的时候系统无法启动，提示错误：        intel_rapl: no valid rapl domains found in package 0  解决方法这是虚拟显卡的问题，只需要修改一下镜像的元数据即可 1hw_video_model: vga 注： kali默认的第一块硬盘是sda，但openstack默认的是vda，">
+  <meta name="description" content="问题通过KVM安装kali linux时一切正常，但是安装完成后重启的时候系统无法启动，提示错误：        intel_rapl: no valid rapl domains found in package 0  解决方法这是虚拟显卡的问题，只需要修改一下镜像的元数据即可 1hw_video_model: vga">
 <meta name="keywords" content="Openstack,kvm,kali linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Openstack无法启动kali linux">
 <meta property="og:url" content="http://pystack.org/2017/11/26/unable-to-boot-kali-linux-by-kvm/index.html">
 <meta property="og:site_name" content="Pystack.org">
-<meta property="og:description" content="问题通过KVM安装kali linux时一切正常，但是安装完成后重启的时候系统无法启动，提示错误：        intel_rapl: no valid rapl domains found in package 0  解决方法这是虚拟显卡的问题，只需要修改一下镜像的元数据即可 1hw_video_model: vga 注： kali默认的第一块硬盘是sda，但openstack默认的是vda，">
+<meta property="og:description" content="问题通过KVM安装kali linux时一切正常，但是安装完成后重启的时候系统无法启动，提示错误：        intel_rapl: no valid rapl domains found in package 0  解决方法这是虚拟显卡的问题，只需要修改一下镜像的元数据即可 1hw_video_model: vga">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-07T11:30:39.065Z">
+<meta property="og:updated_time" content="2017-12-08T05:51:52.849Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Openstack无法启动kali linux">
-<meta name="twitter:description" content="问题通过KVM安装kali linux时一切正常，但是安装完成后重启的时候系统无法启动，提示错误：        intel_rapl: no valid rapl domains found in package 0  解决方法这是虚拟显卡的问题，只需要修改一下镜像的元数据即可 1hw_video_model: vga 注： kali默认的第一块硬盘是sda，但openstack默认的是vda，">
+<meta name="twitter:description" content="问题通过KVM安装kali linux时一切正常，但是安装完成后重启的时候系统无法启动，提示错误：        intel_rapl: no valid rapl domains found in package 0  解决方法这是虚拟显卡的问题，只需要修改一下镜像的元数据即可 1hw_video_model: vga">
   
     <link rel="alternative" href="/atom.xml" title="Pystack.org" type="application/atom+xml">
   
@@ -182,6 +182,7 @@
 </blockquote>
 <h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>这是虚拟显卡的问题，只需要修改一下镜像的元数据即可</p>
 <figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">hw_video_model:</span> vga</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>注： kali默认的第一块硬盘是sda，但openstack默认的是vda，虚拟机启动时会提示找不到sda1，所以还需要添加硬盘控制器的元数据：</p>
 <figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">hw_disk_bus:</span> ide</span><br></pre></td></tr></table></figure>
 
@@ -485,10 +486,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">md5</a>
               </li>
              
@@ -497,15 +494,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">openstack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -522,6 +511,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">openstack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -545,14 +546,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">virtio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vbs</a>
               </li>
              
@@ -561,7 +554,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">zun</a>
+                <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,11 +562,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
+                <a href="javascript:void(0)" class="js-tag color4">zun</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
+                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -597,15 +590,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">virtio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">KVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -621,19 +618,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pyinstaller</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">arm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Inno Setup</a>
+                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -650,6 +635,22 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">pywin32</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pyinstaller</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">arm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Inno Setup</a>
               </li>
              
               <li class="article-tag-list-item">
