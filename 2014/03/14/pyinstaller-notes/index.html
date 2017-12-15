@@ -9,7 +9,7 @@
   <title>pyinstaller使用笔记 | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="使用pyinstaller打包openstack程序由于pyinstaller不支持pkg_resources，打包完运行的时候总是提示setuptools包有问题，可以等打包完成后手动将对应的包拷贝过去(dist-info目录也需要)。 可以正常打包，打包后运行的时候提示错误信息如下，可以看到错误在 “login.py”, line 5，这一行刚好是引用keystoneclient的包">
-<meta name="keywords" content="python,openstack,pyinstaller,arm,Inno Setup">
+<meta name="keywords" content="openstack,python,pyinstaller,arm,Inno Setup">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pyinstaller使用笔记">
 <meta property="og:url" content="http://pystack.org/2014/03/14/pyinstaller-notes/index.html">
@@ -247,11 +247,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -344,18 +344,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2014/03/14/mysql-master-master/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2014/03/22/install-vdagent-on-windows-guest/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Mariadb主主配置
+          Openstack windows guest安装spice-guest-tools
         
       </div>
     </a>
   
   
-    <a href="/2012/11/14/use-terminator-to-replace-default-terminal/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">使用termainator替换ubuntu默认终端</div>
+    <a href="/2014/03/14/mariadb-configuration/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mariab修改最大连接数</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -530,10 +530,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
               </li>
              
@@ -543,6 +539,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -582,27 +582,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">zun</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vbs</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ftp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -626,6 +618,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">zun</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
               </li>
              
@@ -639,6 +639,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">vmdk</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vdi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -658,22 +670,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">vmdk</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vdi</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Opera</a>
               </li>
              
@@ -687,6 +683,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">pywin32</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
               </li>
              
               <li class="article-tag-list-item">

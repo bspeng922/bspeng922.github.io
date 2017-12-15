@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://pystack.org/assets/img/windows-blue.jpg">
 <meta property="og:image" content="http://pystack.org/assets/img/virtualbox-disk.png">
 <meta property="og:image" content="http://pystack.org/assets/img/image-metadata.png">
-<meta property="og:updated_time" content="2017-12-08T07:23:33.938Z">
+<meta property="og:updated_time" content="2017-12-15T05:50:30.637Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Openstack导入VMDK和VDI镜像">
 <meta name="twitter:description" content="说明Vmware或者Virtualbox 的windows虚拟机直接导入openstack，启动时系统会出现蓝屏错误(0x0000007B)  主要是因为硬盘驱动器类型不同造成的，在虚拟机导入到openstack前需要手动进行一些配置。">
@@ -211,7 +211,7 @@ hw_vif_model    rtl8139
 <p>镜像 –&gt; 更新元数据，修改硬盘和网卡类型：(同Virtualbox第三步)</p>
 <pre><code>hw_disk_bus    ide
 hw_vif_model    rtl8139
-</code></pre><p><strong>注： 本文只针对windows，linux可以直接导入</strong></p>
+</code></pre><p><strong>注： 本文只针对windows xp，linux可以直接导入</strong></p>
 <p>参考文档： <a href="https://rbgeek.wordpress.com/2013/08/13/converting-a-vmware-workstation-virtual-machine-to-kvm/" target="_blank" rel="external">https://rbgeek.wordpress.com/2013/08/13/converting-a-vmware-workstation-virtual-machine-to-kvm/</a><br>          <a href="https://docs.openstack.org/image-guide/convert-images.html" target="_blank" rel="external">https://docs.openstack.org/image-guide/convert-images.html</a></p>
 
       
@@ -526,10 +526,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
               </li>
              
@@ -539,6 +535,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -578,27 +578,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">zun</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vbs</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ftp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -622,6 +614,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">zun</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
               </li>
              
@@ -635,6 +635,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">vmdk</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vdi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -654,22 +666,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">vmdk</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vdi</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Opera</a>
               </li>
              
@@ -683,6 +679,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">pywin32</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
               </li>
              
               <li class="article-tag-list-item">

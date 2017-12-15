@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://pystack.org/2014/11/25/openstack-import-vmdk-and-vdi-image/</loc>
-    <lastmod>2017-12-08T07:23:33.938Z</lastmod>
+    <lastmod>2017-12-15T05:50:30.637Z</lastmod>
     <data>
         <display>
         <title>Openstack导入VMDK和VDI镜像</title>
@@ -297,9 +297,9 @@
         <title>pyinstaller使用笔记</title>
         <pubTime>2014-03-13T19:19:24.000Z</pubTime>
         
-        <tag>python</tag>
-         
         <tag>openstack</tag>
+         
+        <tag>python</tag>
          
         <tag>pyinstaller</tag>
          
