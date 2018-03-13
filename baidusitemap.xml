@@ -4,6 +4,52 @@
 
     
   <url>
+    <loc>http://pystack.org/2018/02/22/configure-neutron-fwaas-v2/</loc>
+    <lastmod>2018-03-13T07:38:10.771Z</lastmod>
+    <data>
+        <display>
+        <title>Neutron Fwaas V2 版配置</title>
+        <pubTime>2018-02-22T06:22:22.000Z</pubTime>
+        
+        <tag>openstack</tag>
+         
+        <tag>neutron</tag>
+         
+        <tag>fwaas</tag>
+         
+         
+           
+             
+              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2018/01/16/add-lock-for-memcache/</loc>
+    <lastmod>2018-01-19T06:17:33.590Z</lastmod>
+    <data>
+        <display>
+        <title>Add lock for memcache</title>
+        <pubTime>2018-01-16T06:48:35.000Z</pubTime>
+        
+        <tag>python</tag>
+         
+        <tag>memcache</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://pystack.org/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://pystack.org/2014/11/25/openstack-import-vmdk-and-vdi-image/</loc>
     <lastmod>2017-12-15T05:50:30.637Z</lastmod>
     <data>
@@ -297,9 +343,9 @@
         <title>pyinstaller使用笔记</title>
         <pubTime>2014-03-13T19:19:24.000Z</pubTime>
         
-        <tag>openstack</tag>
-         
         <tag>python</tag>
+         
+        <tag>openstack</tag>
          
         <tag>pyinstaller</tag>
          
