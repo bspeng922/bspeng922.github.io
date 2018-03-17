@@ -5,15 +5,15 @@
     
   <url>
     <loc>http://pystack.org/2018/02/22/configure-neutron-fwaas-v2/</loc>
-    <lastmod>2018-03-13T07:38:10.771Z</lastmod>
+    <lastmod>2018-03-17T06:55:43.787Z</lastmod>
     <data>
         <display>
         <title>Neutron Fwaas V2 版配置</title>
         <pubTime>2018-02-22T06:22:22.000Z</pubTime>
         
-        <tag>openstack</tag>
-         
         <tag>neutron</tag>
+         
+        <tag>openstack</tag>
          
         <tag>fwaas</tag>
          
@@ -21,6 +21,52 @@
            
              
               <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2017/10/14/install-openstack-zun/</loc>
+    <lastmod>2018-03-17T06:55:42.026Z</lastmod>
+    <data>
+        <display>
+        <title>安装Openstack ZUN模块</title>
+        <pubTime>2017-10-14T03:39:24.000Z</pubTime>
+        
+        <tag>openstack</tag>
+         
+        <tag>zun</tag>
+         
+        <tag>docker</tag>
+         
+        <tag>kuryr</tag>
+         
+         
+           
+             
+              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2015/05/14/using-url-protocol-to-Invoke-a-local-application/</loc>
+    <lastmod>2018-03-14T10:00:42.193Z</lastmod>
+    <data>
+        <display>
+        <title>使用URL Protocol实现网页调用本地应用程序</title>
+        <pubTime>2015-05-14T06:48:35.000Z</pubTime>
+        
+        <tag>url protocol</tag>
+         
+         
+           
+             
+              <breadCrumb title="Web" url="http://pystack.org/categories/Web/"/>
           
         </display>
     </data>
@@ -112,32 +158,6 @@
         <tag>neutron</tag>
          
         <tag>qos</tag>
-         
-         
-           
-             
-              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://pystack.org/2017/10/14/install-openstack-zun/</loc>
-    <lastmod>2017-11-30T11:55:50.699Z</lastmod>
-    <data>
-        <display>
-        <title>安装Openstack ZUN模块</title>
-        <pubTime>2017-10-14T03:39:24.000Z</pubTime>
-        
-        <tag>openstack</tag>
-         
-        <tag>docker</tag>
-         
-        <tag>zun</tag>
-         
-        <tag>kuryr</tag>
          
          
            
@@ -603,9 +623,9 @@
         
         <tag>openstack</tag>
          
-        <tag>Magnum</tag>
-         
         <tag>docker</tag>
+         
+        <tag>Magnum</tag>
          
          
            
@@ -625,9 +645,9 @@
         <title>Cloud Init notes</title>
         <pubTime>2016-06-14T03:39:24.000Z</pubTime>
         
-        <tag>cloud-init</tag>
-         
         <tag>openstack</tag>
+         
+        <tag>cloud-init</tag>
          
         <tag>cloudbase-init</tag>
          
@@ -653,9 +673,9 @@
          
         <tag>Virt-viewer</tag>
          
-        <tag>Linux</tag>
-         
         <tag>MinGW</tag>
+         
+        <tag>Linux</tag>
          
          
            
@@ -679,9 +699,9 @@
          
         <tag>Virt-viewer</tag>
          
-        <tag>ARM</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>ARM</tag>
          
          
            
