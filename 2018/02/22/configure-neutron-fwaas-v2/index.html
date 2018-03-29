@@ -9,14 +9,14 @@
   <title>Neutron Fwaas V2 版配置 | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="介绍安装官网的文档配置fwaas v2后，创建防火墙组的时候，如果选择防火墙策略和路由器端口，防火墙的状态一直是Pengding Create，这时候删除的话也无法删除，状态变为Pending Update。 创建时只选择防火墙策略或者端口是能创建成功的，创建后的状态也是active的，再添加策略或端口，状态就会像上面的一样一直是Pending Update，后台也没有什么报错信息。">
-<meta name="keywords" content="neutron,openstack,fwaas">
+<meta name="keywords" content="openstack,neutron,fwaas">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Neutron Fwaas V2 版配置">
 <meta property="og:url" content="http://pystack.org/2018/02/22/configure-neutron-fwaas-v2/index.html">
 <meta property="og:site_name" content="Pystack.org">
 <meta property="og:description" content="介绍安装官网的文档配置fwaas v2后，创建防火墙组的时候，如果选择防火墙策略和路由器端口，防火墙的状态一直是Pengding Create，这时候删除的话也无法删除，状态变为Pending Update。 创建时只选择防火墙策略或者端口是能创建成功的，创建后的状态也是active的，再添加策略或端口，状态就会像上面的一样一直是Pending Update，后台也没有什么报错信息。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-17T08:06:59.033Z">
+<meta property="og:updated_time" content="2018-03-29T06:31:16.647Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Neutron Fwaas V2 版配置">
 <meta name="twitter:description" content="介绍安装官网的文档配置fwaas v2后，创建防火墙组的时候，如果选择防火墙策略和路由器端口，防火墙的状态一直是Pengding Create，这时候删除的话也无法删除，状态变为Pending Update。 创建时只选择防火墙策略或者端口是能创建成功的，创建后的状态也是active的，再添加策略或端口，状态就会像上面的一样一直是Pending Update，后台也没有什么报错信息。">
@@ -183,6 +183,9 @@
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[AGENT]</span></span><br><span class="line"><span class="attr">extensions</span> = fwaas_v2</span><br><span class="line"></span><br><span class="line"><span class="section">[fwaas]</span></span><br><span class="line"><span class="attr">driver</span> = iptables_v2 </span><br><span class="line"><span class="attr">agent_version</span> = v2</span><br></pre></td></tr></table></figure>
 <p>官网配置文档： <a href="https://docs.openstack.org/newton/networking-guide/fwaas-v2-scenario.html" target="_blank" rel="external">https://docs.openstack.org/newton/networking-guide/fwaas-v2-scenario.html</a></p>
 <hr>
+<h3 id="安装neutron-fwaas"><a href="#安装neutron-fwaas" class="headerlink" title="安装neutron-fwaas"></a>安装neutron-fwaas</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> openstack-neutron-fwaas python-neutron-fwaas</span><br></pre></td></tr></table></figure>
+<h3 id="安装neutron-fwaas-dashboard"><a href="#安装neutron-fwaas-dashboard" class="headerlink" title="安装neutron-fwaas-dashboard"></a>安装neutron-fwaas-dashboard</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="regexp">//gi</span>thub.com<span class="regexp">/openstack/</span>neutron-fwaas-dashboard</span><br></pre></td></tr></table></figure>
+<hr>
 <h2 id="错误：-Could-not-load-‘fwaas-v2’-Can’t-instantiate-abstract-class-L3WithFWaas-with-abstract-methods-ha-satae-change"><a href="#错误：-Could-not-load-‘fwaas-v2’-Can’t-instantiate-abstract-class-L3WithFWaas-with-abstract-methods-ha-satae-change" class="headerlink" title="错误： Could not load ‘fwaas_v2’ : Can’t instantiate abstract class L3WithFWaas with abstract methods ha_satae_change"></a>错误： Could not load ‘fwaas_v2’ : Can’t instantiate abstract class L3WithFWaas with abstract methods ha_satae_change</h2><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">python2</span>.7/<span class="title">site</span>-<span class="title">packages</span>/<span class="title">neutron_fwaas</span>/<span class="title">services</span>/<span class="title">firewall</span>/<span class="title">agents</span>/<span class="title">l3reference</span>/<span class="title">firewall_l3_agent_v2</span>.<span class="title">py</span></span></span><br><span class="line"></span><br><span class="line">在FWaaSL3AgentExtension类里面添加ha_state_change方法</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">ha_state_change</span></span>(<span class="keyword">self</span>, context, data):</span><br><span class="line">        pass</span><br></pre></td></tr></table></figure>
 
       
@@ -218,11 +221,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">neutron</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">neutron</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -480,6 +483,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">md5</a>
               </li>
              
@@ -488,15 +495,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">neutron</a>
+                <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">openstack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">neutron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -517,14 +528,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,10 +555,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">qos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vbs</a>
               </li>
              
@@ -564,7 +563,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
+                <a href="javascript:void(0)" class="js-tag color4">qos</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -588,6 +587,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
               </li>
              
@@ -604,6 +607,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -616,14 +623,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">windows</a>
               </li>
              
@@ -633,6 +632,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vdi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
               </li>
              
               <li class="article-tag-list-item">
