@@ -9,14 +9,14 @@
   <title>安装Openstack ZUN模块 | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="安装 zunhttps://review.openstack.org/#/c/504537/11/doc/source/install/controller-install-ubuntu.rst https://review.openstack.org/#/c/504537/11/doc/source/install/compute-install-ubuntu.rst Queens版安装文档：">
-<meta name="keywords" content="openstack,zun,docker,kuryr">
+<meta name="keywords" content="openstack,docker,zun,kuryr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安装Openstack ZUN模块">
 <meta property="og:url" content="http://pystack.org/2017/10/14/install-openstack-zun/index.html">
 <meta property="og:site_name" content="Pystack.org">
 <meta property="og:description" content="安装 zunhttps://review.openstack.org/#/c/504537/11/doc/source/install/controller-install-ubuntu.rst https://review.openstack.org/#/c/504537/11/doc/source/install/compute-install-ubuntu.rst Queens版安装文档：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-30T08:51:58.918Z">
+<meta property="og:updated_time" content="2018-03-30T08:53:05.233Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装Openstack ZUN模块">
 <meta name="twitter:description" content="安装 zunhttps://review.openstack.org/#/c/504537/11/doc/source/install/controller-install-ubuntu.rst https://review.openstack.org/#/c/504537/11/doc/source/install/compute-install-ubuntu.rst Queens版安装文档：">
@@ -193,9 +193,9 @@
 <p>需要检查kuryr配置文件中binddir的配置路径是否正确</p>
 <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">官网为ubuntu文档，路径为：</span><br><span class="line">bindir = /usr/local/libexec/kuryr</span><br><span class="line"></span><br><span class="line">centos的路径实际为：</span><br><span class="line">bindir = /usr/libexec/kuryr</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="Centos最大打开文件数配置"><a href="#Centos最大打开文件数配置" class="headerlink" title="Centos最大打开文件数配置"></a>Centos最大打开文件数配置</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">编辑文件/etc/pam.d/login，</span> <span class="string">添加</span></span><br><span class="line"></span><br><span class="line"><span class="string">session</span>    <span class="string">required</span>   <span class="string">pam_limits.so</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"></span><br><span class="line"><span class="string">编辑文件/etc/security/limits.conf，添加</span></span><br><span class="line"></span><br><span class="line"><span class="string">*</span> <span class="string">soft</span> <span class="string">nofile</span> <span class="number">65536</span></span><br><span class="line"><span class="string">*</span> <span class="string">hard</span> <span class="string">nofile</span> <span class="number">200000</span></span><br><span class="line"></span><br><span class="line"><span class="string">修改完成后重启系统</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="string">检查命令：</span> <span class="string">ulimit</span> <span class="bullet">-a</span></span><br></pre></td></tr></table></figure>
+<h3 id="最大打开文件数配置-Centos"><a href="#最大打开文件数配置-Centos" class="headerlink" title="最大打开文件数配置(Centos)"></a>最大打开文件数配置(Centos)</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">编辑文件/etc/pam.d/login，</span> <span class="string">添加</span></span><br><span class="line"></span><br><span class="line"><span class="string">session</span>    <span class="string">required</span>   <span class="string">pam_limits.so</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"></span><br><span class="line"><span class="string">编辑文件/etc/security/limits.conf，添加</span></span><br><span class="line"></span><br><span class="line"><span class="string">*</span> <span class="string">soft</span> <span class="string">nofile</span> <span class="number">65536</span></span><br><span class="line"><span class="string">*</span> <span class="string">hard</span> <span class="string">nofile</span> <span class="number">200000</span></span><br><span class="line"></span><br><span class="line"><span class="string">修改完成后重启系统</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="string">检查命令：</span> <span class="string">ulimit</span> <span class="bullet">-a</span></span><br></pre></td></tr></table></figure>
 <p><a href="https://github.com/basho/basho_docs/blob/master/content/riak/kv/2.2.3/using/performance/open-files-limit.md#enable-pam-based-limits-for-centos-and-red-hat" target="_blank" rel="external">Enable PAM-Based Limits for CentOS and Red Hat</a></p>
-<h3 id="Rabbitmq-配置"><a href="#Rabbitmq-配置" class="headerlink" title="Rabbitmq 配置"></a>Rabbitmq 配置</h3><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">手动创建limits文件</span><br><span class="line">vim /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">systemd</span>/<span class="title">system</span>/<span class="title">rabbitmq</span>-<span class="title">server</span>.<span class="title">service</span>.<span class="title">d</span>/<span class="title">limits</span>.<span class="title">conf</span></span></span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">LimitNOFILE=<span class="number">200000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改后查看</span></span><br><span class="line">rabbitmqctl status</span><br></pre></td></tr></table></figure>
+<h3 id="Rabbitmq-配置-Centos"><a href="#Rabbitmq-配置-Centos" class="headerlink" title="Rabbitmq 配置(Centos)"></a>Rabbitmq 配置(Centos)</h3><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">手动创建limits文件</span><br><span class="line">vim /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">systemd</span>/<span class="title">system</span>/<span class="title">rabbitmq</span>-<span class="title">server</span>.<span class="title">service</span>.<span class="title">d</span>/<span class="title">limits</span>.<span class="title">conf</span></span></span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">LimitNOFILE=<span class="number">200000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改后查看</span></span><br><span class="line">rabbitmqctl status</span><br></pre></td></tr></table></figure>
 <p><a href="http://www.rabbitmq.com/install-debian.html#kernel-resource-limits" target="_blank" rel="external">Rabbitmq Controlling System Limits on Linux</a></p>
 
       
@@ -235,11 +235,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">zun</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">zun</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -574,7 +574,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">zun</a>
+                <a href="javascript:void(0)" class="js-tag color4">qos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -582,15 +586,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">zun</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">qos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -698,7 +698,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">terminator</a>
+                <a href="javascript:void(0)" class="js-tag color1">WNDA3100v2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">USB网卡</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -706,15 +710,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">terminator</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">url protocol</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">WNDA3100v2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">USB网卡</a>
               </li>
             
             <div class="clearfix"></div>
