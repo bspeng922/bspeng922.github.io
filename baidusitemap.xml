@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://pystack.org/2017/10/14/install-openstack-zun/</loc>
-    <lastmod>2018-03-30T08:53:05.233Z</lastmod>
+    <lastmod>2018-03-31T03:56:19.830Z</lastmod>
     <data>
         <display>
         <title>安装Openstack ZUN模块</title>
@@ -13,9 +13,9 @@
         
         <tag>openstack</tag>
          
-        <tag>docker</tag>
-         
         <tag>zun</tag>
+         
+        <tag>docker</tag>
          
         <tag>kuryr</tag>
          
@@ -623,9 +623,9 @@
         
         <tag>openstack</tag>
          
-        <tag>Magnum</tag>
-         
         <tag>docker</tag>
+         
+        <tag>Magnum</tag>
          
          
            

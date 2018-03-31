@@ -9,14 +9,14 @@
   <title>安装Openstack ZUN模块 | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="安装 zunhttps://review.openstack.org/#/c/504537/11/doc/source/install/controller-install-ubuntu.rst https://review.openstack.org/#/c/504537/11/doc/source/install/compute-install-ubuntu.rst Queens版安装文档：">
-<meta name="keywords" content="openstack,docker,zun,kuryr">
+<meta name="keywords" content="openstack,zun,docker,kuryr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安装Openstack ZUN模块">
 <meta property="og:url" content="http://pystack.org/2017/10/14/install-openstack-zun/index.html">
 <meta property="og:site_name" content="Pystack.org">
 <meta property="og:description" content="安装 zunhttps://review.openstack.org/#/c/504537/11/doc/source/install/controller-install-ubuntu.rst https://review.openstack.org/#/c/504537/11/doc/source/install/compute-install-ubuntu.rst Queens版安装文档：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-30T08:53:05.233Z">
+<meta property="og:updated_time" content="2018-03-31T03:56:19.830Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装Openstack ZUN模块">
 <meta name="twitter:description" content="安装 zunhttps://review.openstack.org/#/c/504537/11/doc/source/install/controller-install-ubuntu.rst https://review.openstack.org/#/c/504537/11/doc/source/install/compute-install-ubuntu.rst Queens版安装文档：">
@@ -193,10 +193,24 @@
 <p>需要检查kuryr配置文件中binddir的配置路径是否正确</p>
 <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">官网为ubuntu文档，路径为：</span><br><span class="line">bindir = /usr/local/libexec/kuryr</span><br><span class="line"></span><br><span class="line">centos的路径实际为：</span><br><span class="line">bindir = /usr/libexec/kuryr</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="最大打开文件数配置-Centos"><a href="#最大打开文件数配置-Centos" class="headerlink" title="最大打开文件数配置(Centos)"></a>最大打开文件数配置(Centos)</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">编辑文件/etc/pam.d/login，</span> <span class="string">添加</span></span><br><span class="line"></span><br><span class="line"><span class="string">session</span>    <span class="string">required</span>   <span class="string">pam_limits.so</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"></span><br><span class="line"><span class="string">编辑文件/etc/security/limits.conf，添加</span></span><br><span class="line"></span><br><span class="line"><span class="string">*</span> <span class="string">soft</span> <span class="string">nofile</span> <span class="number">65536</span></span><br><span class="line"><span class="string">*</span> <span class="string">hard</span> <span class="string">nofile</span> <span class="number">200000</span></span><br><span class="line"></span><br><span class="line"><span class="string">修改完成后重启系统</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="string">检查命令：</span> <span class="string">ulimit</span> <span class="bullet">-a</span></span><br></pre></td></tr></table></figure>
+<h3 id="Too-many-open-files"><a href="#Too-many-open-files" class="headerlink" title="Too many open files"></a>Too many open files</h3><p><strong>最大打开文件数配置(Centos)</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">编辑文件/etc/pam.d/login，</span> <span class="string">添加</span></span><br><span class="line"></span><br><span class="line"><span class="string">session</span>    <span class="string">required</span>   <span class="string">pam_limits.so</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"></span><br><span class="line"><span class="string">编辑文件/etc/security/limits.conf，添加</span></span><br><span class="line"></span><br><span class="line"><span class="string">*</span> <span class="string">soft</span> <span class="string">nofile</span> <span class="number">65536</span></span><br><span class="line"><span class="string">*</span> <span class="string">hard</span> <span class="string">nofile</span> <span class="number">200000</span></span><br><span class="line"></span><br><span class="line"><span class="string">修改完成后重启系统</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="string">检查命令：</span> <span class="string">ulimit</span> <span class="bullet">-a</span></span><br></pre></td></tr></table></figure>
 <p><a href="https://github.com/basho/basho_docs/blob/master/content/riak/kv/2.2.3/using/performance/open-files-limit.md#enable-pam-based-limits-for-centos-and-red-hat" target="_blank" rel="external">Enable PAM-Based Limits for CentOS and Red Hat</a></p>
-<h3 id="Rabbitmq-配置-Centos"><a href="#Rabbitmq-配置-Centos" class="headerlink" title="Rabbitmq 配置(Centos)"></a>Rabbitmq 配置(Centos)</h3><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">手动创建limits文件</span><br><span class="line">vim /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">systemd</span>/<span class="title">system</span>/<span class="title">rabbitmq</span>-<span class="title">server</span>.<span class="title">service</span>.<span class="title">d</span>/<span class="title">limits</span>.<span class="title">conf</span></span></span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">LimitNOFILE=<span class="number">200000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改后查看</span></span><br><span class="line">rabbitmqctl status</span><br></pre></td></tr></table></figure>
+<p><strong>Rabbitmq 配置(Centos)</strong> </p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">手动创建limits文件</span><br><span class="line">vim /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">systemd</span>/<span class="title">system</span>/<span class="title">rabbitmq</span>-<span class="title">server</span>.<span class="title">service</span>.<span class="title">d</span>/<span class="title">limits</span>.<span class="title">conf</span></span></span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">LimitNOFILE=<span class="number">200000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改后查看</span></span><br><span class="line">rabbitmqctl status</span><br></pre></td></tr></table></figure>
 <p><a href="http://www.rabbitmq.com/install-debian.html#kernel-resource-limits" target="_blank" rel="external">Rabbitmq Controlling System Limits on Linux</a></p>
+<hr>
+<h3 id="Docker-internal-error-400-Client-Error-Bad-Request-“5-matches-found-based-on-name-network-e75331b9-d439-4cd8-bccd-e38ffa847e5b-is-ambiguous”"><a href="#Docker-internal-error-400-Client-Error-Bad-Request-“5-matches-found-based-on-name-network-e75331b9-d439-4cd8-bccd-e38ffa847e5b-is-ambiguous”" class="headerlink" title="Docker internal error: 400 Client Error: Bad Request (“5 matches found based on name: network e75331b9-d439-4cd8-bccd-e38ffa847e5b is ambiguous”)."></a>Docker internal error: 400 Client Error: Bad Request (“5 matches found based on name: network e75331b9-d439-4cd8-bccd-e38ffa847e5b is ambiguous”).</h3><ul>
+<li>查看当前网络，发现里面kuryr.net.existing里面的确存在5个网络</li>
+</ul>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="meta">@controller</span> ~]<span class="comment"># neutron net-show e75331b9-d439-4cd8-bccd-e38ffa847e5b</span></span><br><span class="line">neutron CLI is deprecated and will be removed in the future. Use openstack CLI instead.</span><br><span class="line">+---------------------------+----------------------------------------------------+</span><br><span class="line">|<span class="string"> Field                     </span>|<span class="string"> Value                                              </span>|</span><br><span class="line">+---------------------------+----------------------------------------------------+</span><br><span class="line">|<span class="string"> admin_state_up            </span>|<span class="string"> True                                               </span>|</span><br><span class="line">|<span class="string"> availability_zone_hints   </span>|<span class="string">                                                    </span>|</span><br><span class="line">|<span class="string"> availability_zones        </span>|<span class="string"> nova                                               </span>|</span><br><span class="line">|<span class="string"> created_at                </span>|<span class="string"> 2018-03-30T05:59:01Z                               </span>|</span><br><span class="line">|<span class="string"> description               </span>|<span class="string">                                                    </span>|</span><br><span class="line">|<span class="string"> id                        </span>|<span class="string"> e75331b9-d439-4cd8-bccd-e38ffa847e5b               </span>|</span><br><span class="line">|<span class="string"> ipv4_address_scope        </span>|<span class="string">                                                    </span>|</span><br><span class="line">|<span class="string"> ipv6_address_scope        </span>|<span class="string">                                                    </span>|</span><br><span class="line">|<span class="string"> mtu                       </span>|<span class="string"> 1450                                               </span>|</span><br><span class="line">|<span class="string"> name                      </span>|<span class="string"> docker-network                                     </span>|</span><br><span class="line">|<span class="string"> port_security_enabled     </span>|<span class="string"> True                                               </span>|</span><br><span class="line">|<span class="string"> project_id                </span>|<span class="string"> d090490b14804bbd9126b528690762bb                   </span>|</span><br><span class="line">|<span class="string"> provider:network_type     </span>|<span class="string"> vxlan                                              </span>|</span><br><span class="line">|<span class="string"> provider:physical_network </span>|<span class="string">                                                    </span>|</span><br><span class="line">|<span class="string"> provider:segmentation_id  </span>|<span class="string"> 3                                                  </span>|</span><br><span class="line">|<span class="string"> qos_policy_id             </span>|<span class="string">                                                    </span>|</span><br><span class="line">|<span class="string"> revision_number           </span>|<span class="string"> 18                                                 </span>|</span><br><span class="line">|<span class="string"> router:external           </span>|<span class="string"> False                                              </span>|</span><br><span class="line">|<span class="string"> shared                    </span>|<span class="string"> False                                              </span>|</span><br><span class="line">|<span class="string"> status                    </span>|<span class="string"> ACTIVE                                             </span>|</span><br><span class="line">|<span class="string"> subnets                   </span>|<span class="string"> a3b82b6a-0bd9-4e32-bb49-1cb9f88bef4c               </span>|</span><br><span class="line">|<span class="string"> tags                      </span>|<span class="string"> kuryr.net.existing:05371ce16057                    </span>|</span><br><span class="line">|<span class="string">                           </span>|<span class="string"> kuryr.net.existing:4e23fd03c115                    </span>|</span><br><span class="line">|<span class="string">                           </span>|<span class="string"> kuryr.net.existing:ac0a6b754325                    </span>|</span><br><span class="line">|<span class="string">                           </span>|<span class="string"> kuryr.net.existing:f27659ac4816                    </span>|</span><br><span class="line">|<span class="string">                           </span>|<span class="string"> kuryr.net.existing:f860711c7eb4                    </span>|</span><br><span class="line">|<span class="string">                           </span>|<span class="string"> kuryr.net.uuid.lh:05371ce1605772ff36b2b68cf254e4c0 </span>|</span><br><span class="line">|<span class="string">                           </span>|<span class="string"> kuryr.net.uuid.lh:4e23fd03c115194944281bd1327dec60 </span>|</span><br><span class="line">|<span class="string">                           </span>|<span class="string"> kuryr.net.uuid.lh:ac0a6b754325bfefc8866f17846f0760 </span>|</span><br><span class="line">|<span class="string">                           </span>|<span class="string"> kuryr.net.uuid.lh:f27659ac4816866517c5c7cfefdd4273 </span>|</span><br><span class="line">|<span class="string">                           </span>|<span class="string"> kuryr.net.uuid.lh:f860711c7eb4b2a1d2f839900f2da951 </span>|</span><br><span class="line">|<span class="string">                           </span>|<span class="string"> kuryr.net.uuid.uh:3b690cfa7614b0a0842503a92cdc1b9a </span>|</span><br><span class="line">|<span class="string">                           </span>|<span class="string"> kuryr.net.uuid.uh:87967795655bf3b0e2d2260cc9b45030 </span>|</span><br><span class="line">|<span class="string">                           </span>|<span class="string"> kuryr.net.uuid.uh:8ed7202da5f7e2b5ba84466febab9b0c </span>|</span><br><span class="line">|<span class="string">                           </span>|<span class="string"> kuryr.net.uuid.uh:cdb0b4fc5371ab72664603ceb559214c </span>|</span><br><span class="line">|<span class="string">                           </span>|<span class="string"> kuryr.net.uuid.uh:e62e2ad1924e61820b27b7d60881be77 </span>|</span><br><span class="line">|<span class="string"> tenant_id                 </span>|<span class="string"> d090490b14804bbd9126b528690762bb                   </span>|</span><br><span class="line">|<span class="string"> updated_at                </span>|<span class="string"> 2018-03-30T06:03:47Z                               </span>|</span><br><span class="line">+---------------------------+----------------------------------------------------+</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看docker的网络，发现当前网络对应的也是5个网络</li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@controller ~]# docker<span class="built_in"> network </span>list</span><br><span class="line">NETWORK ID          NAME                                   DRIVER              SCOPE</span><br><span class="line">400ab99042af        05480a38-a630-45b9-84ef-c61f06a5c856   kuryr               global</span><br><span class="line">af1eab7ed8da       <span class="built_in"> bridge </span>                               <span class="built_in"> bridge </span>             local</span><br><span class="line">ac0a6b754325        e75331b9-d439-4cd8-bccd-e38ffa847e5b   kuryr               global</span><br><span class="line">f27659ac4816        e75331b9-d439-4cd8-bccd-e38ffa847e5b   kuryr               global</span><br><span class="line">f860711c7eb4        e75331b9-d439-4cd8-bccd-e38ffa847e5b   kuryr               global</span><br><span class="line">4e23fd03c115        e75331b9-d439-4cd8-bccd-e38ffa847e5b   kuryr               global</span><br><span class="line">05371ce16057        e75331b9-d439-4cd8-bccd-e38ffa847e5b   kuryr               global</span><br><span class="line">77a18912ed7b        host                                   host                local</span><br><span class="line">4240711342ea        none                                   <span class="literal">null</span>                local</span><br></pre></td></tr></table></figure>
+<p><strong>解决方法</strong></p>
+<p>直接在horizon页面上创建的网络及子网会有这个问题，解决方法是使用docker命令来创建子网</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 在openstack上创建网络（docker-network），创建时不创建子网</span><br><span class="line"></span><br><span class="line">2. 使用docker命令创建子网，指定openstack上创建的网络名称 </span><br><span class="line">docker<span class="built_in"> network </span>create -d kuryr <span class="attribute">--ipam-driver</span>=kuryr <span class="attribute">--subnet</span>=172.19.0.0/16 <span class="attribute">--gateway</span>=172.19.0.1 -o neutron.net.<span class="attribute">name</span>=docker-network openstack-docker-network</span><br><span class="line"></span><br><span class="line">3. 在openstack上创建路由器，并绑定网络接口</span><br></pre></td></tr></table></figure>
 
       
 
@@ -235,11 +249,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">zun</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">zun</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -530,6 +544,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">neutron</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">fwaas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spice</a>
               </li>
              
@@ -550,19 +572,23 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">neutron</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">fwaas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">APT</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">YUM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">zun</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -579,18 +605,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">zun</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,14 +633,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">virtio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -690,6 +696,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
               </li>
              
@@ -706,15 +716,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kali linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">terminator</a>
+                <a href="javascript:void(0)" class="js-tag color3">url protocol</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">url protocol</a>
+                <a href="javascript:void(0)" class="js-tag color1">terminator</a>
               </li>
             
             <div class="clearfix"></div>
