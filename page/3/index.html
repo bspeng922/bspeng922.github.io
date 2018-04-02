@@ -154,20 +154,20 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-mysql-master-master" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-install-vdagent-on-windows-guest" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/03/14/mysql-master-master/">Mariadb主主配置</a>
+      <a class="article-title" href="/2014/03/22/install-vdagent-on-windows-guest/">Openstack windows guest安装spice-guest-tools</a>
     </h1>
   
 
         
-        <a href="/2014/03/14/mysql-master-master/" class="archive-article-date">
-  	<time datetime="2014-03-13T19:19:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-03-14</time>
+        <a href="/2014/03/22/install-vdagent-on-windows-guest/" class="archive-article-date">
+  	<time datetime="2014-03-21T19:19:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-03-22</time>
 </a>
         
         <!--<span id="busuanzi_container_page_pv">
@@ -177,14 +177,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">### <span class="selector-tag">Env</span></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">mysql1</span>: 10<span class="selector-class">.10</span><span class="selector-class">.56</span><span class="selector-class">.10</span></span><br><span class="line"><span class="selector-tag">mysql2</span>: 10<span class="selector-class">.10</span><span class="selector-class">.56</span><span class="selector-class">.20</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>install mariadb</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## on mysql1</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> yum install mariadb mariadb-server</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## on mysql2</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> yum install mariadb mariadb-server</span></span><br></pre></td></tr></table></figure>
+        <h3 id="Windows-guest-内存显示不准"><a href="#Windows-guest-内存显示不准" class="headerlink" title="Windows guest 内存显示不准"></a>Windows guest 内存显示不准</h3><p>windows虚拟机启动后，使用libvirt api无法获取准确的内存使用率，也无法使用ballon， 需要安装spice-guest-tools，启动vdagent，vdservice 才能获得准确的内存使用情况，ballon才能正常使用。</p>
+<p>安装前：</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root<span class="variable">@compute3</span><span class="symbol">:~</span><span class="comment"># virsh dommemstat 51</span></span><br><span class="line">actual <span class="number">8388608</span></span><br><span class="line">rss <span class="number">8438800</span></span><br></pre></td></tr></table></figure>
         
-          <a class="article-more-a" href="/2014/03/14/mysql-master-master/#more">more >></a>
+          <a class="article-more-a" href="/2014/03/22/install-vdagent-on-windows-guest/#more">more >></a>
         
       
 
@@ -198,15 +195,27 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mariadb</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">libvirt</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">master-master</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">kvm</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">spice</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ballon</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">vdagent</a>
         		</li>
       		
 		</ul>
@@ -218,7 +227,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Database//" class="article-tag-list-link color4">Database</a>
+        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
         		</li>
       		
 		</ul>
@@ -227,7 +236,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2014/03/14/mysql-master-master/">展开全文 >></a>
+          <a class="article-more-a" href="/2014/03/22/install-vdagent-on-windows-guest/">展开全文 >></a>
         </p>
       
 
@@ -436,6 +445,109 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2014/03/14/pyinstaller-notes/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-mysql-master-master" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/14/mysql-master-master/">Mariadb主主配置</a>
+    </h1>
+  
+
+        
+        <a href="/2014/03/14/mysql-master-master/" class="archive-article-date">
+  	<time datetime="2014-03-13T19:19:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-03-14</time>
+</a>
+        
+        <!--<span id="busuanzi_container_page_pv">
+           阅读<span id="busuanzi_value_page_pv"></span>次
+        </span>-->
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">### <span class="selector-tag">Env</span></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">mysql1</span>: 10<span class="selector-class">.10</span><span class="selector-class">.56</span><span class="selector-class">.10</span></span><br><span class="line"><span class="selector-tag">mysql2</span>: 10<span class="selector-class">.10</span><span class="selector-class">.56</span><span class="selector-class">.20</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>install mariadb</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## on mysql1</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> yum install mariadb mariadb-server</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## on mysql2</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> yum install mariadb mariadb-server</span></span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2014/03/14/mysql-master-master/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mariadb</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">master-master</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Database//" class="article-tag-list-link color4">Database</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2014/03/14/mysql-master-master/">展开全文 >></a>
         </p>
       
 
@@ -1037,113 +1149,9 @@
 
 
   
-    <article id="post-repairing-corrupted-windows-event-log-files" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/01/10/repairing-corrupted-windows-event-log-files/">修复损坏的Windows事件日志文件</a>
-    </h1>
-  
-
-        
-        <a href="/2012/01/10/repairing-corrupted-windows-event-log-files/" class="archive-article-date">
-  	<time datetime="2012-01-10T05:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-01-10</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>在A机器上导出的日志（*.Evt）文件在A机器上可以直接读取，但是我将A机器上的日志文件拷贝到B机器上打开的时候，就会提示文件已损坏。</p>
-<p>解决办法：</p>
-<blockquote>
-<p>1.首先找到 0x11111111222222223333333344444444 将之后16bytes 抄下，这16bytes会在0x28000000前，</p>
-<p>2.回到文件开头，把这16bytes从第17byte开始复写到32byte，</p>
-<p>3.最后再改第37byte的值为 0x08，就可以读进事件管理器了。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2012/01/10/repairing-corrupted-windows-event-log-files/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Windows</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">事件日志</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2012/01/10/repairing-corrupted-windows-event-log-files/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -1247,14 +1255,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">memcache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Openstack</a>
               </li>
              
@@ -1267,7 +1267,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">memcache</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1276,6 +1280,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">large file</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1288,14 +1296,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">neutron</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">fwaas</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1312,6 +1312,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">neutron</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">fwaas</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1351,10 +1359,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">libvirt</a>
               </li>
              
@@ -1375,6 +1379,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
               </li>
              
@@ -1387,6 +1395,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -1395,11 +1411,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">最大连接数</a>
+                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
+                <a href="javascript:void(0)" class="js-tag color1">最大连接数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1443,11 +1459,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
+                <a href="javascript:void(0)" class="js-tag color2">centos</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1463,7 +1479,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color1">terminator</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1472,10 +1488,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">url protocol</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">terminator</a>
               </li>
             
             <div class="clearfix"></div>

@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pystack.org">
 <meta property="og:description" content="安装 zunhttps://review.openstack.org/#/c/504537/11/doc/source/install/controller-install-ubuntu.rst https://review.openstack.org/#/c/504537/11/doc/source/install/compute-install-ubuntu.rst Queens版安装文档：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-31T03:56:19.830Z">
+<meta property="og:updated_time" content="2018-04-02T03:28:33.854Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装Openstack ZUN模块">
 <meta name="twitter:description" content="安装 zunhttps://review.openstack.org/#/c/504537/11/doc/source/install/controller-install-ubuntu.rst https://review.openstack.org/#/c/504537/11/doc/source/install/compute-install-ubuntu.rst Queens版安装文档：">
@@ -208,9 +208,12 @@
 <li>查看docker的网络，发现当前网络对应的也是5个网络</li>
 </ul>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@controller ~]# docker<span class="built_in"> network </span>list</span><br><span class="line">NETWORK ID          NAME                                   DRIVER              SCOPE</span><br><span class="line">400ab99042af        05480a38-a630-45b9-84ef-c61f06a5c856   kuryr               global</span><br><span class="line">af1eab7ed8da       <span class="built_in"> bridge </span>                               <span class="built_in"> bridge </span>             local</span><br><span class="line">ac0a6b754325        e75331b9-d439-4cd8-bccd-e38ffa847e5b   kuryr               global</span><br><span class="line">f27659ac4816        e75331b9-d439-4cd8-bccd-e38ffa847e5b   kuryr               global</span><br><span class="line">f860711c7eb4        e75331b9-d439-4cd8-bccd-e38ffa847e5b   kuryr               global</span><br><span class="line">4e23fd03c115        e75331b9-d439-4cd8-bccd-e38ffa847e5b   kuryr               global</span><br><span class="line">05371ce16057        e75331b9-d439-4cd8-bccd-e38ffa847e5b   kuryr               global</span><br><span class="line">77a18912ed7b        host                                   host                local</span><br><span class="line">4240711342ea        none                                   <span class="literal">null</span>                local</span><br></pre></td></tr></table></figure>
-<p><strong>解决方法</strong></p>
+<p><strong>解决方法 ???</strong></p>
 <p>直接在horizon页面上创建的网络及子网会有这个问题，解决方法是使用docker命令来创建子网</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 在openstack上创建网络（docker-network），创建时不创建子网</span><br><span class="line"></span><br><span class="line">2. 使用docker命令创建子网，指定openstack上创建的网络名称 </span><br><span class="line">docker<span class="built_in"> network </span>create -d kuryr <span class="attribute">--ipam-driver</span>=kuryr <span class="attribute">--subnet</span>=172.19.0.0/16 <span class="attribute">--gateway</span>=172.19.0.1 -o neutron.net.<span class="attribute">name</span>=docker-network openstack-docker-network</span><br><span class="line"></span><br><span class="line">3. 在openstack上创建路由器，并绑定网络接口</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Internal-Server-Error"><a href="#Internal-Server-Error" class="headerlink" title="Internal Server Error"></a>Internal Server Error</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">500<span class="built_in"> Server </span>Error: Internal<span class="built_in"> Server </span><span class="builtin-name">Error</span> (<span class="string">"Get https://index.docker.io/v1/search?q=docker-ubuntu&amp;n=25: net/http: TLS handshake timeout"</span>) Traceback (most recent call last): File <span class="string">"/usr/lib/python2.7/site-packages/oslo_messaging/rpc/server.py"</span>, line 163, <span class="keyword">in</span> _process_incoming res = self.dispatcher.dispatch(message) File <span class="string">"/usr/lib/python2.7/site-packages/oslo_messaging/rpc/dispatcher.py"</span>, line 220, <span class="keyword">in</span> dispatch return self._do_dispatch(endpoint, method, ctxt, args) File <span class="string">"/usr/lib/python2.7/site-packages/oslo_messaging/rpc/dispatcher.py"</span>, line 190, <span class="keyword">in</span> _do_dispatch result = func(ctxt, **new_args) File <span class="string">"/usr/lib/python2.7/site-packages/zun/common/utils.py"</span>, line 193, <span class="keyword">in</span> decorated_function return function(self, context, <span class="number">*a</span>rgs, **kwargs) File <span class="string">"/usr/lib/python2.7/site-packages/zun/compute/manager.py"</span>, line 891, <span class="keyword">in</span> image_search image_driver_name, exact_match) File <span class="string">"/usr/lib/python2.7/site-packages/zun/image/driver.py"</span>, line 103, <span class="keyword">in</span> search_image raise exception.ZunException(six.text_type(e)) ZunException: 500<span class="built_in"> Server </span>Error: Internal<span class="built_in"> Server </span><span class="builtin-name">Error</span> (<span class="string">"Get https://index.docker.io/v1/search?q=docker-ubuntu&amp;n=25: net/http: TLS handshake timeout"</span>)</span><br></pre></td></tr></table></figure>
+<p>解决方法：</p>
 
       
 
@@ -500,14 +503,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">memcache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Openstack</a>
               </li>
              
@@ -520,7 +515,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">memcache</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,6 +528,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">large file</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,14 +544,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">neutron</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">fwaas</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,6 +560,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">neutron</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">fwaas</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,10 +607,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">libvirt</a>
               </li>
              
@@ -628,6 +627,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
               </li>
              
@@ -640,6 +643,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -648,11 +659,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">最大连接数</a>
+                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
+                <a href="javascript:void(0)" class="js-tag color1">最大连接数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -696,11 +707,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
+                <a href="javascript:void(0)" class="js-tag color2">centos</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -716,7 +727,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+                <a href="javascript:void(0)" class="js-tag color1">terminator</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -725,10 +736,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">url protocol</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">terminator</a>
               </li>
             
             <div class="clearfix"></div>
