@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://pystack.org">
-  <title>Archives: 2017/11 | Pystack.org</title>
+  <title>清理Docker资源 | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Hello World.">
-<meta name="keywords" content="python,openstack,cloud,nova,neutron,keystone,horizon,vmware,cinder,heat,docker,vbscript,jquery,javascript,html5,极客,编程,代码,开源">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Pystack.org">
-<meta property="og:url" content="http://pystack.org/archives/2017/11/index.html">
+  <meta name="description" content="Docker takes a conservative（保守的） approach（方法） to cleaning up unused objects（对象） (often referred to（被叫做） as “garbage collection”（垃圾回收）), such as images, containers, volumes, and networks: these objects">
+<meta name="keywords" content="zun,centos,docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="清理Docker资源">
+<meta property="og:url" content="http://pystack.org/2018/03/24/docker-prune/index.html">
 <meta property="og:site_name" content="Pystack.org">
-<meta property="og:description" content="Hello World.">
+<meta property="og:description" content="Docker takes a conservative（保守的） approach（方法） to cleaning up unused objects（对象） (often referred to（被叫做） as “garbage collection”（垃圾回收）), such as images, containers, volumes, and networks: these objects">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-03T02:26:22.806Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pystack.org">
-<meta name="twitter:description" content="Hello World.">
+<meta name="twitter:title" content="清理Docker资源">
+<meta name="twitter:description" content="Docker takes a conservative（保守的） approach（方法） to cleaning up unused objects（对象） (often referred to（被叫做） as “garbage collection”（垃圾回收）), such as images, containers, volumes, and networks: these objects">
   
     <link rel="alternative" href="/atom.xml" title="Pystack.org" type="application/atom+xml">
   
@@ -152,56 +153,95 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-docker-prune" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/26/enable-neutron-qos/" class="archive-article-date">
-  	<time datetime="2017-11-26T15:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/26/enable-neutron-qos/">配置neutron qos</a>
+    <h1 class="article-title" itemprop="name">
+      清理Docker资源
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/03/24/docker-prune/" class="archive-article-date">
+  	<time datetime="2018-03-24T08:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-24</time>
+</a>
+        
+        <!--<span id="busuanzi_container_page_pv">
+           阅读<span id="busuanzi_value_page_pv"></span>次
+        </span>-->
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Docker takes a conservative（保守的） approach（方法） to cleaning up unused objects（对象） (often referred to（被叫做） as “garbage collection”（垃圾回收）), such as images, containers, volumes, and networks: these objects are generally（通常） not removed unless you explicitly（明确） ask（要求） Docker to do so. This can cause Docker to use extra（额外） disk space. For each type of object, Docker provides a prune command. In addition（此外）, you can use docker system prune to clean up multiple types of objects at once. </p>
+<a id="more"></a>
+<h3 id="清理镜像"><a href="#清理镜像" class="headerlink" title="清理镜像"></a>清理镜像</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker image prune -a </span></span><br><span class="line">WARNING! This will remove all images <span class="keyword">without</span> <span class="keyword">at</span> least one container associated <span class="keyword">to</span> them. Are you sure you want <span class="keyword">to</span> <span class="keyword">continue</span>? [y/N]</span><br></pre></td></tr></table></figure>
+<p>-a 表示删除所有未被容器引用的镜像</p>
+<p>默认会有确认提示，使用 -f 或者 –force 可以强制删除</p>
+<p>默认会删除掉所有没有tag或者未被容器引用的镜像，也可以使用 –filter 来过滤要删除的镜像。例如要删除大于24小时的镜像:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker image prune -<span class="selector-tag">a</span> --<span class="attribute">filter</span> <span class="string">"until=24h"</span></span><br></pre></td></tr></table></figure>
+<h3 id="清理容器"><a href="#清理容器" class="headerlink" title="清理容器"></a>清理容器</h3><p>如果加上 –rm 标志，容器在stop的时候就会自动删除，没有这个标志的依然会占用磁盘空间。</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># docker container prune </span><br><span class="line">WARNING<span class="comment">! This will remove all stopped containers. Are you sure you want to continue? [y/N]</span></span><br></pre></td></tr></table></figure>
+<h3 id="清理卷"><a href="#清理卷" class="headerlink" title="清理卷"></a>清理卷</h3><p>卷可以被一个或多个容器使用，删除容器的时候并不能自动删除卷。</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker volume prune </span></span><br><span class="line">WARNING! This will remove all volumes <span class="keyword">not</span> used <span class="keyword">by</span> <span class="keyword">at</span> least one container. Are you sure you want <span class="keyword">to</span> <span class="keyword">continue</span>? [y/N]</span><br></pre></td></tr></table></figure>
+<h3 id="清理网络"><a href="#清理网络" class="headerlink" title="清理网络"></a>清理网络</h3><p>docker网络虽然不占多少磁盘空间，但是会创建iptables规则，linux网络设备，路由表。</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker network prune </span></span><br><span class="line">WArNING! This will remove all networks <span class="keyword">not</span> used <span class="keyword">by</span> <span class="keyword">at</span> least one container. Are you sure you want <span class="keyword">to</span> <span class="keyword">continue</span>? [y/N]</span><br><span class="line"></span><br><span class="line"><span class="comment"># docker network prune -f </span></span><br><span class="line"><span class="comment"># docker network prune -f --filter "until=24h"</span></span><br></pre></td></tr></table></figure>
+<h3 id="清理所有对象"><a href="#清理所有对象" class="headerlink" title="清理所有对象"></a>清理所有对象</h3><p>该命令会同时删除镜像、容器、卷、网络（ &lt;= 17.06.0, 大于 17.06.1 版本的需要添加–volumes参数才能删除卷）</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># docker system prune</span><br><span class="line">WARNING! This will remove:</span><br><span class="line">        -<span class="ruby"> all stopped containers</span></span><br><span class="line"><span class="ruby">        - all networks <span class="keyword">not</span> used by at least one container</span></span><br><span class="line"><span class="ruby">        - all dangling images</span></span><br><span class="line"><span class="ruby">        - all build cache Are you sure you want to continue? [y/N]</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby"><span class="comment"># docker system prune --volumes </span></span></span><br><span class="line"><span class="ruby">WARNING! This will <span class="symbol">remove:</span></span></span><br><span class="line"><span class="ruby">        - all stopped containers</span></span><br><span class="line"><span class="ruby">        - all networks <span class="keyword">not</span> used by at least one container</span></span><br><span class="line"><span class="ruby">        - all volumes <span class="keyword">not</span> used by at least one container</span></span><br><span class="line"><span class="ruby">        - all dangling images</span></span><br><span class="line"><span class="ruby">        - all build cache Are you sure you want to continue? [y/N]</span></span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 杀死所有正在运行的容器</span></span><br><span class="line">docker kill $(docker ps -a -q)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除所有已经停止的容器</span></span><br><span class="line">docker rm $(docker ps -a -q)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除所有未打 dangling 标签的镜像</span></span><br><span class="line">docker rmi $(docker images -q -f <span class="attribute">dangling</span>=<span class="literal">true</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除所有镜像</span></span><br><span class="line">docker rmi $(docker images -q)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Docker提供了docker system prune，可以用于清理dangling镜像(参考What are Docker &lt;none&gt;:&lt;none&gt; images?)和容器，以及失效的数据卷和网络。</span></span><br><span class="line">docker<span class="built_in"> system </span>prune</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这个命令将清理整个系统，并且只会保留真正在使用的镜像，容器，数据卷以及网络</span></span><br><span class="line">docker<span class="built_in"> system </span>prune -a</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢大佬<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">zun</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">neutron</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">centos</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">qos</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -214,74 +254,120 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://pystack.org/2018/03/24/docker-prune/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/26/unable-to-boot-kali-linux-by-kvm/" class="archive-article-date">
-  	<time datetime="2017-11-26T13:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-26</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/03/24/too-many-open-files/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Too many open files</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/26/unable-to-boot-kali-linux-by-kvm/">Openstack无法启动kali linux</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">kvm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kali linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
+
   
 
-    
+  
+
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://pystack.org/2018/03/24/docker-prune/",
+  owner: 'bspeng922',
+  repo: 'bspeng922.github.io',
+  oauth: {
+    client_id: '8b392331022094e3927a',
+    client_secret: 'b9bff33951104c5f21fddb32637d759f214893d7',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -313,8 +399,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

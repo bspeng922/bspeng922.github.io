@@ -4,18 +4,18 @@
 
     
   <url>
-    <loc>http://pystack.org/2018/03/24/too-many-open-files/</loc>
-    <lastmod>2018-04-02T08:03:33.287Z</lastmod>
+    <loc>http://pystack.org/2018/03/24/docker-prune/</loc>
+    <lastmod>2018-04-03T02:26:22.806Z</lastmod>
     <data>
         <display>
-        <title>Too many open files</title>
+        <title>清理Docker资源</title>
         <pubTime>2018-03-24T08:39:24.000Z</pubTime>
         
         <tag>zun</tag>
          
-        <tag>docker</tag>
-         
         <tag>centos</tag>
+         
+        <tag>docker</tag>
          
          
            
@@ -29,7 +29,7 @@
     
   <url>
     <loc>http://pystack.org/2017/10/14/install-openstack-zun/</loc>
-    <lastmod>2018-04-02T03:28:33.854Z</lastmod>
+    <lastmod>2018-04-03T01:56:02.664Z</lastmod>
     <data>
         <display>
         <title>安装Openstack ZUN模块</title>
@@ -42,6 +42,30 @@
         <tag>docker</tag>
          
         <tag>kuryr</tag>
+         
+         
+           
+             
+              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2018/03/24/too-many-open-files/</loc>
+    <lastmod>2018-04-02T08:51:24.025Z</lastmod>
+    <data>
+        <display>
+        <title>Too many open files</title>
+        <pubTime>2018-03-24T08:39:24.000Z</pubTime>
+        
+        <tag>zun</tag>
+         
+        <tag>centos</tag>
+         
+        <tag>docker</tag>
          
          
            
