@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pystack.org">
 <meta property="og:description" content="安装 zunhttps://review.openstack.org/#/c/504537/11/doc/source/install/controller-install-ubuntu.rst https://review.openstack.org/#/c/504537/11/doc/source/install/compute-install-ubuntu.rst Queens版安装文档：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-03T01:56:02.664Z">
+<meta property="og:updated_time" content="2018-04-03T11:15:10.362Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装Openstack ZUN模块">
 <meta name="twitter:description" content="安装 zunhttps://review.openstack.org/#/c/504537/11/doc/source/install/controller-install-ubuntu.rst https://review.openstack.org/#/c/504537/11/doc/source/install/compute-install-ubuntu.rst Queens版安装文档：">
@@ -221,8 +221,10 @@
 </li>
 </ol>
 <p>500 Server Error: Internal Server Error (“Get <a href="https://index.docker.io/v1/search?q=docker-ubuntu&amp;n=25" target="_blank" rel="external">https://index.docker.io/v1/search?q=docker-ubuntu&amp;n=25</a>: net/http: TLS handshake timeout”) Traceback (most recent call last): File “/usr/lib/python2.7/site-packages/oslo_messaging/rpc/server.py”, line 163, in _process_incoming res = self.dispatcher.dispatch(message) File “/usr/lib/python2.7/site-packages/oslo_messaging/rpc/dispatcher.py”, line 220, in dispatch return self._do_dispatch(endpoint, method, ctxt, args) File “/usr/lib/python2.7/site-packages/oslo_messaging/rpc/dispatcher.py”, line 190, in _do_dispatch result = func(ctxt, <strong>new_args) File “/usr/lib/python2.7/site-packages/zun/common/utils.py”, line 193, in decorated_function return function(self, context, *args, </strong>kwargs) File “/usr/lib/python2.7/site-packages/zun/compute/manager.py”, line 891, in image_search image_driver_name, exact_match) File “/usr/lib/python2.7/site-packages/zun/image/driver.py”, line 103, in search_image raise exception.ZunException(six.text_type(e)) ZunException: 500 Server Error: Internal Server Error (“Get <a href="https://index.docker.io/v1/search?q=docker-ubuntu&amp;n=25" target="_blank" rel="external">https://index.docker.io/v1/search?q=docker-ubuntu&amp;n=25</a>: net/http: TLS handshake timeout”)</p>
-<p>```</p>
-<p>解决方法：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">解决方法：</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### 修改docker容器MTU</span></span><br></pre></td></tr></table></figure>
+<h1 id="vi-etc-systemd-system-docker-service-d-docker-conf"><a href="#vi-etc-systemd-system-docker-service-d-docker-conf" class="headerlink" title="vi /etc/systemd/system/docker.service.d/docker.conf"></a>vi /etc/systemd/system/docker.service.d/docker.conf</h1><p>ExecStart=/usr/bin/docker –mtu 1400</p>
+<h1 id="sudo-systemctl-daemon-reload"><a href="#sudo-systemctl-daemon-reload" class="headerlink" title="sudo systemctl daemon-reload"></a>sudo systemctl daemon-reload</h1><h1 id="sudo-service-docker-restart"><a href="#sudo-service-docker-restart" class="headerlink" title="sudo service docker restart"></a>sudo service docker restart</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">To configure the default bridge network, you specify options in daemon.json.</span><br></pre></td></tr></table></figure>
+<p>{<br>  “bip”: “192.168.1.5/24”,<br>  “fixed-cidr”: “192.168.1.5/25”,<br>  “fixed-cidr-v6”: “2001:db8::/64”,<br>  “mtu”: 1500,<br>  “default-gateway”: “10.20.1.1”,<br>  “default-gateway-v6”: “2001:db8:abcd::89”,<br>  “dns”: [“10.20.1.2”,”10.20.1.3”]<br>}<br>```</p>
 
       
 
@@ -544,18 +546,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">openstack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spice</a>
               </li>
              
@@ -569,6 +559,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">openstack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -588,6 +590,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">zun</a>
               </li>
              
@@ -597,10 +603,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,10 +662,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -673,6 +671,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">最大连接数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">region</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -720,10 +726,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
               </li>
              
@@ -733,6 +735,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">USB网卡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
               </li>
              
               <li class="article-tag-list-item">

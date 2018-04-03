@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://pystack.org">
-  <title>Too many open files | Pystack.org</title>
+  <title>Openstack多区域 | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="问题当容器创建过多的时候，rabbitmq等服务都会提示too many files open 1dnsmasq[18612]: failed to create inotify: Too many open files 编辑文件/etc/pam.d/login， 添加 1session    required   pam_limits.so">
-<meta name="keywords" content="zun,centos,docker">
+  <meta name="description" content="多区域架构">
+<meta name="keywords" content="openstack,region">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Too many open files">
-<meta property="og:url" content="http://pystack.org/2018/03/24/too-many-open-files/index.html">
+<meta property="og:title" content="Openstack多区域">
+<meta property="og:url" content="http://pystack.org/2018/04/01/openstack-multi-region/index.html">
 <meta property="og:site_name" content="Pystack.org">
-<meta property="og:description" content="问题当容器创建过多的时候，rabbitmq等服务都会提示too many files open 1dnsmasq[18612]: failed to create inotify: Too many open files 编辑文件/etc/pam.d/login， 添加 1session    required   pam_limits.so">
+<meta property="og:description" content="多区域架构">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-02T08:51:24.025Z">
+<meta property="og:image" content="http://pystack.org/assets/img/Multi-Site_shared_keystone_horizon_swift1.png">
+<meta property="og:updated_time" content="2018-04-03T12:28:08.453Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Too many open files">
-<meta name="twitter:description" content="问题当容器创建过多的时候，rabbitmq等服务都会提示too many files open 1dnsmasq[18612]: failed to create inotify: Too many open files 编辑文件/etc/pam.d/login， 添加 1session    required   pam_limits.so">
+<meta name="twitter:title" content="Openstack多区域">
+<meta name="twitter:description" content="多区域架构">
+<meta name="twitter:image" content="http://pystack.org/assets/img/Multi-Site_shared_keystone_horizon_swift1.png">
   
     <link rel="alternative" href="/atom.xml" title="Pystack.org" type="application/atom+xml">
   
@@ -153,20 +155,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-too-many-open-files" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-openstack-multi-region" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Too many open files
+      Openstack多区域
     </h1>
   
 
         
-        <a href="/2018/03/24/too-many-open-files/" class="archive-article-date">
-  	<time datetime="2018-03-24T08:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-24</time>
+        <a href="/2018/04/01/openstack-multi-region/" class="archive-article-date">
+  	<time datetime="2018-04-01T15:30:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-01</time>
 </a>
         
         <!--<span id="busuanzi_container_page_pv">
@@ -176,29 +178,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>当容器创建过多的时候，rabbitmq等服务都会提示too many files open</p>
-<figure class="highlight ldif"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">dnsmasq[18612]</span>: failed to create inotify: Too many open files</span><br></pre></td></tr></table></figure>
-<p><strong>编辑文件/etc/pam.d/login， 添加</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">session</span>    <span class="selector-tag">required</span>   <span class="selector-tag">pam_limits</span><span class="selector-class">.so</span></span><br></pre></td></tr></table></figure>
+        <h2 id="多区域架构"><a href="#多区域架构" class="headerlink" title="多区域架构"></a>多区域架构</h2><p><img src="/assets/img/Multi-Site_shared_keystone_horizon_swift1.png" alt=""></p>
 <a id="more"></a>
-<p><strong>配置/etc/security/limits.conf文件</strong></p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">* </span>soft nproc  2047</span><br><span class="line"><span class="bullet">* </span>hard nproc  16384</span><br><span class="line"><span class="bullet">* </span>soft nofile 65536</span><br><span class="line"><span class="bullet">* </span>hard nofile 200000</span><br></pre></td></tr></table></figure>
-<ul>
-<li>代表针对所有用户,</li>
-<li>nproc是代表最大进程数,</li>
-<li>nofile 是代表最大文件打开数</li>
-<li>A hard limit can only be raised by root</li>
-<li>A soft limit can be changed by the process at any time </li>
-</ul>
-<p><strong>单个用户使用epoll的文件描述符上限</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> cat /proc/sys/fs/inotify/max_user_instances</span></span><br><span class="line">128</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">echo</span> 20480 &gt; /proc/sys/fs/inotify/max_user_instances</span></span><br></pre></td></tr></table></figure>
-<p><strong>单个用户使用epoll进行watch的文件描述符上限</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> cat /proc/sys/fs/inotify/max_user_watches</span></span><br><span class="line">8192</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">echo</span> 40960 &gt; /proc/sys/fs/inotify/max_user_watches</span></span><br></pre></td></tr></table></figure>
-<p>参考文档： </p>
-<p><a href="https://jhutar.blogspot.cz/2017/12/error-too-many-open-files-when-inside.html" target="_blank" rel="external">https://jhutar.blogspot.cz/2017/12/error-too-many-open-files-when-inside.html</a></p>
-<p><a href="https://www.cyberciti.biz/faq/linux-increase-the-maximum-number-of-open-files/" target="_blank" rel="external">https://www.cyberciti.biz/faq/linux-increase-the-maximum-number-of-open-files/</a></p>
+<h2 id="配置多区域"><a href="#配置多区域" class="headerlink" title="配置多区域"></a>配置多区域</h2><ol>
+<li>添加endpoint</li>
+</ol>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">openstack endpoint create --region RegionTwo compute <span class="meta">public</span> http://<span class="number">10.99</span><span class="meta">.99</span><span class="meta">.215</span>:<span class="number">8774</span>/v2<span class="meta">.1</span></span><br><span class="line">openstack endpoint create --region RegionTwo compute internal http://<span class="number">10.99</span><span class="meta">.99</span><span class="meta">.215</span>:<span class="number">8774</span>/v2<span class="meta">.1</span></span><br><span class="line">openstack endpoint create --region RegionTwo compute admin http://<span class="number">10.99</span><span class="meta">.99</span><span class="meta">.215</span>:<span class="number">8774</span>/v2<span class="meta">.1</span></span><br><span class="line"></span><br><span class="line">openstack endpoint create --region RegionTwo placement <span class="meta">public</span> http://<span class="number">10.99</span><span class="meta">.99</span><span class="meta">.215</span>:<span class="number">8778</span></span><br><span class="line">openstack endpoint create --region RegionTwo placement internal http://<span class="number">10.99</span><span class="meta">.99</span><span class="meta">.215</span>:<span class="number">8778</span></span><br><span class="line">openstack endpoint create --region RegionTwo placement admin http://<span class="number">10.99</span><span class="meta">.99</span><span class="meta">.215</span>:<span class="number">8778</span></span><br><span class="line"></span><br><span class="line">openstack endpoint create --region RegionTwo image <span class="meta">public</span> http://<span class="number">10.99</span><span class="meta">.99</span><span class="meta">.215</span>:<span class="number">9292</span></span><br><span class="line">openstack endpoint create --region RegionTwo image internal http://<span class="number">10.99</span><span class="meta">.99</span><span class="meta">.215</span>:<span class="number">9292</span></span><br><span class="line">openstack endpoint create --region RegionTwo image admin http://<span class="number">10.99</span><span class="meta">.99</span><span class="meta">.215</span>:<span class="number">9292</span></span><br><span class="line"></span><br><span class="line">openstack endpoint create --region RegionTwo network <span class="meta">public</span> http://<span class="number">10.99</span><span class="meta">.99</span><span class="meta">.215</span>:<span class="number">9696</span></span><br><span class="line">openstack endpoint create --region RegionTwo network internal http://<span class="number">10.99</span><span class="meta">.99</span><span class="meta">.215</span>:<span class="number">9696</span></span><br><span class="line">openstack endpoint create --region RegionTwo network admin http://<span class="number">10.99</span><span class="meta">.99</span><span class="meta">.215</span>:<span class="number">9696</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>修改dashboard配置</li>
+</ol>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/openstack-dashboard/local_settings.py</span><br><span class="line"></span><br><span class="line">AVAILABLE_REGIONS = [ </span><br><span class="line">     ('http://10.10.7.208:<span class="number">5000</span>/v2.0', 'RegionOne'),</span><br><span class="line">     ('http://10.10.7.200:<span class="number">5000</span>/v2.0', 'RegionTwo'),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <hr>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">controller dnsmasq-dhcp[4479]: DHCPDISCOVER(ns-05c5dc4c-59) 0c:c4:7a:29:8b:24 <span class="literal">no</span><span class="built_in"> address </span>available</span><br></pre></td></tr></table></figure>
+<h3 id="共用-RegionOne-上的-keystone"><a href="#共用-RegionOne-上的-keystone" class="headerlink" title="共用 RegionOne 上的 keystone"></a>共用 RegionOne 上的 keystone</h3><p>添加RegionTwo的keystone endpoint，地址为RegionOne的地址</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">修改RegionTwo上的配置（glance、nova、neutron等涉及到keystone的地方）</span><br></pre></td></tr></table></figure>
+<p>```</p>
+<p>停止RegionTwo上的httpd、keystone服务</p>
 
       
 
@@ -233,15 +227,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">zun</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">centos</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">region</a>
         		</li>
       		
 		</ul>
@@ -308,7 +298,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://pystack.org/2018/03/24/too-many-open-files/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://pystack.org/2018/04/01/openstack-multi-region/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -322,18 +312,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/03/24/docker-prune/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          清理Docker资源
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/02/22/configure-neutron-fwaas-v2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Neutron Fwaas V2 版配置</div>
+    <a href="/2018/03/25/too-many-open-files/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Too many open files</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -372,7 +353,7 @@
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://pystack.org/2018/03/24/too-many-open-files/",
+  id: "http://pystack.org/2018/04/01/openstack-multi-region/",
   owner: 'bspeng922',
   repo: 'bspeng922.github.io',
   oauth: {
@@ -516,18 +497,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">openstack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spice</a>
               </li>
              
@@ -541,6 +510,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">openstack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -560,6 +541,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">zun</a>
               </li>
              
@@ -569,10 +554,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -632,10 +613,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
@@ -645,6 +622,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">最大连接数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">region</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -692,10 +677,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
               </li>
              
@@ -705,6 +686,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">USB网卡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
               </li>
              
               <li class="article-tag-list-item">
