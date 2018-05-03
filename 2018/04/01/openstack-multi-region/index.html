@@ -17,7 +17,7 @@
 <meta property="og:description" content="多区域架构">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pystack.org/assets/img/openstack-multi-region.jpg">
-<meta property="og:updated_time" content="2018-04-04T07:51:27.242Z">
+<meta property="og:updated_time" content="2018-05-03T06:01:54.985Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Openstack多区域">
 <meta name="twitter:description" content="多区域架构">
@@ -187,7 +187,7 @@
 <ol>
 <li>修改dashboard配置</li>
 </ol>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/openstack-dashboard/local_settings.py</span><br><span class="line"></span><br><span class="line">AVAILABLE_REGIONS = [ </span><br><span class="line">     ('http://10.10.7.208:<span class="number">5000</span>/v2.0', 'RegionOne'),</span><br><span class="line">     ('http://10.10.7.200:<span class="number">5000</span>/v2.0', 'RegionTwo'),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/openstack-dashboard/local_settings.py</span><br><span class="line"></span><br><span class="line">AVAILABLE_REGIONS = [ </span><br><span class="line">     ('http://10.99.99.214:<span class="number">5000</span>/v2.0', 'RegionOne'),</span><br><span class="line">     ('http://10.99.99.215:<span class="number">5000</span>/v2.0', 'RegionTwo'),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="共用-RegionOne-上的-keystone"><a href="#共用-RegionOne-上的-keystone" class="headerlink" title="共用 RegionOne 上的 keystone"></a>共用 RegionOne 上的 keystone</h3><p>添加RegionTwo的keystone endpoint，地址为RegionOne的地址</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openstack endpoint create --region RegionTwo keystone <span class="keyword">public</span> <span class="string">http:</span><span class="comment">//10.99.99.214:5000/v3/ </span></span><br><span class="line">openstack endpoint create --region RegionTwo keystone internal <span class="string">http:</span><span class="comment">//10.99.99.214:5000/v3/ </span></span><br><span class="line">openstack endpoint create --region RegionTwo keystone admin <span class="string">http:</span><span class="comment">//10.99.99.214:35357/v3/</span></span><br></pre></td></tr></table></figure>
@@ -498,18 +498,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">openstack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spice</a>
               </li>
              
@@ -523,6 +511,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">openstack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,6 +606,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
@@ -614,7 +618,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
+                <a href="javascript:void(0)" class="js-tag color2">region</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -643,10 +647,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vdi</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">region</a>
               </li>
              
               <li class="article-tag-list-item">
