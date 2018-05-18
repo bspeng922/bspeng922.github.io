@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://pystack.org">
-  <title>Pystack.org</title>
+  <title>Openstack基础 | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Hello World.">
-<meta name="keywords" content="python,openstack,cloud,nova,neutron,keystone,horizon,vmware,cinder,heat,docker,vbscript,jquery,javascript,html5,极客,编程,代码,开源">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Pystack.org">
-<meta property="og:url" content="http://pystack.org/index.html">
+  <meta name="description" content="wsgiPaste &amp;amp; PasteDeploy使用Paste和PasteDeploy模块来实现WSGI服务时，都需要一个paste.ini文件。paste.ini文件的格式类似于INI格式，每个section的格式为[type:name]。  composite: 这种section用于将HTTP请求分发到指定的app。app: 这种section表示具体的app。filter: 实现一个">
+<meta name="keywords" content="mysql,mariadb,master-master">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Openstack基础">
+<meta property="og:url" content="http://pystack.org/2016/05/01/openstack-common/index.html">
 <meta property="og:site_name" content="Pystack.org">
-<meta property="og:description" content="Hello World.">
+<meta property="og:description" content="wsgiPaste &amp;amp; PasteDeploy使用Paste和PasteDeploy模块来实现WSGI服务时，都需要一个paste.ini文件。paste.ini文件的格式类似于INI格式，每个section的格式为[type:name]。  composite: 这种section用于将HTTP请求分发到指定的app。app: 这种section表示具体的app。filter: 实现一个">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-18T07:36:42.934Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pystack.org">
-<meta name="twitter:description" content="Hello World.">
+<meta name="twitter:title" content="Openstack基础">
+<meta name="twitter:description" content="wsgiPaste &amp;amp; PasteDeploy使用Paste和PasteDeploy模块来实现WSGI服务时，都需要一个paste.ini文件。paste.ini文件的格式类似于INI格式，每个section的格式为[type:name]。  composite: 这种section用于将HTTP请求分发到指定的app。app: 这种section表示具体的app。filter: 实现一个">
   
     <link rel="alternative" href="/atom.xml" title="Pystack.org" type="application/atom+xml">
   
@@ -152,22 +153,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-qemu-guest-agent" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-openstack-common" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/16/qemu-guest-agent/">Qemu guest agent</a>
+    <h1 class="article-title" itemprop="name">
+      Openstack基础
     </h1>
   
 
         
-        <a href="/2018/05/16/qemu-guest-agent/" class="archive-article-date">
-  	<time datetime="2018-05-16T09:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-16</time>
+        <a href="/2016/05/01/openstack-common/" class="archive-article-date">
+  	<time datetime="2016-04-30T19:19:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-01</time>
 </a>
         
         <!--<span id="busuanzi_container_page_pv">
@@ -177,715 +176,63 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Qemu-guest-agent是一个运行在虚拟机内部的普通应用程序，其目的是实现一种宿主机和虚拟机进行交互的方式，这种方式不依赖于网络，而是依赖于virtio-serial（默认首选方式）或者isa-serial，而QEMU则提供了串口设备的模拟及数据交换的通道，最终呈现出来的是一个串口设备（虚拟机内部）和一个unix socket文件（宿主机上）。</p>
-<p>qemu-guest-agent通过读写串口设备与宿主机上的socket通道进行交互，宿主机上可以使用普通的unix socket读写方式对socket文件进行读写，最终实现与qga的交互，交互的协议与qmp（QEMU Monitor Protocol）相同（简单来说就是使用JSON格式进行数据交换），串口设备的速率通常都较低，所以比较适合小数据量的交换。</p>
-        
-          <a class="article-more-a" href="/2018/05/16/qemu-guest-agent/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">libvirt</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">qemu-guest-agent</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">nova</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/16/qemu-guest-agent/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-openstack-multi-region" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/01/openstack-multi-region/">Openstack多区域</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/01/openstack-multi-region/" class="archive-article-date">
-  	<time datetime="2018-04-01T15:30:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-01</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="多区域架构"><a href="#多区域架构" class="headerlink" title="多区域架构"></a>多区域架构</h2><p><img src="/assets/img/openstack-multi-region.jpg" alt=""></p>
-        
-          <a class="article-more-a" href="/2018/04/01/openstack-multi-region/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">region</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/01/openstack-multi-region/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-too-many-open-files" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/25/too-many-open-files/">Too many open files</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/25/too-many-open-files/" class="archive-article-date">
-  	<time datetime="2018-03-25T10:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-25</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>当容器创建过多的时候，rabbitmq等服务都会提示too many files open</p>
-<figure class="highlight ldif"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">dnsmasq[18612]</span>: failed to create inotify: Too many open files</span><br></pre></td></tr></table></figure>
-<p><strong>编辑文件/etc/pam.d/login， 添加</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">session</span>    <span class="selector-tag">required</span>   <span class="selector-tag">pam_limits</span><span class="selector-class">.so</span></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/03/25/too-many-open-files/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">zun</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">centos</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/25/too-many-open-files/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-docker-prune" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/24/docker-prune/">清理Docker资源</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/24/docker-prune/" class="archive-article-date">
-  	<time datetime="2018-03-24T08:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-24</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Docker takes a conservative（保守的） approach（方法） to cleaning up unused objects（对象） (often referred to（被叫做） as “garbage collection”（垃圾回收）), such as images, containers, volumes, and networks: these objects are generally（通常） not removed unless you explicitly（明确） ask（要求） Docker to do so. This can cause Docker to use extra（额外） disk space. For each type of object, Docker provides a prune command. In addition（此外）, you can use docker system prune to clean up multiple types of objects at once. </p>
-        
-          <a class="article-more-a" href="/2018/03/24/docker-prune/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">zun</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">centos</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/24/docker-prune/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-configure-neutron-fwaas-v2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/22/configure-neutron-fwaas-v2/">Neutron Fwaas V2 版配置</a>
-    </h1>
-  
-
-        
-        <a href="/2018/02/22/configure-neutron-fwaas-v2/" class="archive-article-date">
-  	<time datetime="2018-02-22T06:22:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-22</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>安装官网的文档配置fwaas v2后，创建防火墙组的时候，如果选择防火墙策略和路由器端口，防火墙的状态一直是Pengding Create，这时候删除的话也无法删除，状态变为Pending Update。</p>
-<p>创建时只选择防火墙策略或者端口是能创建成功的，创建后的状态也是active的，再添加策略或端口，状态就会像上面的一样一直是Pending Update，后台也没有什么报错信息。</p>
-        
-          <a class="article-more-a" href="/2018/02/22/configure-neutron-fwaas-v2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">neutron</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">fwaas</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/22/configure-neutron-fwaas-v2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-add-lock-for-memcache" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/16/add-lock-for-memcache/">Add lock for memcache</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/16/add-lock-for-memcache/" class="archive-article-date">
-  	<time datetime="2018-01-16T06:48:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-16</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>项目有一个需求，需要在多线程并发的情况下实现对memcache的读写，这就需要实现一个类似数据库锁的功能，在访问memcache的时候加锁，结束后释放。</p>
-        
-          <a class="article-more-a" href="/2018/01/16/add-lock-for-memcache/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">memcache</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/16/add-lock-for-memcache/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-enable-neutron-qos" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/26/enable-neutron-qos/">配置neutron qos</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/26/enable-neutron-qos/" class="archive-article-date">
-  	<time datetime="2017-11-26T15:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-26</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="网络节点"><a href="#网络节点" class="headerlink" title="网络节点:"></a>网络节点:</h2><ol>
-<li>Add the QoS service to the service_plugins setting in /etc/neutron/neutron.conf. For example:</li>
-</ol>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">service_plugins</span> = ... ,qos</span><br></pre></td></tr></table></figure>
-<ol>
-<li>In /etc/neutron/plugins/ml2/ml2_conf.ini, add qos to extension_drivers in the [ml2] section. For example:</li>
-</ol>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[ml2]</span></span><br><span class="line"><span class="attr">extension_drivers</span> = port_security, qos</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/11/26/enable-neutron-qos/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">neutron</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">qos</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/26/enable-neutron-qos/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-unable-to-boot-kali-linux-by-kvm" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/26/unable-to-boot-kali-linux-by-kvm/">Openstack无法启动kali linux</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/26/unable-to-boot-kali-linux-by-kvm/" class="archive-article-date">
-  	<time datetime="2017-11-26T13:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-26</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>通过KVM安装kali linux时一切正常，但是安装完成后重启的时候系统无法启动，提示错误：   </p>
+        <h2 id="wsgi"><a href="#wsgi" class="headerlink" title="wsgi"></a>wsgi</h2><h2 id="Paste-amp-PasteDeploy"><a href="#Paste-amp-PasteDeploy" class="headerlink" title="Paste &amp; PasteDeploy"></a>Paste &amp; PasteDeploy</h2><p>使用Paste和PasteDeploy模块来实现WSGI服务时，都需要一个paste.ini文件。paste.ini文件的格式类似于INI格式，每个section的格式为[type:name]。</p>
 <blockquote>
-<p>   intel_rapl: no valid rapl domains found in package 0</p>
+<p>composite: 这种section用于将HTTP请求分发到指定的app。<br>app: 这种section表示具体的app。<br>filter: 实现一个过滤器中间件。<br>pipeline: 用来把把一系列的filter串起来。</p>
 </blockquote>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>这是虚拟显卡的问题，只需要修改一下镜像的元数据即可</p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">hw_video_model:</span> vga</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/11/26/unable-to-boot-kali-linux-by-kvm/#more">more >></a>
-        
+<a id="more"></a>
+<h3 id="section-composite"><a href="#section-composite" class="headerlink" title="section composite"></a>section composite</h3><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[composite<span class="function">:main</span>]</span><br><span class="line">use = egg<span class="function">:Paste</span><span class="comment">#urlmap</span></span><br><span class="line"><span class="string">/v2.0</span> = public_api       <span class="comment"># /v2.0　开头的请求会路由给public_api处理</span></span><br><span class="line"><span class="string">/v3</span> = api_v3             <span class="comment"># /v3　开头的请求会路由个api_v3处理</span></span><br><span class="line">/ = public_<span class="keyword">version</span>_api   <span class="comment"># / 开头的请求会路由给public_version_api处理</span></span><br></pre></td></tr></table></figure>
+<p>在composite seciont中，use是一个关键字，指定处理请求的代码。egg:Paste#urlmap表示到Paste模块的egg-info中去查找urlmap关键字所对应的函数。<br>composite section中其他的关键字则是urlmap_factory()函数的参数，用于表示不同的URL path前缀。urlmap_factory()函数会返回一个WSGI app，其功能是根据不同的URL path前缀，把请求路由给不同的app。路由的对象其实就是paste.ini中其他secion的名字，类型必须是app或者pipeline。</p>
+<h3 id="section-pipeline"><a href="#section-pipeline" class="headerlink" title="section pipeline"></a>section pipeline</h3><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[pipeline:api_v3]</span></span><br><span class="line"><span class="attr">pipeline</span> = sizelimit url_normalize request_id build_auth_context token_auth admin_token_auth json_body ec2_extension_v3 s3_extension simple_cert_extension revoke_extension federation_extension oauth1_extension endpoint_filter_extension endpoint_policy_extension service_v3</span><br></pre></td></tr></table></figure>
+<p>pipeline关键字指定了很多个名字，这些名字也是paste.ini文件中其他section的名字。请求会从最前面的section开始处理，一直向后传递。pipeline指定的section有如下要求：</p>
+<pre><code>+ 最后一个名字对应的section一定要是一个app
++ 非最后一个名字对应的section一定要是一个filter
+</code></pre><h3 id="section-filter"><a href="#section-filter" class="headerlink" title="section filter"></a>section filter</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="attribute">filter</span>:sizelimit]</span><br><span class="line">paste<span class="selector-class">.filter_factory</span> = oslo_middleware<span class="selector-class">.sizelimit</span>:RequestBodySizeLimiter.factory</span><br></pre></td></tr></table></figure>
+<p>filter是用来过滤请求和响应的，以WSGI中间件的方式实现。这个是api_v3这个pipeline指定的第一个filter，作用是限制请求的大小。其中的paste.filter_factory表示调用哪个函数来获得这个filter中间件。</p>
+<h3 id="section-app"><a href="#section-app" class="headerlink" title="section app"></a>section app</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[app:service_v3]</span><br><span class="line">paste<span class="selector-class">.app_factory</span> = keystone<span class="selector-class">.service</span>:v3_app_factory</span><br></pre></td></tr></table></figure>
+<p>app表示实现主要功能的应用，是一个标准的WSGI application。paste.app_factory表示调用哪个函数来获得这个app。</p>
+<p>paste.ini中这一大堆配置的作用就是把我们用Python写的WSGI application和middleware串起来，规定好HTTP请求处理的路径。</p>
+<p>POST <a href="http://hostname:35357/v3/auth/tokens" target="_blank" rel="external">http://hostname:35357/v3/auth/tokens</a></p>
+<p>hostname:35357   (apache2)</p>
+<p>/<br>/etc/httpd/conf.d/wsgi-keystone.conf<br>WSGIScriptAlias / /usr/bin/keystone-wsgi-admin</p>
+<p>v3<br>/etc/keystone/keystone-paste.ini<br>/v3 = api_v3</p>
+<p>pipeline = healthcheck … s3_extension service_v3</p>
+<p>[app:service_v3]<br>use = egg:keystone#service_v3</p>
+<p>/setup.cfg<br>paste.app_factory =<br>    …<br>    service_v3 = keystone.version.service:v3_app_factory</p>
+<p>auth_routers<br>auth_controller = controllers.Auth()<br>authenticate_for_token()</p>
+<h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="attribute">filter</span>:build_auth_context]</span><br><span class="line">paste<span class="selector-class">.filter_factory</span> = keystone<span class="selector-class">.middleware</span>:AuthContextMiddleware.factory</span><br></pre></td></tr></table></figure>
+<h2 id="pecan"><a href="#pecan" class="headerlink" title="pecan"></a>pecan</h2><p>使用Pecan的OpenStack项目时就会比较容易找到入口。</p>
+<blockquote>
+<p>app.py 一般包含了Pecan应用的入口，包含应用初始化代码<br>config.py 包含Pecan的应用配置，会被app.py使用<br>controllers/ 这个目录会包含所有的控制器，也就是API具体逻辑的地方<br>controllers/root.py 这个包含根路径对应的控制器<br>controllers/v1/ 这个目录对应v1版本的API的控制器。如果有多个版本的API，你一般能看到v2等目录。</p>
+</blockquote>
+<p>Pecan的配置很容易，通过一个Python源码式的配置文件就可以完成基本的配置。这个配置的主要目的是指定应用程序的root，然后用于生成WSGI application。在magnum/api/config.py文件中可以找到这个文件</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">app = &#123;</span><br><span class="line">    <span class="string">'root'</span>: <span class="string">'magnum.api.controllers.root.RootController'</span>,</span><br><span class="line">    <span class="string">'modules'</span>: [<span class="string">'magnum.api'</span>],</span><br><span class="line">    <span class="string">'debug'</span>: <span class="symbol">False</span>,</span><br><span class="line">    <span class="string">'hooks'</span>: [</span><br><span class="line">        hooks.<span class="symbol">ContextHook</span>(),</span><br><span class="line">        hooks.<span class="symbol">RPCHook</span>(),</span><br><span class="line">        hooks.<span class="symbol">NoExceptionTracebackHook</span>(),</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">'acl_public_routes'</span>: [</span><br><span class="line">        <span class="string">'/'</span></span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面这个app对象就是Pecan的配置，每个Pecan应用都需要有这么一个名为app的配置。app配置中最主要的就是root的值，这个值表示了应用程序的入口，也就是从哪个地方开始解析HTTP的根path：/。hooks对应的配置是一些Pecan的hook，作用类似于WSGI Middleware。</p>
+<h2 id="WSME"><a href="#WSME" class="headerlink" title="WSME"></a>WSME</h2><p>Pecan可以比较好的处理HTTP请求中的参数以及控制HTTP返回值。那么为什么我们还需要WSME呢？因为Pecan在做下面这个事情的时候比较麻烦：请求参数和响应内容的类型检查（英文简称就是typing）。当然，做是可以做的，不过你需要自己访问pecan.request和pecan.response，然后检查指定的值的类型。WSME就是为解决这个问题而生的，而且适用场景就是RESTful API。</p>
+<h2 id="stevedore"><a href="#stevedore" class="headerlink" title="stevedore"></a>stevedore</h2><h2 id="eventlet"><a href="#eventlet" class="headerlink" title="eventlet"></a>eventlet</h2><h2 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h2><h2 id="webob"><a href="#webob" class="headerlink" title="webob"></a>webob</h2>
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>打赏，没有必要的。<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -896,15 +243,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">kvm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mariadb</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kali linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">master-master</a>
         		</li>
       		
 		</ul>
@@ -916,7 +263,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
+        			<a href="/categories/Database//" class="article-tag-list-link color4">Database</a>
         		</li>
       		
 		</ul>
@@ -924,16 +271,84 @@
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/26/unable-to-boot-kali-linux-by-kvm/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://pystack.org/2016/05/01/openstack-common/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/06/14/cloud-init-notes/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Cloud Init notes
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/26/add-monitoring-page-for-openstack-instance/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">为Instance添加监控页面</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -953,218 +368,30 @@
 
 
 
-
-  
-    <article id="post-install-openstack-zun" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/14/install-openstack-zun/">安装Openstack ZUN模块</a>
-    </h1>
   
 
-        
-        <a href="/2017/10/14/install-openstack-zun/" class="archive-article-date">
-  	<time datetime="2017-10-14T03:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-14</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="安装-zun"><a href="#安装-zun" class="headerlink" title="安装 zun"></a>安装 zun</h3><p><a href="https://review.openstack.org/#/c/504537/11/doc/source/install/controller-install-ubuntu.rst" target="_blank" rel="external">https://review.openstack.org/#/c/504537/11/doc/source/install/controller-install-ubuntu.rst</a></p>
-<p><a href="https://review.openstack.org/#/c/504537/11/doc/source/install/compute-install-ubuntu.rst" target="_blank" rel="external">https://review.openstack.org/#/c/504537/11/doc/source/install/compute-install-ubuntu.rst</a></p>
-<p>Queens版安装文档： <a href="https://docs.openstack.org/zun/queens/install/" target="_blank" rel="external">https://docs.openstack.org/zun/queens/install/</a></p>
-        
-          <a class="article-more-a" href="/2017/10/14/install-openstack-zun/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">zun</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kuryr</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/14/install-openstack-zun/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-errors-while-installing-openstack-magnum" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/errors-while-installing-openstack-magnum/">安装Openstack Magnum模块遇到的问题</a>
-    </h1>
   
 
-        
-        <a href="/2017/10/10/errors-while-installing-openstack-magnum/" class="archive-article-date">
-  	<time datetime="2017-10-10T10:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Magnum安装配置"><a href="#Magnum安装配置" class="headerlink" title="Magnum安装配置"></a>Magnum安装配置</h1><p>官方文档： <a href="https://docs.openstack.org/project-install-guide/container-infrastructure-management/draft/install-rdo.html" target="_blank" rel="external">https://docs.openstack.org/project-install-guide/container-infrastructure-management/draft/install-rdo.html</a></p>
-<p>从源码安装Magnum <a href="https://docs.openstack.org/magnum/latest/install/install-guide-from-source.html" target="_blank" rel="external">https://docs.openstack.org/magnum/latest/install/install-guide-from-source.html</a></p>
-<hr>
-<h2 id="swarm-cluster创建超时"><a href="#swarm-cluster创建超时" class="headerlink" title="swarm-cluster创建超时"></a>swarm-cluster创建超时</h2><p>现象就是swarm-master一直显示在创建中，然后超过60分钟后，显示创建失败，heat显示的错误是Timeout</p>
-<p><strong>解决方法：</strong><br>超时问题是因为虚拟机中解析不到controller对应的IP地址，需要讲keystone, heat, magnum 的 public endpoint改成 IP地址。</p>
-        
-          <a class="article-more-a" href="/2017/10/10/errors-while-installing-openstack-magnum/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Magnum</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/errors-while-installing-openstack-magnum/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
+  
 
   
+
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://pystack.org/2016/05/01/openstack-common/",
+  owner: 'bspeng922',
+  repo: 'bspeng922.github.io',
+  oauth: {
+    client_id: '8b392331022094e3927a',
+    client_secret: 'b9bff33951104c5f21fddb32637d759f214893d7',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -1196,8 +423,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

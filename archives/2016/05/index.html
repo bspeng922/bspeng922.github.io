@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://pystack.org">
-  <title>Openstack基础 | Pystack.org</title>
+  <title>Archives: 2016/5 | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="wsgiPaste &amp;amp; PasteDeploy使用Paste和PasteDeploy模块来实现WSGI服务时，都需要一个paste.ini文件。paste.ini文件的格式类似于INI格式，每个section的格式为[type:name]。  composite: 这种section用于将HTTP请求分发到指定的app。app: 这种section表示具体的app。filter: 实现一个">
-<meta name="keywords" content="mysql,mariadb,master-master">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Openstack基础">
-<meta property="og:url" content="http://pystack.org/2018/05/01/openstack-common/index.html">
+  <meta name="description" content="Hello World.">
+<meta name="keywords" content="python,openstack,cloud,nova,neutron,keystone,horizon,vmware,cinder,heat,docker,vbscript,jquery,javascript,html5,极客,编程,代码,开源">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pystack.org">
+<meta property="og:url" content="http://pystack.org/archives/2016/05/index.html">
 <meta property="og:site_name" content="Pystack.org">
-<meta property="og:description" content="wsgiPaste &amp;amp; PasteDeploy使用Paste和PasteDeploy模块来实现WSGI服务时，都需要一个paste.ini文件。paste.ini文件的格式类似于INI格式，每个section的格式为[type:name]。  composite: 这种section用于将HTTP请求分发到指定的app。app: 这种section表示具体的app。filter: 实现一个">
+<meta property="og:description" content="Hello World.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-18T07:31:29.681Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Openstack基础">
-<meta name="twitter:description" content="wsgiPaste &amp;amp; PasteDeploy使用Paste和PasteDeploy模块来实现WSGI服务时，都需要一个paste.ini文件。paste.ini文件的格式类似于INI格式，每个section的格式为[type:name]。  composite: 这种section用于将HTTP请求分发到指定的app。app: 这种section表示具体的app。filter: 实现一个">
+<meta name="twitter:title" content="Pystack.org">
+<meta name="twitter:description" content="Hello World.">
   
     <link rel="alternative" href="/atom.xml" title="Pystack.org" type="application/atom+xml">
   
@@ -153,91 +152,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-openstack-common" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Openstack基础
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2016/05/01/openstack-common/" class="archive-article-date">
+  	<time datetime="2016-04-30T19:19:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-01</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/05/01/openstack-common/">Openstack基础</a>
     </h1>
   
 
-        
-        <a href="/2018/05/01/openstack-common/" class="archive-article-date">
-  	<time datetime="2018-04-30T19:19:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-01</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="wsgi"><a href="#wsgi" class="headerlink" title="wsgi"></a>wsgi</h2><h2 id="Paste-amp-PasteDeploy"><a href="#Paste-amp-PasteDeploy" class="headerlink" title="Paste &amp; PasteDeploy"></a>Paste &amp; PasteDeploy</h2><p>使用Paste和PasteDeploy模块来实现WSGI服务时，都需要一个paste.ini文件。paste.ini文件的格式类似于INI格式，每个section的格式为[type:name]。</p>
-<blockquote>
-<p>composite: 这种section用于将HTTP请求分发到指定的app。<br>app: 这种section表示具体的app。<br>filter: 实现一个过滤器中间件。<br>pipeline: 用来把把一系列的filter串起来。</p>
-</blockquote>
-<a id="more"></a>
-<h3 id="section-composite"><a href="#section-composite" class="headerlink" title="section composite"></a>section composite</h3><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[composite<span class="function">:main</span>]</span><br><span class="line">use = egg<span class="function">:Paste</span><span class="comment">#urlmap</span></span><br><span class="line"><span class="string">/v2.0</span> = public_api       <span class="comment"># /v2.0　开头的请求会路由给public_api处理</span></span><br><span class="line"><span class="string">/v3</span> = api_v3             <span class="comment"># /v3　开头的请求会路由个api_v3处理</span></span><br><span class="line">/ = public_<span class="keyword">version</span>_api   <span class="comment"># / 开头的请求会路由给public_version_api处理</span></span><br></pre></td></tr></table></figure>
-<p>在composite seciont中，use是一个关键字，指定处理请求的代码。egg:Paste#urlmap表示到Paste模块的egg-info中去查找urlmap关键字所对应的函数。<br>composite section中其他的关键字则是urlmap_factory()函数的参数，用于表示不同的URL path前缀。urlmap_factory()函数会返回一个WSGI app，其功能是根据不同的URL path前缀，把请求路由给不同的app。路由的对象其实就是paste.ini中其他secion的名字，类型必须是app或者pipeline。</p>
-<h3 id="section-pipeline"><a href="#section-pipeline" class="headerlink" title="section pipeline"></a>section pipeline</h3><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[pipeline:api_v3]</span></span><br><span class="line"><span class="attr">pipeline</span> = sizelimit url_normalize request_id build_auth_context token_auth admin_token_auth json_body ec2_extension_v3 s3_extension simple_cert_extension revoke_extension federation_extension oauth1_extension endpoint_filter_extension endpoint_policy_extension service_v3</span><br></pre></td></tr></table></figure>
-<p>pipeline关键字指定了很多个名字，这些名字也是paste.ini文件中其他section的名字。请求会从最前面的section开始处理，一直向后传递。pipeline指定的section有如下要求：</p>
-<pre><code>+ 最后一个名字对应的section一定要是一个app
-+ 非最后一个名字对应的section一定要是一个filter
-</code></pre><h3 id="section-filter"><a href="#section-filter" class="headerlink" title="section filter"></a>section filter</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="attribute">filter</span>:sizelimit]</span><br><span class="line">paste<span class="selector-class">.filter_factory</span> = oslo_middleware<span class="selector-class">.sizelimit</span>:RequestBodySizeLimiter.factory</span><br></pre></td></tr></table></figure>
-<p>filter是用来过滤请求和响应的，以WSGI中间件的方式实现。这个是api_v3这个pipeline指定的第一个filter，作用是限制请求的大小。其中的paste.filter_factory表示调用哪个函数来获得这个filter中间件。</p>
-<h3 id="section-app"><a href="#section-app" class="headerlink" title="section app"></a>section app</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[app:service_v3]</span><br><span class="line">paste<span class="selector-class">.app_factory</span> = keystone<span class="selector-class">.service</span>:v3_app_factory</span><br></pre></td></tr></table></figure>
-<p>app表示实现主要功能的应用，是一个标准的WSGI application。paste.app_factory表示调用哪个函数来获得这个app。</p>
-<p>paste.ini中这一大堆配置的作用就是把我们用Python写的WSGI application和middleware串起来，规定好HTTP请求处理的路径。</p>
-<p>POST <a href="http://hostname:35357/v3/auth/tokens" target="_blank" rel="external">http://hostname:35357/v3/auth/tokens</a></p>
-<p>hostname:35357   (apache2)</p>
-<p>/<br>/etc/httpd/conf.d/wsgi-keystone.conf<br>WSGIScriptAlias / /usr/bin/keystone-wsgi-admin</p>
-<p>v3<br>/etc/keystone/keystone-paste.ini<br>/v3 = api_v3</p>
-<p>pipeline = healthcheck … s3_extension service_v3</p>
-<p>[app:service_v3]<br>use = egg:keystone#service_v3</p>
-<p>/setup.cfg<br>paste.app_factory =<br>    …<br>    service_v3 = keystone.version.service:v3_app_factory</p>
-<p>auth_routers<br>auth_controller = controllers.Auth()<br>authenticate_for_token()</p>
-<h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="attribute">filter</span>:build_auth_context]</span><br><span class="line">paste<span class="selector-class">.filter_factory</span> = keystone<span class="selector-class">.middleware</span>:AuthContextMiddleware.factory</span><br></pre></td></tr></table></figure>
-<h2 id="pecan"><a href="#pecan" class="headerlink" title="pecan"></a>pecan</h2><p>使用Pecan的OpenStack项目时就会比较容易找到入口。</p>
-<blockquote>
-<p>app.py 一般包含了Pecan应用的入口，包含应用初始化代码<br>config.py 包含Pecan的应用配置，会被app.py使用<br>controllers/ 这个目录会包含所有的控制器，也就是API具体逻辑的地方<br>controllers/root.py 这个包含根路径对应的控制器<br>controllers/v1/ 这个目录对应v1版本的API的控制器。如果有多个版本的API，你一般能看到v2等目录。</p>
-</blockquote>
-<p>Pecan的配置很容易，通过一个Python源码式的配置文件就可以完成基本的配置。这个配置的主要目的是指定应用程序的root，然后用于生成WSGI application。在magnum/api/config.py文件中可以找到这个文件</p>
-<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">app = &#123;</span><br><span class="line">    <span class="string">'root'</span>: <span class="string">'magnum.api.controllers.root.RootController'</span>,</span><br><span class="line">    <span class="string">'modules'</span>: [<span class="string">'magnum.api'</span>],</span><br><span class="line">    <span class="string">'debug'</span>: <span class="symbol">False</span>,</span><br><span class="line">    <span class="string">'hooks'</span>: [</span><br><span class="line">        hooks.<span class="symbol">ContextHook</span>(),</span><br><span class="line">        hooks.<span class="symbol">RPCHook</span>(),</span><br><span class="line">        hooks.<span class="symbol">NoExceptionTracebackHook</span>(),</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">'acl_public_routes'</span>: [</span><br><span class="line">        <span class="string">'/'</span></span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面这个app对象就是Pecan的配置，每个Pecan应用都需要有这么一个名为app的配置。app配置中最主要的就是root的值，这个值表示了应用程序的入口，也就是从哪个地方开始解析HTTP的根path：/。hooks对应的配置是一些Pecan的hook，作用类似于WSGI Middleware。</p>
-<h2 id="WSME"><a href="#WSME" class="headerlink" title="WSME"></a>WSME</h2><p>Pecan可以比较好的处理HTTP请求中的参数以及控制HTTP返回值。那么为什么我们还需要WSME呢？因为Pecan在做下面这个事情的时候比较麻烦：请求参数和响应内容的类型检查（英文简称就是typing）。当然，做是可以做的，不过你需要自己访问pecan.request和pecan.response，然后检查指定的值的类型。WSME就是为解决这个问题而生的，而且适用场景就是RESTful API。</p>
-<h2 id="stevedore"><a href="#stevedore" class="headerlink" title="stevedore"></a>stevedore</h2><h2 id="eventlet"><a href="#eventlet" class="headerlink" title="eventlet"></a>eventlet</h2><h2 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h2><h2 id="webob"><a href="#webob" class="headerlink" title="webob"></a>webob</h2>
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>打赏，没有必要的。<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -257,7 +201,7 @@
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -270,129 +214,17 @@
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://pystack.org/2018/05/01/openstack-common/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/05/16/qemu-guest-agent/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Qemu guest agent
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/04/01/openstack-multi-region/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Openstack多区域</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
+    </div></section>
   
 
-  
-
-  
-
-  
-
-  
-  <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
-<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-var gitment = new Gitment({
-  id: "http://pystack.org/2018/05/01/openstack-common/",
-  owner: 'bspeng922',
-  repo: 'bspeng922.github.io',
-  oauth: {
-    client_id: '8b392331022094e3927a',
-    client_secret: 'b9bff33951104c5f21fddb32637d759f214893d7',
-  },
-})
-gitment.render('gitment-ctn')
-</script>
-  
+    
 
 
           </div>
@@ -424,8 +256,8 @@ gitment.render('gitment-ctn')
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

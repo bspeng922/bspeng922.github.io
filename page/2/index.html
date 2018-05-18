@@ -154,108 +154,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-errors-while-installing-openstack-magnum" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/errors-while-installing-openstack-magnum/">安装Openstack Magnum模块遇到的问题</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/10/errors-while-installing-openstack-magnum/" class="archive-article-date">
-  	<time datetime="2017-10-10T10:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Magnum安装配置"><a href="#Magnum安装配置" class="headerlink" title="Magnum安装配置"></a>Magnum安装配置</h1><p>官方文档： <a href="https://docs.openstack.org/project-install-guide/container-infrastructure-management/draft/install-rdo.html" target="_blank" rel="external">https://docs.openstack.org/project-install-guide/container-infrastructure-management/draft/install-rdo.html</a></p>
-<p>从源码安装Magnum <a href="https://docs.openstack.org/magnum/latest/install/install-guide-from-source.html" target="_blank" rel="external">https://docs.openstack.org/magnum/latest/install/install-guide-from-source.html</a></p>
-<hr>
-<h2 id="swarm-cluster创建超时"><a href="#swarm-cluster创建超时" class="headerlink" title="swarm-cluster创建超时"></a>swarm-cluster创建超时</h2><p>现象就是swarm-master一直显示在创建中，然后超过60分钟后，显示创建失败，heat显示的错误是Timeout</p>
-<p><strong>解决方法：</strong><br>超时问题是因为虚拟机中解析不到controller对应的IP地址，需要讲keystone, heat, magnum 的 public endpoint改成 IP地址。</p>
-        
-          <a class="article-more-a" href="/2017/10/10/errors-while-installing-openstack-magnum/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Magnum</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/errors-while-installing-openstack-magnum/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-cloudbase-init-for-windows-xp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -643,6 +541,107 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/06/14/cloud-init-notes/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-openstack-common" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/01/openstack-common/">Openstack基础</a>
+    </h1>
+  
+
+        
+        <a href="/2016/05/01/openstack-common/" class="archive-article-date">
+  	<time datetime="2016-04-30T19:19:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-01</time>
+</a>
+        
+        <!--<span id="busuanzi_container_page_pv">
+           阅读<span id="busuanzi_value_page_pv"></span>次
+        </span>-->
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="wsgi"><a href="#wsgi" class="headerlink" title="wsgi"></a>wsgi</h2><h2 id="Paste-amp-PasteDeploy"><a href="#Paste-amp-PasteDeploy" class="headerlink" title="Paste &amp; PasteDeploy"></a>Paste &amp; PasteDeploy</h2><p>使用Paste和PasteDeploy模块来实现WSGI服务时，都需要一个paste.ini文件。paste.ini文件的格式类似于INI格式，每个section的格式为[type:name]。</p>
+<blockquote>
+<p>composite: 这种section用于将HTTP请求分发到指定的app。<br>app: 这种section表示具体的app。<br>filter: 实现一个过滤器中间件。<br>pipeline: 用来把把一系列的filter串起来。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2016/05/01/openstack-common/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mariadb</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">master-master</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Database//" class="article-tag-list-link color4">Database</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/05/01/openstack-common/">展开全文 >></a>
         </p>
       
 
