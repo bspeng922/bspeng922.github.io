@@ -154,6 +154,56 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-neutron-code" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>appending…</p>
+        
+          <a class="article-more-a" href="/2018/05/18/neutron-code/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/18/neutron-code/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-qemu-guest-agent" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -261,55 +311,6 @@
 
 
   
-    <article id="post-neutron-code" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Create network:</p>
-<p>–&gt; api/v2/base.py<br>Controller:<br>create()<br>|<br>_create()<br>|<br>do_create()<br>|<br>obj_creator =<br>–&gt; plugins/plugin.py<br>Ml2Plugin:<br>create_network()<br>|<br>_before_create_network()<br>|<br>_create_network_db()<br>|<br>_after_create_network()  – self.mechanism_manager.create_network_postcommit()<br>|<br>–&gt; plugins/ml2/manager.py<br>create_network_postcommit()<br>|<br>plugins/ml2/drivers/linuxbridge/mech_driver/mech_linuxbridge.py<br>LinuxbridgeMechanismDriver: – mech_agent.SimpleAgentMechanismDriverBase – AgentMechanismDriverBase – api.MechanismDriver</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/10/neutron-code/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-openstack-common" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -337,35 +338,9 @@
 <blockquote>
 <p>composite: 这种section用于将HTTP请求分发到指定的app。<br>app: 这种section表示具体的app。<br>filter: 实现一个过滤器中间件。<br>pipeline: 用来把把一系列的filter串起来。</p>
 </blockquote>
-<h3 id="section-composite"><a href="#section-composite" class="headerlink" title="section composite"></a>section composite</h3><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[composite<span class="function">:main</span>]</span><br><span class="line">use = egg<span class="function">:Paste</span><span class="comment">#urlmap</span></span><br><span class="line"><span class="string">/v2.0</span> = public_api       <span class="comment"># /v2.0　开头的请求会路由给public_api处理</span></span><br><span class="line"><span class="string">/v3</span> = api_v3             <span class="comment"># /v3　开头的请求会路由个api_v3处理</span></span><br><span class="line">/ = public_<span class="keyword">version</span>_api   <span class="comment"># / 开头的请求会路由给public_version_api处理</span></span><br></pre></td></tr></table></figure>
-<p>在composite seciont中，use是一个关键字，指定处理请求的代码。egg:Paste#urlmap表示到Paste模块的egg-info中去查找urlmap关键字所对应的函数。<br>composite section中其他的关键字则是urlmap_factory()函数的参数，用于表示不同的URL path前缀。urlmap_factory()函数会返回一个WSGI app，其功能是根据不同的URL path前缀，把请求路由给不同的app。路由的对象其实就是paste.ini中其他secion的名字，类型必须是app或者pipeline。</p>
-<h3 id="section-pipeline"><a href="#section-pipeline" class="headerlink" title="section pipeline"></a>section pipeline</h3><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[pipeline:api_v3]</span></span><br><span class="line"><span class="attr">pipeline</span> = sizelimit url_normalize request_id build_auth_context token_auth admin_token_auth json_body ec2_extension_v3 s3_extension simple_cert_extension revoke_extension federation_extension oauth1_extension endpoint_filter_extension endpoint_policy_extension service_v3</span><br></pre></td></tr></table></figure>
-<p>pipeline关键字指定了很多个名字，这些名字也是paste.ini文件中其他section的名字。请求会从最前面的section开始处理，一直向后传递。pipeline指定的section有如下要求：</p>
-<pre><code>+ 最后一个名字对应的section一定要是一个app
-+ 非最后一个名字对应的section一定要是一个filter
-</code></pre><h3 id="section-filter"><a href="#section-filter" class="headerlink" title="section filter"></a>section filter</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="attribute">filter</span>:sizelimit]</span><br><span class="line">paste<span class="selector-class">.filter_factory</span> = oslo_middleware<span class="selector-class">.sizelimit</span>:RequestBodySizeLimiter.factory</span><br></pre></td></tr></table></figure>
-<p>filter是用来过滤请求和响应的，以WSGI中间件的方式实现。这个是api_v3这个pipeline指定的第一个filter，作用是限制请求的大小。其中的paste.filter_factory表示调用哪个函数来获得这个filter中间件。</p>
-<h3 id="section-app"><a href="#section-app" class="headerlink" title="section app"></a>section app</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[app:service_v3]</span><br><span class="line">paste<span class="selector-class">.app_factory</span> = keystone<span class="selector-class">.service</span>:v3_app_factory</span><br></pre></td></tr></table></figure>
-<p>app表示实现主要功能的应用，是一个标准的WSGI application。paste.app_factory表示调用哪个函数来获得这个app。</p>
-<p>paste.ini中这一大堆配置的作用就是把我们用Python写的WSGI application和middleware串起来，规定好HTTP请求处理的路径。</p>
-<p>POST <a href="http://hostname:35357/v3/auth/tokens" target="_blank" rel="external">http://hostname:35357/v3/auth/tokens</a></p>
-<p>hostname:35357   (apache2)</p>
-<p>/<br>/etc/httpd/conf.d/wsgi-keystone.conf<br>WSGIScriptAlias / /usr/bin/keystone-wsgi-admin</p>
-<p>v3<br>/etc/keystone/keystone-paste.ini<br>/v3 = api_v3</p>
-<p>pipeline = healthcheck … s3_extension service_v3</p>
-<p>[app:service_v3]<br>use = egg:keystone#service_v3</p>
-<p>/setup.cfg<br>paste.app_factory =<br>    …<br>    service_v3 = keystone.version.service:v3_app_factory</p>
-<p>auth_routers<br>auth_controller = controllers.Auth()<br>authenticate_for_token()</p>
-<h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="attribute">filter</span>:build_auth_context]</span><br><span class="line">paste<span class="selector-class">.filter_factory</span> = keystone<span class="selector-class">.middleware</span>:AuthContextMiddleware.factory</span><br></pre></td></tr></table></figure>
-<h2 id="pecan"><a href="#pecan" class="headerlink" title="pecan"></a>pecan</h2><p>使用Pecan的OpenStack项目时就会比较容易找到入口。</p>
-<blockquote>
-<p>app.py 一般包含了Pecan应用的入口，包含应用初始化代码<br>config.py 包含Pecan的应用配置，会被app.py使用<br>controllers/ 这个目录会包含所有的控制器，也就是API具体逻辑的地方<br>controllers/root.py 这个包含根路径对应的控制器<br>controllers/v1/ 这个目录对应v1版本的API的控制器。如果有多个版本的API，你一般能看到v2等目录。</p>
-</blockquote>
-<p>Pecan的配置很容易，通过一个Python源码式的配置文件就可以完成基本的配置。这个配置的主要目的是指定应用程序的root，然后用于生成WSGI application。在magnum/api/config.py文件中可以找到这个文件</p>
-<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">app = &#123;</span><br><span class="line">    <span class="string">'root'</span>: <span class="string">'magnum.api.controllers.root.RootController'</span>,</span><br><span class="line">    <span class="string">'modules'</span>: [<span class="string">'magnum.api'</span>],</span><br><span class="line">    <span class="string">'debug'</span>: <span class="symbol">False</span>,</span><br><span class="line">    <span class="string">'hooks'</span>: [</span><br><span class="line">        hooks.<span class="symbol">ContextHook</span>(),</span><br><span class="line">        hooks.<span class="symbol">RPCHook</span>(),</span><br><span class="line">        hooks.<span class="symbol">NoExceptionTracebackHook</span>(),</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">'acl_public_routes'</span>: [</span><br><span class="line">        <span class="string">'/'</span></span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面这个app对象就是Pecan的配置，每个Pecan应用都需要有这么一个名为app的配置。app配置中最主要的就是root的值，这个值表示了应用程序的入口，也就是从哪个地方开始解析HTTP的根path：/。hooks对应的配置是一些Pecan的hook，作用类似于WSGI Middleware。</p>
-<h2 id="WSME"><a href="#WSME" class="headerlink" title="WSME"></a>WSME</h2><p>Pecan可以比较好的处理HTTP请求中的参数以及控制HTTP返回值。那么为什么我们还需要WSME呢？因为Pecan在做下面这个事情的时候比较麻烦：请求参数和响应内容的类型检查（英文简称就是typing）。当然，做是可以做的，不过你需要自己访问pecan.request和pecan.response，然后检查指定的值的类型。WSME就是为解决这个问题而生的，而且适用场景就是RESTful API。</p>
-<h2 id="stevedore"><a href="#stevedore" class="headerlink" title="stevedore"></a>stevedore</h2><h2 id="eventlet"><a href="#eventlet" class="headerlink" title="eventlet"></a>eventlet</h2><h2 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h2><h2 id="webob"><a href="#webob" class="headerlink" title="webob"></a>webob</h2>
+        
+          <a class="article-more-a" href="/2018/05/01/openstack-common/#more">more >></a>
+        
       
 
       
@@ -1257,6 +1232,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">md5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">large file</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
               </li>
              
@@ -1270,18 +1257,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">md5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">large file</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1305,15 +1280,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">APT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">neutron</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">fwaas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">APT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1333,11 +1308,23 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vbs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">qos</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1361,39 +1348,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">virtio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mariadb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">最大连接数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vbs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1405,7 +1360,23 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">region</a>
+                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mariadb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">最大连接数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1418,6 +1389,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vdi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">region</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1465,6 +1440,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
               </li>
              
@@ -1474,10 +1453,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">USB网卡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
               </li>
              
               <li class="article-tag-list-item">
