@@ -154,6 +154,650 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-rabbitmq-notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/02/14/rabbitmq-notes/">RabbitMQ Notes</a>
+    </h1>
+  
+
+        
+        <a href="/2013/02/14/rabbitmq-notes/" class="archive-article-date">
+  	<time datetime="2013-02-14T08:25:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-02-14</time>
+</a>
+        
+        <!--<span id="busuanzi_container_page_pv">
+           阅读<span id="busuanzi_value_page_pv"></span>次
+        </span>-->
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Arch"><a href="#Arch" class="headerlink" title="Arch"></a>Arch</h2><p><img src="" alt="rabbitmq-arch.png"></p>
+<ul>
+<li>Message</li>
+</ul>
+<p>消息，消息是不具名的，它由消息头和消息体组成。消息体是不透明的，而消息头则由一系列的可选属性组成，这些属性包括routing-key（路由键）、priority（相对于其他消息的优先权）、delivery-mode（指出该消息可能需要持久性存储）等。</p>
+<ul>
+<li>Publisher</li>
+</ul>
+<p>消息的生产者，也是一个向交换器发布消息的客户端应用程序。</p>
+<ul>
+<li>Exchange</li>
+</ul>
+<p>交换器，用来接收生产者发送的消息并将这些消息路由给服务器中的队列。</p>
+<ul>
+<li>Binding</li>
+</ul>
+<p>绑定，用于消息队列和交换器之间的关联。一个绑定就是基于路由键将交换器和消息队列连接起来的路由规则，所以可以将交换器理解成一个由绑定构成的路由表。</p>
+<ul>
+<li>Queue</li>
+</ul>
+<p>消息队列，用来保存消息直到发送给消费者。它是消息的容器，也是消息的终点。一个消息可投入一个或多个队列。消息一直在队列里面，等待消费者连接到这个队列将其取走。</p>
+<ul>
+<li>Connection</li>
+</ul>
+<p>网络连接，比如一个TCP连接。</p>
+<ul>
+<li>Channel</li>
+</ul>
+<p>信道，多路复用连接中的一条独立的双向数据流通道。信道是建立在真实的TCP连接内地虚拟连接，AMQP 命令都是通过信道发出去的，不管是发布消息、订阅队列还是接收消息，这些动作都是通过信道完成。因为对于操作系统来说建立和销毁 TCP 都是非常昂贵的开销，所以引入了信道的概念，以复用一条 TCP 连接。</p>
+<ul>
+<li>Consumer</li>
+</ul>
+<p>消息的消费者，表示一个从消息队列中取得消息的客户端应用程序。</p>
+<ul>
+<li>Virtual Host</li>
+</ul>
+<p>虚拟主机，表示一批交换器、消息队列和相关对象。虚拟主机是共享相同的身份认证和加密环境的独立服务器域。每个 vhost 本质上就是一个 mini 版的 RabbitMQ 服务器，拥有自己的队列、交换器、绑定和权限机制。vhost 是 AMQP 概念的基础，必须在连接时指定，RabbitMQ 默认的 vhost 是 / 。</p>
+<ul>
+<li>Broker</li>
+</ul>
+<p>表示消息队列服务器实体。</p>
+<h3 id="direct"><a href="#direct" class="headerlink" title="direct"></a>direct</h3><p>before sending we need to make sure the recipient queue exists. If we send a message to non-existing location, RabbitMQ will just drop the message. </p>
+<p>All we need to know now is how to use a default exchange identified by an empty string. This exchange is special ‒ it allows us to specify exactly to which queue the message should go. The queue name needs to be specified in the routing_key parameter</p>
+<p>Fair dispatch: By default, RabbitMQ will send each message to the next consumer, in sequence. On average every consumer will get the same number of messages. This way of distributing messages is called round-robin. </p>
+<p>RabbitMQ just dispatches a message when the message enters the queue. It doesn’t look at the number of unacknowledged messages for a consumer. It just blindly dispatches every n-th message to the n-th consumer.</p>
+<p>In order to defeat that we can use the basic.qos method with the prefetch_count=1 setting. This tells RabbitMQ not to give more than one message to a worker at a time. </p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">channel.basic_qos(<span class="attribute">prefetch_count</span>=1)</span><br></pre></td></tr></table></figure>
+<p>RabbitMQ doesn’t allow you to redefine an existing queue with different parameters and will return an error to any program that tries to do that. </p>
+<ul>
+<li>Message acknowledgment</li>
+</ul>
+<p>In order to make sure a message is never lost, RabbitMQ supports message acknowledgments. An ack(nowledgement) is sent back by the consumer to tell RabbitMQ that a particular message had been received, processed and that RabbitMQ is free to delete it.<br>If a consumer dies (its channel is closed, connection is closed, or TCP connection is lost) without sending an ack, RabbitMQ will understand that a message wasn’t processed fully and will re-queue it. If there are other consumers online at the same time, it will then quickly redeliver it to another consumer. That way you can be sure that no message is lost, even if the workers occasionally die.<br>There aren’t any message timeouts; RabbitMQ will redeliver the message when the consumer dies. It’s fine even if processing a message takes a very, very long time.</p>
+<ul>
+<li>Message durability</li>
+</ul>
+<p>When RabbitMQ quits or crashes it will forget the queues and messages unless you tell it not to. Two things are required to make sure that messages aren’t lost: we need to mark both the queue and messages as durable.</p>
+<p>First, we need to make sure that RabbitMQ will never lose our queue. In order to do so, we need to declare it as durable:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">channel.queue_declare(<span class="attribute">queue</span>=<span class="string">'hello'</span>, <span class="attribute">durable</span>=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p>This queue_declare change needs to be applied to both the producer and consumer code.</p>
+<p>At that point we’re sure that the task_queue queue won’t be lost even if RabbitMQ restarts. Now we need to mark our messages as persistent - by supplying a delivery_mode property with a value 2.</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">channel.basic_publish(<span class="attribute">exchange</span>=<span class="string">''</span>,</span><br><span class="line">                      <span class="attribute">routing_key</span>=<span class="string">"task_queue"</span>,</span><br><span class="line">                      <span class="attribute">body</span>=message,</span><br><span class="line">                      <span class="attribute">properties</span>=pika.BasicProperties(</span><br><span class="line">                         delivery_mode = 2, # make message persistent</span><br><span class="line">                      ))</span><br></pre></td></tr></table></figure>
+<p>Although it tells RabbitMQ to save the message to disk, there is still a short time window when RabbitMQ has accepted a message and hasn’t saved it yet, RabbitMQ doesn’t do fsync(2) for every message </p>
+<p>Exchanges</p>
+<p>The core idea in the messaging model in RabbitMQ is that the producer never sends any messages directly to a queue. Actually, quite often the producer doesn’t even know if a message will be delivered to any queue at all.Instead, the producer can only send messages to an exchange.</p>
+<p>we could create a queue with a random name, or, even better - let the server choose a random queue name for us. We can do this by not supplying the queue parameter to queue_declare:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">result</span> = channel.queue_declare()</span><br></pre></td></tr></table></figure>
+<p>Secondly, once the consumer connection is closed, the queue should be deleted. There’s an exclusive flag for that:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">result</span> = channel.queue_declare(exclusive=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">result = channel.queue_declare(<span class="attribute">exclusive</span>=<span class="literal">True</span>)</span><br><span class="line">queue_name = result.method.queue</span><br><span class="line"></span><br><span class="line">channel.queue_bind(<span class="attribute">exchange</span>=<span class="string">'logs'</span>,</span><br><span class="line">                   <span class="attribute">queue</span>=queue_name)</span><br></pre></td></tr></table></figure>
+<h3 id="Management-Plugin"><a href="#Management-Plugin" class="headerlink" title="Management Plugin"></a>Management Plugin</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq-plugins <span class="builtin-name">enable</span> rabbitmq_management</span><br></pre></td></tr></table></figure>
+<p>on a fresh installation the user “guest” is created with password “guest”</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitmq</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">pika</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2013/02/14/rabbitmq-notes/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-use-terminator-to-replace-default-terminal" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/11/14/use-terminator-to-replace-default-terminal/">使用termainator替换ubuntu默认终端</a>
+    </h1>
+  
+
+        
+        <a href="/2012/11/14/use-terminator-to-replace-default-terminal/" class="archive-article-date">
+  	<time datetime="2012-11-14T06:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-11-14</time>
+</a>
+        
+        <!--<span id="busuanzi_container_page_pv">
+           阅读<span id="busuanzi_value_page_pv"></span>次
+        </span>-->
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install terminator</span><br><span class="line"></span><br><span class="line">or</span><br><span class="line"></span><br><span class="line">sudo yum install terminator</span><br></pre></td></tr></table></figure>
+<h3 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h3><blockquote>
+<p>Ctrl+Shift+E    垂直分割窗口<br>Ctrl+Shift+O    水平分割窗口<br>F11             全屏<br>Ctrl+Shift+C    复制<br>Ctrl+Shift+V    粘贴<br>Ctrl+Shift+N    或者 Ctrl+Tab 在分割的各窗口之间切换<br>Ctrl+Shift+X    将分割的某一个窗口放大至全屏使用<br>Ctrl+Shift+Z    从放大至全屏的某一窗口回到多窗格界面</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2012/11/14/use-terminator-to-replace-default-terminal/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Ubuntu</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">terminator</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2012/11/14/use-terminator-to-replace-default-terminal/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-python-code-snippet" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/10/10/python-code-snippet/">Python Code Snippet</a>
+    </h1>
+  
+
+        
+        <a href="/2012/10/10/python-code-snippet/" class="archive-article-date">
+  	<time datetime="2012-10-10T11:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-10-10</time>
+</a>
+        
+        <!--<span id="busuanzi_container_page_pv">
+           阅读<span id="busuanzi_value_page_pv"></span>次
+        </span>-->
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="check-uuid-legal"><a href="#check-uuid-legal" class="headerlink" title="check uuid legal"></a>check uuid legal</h3><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def <span class="title">_format</span>_uuid_string(<span class="keyword">string</span>):</span><br><span class="line">    <span class="literal">return</span> (<span class="keyword">string</span>.<span class="built_in">replace</span>(<span class="string">'urn:'</span>, <span class="string">''</span>)</span><br><span class="line">                  .<span class="built_in">replace</span>(<span class="string">'uuid:'</span>, <span class="string">''</span>)</span><br><span class="line">                  .strip(<span class="string">'&#123;&#125;'</span>)</span><br><span class="line">                  .<span class="built_in">replace</span>(<span class="string">'-'</span>, <span class="string">''</span>)</span><br><span class="line">                  .<span class="built_in">lower</span>())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def is_uuid_like(val):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="literal">return</span> str(<span class="built_in">uuid</span>.UUID(val)).<span class="built_in">replace</span>(<span class="string">'-'</span>, <span class="string">''</span>) == <span class="title">_format</span>_uuid_string(val)</span><br><span class="line">    except (TypeError, ValueError, AttributeError):</span><br><span class="line">        <span class="literal">return</span> False</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2012/10/10/python-code-snippet/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2012/10/10/python-code-snippet/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-download-and-execute-files-from-ftp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/09/20/download-and-execute-files-from-ftp/">VBScript下载并执行FTP上的文件</a>
+    </h1>
+  
+
+        
+        <a href="/2012/09/20/download-and-execute-files-from-ftp/" class="archive-article-date">
+  	<time datetime="2012-09-20T15:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-09-20</time>
+</a>
+        
+        <!--<span id="busuanzi_container_page_pv">
+           阅读<span id="busuanzi_value_page_pv"></span>次
+        </span>-->
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="程序功能："><a href="#程序功能：" class="headerlink" title="程序功能："></a>程序功能：</h3><blockquote>
+<p>1.程序只会下载含有关键字（forme）的文件   </p>
+<p>2.程序只会执行vbs 或者 bat类型的文件（如果需要可自行添加更多的文件支持）</p>
+<p>3.如果需要更新当前程序，新文件（ftp上的文件）需要包含关键字（syncftp）</p>
+<p>4.如果本地有同名文件，程序不会进行下载</p>
+<p>5.如果本地程序已执行过，则不会再次执行</p>
+<p>6.程序运行时会生成两个文件，一个是log文件，一个是配置文件</p>
+<p>7.如果需要定时执行，可以写为计划任务    </p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2012/09/20/download-and-execute-files-from-ftp/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vbs</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ftp</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Windows//" class="article-tag-list-link color3">Windows</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2012/09/20/download-and-execute-files-from-ftp/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-calculate-md5-value-for-large-file" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/02/26/calculate-md5-value-for-large-file/">计算大文件MD5值</a>
+    </h1>
+  
+
+        
+        <a href="/2012/02/26/calculate-md5-value-for-large-file/" class="archive-article-date">
+  	<time datetime="2012-02-26T05:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-02-26</time>
+</a>
+        
+        <!--<span id="busuanzi_container_page_pv">
+           阅读<span id="busuanzi_value_page_pv"></span>次
+        </span>-->
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>对于小文件，可以直接全部读进内存进行计算，如果是大文件的话，直接读入内存进行计算会导致内存消耗过大，甚至整个电脑卡死住，所以需要分块计算md5.</p>
+        
+          <a class="article-more-a" href="/2012/02/26/calculate-md5-value-for-large-file/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">md5</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">large file</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2012/02/26/calculate-md5-value-for-large-file/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-python-class-loader" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/02/14/python-class-loader/">How to Dynamically Load Modules or Classes</a>
+    </h1>
+  
+
+        
+        <a href="/2012/02/14/python-class-loader/" class="archive-article-date">
+  	<time datetime="2012-02-14T06:19:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2012-02-14</time>
+</a>
+        
+        <!--<span id="busuanzi_container_page_pv">
+           阅读<span id="busuanzi_value_page_pv"></span>次
+        </span>-->
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Using-the-import-Magic-Method"><a href="#Using-the-import-Magic-Method" class="headerlink" title="Using the import Magic Method"></a>Using the <strong>import</strong> Magic Method</h3><p>The easiest way to do this sort of thing is to use the “magic” method, <strong>import</strong>. In fact, if you did a Google search on this topic, that’s probably the first method you’ll find. Here’s the basic methodology:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module = __import__(module_name)</span><br><span class="line">my_class = getattr(module, class_name)</span><br><span class="line">instance = my_class()</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2012/02/14/python-class-loader/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python//" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2012/02/14/python-class-loader/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-calling-function-from-the-functions-name" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -572,18 +1216,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">md5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">large file</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
               </li>
              
@@ -593,6 +1225,22 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">md5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">large file</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -616,15 +1264,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">APT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">neutron</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">fwaas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">APT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -644,23 +1292,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vbs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">qos</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -684,23 +1320,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
+                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">virtio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -712,11 +1336,35 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">最大连接数</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
+                <a href="javascript:void(0)" class="js-tag color4">vbs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">region</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -729,10 +1377,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vdi</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">region</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -764,7 +1408,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
+                <a href="javascript:void(0)" class="js-tag color2">qemu-guest-agent</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">nova</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">rabbitmq</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">pika</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -777,6 +1433,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">USB网卡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
               </li>
              
               <li class="article-tag-list-item">

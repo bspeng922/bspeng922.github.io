@@ -154,6 +154,289 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-qemu-guest-agent" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/16/qemu-guest-agent/">Qemu guest agent</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/16/qemu-guest-agent/" class="archive-article-date">
+  	<time datetime="2018-05-16T09:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-16</time>
+</a>
+        
+        <!--<span id="busuanzi_container_page_pv">
+           阅读<span id="busuanzi_value_page_pv"></span>次
+        </span>-->
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Qemu-guest-agent是一个运行在虚拟机内部的普通应用程序，其目的是实现一种宿主机和虚拟机进行交互的方式，这种方式不依赖于网络，而是依赖于virtio-serial（默认首选方式）或者isa-serial，而QEMU则提供了串口设备的模拟及数据交换的通道，最终呈现出来的是一个串口设备（虚拟机内部）和一个unix socket文件（宿主机上）。</p>
+<p>qemu-guest-agent通过读写串口设备与宿主机上的socket通道进行交互，宿主机上可以使用普通的unix socket读写方式对socket文件进行读写，最终实现与qga的交互，交互的协议与qmp（QEMU Monitor Protocol）相同（简单来说就是使用JSON格式进行数据交换），串口设备的速率通常都较低，所以比较适合小数据量的交换。</p>
+        
+          <a class="article-more-a" href="/2018/05/16/qemu-guest-agent/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">libvirt</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">qemu-guest-agent</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">nova</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/16/qemu-guest-agent/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-neutron-code" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Create network:</p>
+<p>–&gt; api/v2/base.py<br>Controller:<br>create()<br>|<br>_create()<br>|<br>do_create()<br>|<br>obj_creator =<br>–&gt; plugins/plugin.py<br>Ml2Plugin:<br>create_network()<br>|<br>_before_create_network()<br>|<br>_create_network_db()<br>|<br>_after_create_network()  – self.mechanism_manager.create_network_postcommit()<br>|<br>–&gt; plugins/ml2/manager.py<br>create_network_postcommit()<br>|<br>plugins/ml2/drivers/linuxbridge/mech_driver/mech_linuxbridge.py<br>LinuxbridgeMechanismDriver: – mech_agent.SimpleAgentMechanismDriverBase – AgentMechanismDriverBase – api.MechanismDriver</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/10/neutron-code/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-openstack-common" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/01/openstack-common/">Openstack基础</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/01/openstack-common/" class="archive-article-date">
+  	<time datetime="2018-04-30T19:19:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-01</time>
+</a>
+        
+        <!--<span id="busuanzi_container_page_pv">
+           阅读<span id="busuanzi_value_page_pv"></span>次
+        </span>-->
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="wsgi"><a href="#wsgi" class="headerlink" title="wsgi"></a>wsgi</h2><h2 id="Paste-amp-PasteDeploy"><a href="#Paste-amp-PasteDeploy" class="headerlink" title="Paste &amp; PasteDeploy"></a>Paste &amp; PasteDeploy</h2><p>使用Paste和PasteDeploy模块来实现WSGI服务时，都需要一个paste.ini文件。paste.ini文件的格式类似于INI格式，每个section的格式为[type:name]。</p>
+<blockquote>
+<p>composite: 这种section用于将HTTP请求分发到指定的app。<br>app: 这种section表示具体的app。<br>filter: 实现一个过滤器中间件。<br>pipeline: 用来把把一系列的filter串起来。</p>
+</blockquote>
+<h3 id="section-composite"><a href="#section-composite" class="headerlink" title="section composite"></a>section composite</h3><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[composite<span class="function">:main</span>]</span><br><span class="line">use = egg<span class="function">:Paste</span><span class="comment">#urlmap</span></span><br><span class="line"><span class="string">/v2.0</span> = public_api       <span class="comment"># /v2.0　开头的请求会路由给public_api处理</span></span><br><span class="line"><span class="string">/v3</span> = api_v3             <span class="comment"># /v3　开头的请求会路由个api_v3处理</span></span><br><span class="line">/ = public_<span class="keyword">version</span>_api   <span class="comment"># / 开头的请求会路由给public_version_api处理</span></span><br></pre></td></tr></table></figure>
+<p>在composite seciont中，use是一个关键字，指定处理请求的代码。egg:Paste#urlmap表示到Paste模块的egg-info中去查找urlmap关键字所对应的函数。<br>composite section中其他的关键字则是urlmap_factory()函数的参数，用于表示不同的URL path前缀。urlmap_factory()函数会返回一个WSGI app，其功能是根据不同的URL path前缀，把请求路由给不同的app。路由的对象其实就是paste.ini中其他secion的名字，类型必须是app或者pipeline。</p>
+<h3 id="section-pipeline"><a href="#section-pipeline" class="headerlink" title="section pipeline"></a>section pipeline</h3><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[pipeline:api_v3]</span></span><br><span class="line"><span class="attr">pipeline</span> = sizelimit url_normalize request_id build_auth_context token_auth admin_token_auth json_body ec2_extension_v3 s3_extension simple_cert_extension revoke_extension federation_extension oauth1_extension endpoint_filter_extension endpoint_policy_extension service_v3</span><br></pre></td></tr></table></figure>
+<p>pipeline关键字指定了很多个名字，这些名字也是paste.ini文件中其他section的名字。请求会从最前面的section开始处理，一直向后传递。pipeline指定的section有如下要求：</p>
+<pre><code>+ 最后一个名字对应的section一定要是一个app
++ 非最后一个名字对应的section一定要是一个filter
+</code></pre><h3 id="section-filter"><a href="#section-filter" class="headerlink" title="section filter"></a>section filter</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="attribute">filter</span>:sizelimit]</span><br><span class="line">paste<span class="selector-class">.filter_factory</span> = oslo_middleware<span class="selector-class">.sizelimit</span>:RequestBodySizeLimiter.factory</span><br></pre></td></tr></table></figure>
+<p>filter是用来过滤请求和响应的，以WSGI中间件的方式实现。这个是api_v3这个pipeline指定的第一个filter，作用是限制请求的大小。其中的paste.filter_factory表示调用哪个函数来获得这个filter中间件。</p>
+<h3 id="section-app"><a href="#section-app" class="headerlink" title="section app"></a>section app</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[app:service_v3]</span><br><span class="line">paste<span class="selector-class">.app_factory</span> = keystone<span class="selector-class">.service</span>:v3_app_factory</span><br></pre></td></tr></table></figure>
+<p>app表示实现主要功能的应用，是一个标准的WSGI application。paste.app_factory表示调用哪个函数来获得这个app。</p>
+<p>paste.ini中这一大堆配置的作用就是把我们用Python写的WSGI application和middleware串起来，规定好HTTP请求处理的路径。</p>
+<p>POST <a href="http://hostname:35357/v3/auth/tokens" target="_blank" rel="external">http://hostname:35357/v3/auth/tokens</a></p>
+<p>hostname:35357   (apache2)</p>
+<p>/<br>/etc/httpd/conf.d/wsgi-keystone.conf<br>WSGIScriptAlias / /usr/bin/keystone-wsgi-admin</p>
+<p>v3<br>/etc/keystone/keystone-paste.ini<br>/v3 = api_v3</p>
+<p>pipeline = healthcheck … s3_extension service_v3</p>
+<p>[app:service_v3]<br>use = egg:keystone#service_v3</p>
+<p>/setup.cfg<br>paste.app_factory =<br>    …<br>    service_v3 = keystone.version.service:v3_app_factory</p>
+<p>auth_routers<br>auth_controller = controllers.Auth()<br>authenticate_for_token()</p>
+<h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="attribute">filter</span>:build_auth_context]</span><br><span class="line">paste<span class="selector-class">.filter_factory</span> = keystone<span class="selector-class">.middleware</span>:AuthContextMiddleware.factory</span><br></pre></td></tr></table></figure>
+<h2 id="pecan"><a href="#pecan" class="headerlink" title="pecan"></a>pecan</h2><p>使用Pecan的OpenStack项目时就会比较容易找到入口。</p>
+<blockquote>
+<p>app.py 一般包含了Pecan应用的入口，包含应用初始化代码<br>config.py 包含Pecan的应用配置，会被app.py使用<br>controllers/ 这个目录会包含所有的控制器，也就是API具体逻辑的地方<br>controllers/root.py 这个包含根路径对应的控制器<br>controllers/v1/ 这个目录对应v1版本的API的控制器。如果有多个版本的API，你一般能看到v2等目录。</p>
+</blockquote>
+<p>Pecan的配置很容易，通过一个Python源码式的配置文件就可以完成基本的配置。这个配置的主要目的是指定应用程序的root，然后用于生成WSGI application。在magnum/api/config.py文件中可以找到这个文件</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">app = &#123;</span><br><span class="line">    <span class="string">'root'</span>: <span class="string">'magnum.api.controllers.root.RootController'</span>,</span><br><span class="line">    <span class="string">'modules'</span>: [<span class="string">'magnum.api'</span>],</span><br><span class="line">    <span class="string">'debug'</span>: <span class="symbol">False</span>,</span><br><span class="line">    <span class="string">'hooks'</span>: [</span><br><span class="line">        hooks.<span class="symbol">ContextHook</span>(),</span><br><span class="line">        hooks.<span class="symbol">RPCHook</span>(),</span><br><span class="line">        hooks.<span class="symbol">NoExceptionTracebackHook</span>(),</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">'acl_public_routes'</span>: [</span><br><span class="line">        <span class="string">'/'</span></span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面这个app对象就是Pecan的配置，每个Pecan应用都需要有这么一个名为app的配置。app配置中最主要的就是root的值，这个值表示了应用程序的入口，也就是从哪个地方开始解析HTTP的根path：/。hooks对应的配置是一些Pecan的hook，作用类似于WSGI Middleware。</p>
+<h2 id="WSME"><a href="#WSME" class="headerlink" title="WSME"></a>WSME</h2><p>Pecan可以比较好的处理HTTP请求中的参数以及控制HTTP返回值。那么为什么我们还需要WSME呢？因为Pecan在做下面这个事情的时候比较麻烦：请求参数和响应内容的类型检查（英文简称就是typing）。当然，做是可以做的，不过你需要自己访问pecan.request和pecan.response，然后检查指定的值的类型。WSME就是为解决这个问题而生的，而且适用场景就是RESTful API。</p>
+<h2 id="stevedore"><a href="#stevedore" class="headerlink" title="stevedore"></a>stevedore</h2><h2 id="eventlet"><a href="#eventlet" class="headerlink" title="eventlet"></a>eventlet</h2><h2 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h2><h2 id="webob"><a href="#webob" class="headerlink" title="webob"></a>webob</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mariadb</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">master-master</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Database//" class="article-tag-list-link color4">Database</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/01/openstack-common/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-openstack-multi-region" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -848,316 +1131,6 @@
 
 
   
-    <article id="post-install-openstack-zun" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/14/install-openstack-zun/">安装Openstack ZUN模块</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/14/install-openstack-zun/" class="archive-article-date">
-  	<time datetime="2017-10-14T03:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-14</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="安装-zun"><a href="#安装-zun" class="headerlink" title="安装 zun"></a>安装 zun</h3><p><a href="https://review.openstack.org/#/c/504537/11/doc/source/install/controller-install-ubuntu.rst" target="_blank" rel="external">https://review.openstack.org/#/c/504537/11/doc/source/install/controller-install-ubuntu.rst</a></p>
-<p><a href="https://review.openstack.org/#/c/504537/11/doc/source/install/compute-install-ubuntu.rst" target="_blank" rel="external">https://review.openstack.org/#/c/504537/11/doc/source/install/compute-install-ubuntu.rst</a></p>
-<p>Queens版安装文档： <a href="https://docs.openstack.org/zun/queens/install/" target="_blank" rel="external">https://docs.openstack.org/zun/queens/install/</a></p>
-        
-          <a class="article-more-a" href="/2017/10/14/install-openstack-zun/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">zun</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kuryr</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/14/install-openstack-zun/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-errors-while-installing-openstack-magnum" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/errors-while-installing-openstack-magnum/">安装Openstack Magnum模块遇到的问题</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/10/errors-while-installing-openstack-magnum/" class="archive-article-date">
-  	<time datetime="2017-10-10T10:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Magnum安装配置"><a href="#Magnum安装配置" class="headerlink" title="Magnum安装配置"></a>Magnum安装配置</h1><p>官方文档： <a href="https://docs.openstack.org/project-install-guide/container-infrastructure-management/draft/install-rdo.html" target="_blank" rel="external">https://docs.openstack.org/project-install-guide/container-infrastructure-management/draft/install-rdo.html</a></p>
-<p>从源码安装Magnum <a href="https://docs.openstack.org/magnum/latest/install/install-guide-from-source.html" target="_blank" rel="external">https://docs.openstack.org/magnum/latest/install/install-guide-from-source.html</a></p>
-<hr>
-<h2 id="swarm-cluster创建超时"><a href="#swarm-cluster创建超时" class="headerlink" title="swarm-cluster创建超时"></a>swarm-cluster创建超时</h2><p>现象就是swarm-master一直显示在创建中，然后超过60分钟后，显示创建失败，heat显示的错误是Timeout</p>
-<p><strong>解决方法：</strong><br>超时问题是因为虚拟机中解析不到controller对应的IP地址，需要讲keystone, heat, magnum 的 public endpoint改成 IP地址。</p>
-        
-          <a class="article-more-a" href="/2017/10/10/errors-while-installing-openstack-magnum/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Magnum</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/errors-while-installing-openstack-magnum/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-compile-virt-viewer-on-arm-platform" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/14/compile-virt-viewer-on-arm-platform/">在ARM平台上编译Virt Viewer</a>
-    </h1>
-  
-
-        
-        <a href="/2016/11/14/compile-virt-viewer-on-arm-platform/" class="archive-article-date">
-  	<time datetime="2016-11-14T06:48:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-14</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="libusb"><a href="#libusb" class="headerlink" title="libusb"></a>libusb</h2><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure  --host=arm-linux</span><br><span class="line"><span class="built_in">make</span></span><br><span class="line"><span class="built_in">make</span> install</span><br></pre></td></tr></table></figure>
-<h2 id="usbredir"><a href="#usbredir" class="headerlink" title="usbredir"></a>usbredir</h2><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure  --host=arm-linux</span><br><span class="line"><span class="built_in">make</span></span><br><span class="line"><span class="built_in">make</span> install</span><br></pre></td></tr></table></figure>
-<h2 id="spice-gtk"><a href="#spice-gtk" class="headerlink" title="spice-gtk"></a>spice-gtk</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure <span class="attribute">--host</span>=arm-linux <span class="attribute">--enable-usbredir</span>=<span class="literal">yes</span> <span class="attribute">--enable-smartcard</span>=<span class="literal">no</span> <span class="attribute">--with-gtk</span>=3.0</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2016/11/14/compile-virt-viewer-on-arm-platform/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spice</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Virt-viewer</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ARM</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Spice//" class="article-tag-list-link color1">Spice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/14/compile-virt-viewer-on-arm-platform/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1284,18 +1257,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">md5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">large file</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">cloud-init</a>
               </li>
              
@@ -1305,6 +1266,22 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">cloudbase-init</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">md5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">large file</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1328,15 +1305,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">APT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">neutron</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">fwaas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">APT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1356,23 +1333,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vbs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">qos</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1396,23 +1361,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
+                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">virtio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1424,11 +1377,35 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">最大连接数</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">master-master</a>
+                <a href="javascript:void(0)" class="js-tag color4">vbs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">region</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1441,10 +1418,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vdi</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">region</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1476,7 +1449,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
+                <a href="javascript:void(0)" class="js-tag color2">qemu-guest-agent</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">nova</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">rabbitmq</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">pika</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1489,6 +1474,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">USB网卡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
               </li>
              
               <li class="article-tag-list-item">
