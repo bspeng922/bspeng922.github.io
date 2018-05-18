@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://pystack.org/2018/05/16/qemu-guest-agent/</loc>
+    
+    <lastmod>2018-05-18T07:33:19.411Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pystack.org/2014/05/16/neutron-code/</loc>
+    
+    <lastmod>2018-05-18T07:33:16.835Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://pystack.org/2018/05/01/openstack-common/</loc>
     
-    <lastmod>2018-05-18T07:31:09.965Z</lastmod>
+    <lastmod>2018-05-18T07:31:29.681Z</lastmod>
     
   </url>
   
@@ -12,20 +26,6 @@
     <loc>http://pystack.org/2013/02/14/rabbitmq-notes/</loc>
     
     <lastmod>2018-05-18T07:30:49.937Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pystack.org/2018/05/18/neutron-code/</loc>
-    
-    <lastmod>2018-05-18T07:30:01.184Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pystack.org/2018/05/16/qemu-guest-agent/</loc>
-    
-    <lastmod>2018-05-18T07:26:26.154Z</lastmod>
     
   </url>
   

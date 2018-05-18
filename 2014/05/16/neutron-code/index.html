@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://pystack.org">
-  <title>Pystack.org</title>
+  <title>Neutron 代码分析 | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="appending…">
-<meta name="keywords" content="python,openstack,cloud,nova,neutron,keystone,horizon,vmware,cinder,heat,docker,vbscript,jquery,javascript,html5,极客,编程,代码,开源">
+  <meta name="description" content="pending…">
+<meta name="keywords" content="python,openstack,neutron">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Pystack.org">
-<meta property="og:url" content="http://pystack.org/2018/05/18/neutron-code/index.html">
+<meta property="og:title" content="Neutron 代码分析">
+<meta property="og:url" content="http://pystack.org/2014/05/16/neutron-code/index.html">
 <meta property="og:site_name" content="Pystack.org">
-<meta property="og:description" content="appending…">
+<meta property="og:description" content="pending…">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-18T07:30:01.184Z">
+<meta property="og:updated_time" content="2018-05-18T07:33:16.835Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pystack.org">
-<meta name="twitter:description" content="appending…">
+<meta name="twitter:title" content="Neutron 代码分析">
+<meta name="twitter:description" content="pending…">
   
     <link rel="alternative" href="/atom.xml" title="Pystack.org" type="application/atom+xml">
   
@@ -156,9 +156,27 @@
             <article id="post-neutron-code" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Neutron 代码分析
+    </h1>
+  
+
+        
+        <a href="/2014/05/16/neutron-code/" class="archive-article-date">
+  	<time datetime="2014-05-16T09:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-05-16</time>
+</a>
+        
+        <!--<span id="busuanzi_container_page_pv">
+           阅读<span id="busuanzi_value_page_pv"></span>次
+        </span>-->
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>appending…</p>
+        <p>pending…</p>
 <a id="more"></a>
 <p>Create network:</p>
 <p>–&gt; api/v2/base.py<br>Controller:<br>create()<br>|<br>_create()<br>|<br>do_create()<br>|<br>obj_creator =<br>–&gt; plugins/plugin.py<br>Ml2Plugin:<br>create_network()<br>|<br>_before_create_network()<br>|<br>_create_network_db()<br>|<br>_after_create_network()  – self.mechanism_manager.create_network_postcommit()<br>|<br>–&gt; plugins/ml2/manager.py<br>create_network_postcommit()<br>|<br>plugins/ml2/drivers/linuxbridge/mech_driver/mech_linuxbridge.py<br>LinuxbridgeMechanismDriver: – mech_agent.SimpleAgentMechanismDriverBase – AgentMechanismDriverBase – api.MechanismDriver</p>
@@ -175,7 +193,7 @@
             <span class="tooltip-content">
               <span class="tooltip-text">
                 <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢大佬<i class="icon icon-quo-right"></i></p>
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>打赏，没有必要的。<i class="icon icon-quo-right"></i></p>
                   <div class="reward-box">
                     
                     
@@ -191,7 +209,37 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">neutron</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -241,7 +289,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://pystack.org/2018/05/18/neutron-code/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://pystack.org/2014/05/16/neutron-code/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -255,9 +303,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2014/11/25/openstack-import-vmdk-and-vdi-image/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Openstack导入VMDK和VDI镜像
+        
+      </div>
+    </a>
   
-    <a href="/2018/05/16/qemu-guest-agent/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Qemu guest agent</div>
+  
+    <a href="/2014/03/22/install-vdagent-on-windows-guest/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Openstack windows guest安装spice-guest-tools</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -296,7 +353,7 @@
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://pystack.org/2018/05/18/neutron-code/",
+  id: "http://pystack.org/2014/05/16/neutron-code/",
   owner: 'bspeng922',
   repo: 'bspeng922.github.io',
   oauth: {
