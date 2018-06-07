@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://pystack.org/2018/06/01/openstack-timeout-when-execute-nova-or-neutron-commands/</loc>
+    <lastmod>2018-06-07T12:39:59.815Z</lastmod>
+    <data>
+        <display>
+        <title>openstack命令超时</title>
+        <pubTime>2018-06-01T10:39:24.000Z</pubTime>
+        
+        <tag>openstack</tag>
+         
+        <tag>timeout</tag>
+         
+         
+           
+             
+              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://pystack.org/2016/05/01/openstack-common/</loc>
     <lastmod>2018-06-07T12:29:24.520Z</lastmod>
     <data>
@@ -56,28 +78,6 @@
         <display>
         <title>openstack optimization</title>
         <pubTime>2000-06-01T10:39:24.000Z</pubTime>
-        
-        <tag>openstack</tag>
-         
-        <tag>timeout</tag>
-         
-         
-           
-             
-              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://pystack.org/2018/06/01/openstack-timeout-when-execute-nova-or-neutron-commands/</loc>
-    <lastmod>2018-06-07T12:27:27.129Z</lastmod>
-    <data>
-        <display>
-        <title>openstack命令超时</title>
-        <pubTime>2018-06-01T10:39:24.000Z</pubTime>
         
         <tag>openstack</tag>
          

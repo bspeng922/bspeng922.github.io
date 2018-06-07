@@ -17,7 +17,7 @@
 <meta property="og:description" content="问题我在公司办公网络内手动安装了openstack，安装完成后将服务器放到别的地方，网段什么的都不变。放到新地方之后发现 openstack dashboard 打开特别慢，在dashboard上创建虚拟机的时候提示超时，在服务器上执行 nova service-list之类的命令发现也特别慢，要好几分钟才能有显示。日志里面的请求时间可以看到一个请求的时间竟然要两分钟！">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pystack.org/assets/img/tcpdump-dns.png">
-<meta property="og:updated_time" content="2018-06-07T12:27:27.129Z">
+<meta property="og:updated_time" content="2018-06-07T12:39:59.815Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="openstack命令超时">
 <meta name="twitter:description" content="问题我在公司办公网络内手动安装了openstack，安装完成后将服务器放到别的地方，网段什么的都不变。放到新地方之后发现 openstack dashboard 打开特别慢，在dashboard上创建虚拟机的时候提示超时，在服务器上执行 nova service-list之类的命令发现也特别慢，要好几分钟才能有显示。日志里面的请求时间可以看到一个请求的时间竟然要两分钟！">
@@ -186,8 +186,9 @@
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -<span class="selector-tag">i</span> eth0 -w aaaaaaa.pcap</span><br></pre></td></tr></table></figure>
 <p>wireshark打开包之后就发现了异常了</p>
 <p><img src="/assets/img/tcpdump-dns.png" alt=""></p>
-<p>抓到的包里面有太多的DNS包了，一直在解析controller这个地址，找到问题了就好解决了：直接把dns改成127.0.0.1，再重启dnsmasq服务。</p>
+<p>抓到的包里面有太多的DNS包了，一直在解析controller这个地址，加上新的环境不能连internet，所以系统一直在解析controller，找到问题了就好解决了：直接把dns改成127.0.0.1，再重启dnsmasq服务。</p>
 <figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@controller</span> ~]<span class="meta"># vim /etc/resolv.conf </span></span><br><span class="line">nameserver <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line"></span><br><span class="line">[root<span class="symbol">@controller</span> ~]<span class="meta"># systemctl restart dnsmasq</span></span><br></pre></td></tr></table></figure>
+<p>所以，另一个解决方法就是让服务器能上网。</p>
 
       
 
@@ -556,15 +557,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">qos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vbs</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ftp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">qos</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -620,15 +621,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">最大连接数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">master-master</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">timeout</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">最大连接数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -704,10 +705,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kali linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
               </li>
              
@@ -717,6 +714,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">USB网卡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kali linux</a>
               </li>
              
               <li class="article-tag-list-item">

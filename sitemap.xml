@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://pystack.org/2018/06/01/openstack-timeout-when-execute-nova-or-neutron-commands/</loc>
+    
+    <lastmod>2018-06-07T12:39:59.815Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://pystack.org/2016/05/01/openstack-common/</loc>
     
     <lastmod>2018-06-07T12:29:24.520Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://pystack.org/2000/06/01/openstack-optimization/</loc>
     
     <lastmod>2018-06-07T12:29:22.168Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pystack.org/2018/06/01/openstack-timeout-when-execute-nova-or-neutron-commands/</loc>
-    
-    <lastmod>2018-06-07T12:27:27.129Z</lastmod>
     
   </url>
   
