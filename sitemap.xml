@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://pystack.org/2016/05/01/openstack-common/</loc>
+    
+    <lastmod>2018-06-07T12:29:24.520Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pystack.org/2000/06/01/openstack-driving-in-the-fast-lane/</loc>
+    
+    <lastmod>2018-06-07T12:29:23.576Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pystack.org/2000/06/01/openstack-optimization/</loc>
+    
+    <lastmod>2018-06-07T12:29:22.168Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://pystack.org/2018/06/01/openstack-timeout-when-execute-nova-or-neutron-commands/</loc>
     
     <lastmod>2018-06-07T12:27:27.129Z</lastmod>
@@ -9,30 +30,9 @@
   </url>
   
   <url>
-    <loc>http://pystack.org/2018/06/06/openstack-driving-in-the-fast-lane/</loc>
-    
-    <lastmod>2018-06-06T08:23:05.282Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pystack.org/2018/05/29/openstack-optimization/</loc>
-    
-    <lastmod>2018-05-29T01:57:50.984Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://pystack.org/2013/02/14/rabbitmq-notes/</loc>
     
     <lastmod>2018-05-24T01:32:10.275Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pystack.org/2016/05/01/openstack-common/</loc>
-    
-    <lastmod>2018-05-23T06:02:03.423Z</lastmod>
     
   </url>
   

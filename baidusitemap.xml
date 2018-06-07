@@ -4,12 +4,36 @@
 
     
   <url>
-    <loc>http://pystack.org/2018/06/01/openstack-timeout-when-execute-nova-or-neutron-commands/</loc>
-    <lastmod>2018-06-07T12:27:27.129Z</lastmod>
+    <loc>http://pystack.org/2016/05/01/openstack-common/</loc>
+    <lastmod>2018-06-07T12:29:24.520Z</lastmod>
     <data>
         <display>
-        <title>openstack命令超时</title>
-        <pubTime>2018-06-01T10:39:24.000Z</pubTime>
+        <title>Openstack基础</title>
+        <pubTime>2016-04-30T19:19:24.000Z</pubTime>
+        
+        <tag>mysql</tag>
+         
+        <tag>mariadb</tag>
+         
+        <tag>master-master</tag>
+         
+         
+           
+             
+              <breadCrumb title="Database" url="http://pystack.org/categories/Database/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2000/06/01/openstack-driving-in-the-fast-lane/</loc>
+    <lastmod>2018-06-07T12:29:23.576Z</lastmod>
+    <data>
+        <display>
+        <title>openstack driving in the fast lane</title>
+        <pubTime>2000-06-01T10:39:24.000Z</pubTime>
         
         <tag>openstack</tag>
          
@@ -26,30 +50,44 @@
 
     
   <url>
-    <loc>http://pystack.org/2018/06/06/openstack-driving-in-the-fast-lane/</loc>
-    <lastmod>2018-06-06T08:23:05.282Z</lastmod>
+    <loc>http://pystack.org/2000/06/01/openstack-optimization/</loc>
+    <lastmod>2018-06-07T12:29:22.168Z</lastmod>
     <data>
         <display>
-        <title></title>
-        <pubTime>2018-06-06T08:23:05.282Z</pubTime>
+        <title>openstack optimization</title>
+        <pubTime>2000-06-01T10:39:24.000Z</pubTime>
         
+        <tag>openstack</tag>
+         
+        <tag>timeout</tag>
+         
          
            
+             
+              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
+          
         </display>
     </data>
     </url>
 
     
   <url>
-    <loc>http://pystack.org/2018/05/29/openstack-optimization/</loc>
-    <lastmod>2018-05-29T01:57:50.984Z</lastmod>
+    <loc>http://pystack.org/2018/06/01/openstack-timeout-when-execute-nova-or-neutron-commands/</loc>
+    <lastmod>2018-06-07T12:27:27.129Z</lastmod>
     <data>
         <display>
-        <title></title>
-        <pubTime>2018-05-29T01:57:50.984Z</pubTime>
+        <title>openstack命令超时</title>
+        <pubTime>2018-06-01T10:39:24.000Z</pubTime>
         
+        <tag>openstack</tag>
+         
+        <tag>timeout</tag>
+         
          
            
+             
+              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
+          
         </display>
     </data>
     </url>
@@ -73,30 +111,6 @@
            
              
               <breadCrumb title="Python" url="http://pystack.org/categories/Python/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://pystack.org/2016/05/01/openstack-common/</loc>
-    <lastmod>2018-05-23T06:02:03.423Z</lastmod>
-    <data>
-        <display>
-        <title>Openstack基础</title>
-        <pubTime>2016-04-30T19:19:24.000Z</pubTime>
-        
-        <tag>mysql</tag>
-         
-        <tag>mariadb</tag>
-         
-        <tag>master-master</tag>
-         
-         
-           
-             
-              <breadCrumb title="Database" url="http://pystack.org/categories/Database/"/>
           
         </display>
     </data>
@@ -965,9 +979,9 @@
          
         <tag>Virt-viewer</tag>
          
-        <tag>MinGW</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>MinGW</tag>
          
          
            
@@ -991,9 +1005,9 @@
          
         <tag>Virt-viewer</tag>
          
-        <tag>Linux</tag>
-         
         <tag>ARM</tag>
+         
+        <tag>Linux</tag>
          
          
            
