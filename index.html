@@ -154,6 +154,214 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-openstack-driving-in-the-fast-lane" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>CPU Pinning and NUMA Topology Awareness in OpenStack Compute</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@controller ~]<span class="comment"># yum install numactl -y</span></span><br><span class="line">[root@controller ~]<span class="comment"># numactl --hardware    </span></span><br><span class="line">available:<span class="number"> 2 </span>nodes (0-1)</span><br><span class="line">node<span class="number"> 0 </span>cpus:<span class="number"> 0 </span>1<span class="number"> 2 </span>3<span class="number"> 4 </span>5<span class="number"> 6 </span>7<span class="number"> 8 </span>9<span class="number"> 20 </span>21<span class="number"> 22 </span>23<span class="number"> 24 </span>25<span class="number"> 26 </span>27<span class="number"> 28 </span>29</span><br><span class="line">node<span class="number"> 0 </span>size:<span class="number"> 65424 </span>MB</span><br><span class="line">node<span class="number"> 0 </span>free:<span class="number"> 54482 </span>MB</span><br><span class="line">node<span class="number"> 1 </span>cpus:<span class="number"> 10 </span>11<span class="number"> 12 </span>13<span class="number"> 14 </span>15<span class="number"> 16 </span>17<span class="number"> 18 </span>19<span class="number"> 30 </span>31<span class="number"> 32 </span>33<span class="number"> 34 </span>35<span class="number"> 36 </span>37<span class="number"> 38 </span>39</span><br><span class="line">node<span class="number"> 1 </span>size:<span class="number"> 65536 </span>MB</span><br><span class="line">node<span class="number"> 1 </span>free:<span class="number"> 56924 </span>MB</span><br><span class="line">node distances:</span><br><span class="line">node  <span class="number"> 0 </span> <span class="number"> 1 </span></span><br><span class="line">  0: <span class="number"> 10 </span><span class="number"> 21 </span></span><br><span class="line">  1: <span class="number"> 21 </span><span class="number"> 10 </span></span><br><span class="line">[root@controller ~]<span class="comment"># grubby --update-kernel=ALL --args="isolcpus=2,3,6,7"</span></span><br><span class="line">[root@controller ~]<span class="comment"># grub2-install /dev/sda</span></span><br></pre></td></tr></table></figure>
+<p>Huge Page support in OpenStack Compute<br><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@controller ~]# grubby --<span class="keyword">update</span>-kernel=ALL --args=<span class="string">"hugepagesz=2M hugepages=2048"</span></span><br><span class="line">[root@controller ~]# grub2-install /dev/sda</span><br><span class="line">[root@controller ~]# reboot</span><br><span class="line">[root@controller ~]# grep Huge /<span class="keyword">proc</span>/meminfo</span><br><span class="line">AnonHugePages:    821248<span class="title"> kB</span></span><br><span class="line"><span class="title">HugePages_Total:</span>    2048</span><br><span class="line">HugePages_Free:     2048</span><br><span class="line">HugePages_Rsvd:        0</span><br><span class="line">HugePages_Surp:        0</span><br><span class="line">Hugepagesize:       2048<span class="title"> kB</span></span><br><span class="line"><span class="title"></span></span><br><span class="line"><span class="title">nova</span> flavor-key<span class="title"> m1.small.performance</span> set<span class="title"> hw:mem_page_size=2048</span></span><br></pre></td></tr></table></figure></p>
+<p>Flavors</p>
+<p>Quotas</p>
+<p>Optimzing KVM<br>Kernel I/O scheduler to “Deadline”.<br>Default is cfq, good enough for most work loads but for over provisioning use “deadline”<br>Huge pages enabled<br>Kernel same-page merging enabled (KSM)<br>Hyper threading turned on<br>Place guest file systems directly on hypervisor block devices instead of in files.</p>
+<p>keystone<br>由于openstack中的各api都是wsgi服务，并且都用到了keystoneclient提供的一个中间件（wsgi filter）auth_token，对应的文件位于：keystoneclient/middleware/auth_token.py。该中间件采用memcache来缓存token的相关信息到本地，从而减少各服务对keystone的直接访问，不过默认情况下缓存并未启用。为此，添加如下配置到nova.conf、cinder.conf…</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[keystone_authtoken]</span>  </span><br><span class="line"><span class="attr">auth_uri</span> = http://keystone_server:<span class="number">5000</span>/  </span><br><span class="line"><span class="attr">auth_host</span> = keystone_server  </span><br><span class="line"><span class="attr">auth_port</span> = <span class="number">35357</span>  </span><br><span class="line"><span class="attr">auth_protocol</span> = http  </span><br><span class="line"><span class="attr">admin_tenant_name</span> = service  </span><br><span class="line"><span class="attr">admin_user</span> = nova  </span><br><span class="line"><span class="attr">admin_password</span> = password  </span><br><span class="line"><span class="attr">memcache_servers</span> = <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">11211</span>  </span><br><span class="line"><span class="attr">token_cache_time</span> = <span class="number">3600</span> ＃token本地缓存的失效时间设置为<span class="number">1</span>个小时。  </span><br><span class="line"><span class="attr">cache</span> = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#设置最大打开文件描述符数</span><br><span class="line">echo <span class="string">"ulimit -SHn 102400"</span> &gt;&gt; /etc/rc.local</span><br><span class="line">cat &gt;&gt; /etc/security/limits.conf &lt;&lt; EOF</span><br><span class="line"><span class="comment">*           soft   nofile       655350</span></span><br><span class="line"><span class="comment">*           hard   nofile       655350</span></span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#禁用selinux</span><br><span class="line">sed -i <span class="string">'s/SELINUX=enforcing/SELINUX=disabled/'</span> /etc/selinux/config</span><br><span class="line">setenforce <span class="number">0</span></span><br><span class="line"></span><br><span class="line">#关闭防火墙</span><br><span class="line">systemctl disable firewalld.service </span><br><span class="line">systemctl stop firewalld.service </span><br><span class="line"></span><br><span class="line">#<span class="keyword">set</span> ssh</span><br><span class="line">sed <span class="comment">-i</span> <span class="comment">'s/^GSSAPIAuthentication yes$/GSSAPIAuthentication no/'</span> /etc/<span class="comment">ssh</span>/sshd_config</span><br><span class="line">sed -i <span class="comment">'s/#UseDNS yes/UseDNS no/'</span> /<span class="comment">etc</span>/ssh/<span class="comment">sshd_config</span></span><br><span class="line">systemctl  <span class="comment">restart sshd.service</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#内核参数优化</span><br><span class="line">cat <span class="comment">&gt;&gt;</span> /etc/<span class="comment">sysctl.conf &lt;&lt; EOF</span></span><br><span class="line">vm.overcommit_memory <span class="comment">= 1</span></span><br><span class="line">net.ipv4.ip_local_port_range <span class="comment">= 1024 65536</span></span><br><span class="line">net.ipv4.tcp_fin_timeout <span class="comment">= 1</span></span><br><span class="line">net.ipv4.tcp_keepalive_time <span class="comment">= 1200</span></span><br><span class="line">net.ipv4.tcp_mem <span class="comment">= 94500000 915000000 927000000</span></span><br><span class="line">net.ipv4.tcp_tw_reuse <span class="comment">= 1</span></span><br><span class="line">net.ipv4.tcp_tw_recycle <span class="comment">= 1</span></span><br><span class="line">net.ipv4.tcp_timestamps <span class="comment">= 0</span></span><br><span class="line">net.ipv4.tcp_synack_retries <span class="comment">= 1</span></span><br><span class="line">net.ipv4.tcp_syn_retries <span class="comment">= 1</span></span><br><span class="line">net.ipv4.tcp_abort_on_overflow <span class="comment">= 0</span></span><br><span class="line">net.core.rmem_max <span class="comment">= 16777216</span></span><br><span class="line">net.core.wmem_max <span class="comment">= 16777216</span></span><br><span class="line">net.core.netdev_max_backlog <span class="comment">= 262144</span></span><br><span class="line">net.core.somaxconn <span class="comment">= 262144</span></span><br><span class="line">net.ipv4.tcp_max_orphans <span class="comment">= 3276800</span></span><br><span class="line">net.ipv4.tcp_max_syn_backlog <span class="comment">= 262144</span></span><br><span class="line">net.core.wmem_default <span class="comment">= 8388608</span></span><br><span class="line">net.core.rmem_default <span class="comment">= 8388608</span></span><br><span class="line">net.ipv4.netfilter.ip_conntrack_max <span class="comment">= 2097152</span></span><br><span class="line">net.nf_conntrack_max <span class="comment">= 655360</span></span><br><span class="line">net.netfilter.nf_conntrack_tcp_timeout_established <span class="comment">= 1200</span></span><br><span class="line">EOF</span><br><span class="line">/sbin/sysctl <span class="comment">-p</span></span><br></pre></td></tr></table></figure>
+<p>在Linux下高并发的Squid服务器中，TCP TIME_WAIT套接字的数量经常可达到两三万，服务器很容易就会被拖死。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">net<span class="selector-class">.ipv4</span><span class="selector-class">.tcp_fin_timeout</span> = <span class="number">30</span></span><br><span class="line">net<span class="selector-class">.ipv4</span><span class="selector-class">.tcp_keepalive_time</span> = <span class="number">1200</span></span><br><span class="line">net<span class="selector-class">.ipv4</span><span class="selector-class">.tcp_syncookies</span> = <span class="number">1</span></span><br><span class="line">net<span class="selector-class">.ipv4</span><span class="selector-class">.tcp_tw_reuse</span> = <span class="number">1</span></span><br><span class="line">net<span class="selector-class">.ipv4</span><span class="selector-class">.tcp_tw_recycle</span> = <span class="number">1</span></span><br><span class="line">net<span class="selector-class">.ipv4</span><span class="selector-class">.ip_local_port_range</span> = <span class="number">10000</span> <span class="number">65000</span></span><br><span class="line">net<span class="selector-class">.ipv4</span><span class="selector-class">.tcp_max_syn_backlog</span> = <span class="number">8192</span></span><br><span class="line">net<span class="selector-class">.ipv4</span><span class="selector-class">.tcp_max_tw_buckets</span> = <span class="number">5000</span></span><br></pre></td></tr></table></figure>
+<p>net.ipv4.tcp_syncookies＝1表示开启SYN Cookies。当出现SYN等待队列溢出时，启用Cookie来处理，可防范少量的SYN攻击。该参数默认为0，表示关闭。<br>net.ipv4.tcp_tw_reuse＝1表示开启重用，即允许将TIME-WAIT套接字重新用于新的TCP连接。该参数默认为0，表示关闭。<br>net.ipv4.tcp_tw_recycle＝1表示开启TCP连接中TIME-WAIT套接字的快速回收，该参数默认为0，表示关闭。<br>net.ipv4.tcp_fin_timeout＝30表示如果套接字由本端要求关闭，那么这个参数将决定它保持在FIN-WAIT-2状态的时间。<br>net.ipv4.tcp_keepalive_time＝1200表示当Keepalived启用时，TCP发送Keepalived消息的频度改为20分钟，默认值是2小时。<br>net.ipv4.ip_local_port_range＝1000065000表示CentOS系统向外连接的端口范围。其默认值很小，这里改为10000到65000。建议不要将这里的最低值设得太低，否则可能会占用正常的端口。<br>net.ipv4.tcp_max_syn_backlog＝8192表示SYN队列的长度，默认值为1024，此处加大队列长度为8192，可以容纳更多等待连接的网络连接数。<br>net.ipv4.tcp_max_tw_buckets＝5000表示系统同时保持TIME_WAIT套接字的最大数量，如果超过这个数字，TIME_WAIT套接字将立刻被清除并打印警告信息，默认值为180000，此处改为5000。对于Apache、Nginx等服务器，前面介绍的几个参数已经可以很好地减少TIME_WAIT套接字的数量，但是对于Squid来说，效果却不大，有了此参数就可以控制TIME_WAIT套接字的最大数量，避免Squid服务器被大量的TIME_WAIT套接字拖死。</p>
+<p>如果是用于Apache或Nginx等Web服务器，则只需要更改以下几项即可：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">net<span class="selector-class">.ipv4</span><span class="selector-class">.tcp_syncookies</span>=<span class="number">1</span></span><br><span class="line">net<span class="selector-class">.ipv4</span><span class="selector-class">.tcp_tw_reuse</span>=<span class="number">1</span></span><br><span class="line">net<span class="selector-class">.ipv4</span><span class="selector-class">.tcp_tw_recycle</span> = <span class="number">1</span></span><br><span class="line">net<span class="selector-class">.ipv4</span><span class="selector-class">.ip_local_port_range</span> = <span class="number">10000</span> <span class="number">65000</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://www.ibm.com/developerworks/cn/cloud/library/1408_zhangxl_openstack/index.html" target="_blank" rel="external">https://www.ibm.com/developerworks/cn/cloud/library/1408_zhangxl_openstack/index.html</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/06/openstack-driving-in-the-fast-lane/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-openstack-timeout-when-execute-nova-or-neutron-commands" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/01/openstack-timeout-when-execute-nova-or-neutron-commands/">openstack命令超时</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/01/openstack-timeout-when-execute-nova-or-neutron-commands/" class="archive-article-date">
+  	<time datetime="2018-06-01T10:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-01</time>
+</a>
+        
+        <!--<span id="busuanzi_container_page_pv">
+           阅读<span id="busuanzi_value_page_pv"></span>次
+        </span>-->
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>我在公司办公网络内手动安装了openstack，安装完成后将服务器放到别的地方，网段什么的都不变。放到新地方之后发现 openstack dashboard 打开特别慢，在dashboard上创建虚拟机的时候提示超时，在服务器上执行 <code>nova service-list</code>之类的命令发现也特别慢，要好几分钟才能有显示。日志里面的请求时间可以看到一个请求的时间竟然要两分钟！</p>
+        
+          <a class="article-more-a" href="/2018/06/01/openstack-timeout-when-execute-nova-or-neutron-commands/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">timeout</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/01/openstack-timeout-when-execute-nova-or-neutron-commands/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-openstack-optimization" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="openstack命令以及dashboard操作非常慢的原因"><a href="#openstack命令以及dashboard操作非常慢的原因" class="headerlink" title="openstack命令以及dashboard操作非常慢的原因"></a>openstack命令以及dashboard操作非常慢的原因</h2><p>可能是keystone数据库里的token表太久未清理，表太大。删除较早的token：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> token <span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">DATE_SUB</span>(<span class="keyword">CURDATE</span>(),<span class="built_in">INTERVAL</span> <span class="number">2</span> <span class="keyword">DAY</span>)&lt;=expires;（2天前的token），</span><br></pre></td></tr></table></figure>
+<p>有时确实token表太大执行这个语句会超时，可以直接删除token表的全部内容：</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">truncate <span class="keyword">table</span> token</span><br></pre></td></tr></table></figure>
+<p>DELETE FROM token WHERE expires &lt;= NOW();<br>DELETE FROM token WHERE NOT DATE_SUB(CURDATE(),INTERVAL 1 DAY) &lt;= expires;</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/29/openstack-optimization/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-qemu-guest-agent" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -554,6 +762,101 @@
 
 
   
+    <article id="post-ssh-notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/02/ssh-notes/">SSH常用命令</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/02/ssh-notes/" class="archive-article-date">
+  	<time datetime="2018-03-02T10:59:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-02</time>
+</a>
+        
+        <!--<span id="busuanzi_container_page_pv">
+           阅读<span id="busuanzi_value_page_pv"></span>次
+        </span>-->
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="SSH-Allow-Password-For-One-User-Rest-Only-Allow-Public-Keys"><a href="#SSH-Allow-Password-For-One-User-Rest-Only-Allow-Public-Keys" class="headerlink" title="SSH Allow Password For One User, Rest Only Allow Public Keys"></a>SSH Allow Password For One User, Rest Only Allow Public Keys</h3><p>adding the following to your sshd_config should do the trick：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Match</span> User bob,joe,phil</span><br><span class="line">  PasswordAuthentication <span class="literal">yes</span></span><br><span class="line">  AllowTCPForwarding <span class="literal">yes</span></span><br><span class="line">  ForceCommand /bin/echo <span class="string">'We talked about this guys. No SSH for you!'</span></span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2018/03/02/ssh-notes/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssh</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/02/ssh-notes/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-configure-neutron-fwaas-v2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -747,423 +1050,9 @@
 
 
   
-    <article id="post-enable-neutron-qos" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/26/enable-neutron-qos/">配置neutron qos</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/26/enable-neutron-qos/" class="archive-article-date">
-  	<time datetime="2017-11-26T15:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-26</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="网络节点"><a href="#网络节点" class="headerlink" title="网络节点:"></a>网络节点:</h2><ol>
-<li>Add the QoS service to the service_plugins setting in /etc/neutron/neutron.conf. For example:</li>
-</ol>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">service_plugins</span> = ... ,qos</span><br></pre></td></tr></table></figure>
-<ol>
-<li>In /etc/neutron/plugins/ml2/ml2_conf.ini, add qos to extension_drivers in the [ml2] section. For example:</li>
-</ol>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[ml2]</span></span><br><span class="line"><span class="attr">extension_drivers</span> = port_security, qos</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/11/26/enable-neutron-qos/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">neutron</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">qos</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/26/enable-neutron-qos/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-unable-to-boot-kali-linux-by-kvm" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/26/unable-to-boot-kali-linux-by-kvm/">Openstack无法启动kali linux</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/26/unable-to-boot-kali-linux-by-kvm/" class="archive-article-date">
-  	<time datetime="2017-11-26T13:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-26</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>通过KVM安装kali linux时一切正常，但是安装完成后重启的时候系统无法启动，提示错误：   </p>
-<blockquote>
-<p>   intel_rapl: no valid rapl domains found in package 0</p>
-</blockquote>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>这是虚拟显卡的问题，只需要修改一下镜像的元数据即可</p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">hw_video_model:</span> vga</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/11/26/unable-to-boot-kali-linux-by-kvm/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Openstack</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">kvm</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kali linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/26/unable-to-boot-kali-linux-by-kvm/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-install-openstack-zun" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/14/install-openstack-zun/">安装Openstack ZUN模块</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/14/install-openstack-zun/" class="archive-article-date">
-  	<time datetime="2017-10-14T03:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-14</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="安装-zun"><a href="#安装-zun" class="headerlink" title="安装 zun"></a>安装 zun</h3><p><a href="https://review.openstack.org/#/c/504537/11/doc/source/install/controller-install-ubuntu.rst" target="_blank" rel="external">https://review.openstack.org/#/c/504537/11/doc/source/install/controller-install-ubuntu.rst</a></p>
-<p><a href="https://review.openstack.org/#/c/504537/11/doc/source/install/compute-install-ubuntu.rst" target="_blank" rel="external">https://review.openstack.org/#/c/504537/11/doc/source/install/compute-install-ubuntu.rst</a></p>
-<p>Queens版安装文档： <a href="https://docs.openstack.org/zun/queens/install/" target="_blank" rel="external">https://docs.openstack.org/zun/queens/install/</a></p>
-        
-          <a class="article-more-a" href="/2017/10/14/install-openstack-zun/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">zun</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">kuryr</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/14/install-openstack-zun/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-errors-while-installing-openstack-magnum" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/10/errors-while-installing-openstack-magnum/">安装Openstack Magnum模块遇到的问题</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/10/errors-while-installing-openstack-magnum/" class="archive-article-date">
-  	<time datetime="2017-10-10T10:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Magnum安装配置"><a href="#Magnum安装配置" class="headerlink" title="Magnum安装配置"></a>Magnum安装配置</h1><p>官方文档： <a href="https://docs.openstack.org/project-install-guide/container-infrastructure-management/draft/install-rdo.html" target="_blank" rel="external">https://docs.openstack.org/project-install-guide/container-infrastructure-management/draft/install-rdo.html</a></p>
-<p>从源码安装Magnum <a href="https://docs.openstack.org/magnum/latest/install/install-guide-from-source.html" target="_blank" rel="external">https://docs.openstack.org/magnum/latest/install/install-guide-from-source.html</a></p>
-<hr>
-<h2 id="swarm-cluster创建超时"><a href="#swarm-cluster创建超时" class="headerlink" title="swarm-cluster创建超时"></a>swarm-cluster创建超时</h2><p>现象就是swarm-master一直显示在创建中，然后超过60分钟后，显示创建失败，heat显示的错误是Timeout</p>
-<p><strong>解决方法：</strong><br>超时问题是因为虚拟机中解析不到controller对应的IP地址，需要讲keystone, heat, magnum 的 public endpoint改成 IP地址。</p>
-        
-          <a class="article-more-a" href="/2017/10/10/errors-while-installing-openstack-magnum/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Magnum</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/10/errors-while-installing-openstack-magnum/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1323,7 +1212,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ARM</a>
+                <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1331,7 +1220,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
+                <a href="javascript:void(0)" class="js-tag color4">ARM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1340,14 +1229,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">fwaas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">APT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1360,6 +1241,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">APT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1376,10 +1265,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1403,7 +1288,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">virtio</a>
+                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1412,6 +1297,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">virtio</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1444,6 +1333,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vdi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">timeout</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1495,10 +1388,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
               </li>
              
@@ -1511,15 +1400,27 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kali linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">terminator</a>
+                <a href="javascript:void(0)" class="js-tag color3">url protocol</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">url protocol</a>
+                <a href="javascript:void(0)" class="js-tag color1">terminator</a>
               </li>
             
             <div class="clearfix"></div>

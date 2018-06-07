@@ -4,8 +4,60 @@
 
     
   <url>
+    <loc>http://pystack.org/2018/06/01/openstack-timeout-when-execute-nova-or-neutron-commands/</loc>
+    <lastmod>2018-06-07T12:27:27.129Z</lastmod>
+    <data>
+        <display>
+        <title>openstack命令超时</title>
+        <pubTime>2018-06-01T10:39:24.000Z</pubTime>
+        
+        <tag>openstack</tag>
+         
+        <tag>timeout</tag>
+         
+         
+           
+             
+              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2018/06/06/openstack-driving-in-the-fast-lane/</loc>
+    <lastmod>2018-06-06T08:23:05.282Z</lastmod>
+    <data>
+        <display>
+        <title></title>
+        <pubTime>2018-06-06T08:23:05.282Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2018/05/29/openstack-optimization/</loc>
+    <lastmod>2018-05-29T01:57:50.984Z</lastmod>
+    <data>
+        <display>
+        <title></title>
+        <pubTime>2018-05-29T01:57:50.984Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://pystack.org/2013/02/14/rabbitmq-notes/</loc>
-    <lastmod>2018-05-18T07:45:04.842Z</lastmod>
+    <lastmod>2018-05-24T01:32:10.275Z</lastmod>
     <data>
         <display>
         <title>RabbitMQ Notes</title>
@@ -28,32 +80,8 @@
 
     
   <url>
-    <loc>http://pystack.org/2018/03/24/docker-prune/</loc>
-    <lastmod>2018-05-18T07:37:06.678Z</lastmod>
-    <data>
-        <display>
-        <title>清理Docker资源</title>
-        <pubTime>2018-03-24T08:39:24.000Z</pubTime>
-        
-        <tag>zun</tag>
-         
-        <tag>centos</tag>
-         
-        <tag>docker</tag>
-         
-         
-           
-             
-              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://pystack.org/2016/05/01/openstack-common/</loc>
-    <lastmod>2018-05-18T07:36:42.934Z</lastmod>
+    <lastmod>2018-05-23T06:02:03.423Z</lastmod>
     <data>
         <display>
         <title>Openstack基础</title>
@@ -69,6 +97,52 @@
            
              
               <breadCrumb title="Database" url="http://pystack.org/categories/Database/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2018/03/02/ssh-notes/</loc>
+    <lastmod>2018-05-22T11:48:33.401Z</lastmod>
+    <data>
+        <display>
+        <title>SSH常用命令</title>
+        <pubTime>2018-03-02T10:59:24.000Z</pubTime>
+        
+        <tag>linux</tag>
+         
+        <tag>ssh</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://pystack.org/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2018/03/24/docker-prune/</loc>
+    <lastmod>2018-05-22T11:26:20.327Z</lastmod>
+    <data>
+        <display>
+        <title>清理Docker资源</title>
+        <pubTime>2018-03-24T08:39:24.000Z</pubTime>
+        
+        <tag>zun</tag>
+         
+        <tag>centos</tag>
+         
+        <tag>docker</tag>
+         
+         
+           
+             
+              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
           
         </display>
     </data>
@@ -891,9 +965,9 @@
          
         <tag>Virt-viewer</tag>
          
-        <tag>Linux</tag>
-         
         <tag>MinGW</tag>
+         
+        <tag>Linux</tag>
          
          
            
@@ -917,9 +991,9 @@
          
         <tag>Virt-viewer</tag>
          
-        <tag>ARM</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>ARM</tag>
          
          
            
