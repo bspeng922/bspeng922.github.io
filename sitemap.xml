@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://pystack.org/2018/06/08/neutron-common/</loc>
+    
+    <lastmod>2018-06-08T01:20:04.600Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://pystack.org/2018/06/01/openstack-timeout-when-execute-nova-or-neutron-commands/</loc>
     
     <lastmod>2018-06-07T12:39:59.815Z</lastmod>

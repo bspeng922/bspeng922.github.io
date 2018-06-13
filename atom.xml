@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://pystack.org/"/>
-  <updated>2018-06-07T12:39:59.815Z</updated>
+  <updated>2018-06-08T01:20:04.600Z</updated>
   <id>http://pystack.org/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://pystack.org/2018/06/08/neutron-common/"/>
+    <id>http://pystack.org/2018/06/08/neutron-common/</id>
+    <published>2018-06-08T01:20:04.600Z</published>
+    <updated>2018-06-08T01:20:04.600Z</updated>
+    
+    <content type="html"><![CDATA[<p>ebtables即是以太网桥防火墙，以太网桥工作在数据链路层，ebtables来过滤数据链路层数据包。 2.6内核内置了ebtables，要使用它必须先安装ebtables的用户空间工具（ebtables-v2.0.6），安装完成后就可以使用ebtables来过滤网桥的数据包。<br>ebtables 是主要是控制数据链路层的,在内核中，ebtables 的数据截获点比 iptables 更“靠前”，它获得的数据更“原始”，ebtables 多用于桥模式，比如控制 VLAN ID 等。 </p><p>ebtables 就像以太网桥的 iptables。iptables 不能过滤桥接流量，而 ebtables 可以。ebtables 不适合作为 Internet 防火墙。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;ebtables即是以太网桥防火墙，以太网桥工作在数据链路层，ebtables来过滤数据链路层数据包。 2.6内核内置了ebtables，要使用它必须先安装ebtables的用户空间工具（ebtables-v2.0.6），安装完成后就可以使用ebtables来过滤网桥的数据
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>openstack命令超时</title>
@@ -559,38 +580,6 @@
       <category term="Windows" scheme="http://pystack.org/tags/Windows/"/>
     
       <category term="KVM" scheme="http://pystack.org/tags/KVM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>创建私有YUM源</title>
-    <link href="http://pystack.org/2016/01/14/create-your-own-yum-repository/"/>
-    <id>http://pystack.org/2016/01/14/create-your-own-yum-repository/</id>
-    <published>2016-01-14T02:36:12.000Z</published>
-    <updated>2017-11-27T10:04:50.572Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>创建YUM源的步骤和创建apt-get源的步骤一样。</p><ol><li>Install “createrepo”, httpd</li><li>Create Repository directory &amp; Copy Packages to apache web directory</li><li>Run “createrepo”</li><li>Create YUM Repository Configuration file</li></ol><h3 id="开启yum缓存"><a href="#开启yum缓存" class="headerlink" title="开启yum缓存"></a>开启yum缓存</h3><p>需要将 keepcache 的值设置为 1 , 缓存下来的包可以在 /var/cache/yum/x86_64/7/base/packages/ 目录中看到。</p><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># vi /etc/yum.conf</span><br><span class="line">keepcache=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"># yum install vim -y</span><br><span class="line"></span><br><span class="line"># ls /var/cache/yum/x86_64/<span class="number">7</span>/base/packages/</span><br><span class="line">gpm-libs<span class="number">-1.20</span><span class="number">.7</span><span class="number">-5.</span>el7.x86_64.rpm      perl-libs<span class="number">-5.16</span><span class="number">.3</span><span class="number">-286.</span>el7.x86_64.rpm             perl-Storable<span class="number">-2.45</span><span class="number">-3.</span>el7.x86_64.rpm</span><br><span class="line">perl<span class="number">-5.16</span><span class="number">.3</span><span class="number">-286.</span>el7.x86_64.rpm       </span><br><span class="line">... ...</span><br></pre></td></tr></table></figure><a id="more"></a><h3 id="Install-“createrepo”"><a href="#Install-“createrepo”" class="headerlink" title="Install “createrepo”"></a>Install “createrepo”</h3><p>安装工具包</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> yum install createrepo -y</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> yum install httpd -y</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> systemctl start httpd.service</span></span><br></pre></td></tr></table></figure><h3 id="Create-Repository-directory-amp-Copy-Packages"><a href="#Create-Repository-directory-amp-Copy-Packages" class="headerlink" title="Create Repository directory &amp; Copy Packages"></a>Create Repository directory &amp; Copy Packages</h3><p>将所有的rpm包拷贝到apache的web目录下面，并且保证别的机器能够访问到。</p><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># mkdir -p /<span class="built_in">var</span>/www/html/rpms/amd64</span><br><span class="line"># cp /<span class="built_in">var</span>/cache/yum/x86_64/<span class="number">7</span>/<span class="built_in">base</span>/packages/*.rpm /<span class="built_in">var</span>/www/html/rpms/amd64</span><br></pre></td></tr></table></figure><p>拷贝完成后，可以通过浏览器测试一下是否能够正常访问。</p><p><img src="/assets/img/rpms-in-apache.png" alt=""></p><h3 id="Run-“createrepo”"><a href="#Run-“createrepo”" class="headerlink" title="Run “createrepo”"></a>Run “createrepo”</h3><p>运行 createrepo 会创建一个 repodata 目录，里面保存的就是当前源的包信息，每次加入新包的时候，都要再次执行 createrepo 命令以更新包信息。</p><figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cd /var/www/html/rpms/amd64</span></span><br><span class="line"><span class="comment"># createrepo /var/www/html/rpms/amd64</span></span><br><span class="line">Spawning worker<span class="number"> 0 </span>with<span class="number"> 17 </span>pkgs</span><br><span class="line">Spawning worker<span class="number"> 1 </span>with<span class="number"> 16 </span>pkgs</span><br><span class="line">Workers Finished</span><br><span class="line">Saving Primary metadata</span><br><span class="line">Saving file lists metadata</span><br><span class="line">Saving other metadata</span><br><span class="line">Generating sqlite DBs</span><br><span class="line">Sqlite DBs complete</span><br></pre></td></tr></table></figure><h3 id="Create-YUM-Repository-Configuration-file"><a href="#Create-YUM-Repository-Configuration-file" class="headerlink" title="Create YUM Repository Configuration file"></a>Create YUM Repository Configuration file</h3><p>到目前为止，yum源已经搭建完成，接下来只需要在其他机器上配置当前私有源即可使用。</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rm -rf /etc/yum.repos.d/*</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># vim /etc/yum.repos.d/custom.repo</span></span><br><span class="line"><span class="section">[customrepo]</span></span><br><span class="line"><span class="attr">name</span>=Custom Repository</span><br><span class="line"><span class="attr">baseurl</span>=http://<span class="number">10.10</span>.<span class="number">52.62</span>/rpms/amd64/</span><br><span class="line"><span class="attr">enabled</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">gpgcheck</span>=<span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># yum clean all</span></span><br><span class="line"><span class="comment"># yum makecache</span></span><br></pre></td></tr></table></figure><p>###参考资料</p><p><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-and-use-yum-repositories-on-a-centos-6-vps" target="_blank" rel="external">https://www.digitalocean.com/community/tutorials/how-to-set-up-and-use-yum-repositories-on-a-centos-6-vps</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;步骤&quot;&gt;&lt;a href=&quot;#步骤&quot; class=&quot;headerlink&quot; title=&quot;步骤&quot;&gt;&lt;/a&gt;步骤&lt;/h3&gt;&lt;p&gt;创建YUM源的步骤和创建apt-get源的步骤一样。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Install “createrepo”, httpd&lt;/li&gt;
-&lt;li&gt;Create Repository directory &amp;amp; Copy Packages to apache web directory&lt;/li&gt;
-&lt;li&gt;Run “createrepo”&lt;/li&gt;
-&lt;li&gt;Create YUM Repository Configuration file&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;开启yum缓存&quot;&gt;&lt;a href=&quot;#开启yum缓存&quot; class=&quot;headerlink&quot; title=&quot;开启yum缓存&quot;&gt;&lt;/a&gt;开启yum缓存&lt;/h3&gt;&lt;p&gt;需要将 keepcache 的值设置为 1 , 缓存下来的包可以在 /var/cache/yum/x86_64/7/base/packages/ 目录中看到。&lt;/p&gt;
-&lt;figure class=&quot;highlight lsl&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# vi /etc/yum.conf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;keepcache=&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;# yum install vim -y&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;# ls /var/cache/yum/x86_64/&lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;/base/packages/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gpm-libs&lt;span class=&quot;number&quot;&gt;-1.20&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;.7&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;-5.&lt;/span&gt;el7.x86_64.rpm      perl-libs&lt;span class=&quot;number&quot;&gt;-5.16&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;.3&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;-286.&lt;/span&gt;el7.x86_64.rpm             perl-Storable&lt;span class=&quot;number&quot;&gt;-2.45&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;-3.&lt;/span&gt;el7.x86_64.rpm&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;perl&lt;span class=&quot;number&quot;&gt;-5.16&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;.3&lt;/span&gt;&lt;span class=&quot;number&quot;&gt;-286.&lt;/span&gt;el7.x86_64.rpm       &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;... ...&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://pystack.org/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://pystack.org/tags/Linux/"/>
-    
-      <category term="YUM" scheme="http://pystack.org/tags/YUM/"/>
     
   </entry>
   

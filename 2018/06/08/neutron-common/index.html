@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://pystack.org">
-  <title>SSH常用命令 | Pystack.org</title>
+  <title>Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="SSH Allow Password For One User, Rest Only Allow Public Keysadding the following to your sshd_config should do the trick： 1234Match User bob,joe,phil  PasswordAuthentication yes  AllowTCPForwarding ye">
-<meta name="keywords" content="linux,ssh">
+  <meta name="description" content="ebtables即是以太网桥防火墙，以太网桥工作在数据链路层，ebtables来过滤数据链路层数据包。 2.6内核内置了ebtables，要使用它必须先安装ebtables的用户空间工具（ebtables-v2.0.6），安装完成后就可以使用ebtables来过滤网桥的数据包。ebtables 是主要是控制数据链路层的,在内核中，ebtables 的数据截获点比 iptables 更“靠前”，它获">
+<meta name="keywords" content="python,openstack,cloud,nova,neutron,keystone,horizon,vmware,cinder,heat,docker,vbscript,jquery,javascript,html5,极客,编程,代码,开源">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SSH常用命令">
-<meta property="og:url" content="http://pystack.org/2018/03/02/ssh-notes/index.html">
+<meta property="og:title" content="Pystack.org">
+<meta property="og:url" content="http://pystack.org/2018/06/08/neutron-common/index.html">
 <meta property="og:site_name" content="Pystack.org">
-<meta property="og:description" content="SSH Allow Password For One User, Rest Only Allow Public Keysadding the following to your sshd_config should do the trick： 1234Match User bob,joe,phil  PasswordAuthentication yes  AllowTCPForwarding ye">
+<meta property="og:description" content="ebtables即是以太网桥防火墙，以太网桥工作在数据链路层，ebtables来过滤数据链路层数据包。 2.6内核内置了ebtables，要使用它必须先安装ebtables的用户空间工具（ebtables-v2.0.6），安装完成后就可以使用ebtables来过滤网桥的数据包。ebtables 是主要是控制数据链路层的,在内核中，ebtables 的数据截获点比 iptables 更“靠前”，它获">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-22T11:48:33.401Z">
+<meta property="og:updated_time" content="2018-06-08T01:20:04.600Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SSH常用命令">
-<meta name="twitter:description" content="SSH Allow Password For One User, Rest Only Allow Public Keysadding the following to your sshd_config should do the trick： 1234Match User bob,joe,phil  PasswordAuthentication yes  AllowTCPForwarding ye">
+<meta name="twitter:title" content="Pystack.org">
+<meta name="twitter:description" content="ebtables即是以太网桥防火墙，以太网桥工作在数据链路层，ebtables来过滤数据链路层数据包。 2.6内核内置了ebtables，要使用它必须先安装ebtables的用户空间工具（ebtables-v2.0.6），安装完成后就可以使用ebtables来过滤网桥的数据包。ebtables 是主要是控制数据链路层的,在内核中，ebtables 的数据截获点比 iptables 更“靠前”，它获">
   
     <link rel="alternative" href="/atom.xml" title="Pystack.org" type="application/atom+xml">
   
@@ -153,39 +153,13 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-ssh-notes" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-neutron-common" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      SSH常用命令
-    </h1>
-  
-
-        
-        <a href="/2018/03/02/ssh-notes/" class="archive-article-date">
-  	<time datetime="2018-03-02T10:59:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-02</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="SSH-Allow-Password-For-One-User-Rest-Only-Allow-Public-Keys"><a href="#SSH-Allow-Password-For-One-User-Rest-Only-Allow-Public-Keys" class="headerlink" title="SSH Allow Password For One User, Rest Only Allow Public Keys"></a>SSH Allow Password For One User, Rest Only Allow Public Keys</h3><p>adding the following to your sshd_config should do the trick：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Match</span> User bob,joe,phil</span><br><span class="line">  PasswordAuthentication <span class="literal">yes</span></span><br><span class="line">  AllowTCPForwarding <span class="literal">yes</span></span><br><span class="line">  ForceCommand /bin/echo <span class="string">'We talked about this guys. No SSH for you!'</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h3 id="ssh-breaks-out-of-while-loop-in-bash"><a href="#ssh-breaks-out-of-while-loop-in-bash" class="headerlink" title="ssh breaks out of while-loop in bash"></a>ssh breaks out of while-loop in bash</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `find devel/ -newer <span class="variable">$UPLOAD_FILE</span>`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Upload:"</span> <span class="variable">$i</span></span><br><span class="line">    ssh <span class="variable">$USER</span>@<span class="variable">$SERVER</span> <span class="string">"cd <span class="variable">$&#123;REMOTE_PATH&#125;</span>; mkdir -p <span class="variable">$i</span>"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-<p>the ssh-command breaks out of the while-loop, therefore the first missing directory is created fine, but all subsequent missing files/directories are ignored.</p>
-<p>The problem is that ssh reads from standard input, therefore it eats all your remaining lines. You can just connect its standard input to nowhere:</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ssh</span> <span class="variable">$USER</span>@<span class="variable">$SERVER</span> <span class="string">"cd <span class="variable">$&#123;REMOTE_PATH&#125;</span>; mkdir -p <span class="variable">$i</span>"</span> &lt; /dev/null</span><br></pre></td></tr></table></figure>
-<p>You can also use ssh -n instead of the redirection.</p>
-<h3 id="SSH-端口转发"><a href="#SSH-端口转发" class="headerlink" title="SSH 端口转发"></a>SSH 端口转发</h3><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>.本地转发</span><br><span class="line">A(<span class="number">192.168</span><span class="meta">.191</span><span class="meta">.55</span>)----|----B(<span class="number">192.168</span><span class="meta">.191</span><span class="meta">.66</span>)-----C(<span class="number">192.168</span><span class="meta">.191</span><span class="meta">.77</span>)</span><br><span class="line">在A上配置</span><br><span class="line">ssh -L <span class="number">9527</span>:<span class="number">192.168</span><span class="meta">.191</span><span class="meta">.77</span>:<span class="number">23</span> -fN <span class="number">192.168</span><span class="meta">.191</span><span class="meta">.66</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span>.远程转发</span><br><span class="line">A(<span class="number">192.168</span><span class="meta">.191</span><span class="meta">.55</span>)----|----B(<span class="number">192.168</span><span class="meta">.191</span><span class="meta">.66</span>)-----C(<span class="number">192.168</span><span class="meta">.191</span><span class="meta">.77</span>)</span><br><span class="line">在B上配置</span><br><span class="line">ssh -R <span class="number">9527</span>:<span class="number">192.168</span><span class="meta">.191</span><span class="meta">.77</span>:<span class="number">23</span> -fN <span class="number">192.168</span><span class="meta">.191</span><span class="meta">.55</span></span><br></pre></td></tr></table></figure>
-<p>-C：压缩数据传输。<br>-f：表示SSH连接成功后，转入后台运行。这样一来，你就可以在不中断SSH连接的情况下，在本地shell中执行其他操作。要关闭这个后台连接，就只有用kill命令去杀掉进程。<br>-g：在-L/-R/-D参数中，允许远程主机连接到建立的转发的端口，如果不加这个参数，只允许本地主机建立连接。<br>-L： 本地端口:目标IP:目标端口<br>-N：参数，表示只连接远程主机，不打开远程shell； -T：参数，表示不为这个连接分配TTY。这个两个参数可以放在一起用，代表这个SSH连接只用来传数据，不执行远程操作。</p>
+        <p>ebtables即是以太网桥防火墙，以太网桥工作在数据链路层，ebtables来过滤数据链路层数据包。 2.6内核内置了ebtables，要使用它必须先安装ebtables的用户空间工具（ebtables-v2.0.6），安装完成后就可以使用ebtables来过滤网桥的数据包。<br>ebtables 是主要是控制数据链路层的,在内核中，ebtables 的数据截获点比 iptables 更“靠前”，它获得的数据更“原始”，ebtables 多用于桥模式，比如控制 VLAN ID 等。 </p>
+<p>ebtables 就像以太网桥的 iptables。iptables 不能过滤桥接流量，而 ebtables 可以。ebtables 不适合作为 Internet 防火墙。</p>
 
       
 
@@ -215,33 +189,7 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssh</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -291,7 +239,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://pystack.org/2018/03/02/ssh-notes/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://pystack.org/2018/06/08/neutron-common/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -305,18 +253,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/03/24/docker-prune/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          清理Docker资源
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/02/22/configure-neutron-fwaas-v2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Neutron Fwaas V2 版配置</div>
+    <a href="/2018/06/01/openstack-timeout-when-execute-nova-or-neutron-commands/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">openstack命令超时</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -355,7 +294,7 @@
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://pystack.org/2018/03/02/ssh-notes/",
+  id: "http://pystack.org/2018/06/08/neutron-common/",
   owner: 'bspeng922',
   repo: 'bspeng922.github.io',
   oauth: {
