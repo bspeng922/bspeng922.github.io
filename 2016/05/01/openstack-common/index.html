@@ -9,14 +9,14 @@
   <title>Openstack基础 | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="wsgiPaste &amp;amp; PasteDeploy使用Paste和PasteDeploy模块来实现WSGI服务时，都需要一个paste.ini文件。paste.ini文件的格式类似于INI格式，每个section的格式为[type:name]。  composite: 这种section用于将HTTP请求分发到指定的app。app: 这种section表示具体的app。filter: 实现一个">
-<meta name="keywords" content="mysql,mariadb,master-master">
+<meta name="keywords" content="openstack,wsgi,paste,pecan,WSME,eventlet">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Openstack基础">
 <meta property="og:url" content="http://pystack.org/2016/05/01/openstack-common/index.html">
 <meta property="og:site_name" content="Pystack.org">
 <meta property="og:description" content="wsgiPaste &amp;amp; PasteDeploy使用Paste和PasteDeploy模块来实现WSGI服务时，都需要一个paste.ini文件。paste.ini文件的格式类似于INI格式，每个section的格式为[type:name]。  composite: 这种section用于将HTTP请求分发到指定的app。app: 这种section表示具体的app。filter: 实现一个">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-07T12:29:24.520Z">
+<meta property="og:updated_time" content="2018-06-13T03:26:09.578Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Openstack基础">
 <meta name="twitter:description" content="wsgiPaste &amp;amp; PasteDeploy使用Paste和PasteDeploy模块来实现WSGI服务时，都需要一个paste.ini文件。paste.ini文件的格式类似于INI格式，每个section的格式为[type:name]。  composite: 这种section用于将HTTP请求分发到指定的app。app: 这种section表示具体的app。filter: 实现一个">
@@ -256,15 +256,27 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mariadb</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">wsgi</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">master-master</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">paste</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">pecan</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">WSME</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">eventlet</a>
         		</li>
       		
 		</ul>
@@ -276,7 +288,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Database//" class="article-tag-list-link color4">Database</a>
+        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
         		</li>
       		
 		</ul>
@@ -355,8 +367,8 @@
     </a>
   
   
-    <a href="/2016/03/26/add-monitoring-page-for-openstack-instance/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">为Instance添加监控页面</div>
+    <a href="/2016/05/01/neutron-common/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Neutron基础</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -563,7 +575,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ARM</a>
+                <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,7 +583,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
+                <a href="javascript:void(0)" class="js-tag color4">ARM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -587,6 +599,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">zun</a>
               </li>
              
@@ -596,10 +612,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -672,6 +684,34 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">master-master</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ebtables</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">iptables</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wsgi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">paste</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pecan</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">WSME</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">eventlet</a>
               </li>
              
               <li class="article-tag-list-item">
