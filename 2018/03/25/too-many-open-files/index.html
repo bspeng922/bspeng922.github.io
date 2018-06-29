@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pystack.org">
 <meta property="og:description" content="问题当容器创建过多的时候，rabbitmq等服务都会提示too many files open 1dnsmasq[18612]: failed to create inotify: Too many open files 编辑文件/etc/pam.d/login， 添加 1session    required   pam_limits.so">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-29T03:51:40.246Z">
+<meta property="og:updated_time" content="2018-06-29T09:29:15.235Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Too many open files">
 <meta name="twitter:description" content="问题当容器创建过多的时候，rabbitmq等服务都会提示too many files open 1dnsmasq[18612]: failed to create inotify: Too many open files 编辑文件/etc/pam.d/login， 添加 1session    required   pam_limits.so">
@@ -194,6 +194,8 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> cat /proc/sys/fs/inotify/max_user_instances</span></span><br><span class="line">128</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">echo</span> 20480 &gt; /proc/sys/fs/inotify/max_user_instances</span></span><br></pre></td></tr></table></figure>
 <p><strong>单个用户使用epoll进行watch的文件描述符上限</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> cat /proc/sys/fs/inotify/max_user_watches</span></span><br><span class="line">8192</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">echo</span> 40960 &gt; /proc/sys/fs/inotify/max_user_watches</span></span><br></pre></td></tr></table></figure>
+<p>或者修改文件</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim /etc/sysctl.conf </span></span><br><span class="line">fs.inotify.<span class="attribute">max_user_instances</span>=20480</span><br><span class="line">fs.inotify.<span class="attribute">max_user_watches</span>=40960</span><br></pre></td></tr></table></figure>
 <p>参考文档： </p>
 <p><a href="https://jhutar.blogspot.cz/2017/12/error-too-many-open-files-when-inside.html" target="_blank" rel="external">https://jhutar.blogspot.cz/2017/12/error-too-many-open-files-when-inside.html</a></p>
 <p><a href="https://www.cyberciti.biz/faq/linux-increase-the-maximum-number-of-open-files/" target="_blank" rel="external">https://www.cyberciti.biz/faq/linux-increase-the-maximum-number-of-open-files/</a></p>
@@ -494,10 +496,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Openstack</a>
               </li>
              
@@ -507,6 +505,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">highcharts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -582,10 +584,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vbs</a>
               </li>
              
@@ -599,6 +597,22 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">virtio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -622,15 +636,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">virtio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -638,39 +644,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">最大连接数</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">master-master</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">wsgi</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">paste</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pecan</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">WSME</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">eventlet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -695,6 +677,26 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vdi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wsgi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">paste</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pecan</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">WSME</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">eventlet</a>
               </li>
              
               <li class="article-tag-list-item">
