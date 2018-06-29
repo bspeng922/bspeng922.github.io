@@ -17,7 +17,7 @@
 <meta property="og:description" content="步骤创建YUM源的步骤和创建apt-get源的步骤一样。  Install “createrepo”, httpd Create Repository directory &amp;amp; Copy Packages to apache web directory Run “createrepo” Create YUM Repository Configuration file  开启yum缓存需要将">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pystack.org/assets/img/rpms-in-apache.png">
-<meta property="og:updated_time" content="2017-11-27T10:04:50.572Z">
+<meta property="og:updated_time" content="2018-06-29T00:43:35.196Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="创建私有YUM源">
 <meta name="twitter:description" content="步骤创建YUM源的步骤和创建apt-get源的步骤一样。  Install “createrepo”, httpd Create Repository directory &amp;amp; Copy Packages to apache web directory Run “createrepo” Create YUM Repository Configuration file  开启yum缓存需要将">
@@ -200,6 +200,10 @@
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rm -rf /etc/yum.repos.d/*</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># vim /etc/yum.repos.d/custom.repo</span></span><br><span class="line"><span class="section">[customrepo]</span></span><br><span class="line"><span class="attr">name</span>=Custom Repository</span><br><span class="line"><span class="attr">baseurl</span>=http://<span class="number">10.10</span>.<span class="number">52.62</span>/rpms/amd64/</span><br><span class="line"><span class="attr">enabled</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">gpgcheck</span>=<span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># yum clean all</span></span><br><span class="line"><span class="comment"># yum makecache</span></span><br></pre></td></tr></table></figure>
 <p>###参考资料</p>
 <p><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-and-use-yum-repositories-on-a-centos-6-vps" target="_blank" rel="external">https://www.digitalocean.com/community/tutorials/how-to-set-up-and-use-yum-repositories-on-a-centos-6-vps</a></p>
+<hr>
+<h2 id="yum配置本地源"><a href="#yum配置本地源" class="headerlink" title="yum配置本地源"></a>yum配置本地源</h2><h3 id="安装软件包"><a href="#安装软件包" class="headerlink" title="安装软件包"></a>安装软件包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> yum install createrepo</span></span><br></pre></td></tr></table></figure>
+<h3 id="拷贝包及依赖包到相应路径"><a href="#拷贝包及依赖包到相应路径" class="headerlink" title="拷贝包及依赖包到相应路径"></a>拷贝包及依赖包到相应路径</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> cp *.rpm /mnt/packages/</span></span><br></pre></td></tr></table></figure>
+<h3 id="配置repo"><a href="#配置repo" class="headerlink" title="配置repo"></a>配置repo</h3><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 该命令会在base目录下建立repodata目录</span></span><br><span class="line"><span class="comment"># createrepo -p /mnt/packages/</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># cp -r /etc/yum.repos.d ~/</span></span><br><span class="line"><span class="comment"># rm -rf /etc/yum.repos.d/*</span></span><br><span class="line"><span class="comment"># cat &gt; /etc/yum.repos.d/local.repo &lt;&lt; EOF</span></span><br><span class="line">[LocalRepo]</span><br><span class="line">name=LocalRepository</span><br><span class="line">baseurl=file:///mnt/packages</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line">EOF</span><br><span class="line"><span class="comment"># yum clean all</span></span><br></pre></td></tr></table></figure>
 
       
 
@@ -489,6 +493,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Openstack</a>
               </li>
              
@@ -498,10 +506,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">highcharts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -525,10 +529,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spice</a>
               </li>
              
@@ -537,7 +537,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
+                <a href="javascript:void(0)" class="js-tag color4">ARM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -545,7 +545,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ARM</a>
+                <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">APT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,10 +562,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">fwaas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">APT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,11 +593,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
+                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
+                <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -697,6 +701,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pyinstaller</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">arm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Inno Setup</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Opera</a>
               </li>
              
@@ -710,18 +726,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">pywin32</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pyinstaller</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">arm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Inno Setup</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -741,15 +745,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ssh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
               </li>
              
               <li class="article-tag-list-item">
