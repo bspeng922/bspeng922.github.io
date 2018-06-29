@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://pystack.org/2016/03/14/mariadb-configuration/</loc>
+    
+    <lastmod>2018-06-29T09:46:46.126Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://pystack.org/2018/03/25/too-many-open-files/</loc>
     
     <lastmod>2018-06-29T09:29:15.235Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://pystack.org/2017/10/14/install-openstack-zun/</loc>
     
     <lastmod>2018-06-29T09:08:48.067Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pystack.org/2018/03/16/mariadb-max-connections/</loc>
-    
-    <lastmod>2018-06-29T03:44:44.834Z</lastmod>
     
   </url>
   
@@ -208,13 +208,6 @@
     <loc>http://pystack.org/2014/03/22/install-vdagent-on-windows-guest/</loc>
     
     <lastmod>2017-11-28T05:59:27.492Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pystack.org/2014/03/14/mariadb-configuration/</loc>
-    
-    <lastmod>2017-11-28T02:52:06.039Z</lastmod>
     
   </url>
   

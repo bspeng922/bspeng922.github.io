@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://pystack.org">
-  <title>Mariadb max connections | Pystack.org</title>
+  <title>Mariab修改最大连接数 | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="问题openstack mariadb默认的max_connections太小了，不适合生产使用。 123456MariaDB [(none)]&amp;gt; show variables like &quot;max_connections&quot;;+-----------------+-------+| Variable_name   | Value |+-----------------+-------+| ma">
-<meta name="keywords" content="mariadb,mysql">
+  <meta name="description" content="步骤1.编辑/usr/lib/systemd/system/mariadb.service，在[Service]项最后加上以下两行： 12LimitNOFILE=65535LimitNPROC=65535 2.编辑/etc/my.cnf和/etc/my.cnf.d/mariadb-server.cnf，在[mysqld]项最后加上下面一行： 1max_connections=10240">
+<meta name="keywords" content="mysql,mariadb,最大连接数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mariadb max connections">
-<meta property="og:url" content="http://pystack.org/2018/03/16/mariadb-max-connections/index.html">
+<meta property="og:title" content="Mariab修改最大连接数">
+<meta property="og:url" content="http://pystack.org/2016/03/14/mariadb-configuration/index.html">
 <meta property="og:site_name" content="Pystack.org">
-<meta property="og:description" content="问题openstack mariadb默认的max_connections太小了，不适合生产使用。 123456MariaDB [(none)]&amp;gt; show variables like &quot;max_connections&quot;;+-----------------+-------+| Variable_name   | Value |+-----------------+-------+| ma">
+<meta property="og:description" content="步骤1.编辑/usr/lib/systemd/system/mariadb.service，在[Service]项最后加上以下两行： 12LimitNOFILE=65535LimitNPROC=65535 2.编辑/etc/my.cnf和/etc/my.cnf.d/mariadb-server.cnf，在[mysqld]项最后加上下面一行： 1max_connections=10240">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-29T03:44:44.834Z">
+<meta property="og:image" content="http://pystack.org/assets/img/mysql-max-conn.jpg">
+<meta property="og:updated_time" content="2018-06-29T09:46:46.126Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mariadb max connections">
-<meta name="twitter:description" content="问题openstack mariadb默认的max_connections太小了，不适合生产使用。 123456MariaDB [(none)]&amp;gt; show variables like &quot;max_connections&quot;;+-----------------+-------+| Variable_name   | Value |+-----------------+-------+| ma">
+<meta name="twitter:title" content="Mariab修改最大连接数">
+<meta name="twitter:description" content="步骤1.编辑/usr/lib/systemd/system/mariadb.service，在[Service]项最后加上以下两行： 12LimitNOFILE=65535LimitNPROC=65535 2.编辑/etc/my.cnf和/etc/my.cnf.d/mariadb-server.cnf，在[mysqld]项最后加上下面一行： 1max_connections=10240">
+<meta name="twitter:image" content="http://pystack.org/assets/img/mysql-max-conn.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Pystack.org" type="application/atom+xml">
   
@@ -153,20 +155,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-mariadb-max-connections" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-mariadb-configuration" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Mariadb max connections
+      Mariab修改最大连接数
     </h1>
   
 
         
-        <a href="/2018/03/16/mariadb-max-connections/" class="archive-article-date">
-  	<time datetime="2018-03-15T20:48:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-16</time>
+        <a href="/2016/03/14/mariadb-configuration/" class="archive-article-date">
+  	<time datetime="2016-03-13T19:19:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-14</time>
 </a>
         
         <!--<span id="busuanzi_container_page_pv">
@@ -176,13 +178,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>openstack mariadb默认的max_connections太小了，不适合生产使用。</p>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [(none)]&gt; show variables like "max<span class="emphasis">_connections";</span></span><br><span class="line"><span class="emphasis">+-----------------+-------+</span></span><br><span class="line"><span class="emphasis">| Variable_</span>name   | Value |</span><br><span class="line"><span class="code">+-----------------+</span>-------+</span><br><span class="line">| max<span class="emphasis">_connections | 151   |</span></span><br><span class="line"><span class="emphasis">+-----------------+-------+</span></span><br></pre></td></tr></table></figure>
+        <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>1.编辑/usr/lib/systemd/system/mariadb.service，在[Service]项最后加上以下两行：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">LimitNOFILE</span>=<span class="number">65535</span></span><br><span class="line"><span class="attr">LimitNPROC</span>=<span class="number">65535</span></span><br></pre></td></tr></table></figure>
+<p>2.编辑/etc/my.cnf和/etc/my.cnf.d/mariadb-server.cnf，在[mysqld]项最后加上下面一行：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">max_connections</span>=<span class="number">10240</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>解决方法就是修改mariadb的配置文件</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim /usr/lib/systemd/system/mariadb.service</span></span><br><span class="line">[Service]</span><br><span class="line"><span class="built_in">..</span>.</span><br><span class="line"><span class="attribute">LimitNOFILE</span>=65535</span><br><span class="line"><span class="attribute">LimitNPROC</span>=65535</span><br><span class="line"></span><br><span class="line"><span class="comment"># vim /etc/my.cnf.d/openstack.cnf</span></span><br><span class="line"><span class="attribute">max_connections</span>=40960</span><br></pre></td></tr></table></figure>
-<p>修改完成后重启服务</p>
+<p>3.重启服务</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">service mariadb restart</span><br></pre></td></tr></table></figure>
+<p>4.查看支持最大连接数：</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [(none)]&gt; show <span class="keyword">variables</span> like <span class="comment">"max_connections"</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="/assets/img/mysql-max-conn.jpg" alt=""></p>
 
       
 
@@ -217,11 +222,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mariadb</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">最大连接数</a>
         		</li>
       		
 		</ul>
@@ -288,7 +297,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://pystack.org/2018/03/16/mariadb-max-connections/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://pystack.org/2016/03/14/mariadb-configuration/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -302,18 +311,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/03/24/docker-prune/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/03/21/kwm-windows7-cpus-is-inconsistent/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          清理Docker资源
+          KVM Windows7设备管理器与任务管理器示CPU核数不一致
         
       </div>
     </a>
   
   
-    <a href="/2018/03/02/ssh-notes/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">SSH常用命令</div>
+    <a href="/2016/01/14/create-your-own-yum-repository/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">创建私有YUM源</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -352,7 +361,7 @@
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://pystack.org/2018/03/16/mariadb-max-connections/",
+  id: "http://pystack.org/2016/03/14/mariadb-configuration/",
   owner: 'bspeng922',
   repo: 'bspeng922.github.io',
   oauth: {
@@ -484,15 +493,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">md5</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">large file</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -548,6 +557,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vbs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">zun</a>
               </li>
              
@@ -560,14 +577,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vbs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">qos</a>
               </li>
              
@@ -577,18 +586,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">virtio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -612,15 +609,27 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">virtio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">文件分割</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mariadb</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color3">mariadb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -637,22 +646,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">iptables</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">timeout</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">vmdk</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vdi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,6 +666,22 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">eventlet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">timeout</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">vmdk</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vdi</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -151,31 +151,6 @@
   </entry>
   
   <entry>
-    <title>Mariadb max connections</title>
-    <link href="http://pystack.org/2018/03/16/mariadb-max-connections/"/>
-    <id>http://pystack.org/2018/03/16/mariadb-max-connections/</id>
-    <published>2018-03-15T20:48:35.000Z</published>
-    <updated>2018-06-29T03:44:44.834Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>openstack mariadb默认的max_connections太小了，不适合生产使用。</p><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [(none)]&gt; show variables like "max<span class="emphasis">_connections";</span></span><br><span class="line"><span class="emphasis">+-----------------+-------+</span></span><br><span class="line"><span class="emphasis">| Variable_</span>name   | Value |</span><br><span class="line"><span class="code">+-----------------+</span>-------+</span><br><span class="line">| max<span class="emphasis">_connections | 151   |</span></span><br><span class="line"><span class="emphasis">+-----------------+-------+</span></span><br></pre></td></tr></table></figure><a id="more"></a><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>解决方法就是修改mariadb的配置文件</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim /usr/lib/systemd/system/mariadb.service</span></span><br><span class="line">[Service]</span><br><span class="line"><span class="built_in">..</span>.</span><br><span class="line"><span class="attribute">LimitNOFILE</span>=65535</span><br><span class="line"><span class="attribute">LimitNPROC</span>=65535</span><br><span class="line"></span><br><span class="line"><span class="comment"># vim /etc/my.cnf.d/openstack.cnf</span></span><br><span class="line"><span class="attribute">max_connections</span>=40960</span><br></pre></td></tr></table></figure><p>修改完成后重启服务</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">service mariadb restart</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;openstack mariadb默认的max_connections太小了，不适合生产使用。&lt;/p&gt;
-&lt;figure class=&quot;highlight asciidoc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;MariaDB [(none)]&amp;gt; show variables like &quot;max&lt;span class=&quot;emphasis&quot;&gt;_connections&quot;;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;emphasis&quot;&gt;+-----------------+-------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;emphasis&quot;&gt;| Variable_&lt;/span&gt;name   | Value |&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;code&quot;&gt;+-----------------+&lt;/span&gt;-------+&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;| max&lt;span class=&quot;emphasis&quot;&gt;_connections | 151   |&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;emphasis&quot;&gt;+-----------------+-------+&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Database" scheme="http://pystack.org/categories/Database/"/>
-    
-    
-      <category term="mariadb" scheme="http://pystack.org/tags/mariadb/"/>
-    
-      <category term="mysql" scheme="http://pystack.org/tags/mysql/"/>
-    
-  </entry>
-  
-  <entry>
     <title>SSH常用命令</title>
     <link href="http://pystack.org/2018/03/02/ssh-notes/"/>
     <id>http://pystack.org/2018/03/02/ssh-notes/</id>
@@ -592,6 +567,35 @@
       <category term="ceilometer" scheme="http://pystack.org/tags/ceilometer/"/>
     
       <category term="highcharts" scheme="http://pystack.org/tags/highcharts/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>KVM Windows7设备管理器与任务管理器示CPU核数不一致</title>
+    <link href="http://pystack.org/2016/03/21/kwm-windows7-cpus-is-inconsistent/"/>
+    <id>http://pystack.org/2016/03/21/kwm-windows7-cpus-is-inconsistent/</id>
+    <published>2016-03-21T13:39:24.000Z</published>
+    <updated>2017-11-27T10:04:27.628Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>使用kvm创建Windows7 x64镜像，上传到openstack，创建云主机后发现系统内的CPU核数和分配的核数不一致。</p><p>启动命令：</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kvm -m 2048 -smp 4 -drive <span class="attribute">file</span>=win7_x64_pure,if=virtio -net nic,<span class="attribute">model</span>=virtio -net<span class="built_in"> user </span>-usb -usbdevice tablet -soundhw ac97 -vga qxl -boot d -nographic -vnc :0</span><br></pre></td></tr></table></figure><p>任务管理器：</p><a id="more"></a><p><img src="/assets/img/image-tm.png" alt=""></p><p>计算机基本信息：</p><p><img src="/assets/img/image-si.png" alt=""></p><p>设备管理器：</p><p><img src="/assets/img/image-cm.png" alt=""></p><p>首先想到的是引导时处理器数量做了限制，但是打开引导高级选项的时候发现“处理器数”前面并没有勾上</p><p><img src="/assets/img/image-sc.png" alt=""></p><p>然后我查看注册表，发现CPU也只有两个，并不是分配的4个</p><p><img src="/assets/img/image-reg.png" alt=""></p><p>检查到这里我以为是我镜像做的有问题，我做镜像的那台机器是两核的，所以做出来的镜像最多也只能支持两个CPU， 但是细想一下其实是没有道理的。</p><p>后来查了资料之后发现是 windows7 自己的问题</p><blockquote><p>Commercial servers, workstations, and other high-end PCs may have more than one physical processor. Windows 7 Professional, Enterprise, and Ultimate allow for two physical processors, providing the best performance on these computers. Windows 7 Starter, Home Basic, and Home Premium will recognize only one physical processor.</p></blockquote><p>继续查openstack资料后发现max_sockets为4，smp 4 其实等价于 -smp 4,sockets=4,cores=1,threads=1，但是windows7 最多支持两个物理cpu，所以导致的结果就是虚拟机内只能使用两个</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def get_guest_cpu_topology(self, inst_type, image, preferred_topology, mandatory_topology):</span><br><span class="line">    """:inst_type: object returned from a self.virtapi.instance_type_get() call. Used <span class="keyword">to</span> determine <span class="keyword">max</span> vCPU <span class="keyword">count</span></span><br><span class="line">        :image_meta: the metadata dict <span class="keyword">for</span> the root disk image</span><br><span class="line">        :preferred_topology: dict containing three <span class="keyword">keys</span>: max_sockets, max_cores, max_threads</span><br><span class="line">        :mandatory_topology: dict containing three <span class="keyword">keys</span>: max_sockets, max_cores, max_threads</span><br><span class="line"></span><br><span class="line">         Calculate the <span class="keyword">list</span> <span class="keyword">of</span> all possible valid topologies <span class="keyword">for</span> configuring guest machine</span><br><span class="line">         CPU topology <span class="keyword">within</span> the given constraints. The caller should <span class="keyword">choose</span> one <span class="keyword">element</span></span><br><span class="line">         <span class="keyword">from</span> the returned <span class="keyword">list</span> <span class="keyword">to</span> <span class="keyword">use</span> <span class="keyword">as</span> the topology. The returned <span class="keyword">list</span> will be ordered such</span><br><span class="line">         that it prefers sockets, <span class="keyword">over</span> cores, <span class="keyword">over</span> threads. </span><br><span class="line"></span><br><span class="line">         <span class="keyword">Returns</span> <span class="keyword">list</span> <span class="keyword">of</span> dicts. <span class="keyword">Each</span> dict containing three <span class="keyword">keys</span>: sockets, cores, threads<span class="string">"""</span></span><br></pre></td></tr></table></figure><p>所以正确的方式应该是将max_sockets改为2，通过更改cores或者threads来实现多核</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kvm -m 2048 -smp 4,<span class="attribute">sockets</span>=2,cores=1,threads=2 -drive <span class="attribute">file</span>=win7_x64_pure,if=virtio -net nic,<span class="attribute">model</span>=virtio -net<span class="built_in"> user </span>-usb -usbdevice tablet -soundhw ac97 -vga qxl -boot d -nographic -vnc :0</span><br></pre></td></tr></table></figure><p><img src="/assets/img/image-cinfo-ok.png" alt=""></p><p>参考文档： <a href="https://wiki.openstack.org/wiki/VirtDriverGuestCPUTopology" target="_blank" rel="external">Virtualization Driver Guest CPU Topology</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h3&gt;&lt;p&gt;使用kvm创建Windows7 x64镜像，上传到openstack，创建云主机后发现系统内的CPU核数和分配的核数不一致。&lt;/p&gt;
+&lt;p&gt;启动命令：&lt;/p&gt;
+&lt;figure class=&quot;highlight routeros&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;kvm -m 2048 -smp 4 -drive &lt;span class=&quot;attribute&quot;&gt;file&lt;/span&gt;=win7_x64_pure,if=virtio -net nic,&lt;span class=&quot;attribute&quot;&gt;model&lt;/span&gt;=virtio -net&lt;span class=&quot;built_in&quot;&gt; user &lt;/span&gt;-usb -usbdevice tablet -soundhw ac97 -vga qxl -boot d -nographic -vnc :0&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;任务管理器：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Openstack" scheme="http://pystack.org/categories/Openstack/"/>
+    
+    
+      <category term="Openstack" scheme="http://pystack.org/tags/Openstack/"/>
+    
+      <category term="Windows" scheme="http://pystack.org/tags/Windows/"/>
+    
+      <category term="KVM" scheme="http://pystack.org/tags/KVM/"/>
     
   </entry>
   
