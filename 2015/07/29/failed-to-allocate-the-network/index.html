@@ -6,22 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://pystack.org">
-  <title>Mariab修改最大连接数 | Pystack.org</title>
+  <title>No valid host was found | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="步骤1.编辑/usr/lib/systemd/system/mariadb.service，在[Service]项最后加上以下两行： 12LimitNOFILE=65535LimitNPROC=65535 2.编辑/etc/my.cnf和/etc/my.cnf.d/mariadb-server.cnf，在[mysqld]项最后加上下面一行： 1max_connections=10240">
-<meta name="keywords" content="mysql,mariadb,最大连接数">
+  <meta name="description" content="Failed to allocate the network(s), not rescheduling. 12345#Fail instance boot if vif plugging fails vif_plugging_is_fatal = False   #Number of seconds to wait for neutron vif vif_plugging_timeout = 0">
+<meta name="keywords" content="openstack,nova,schedule">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mariab修改最大连接数">
-<meta property="og:url" content="http://pystack.org/2016/03/14/mariadb-configuration/index.html">
+<meta property="og:title" content="No valid host was found">
+<meta property="og:url" content="http://pystack.org/2015/07/29/failed-to-allocate-the-network/index.html">
 <meta property="og:site_name" content="Pystack.org">
-<meta property="og:description" content="步骤1.编辑/usr/lib/systemd/system/mariadb.service，在[Service]项最后加上以下两行： 12LimitNOFILE=65535LimitNPROC=65535 2.编辑/etc/my.cnf和/etc/my.cnf.d/mariadb-server.cnf，在[mysqld]项最后加上下面一行： 1max_connections=10240">
+<meta property="og:description" content="Failed to allocate the network(s), not rescheduling. 12345#Fail instance boot if vif plugging fails vif_plugging_is_fatal = False   #Number of seconds to wait for neutron vif vif_plugging_timeout = 0">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://pystack.org/assets/img/mysql-max-conn.jpg">
-<meta property="og:updated_time" content="2018-06-30T02:24:02.304Z">
+<meta property="og:updated_time" content="2018-08-01T09:29:08.966Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mariab修改最大连接数">
-<meta name="twitter:description" content="步骤1.编辑/usr/lib/systemd/system/mariadb.service，在[Service]项最后加上以下两行： 12LimitNOFILE=65535LimitNPROC=65535 2.编辑/etc/my.cnf和/etc/my.cnf.d/mariadb-server.cnf，在[mysqld]项最后加上下面一行： 1max_connections=10240">
-<meta name="twitter:image" content="http://pystack.org/assets/img/mysql-max-conn.jpg">
+<meta name="twitter:title" content="No valid host was found">
+<meta name="twitter:description" content="Failed to allocate the network(s), not rescheduling. 12345#Fail instance boot if vif plugging fails vif_plugging_is_fatal = False   #Number of seconds to wait for neutron vif vif_plugging_timeout = 0">
   
     <link rel="alternative" href="/atom.xml" title="Pystack.org" type="application/atom+xml">
   
@@ -155,20 +153,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-mariadb-configuration" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-failed-to-allocate-the-network" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Mariab修改最大连接数
+      No valid host was found
     </h1>
   
 
         
-        <a href="/2016/03/14/mariadb-configuration/" class="archive-article-date">
-  	<time datetime="2016-03-13T19:19:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-14</time>
+        <a href="/2015/07/29/failed-to-allocate-the-network/" class="archive-article-date">
+  	<time datetime="2015-07-29T04:19:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-29</time>
 </a>
         
         <!--<span id="busuanzi_container_page_pv">
@@ -178,16 +176,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>1.编辑/usr/lib/systemd/system/mariadb.service，在[Service]项最后加上以下两行：</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">LimitNOFILE</span>=<span class="number">65535</span></span><br><span class="line"><span class="attr">LimitNPROC</span>=<span class="number">65535</span></span><br></pre></td></tr></table></figure>
-<p>2.编辑/etc/my.cnf和/etc/my.cnf.d/mariadb-server.cnf，在[mysqld]项最后加上下面一行：</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">max_connections</span>=<span class="number">10240</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>3.重启服务</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">service mariadb restart</span><br></pre></td></tr></table></figure>
-<p>4.查看支持最大连接数：</p>
-<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [(none)]&gt; show <span class="keyword">variables</span> like <span class="comment">"max_connections"</span>;</span><br></pre></td></tr></table></figure>
-<p><img src="/assets/img/mysql-max-conn.jpg" alt=""></p>
+        <p>Failed to allocate the network(s), not rescheduling.</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Fail instance boot if vif plugging fails </span></span><br><span class="line"><span class="attr">vif_plugging_is_fatal</span> = <span class="literal">False</span>   </span><br><span class="line"></span><br><span class="line"><span class="comment">#Number of seconds to wait for neutron vif </span></span><br><span class="line"><span class="attr">vif_plugging_timeout</span> = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>port 一直是创建状态，超时失败，自动删除</p>
 
       
 
@@ -222,15 +213,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mariadb</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">nova</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">最大连接数</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">schedule</a>
         		</li>
       		
 		</ul>
@@ -242,7 +233,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Database//" class="article-tag-list-link color4">Database</a>
+        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
         		</li>
       		
 		</ul>
@@ -297,7 +288,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://pystack.org/2016/03/14/mariadb-configuration/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://pystack.org/2015/07/29/failed-to-allocate-the-network/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -311,18 +302,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2016/03/21/kwm-windows7-cpus-is-inconsistent/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/11/14/ubuntu-with-wnda3100v2/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          KVM Windows7设备管理器与任务管理器示CPU核数不一致
+          Ubuntu安装Netgare WNDA3100v2 USB网卡驱动
         
       </div>
     </a>
   
   
-    <a href="/2016/01/14/create-your-own-yum-repository/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">创建私有YUM源</div>
+    <a href="/2015/05/14/angularjs-notes/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">AngularJS Notes</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -361,7 +352,7 @@
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://pystack.org/2016/03/14/mariadb-configuration/",
+  id: "http://pystack.org/2015/07/29/failed-to-allocate-the-network/",
   owner: 'bspeng922',
   repo: 'bspeng922.github.io',
   oauth: {
