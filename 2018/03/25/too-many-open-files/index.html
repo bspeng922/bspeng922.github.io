@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pystack.org">
 <meta property="og:description" content="问题当容器创建过多的时候，rabbitmq等服务都会提示too many files open 1dnsmasq[18612]: failed to create inotify: Too many open files 编辑文件/etc/pam.d/login， 添加 1session    required   pam_limits.so">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-30T02:24:04.800Z">
+<meta property="og:updated_time" content="2018-07-17T08:40:16.094Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Too many open files">
 <meta name="twitter:description" content="问题当容器创建过多的时候，rabbitmq等服务都会提示too many files open 1dnsmasq[18612]: failed to create inotify: Too many open files 编辑文件/etc/pam.d/login， 添加 1session    required   pam_limits.so">
@@ -203,6 +203,10 @@
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">controller dnsmasq-dhcp[4479]: DHCPDISCOVER(ns-05c5dc4c-59) 0c:c4:7a:29:8b:24 <span class="literal">no</span><span class="built_in"> address </span>available</span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="修改连接释放机制，防止timewait数过多"><a href="#修改连接释放机制，防止timewait数过多" class="headerlink" title="修改连接释放机制，防止timewait数过多"></a>修改连接释放机制，防止timewait数过多</h3><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim /etc/sysctl.conf</span></span><br><span class="line">net.ipv4.<span class="attr">tcp_syncookies</span> = <span class="number">1</span></span><br><span class="line">net.ipv4.<span class="attr">tcp_tw_reuse</span> = <span class="number">1</span></span><br><span class="line">net.ipv4.<span class="attr">tcp_tw_recycle</span> = <span class="number">1</span></span><br><span class="line">net.ipv4.<span class="attr">tcp_fin_timeout</span> = <span class="number">30</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sysctl -p</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p>查看进程打开的文件数，发现rabbitmq、mysql打开的文件数比较多。</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">[root@controller ~]<span class="comment"># ulimit -n</span></span><br><span class="line">65536</span><br><span class="line">[root@controller ~]<span class="comment"># cat /proc/sys/fs/file-nr</span></span><br><span class="line">17520  <span class="number"> 0 </span>      13061516</span><br><span class="line">[root@controller ~]<span class="comment"># lsof |wc -l</span></span><br><span class="line"><span class="number"> 456912 </span>19579</span><br><span class="line"> <span class="number"> 95060 </span>19267</span><br><span class="line">  <span class="number"> 9432 </span>34579</span><br><span class="line">  <span class="number"> 8375 </span>2479</span><br><span class="line">  <span class="number"> 4368 </span>26765</span><br><span class="line">  <span class="number"> 4368 </span>23338</span><br><span class="line">  <span class="number"> 4136 </span>21520</span><br><span class="line">  <span class="number"> 3570 </span>23532</span><br><span class="line">  <span class="number"> 2888 </span>2490</span><br><span class="line">  <span class="number"> 2691 </span>23454</span><br><span class="line">  <span class="number"> 2499 </span>21502</span><br><span class="line">  <span class="number"> 2070 </span>23195</span><br><span class="line">  <span class="number"> 1890 </span>5015</span><br><span class="line">  <span class="number"> 1890 </span>26681</span><br><span class="line">  <span class="number"> 1881 </span>6681</span><br><span class="line">  <span class="number"> 1690 </span>11867</span><br><span class="line">  <span class="number"> 1672 </span>6830</span><br><span class="line">  <span class="number"> 1608 </span>1323</span><br><span class="line">  <span class="number"> 1512 </span>27653</span><br><span class="line"></span><br><span class="line">[root@controller ~]<span class="comment"># ps -ef | grep 19579</span></span><br><span class="line">rabbitmq<span class="number"> 19579 </span>   <span class="number"> 1 </span>21 Jul10 ?        1-11:20:03 /usr/lib64/erlang/erts-8.3.5.3/bin/beam.smp -W w -A<span class="number"> 640 </span>-P<span class="number"> 1048576 </span>-t<span class="number"> 5000000 </span>-stbt db -K true -- -root /usr/lib64/erlang -progname erl -- -home /var/lib/rabbitmq -- -pa /usr/lib/rabbitmq/lib/rabbitmq_server-3.6.5/ebin -noshell -noinput -s rabbit boot -sname rabbit@controller -boot start_sasl -config /etc/rabbitmq/rabbitmq -kernel inet_default_connect_options [&#123;nodelay,true&#125;] -sasl errlog_type error -sasl sasl_error_logger false -rabbit error_logger &#123;file,"/var/log/rabbitmq/rabbit@controller.log"&#125; -rabbit sasl_error_logger &#123;file,"/var/log/rabbitmq/rabbit@controller-sasl.log"&#125; -rabbit enabled_plugins_file "/etc/rabbitmq/enabled_plugins" -rabbit plugins_dir "/usr/lib/rabbitmq/lib/rabbitmq_server-3.6.5/plugins" -rabbit plugins_expand_dir "/var/lib/rabbitmq/mnesia/rabbit@controller-plugins-expand" -os_mon start_cpu_sup false -os_mon start_disksup false -os_mon start_memsup false -mnesia dir "/var/lib/rabbitmq/mnesia/rabbit@controller" -kernel inet_dist_listen_min<span class="number"> 25672 </span>-kernel inet_dist_listen_max 25672</span><br><span class="line">rabbitmq<span class="number"> 20451 </span>19579 <span class="number"> 0 </span>Jul10 ?        00:00:12 erl_child_setup 200000</span><br><span class="line">root    <span class="number"> 37443 </span>27135 <span class="number"> 0 </span>16:32 pts/16   00:00:00 grep --color=auto 19579</span><br><span class="line">[root@controller ~]<span class="comment"># ps -ef | grep 19267</span></span><br><span class="line">mysql   <span class="number"> 19267 </span>   <span class="number"> 1 </span><span class="number"> 1 </span>Jul10 ?        01:40:29 /usr/libexec/mysqld --basedir=/usr</span><br><span class="line">root    <span class="number"> 37614 </span>27135 <span class="number"> 0 </span>16:32 pts/16   00:00:00 grep --color=auto 19267</span><br></pre></td></tr></table></figure>
+<hr>
 
       
 
@@ -488,11 +492,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">memcache</a>
+                <a href="javascript:void(0)" class="js-tag color4">md5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">large file</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,15 +516,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">md5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">large file</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,10 +532,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spice</a>
               </li>
              
@@ -544,7 +540,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ARM</a>
+                <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,7 +548,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
+                <a href="javascript:void(0)" class="js-tag color4">memcache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ARM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -584,10 +588,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vbs</a>
               </li>
              
@@ -601,6 +601,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -652,6 +656,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">nova</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">schedule</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">master-master</a>
               </li>
              
@@ -688,6 +700,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">region</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">windows</a>
               </li>
              
@@ -697,10 +713,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vdi</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">region</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -733,10 +745,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">qemu-guest-agent</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nova</a>
               </li>
              
               <li class="article-tag-list-item">
