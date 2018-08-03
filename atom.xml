@@ -431,9 +431,9 @@
     
       <category term="Virt-viewer" scheme="http://pystack.org/tags/Virt-viewer/"/>
     
-      <category term="Linux" scheme="http://pystack.org/tags/Linux/"/>
-    
       <category term="ARM" scheme="http://pystack.org/tags/ARM/"/>
+    
+      <category term="Linux" scheme="http://pystack.org/tags/Linux/"/>
     
   </entry>
   
@@ -462,9 +462,9 @@
     
       <category term="Virt-viewer" scheme="http://pystack.org/tags/Virt-viewer/"/>
     
-      <category term="MinGW" scheme="http://pystack.org/tags/MinGW/"/>
-    
       <category term="Linux" scheme="http://pystack.org/tags/Linux/"/>
+    
+      <category term="MinGW" scheme="http://pystack.org/tags/MinGW/"/>
     
   </entry>
   
