@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://pystack.org/2000/05/01/xrdp-failed-connect/</loc>
+    <loc>http://pystack.org/2018/08/25/openstack-hotplug-nic-in-centos7/</loc>
     
-    <lastmod>2018-12-12T09:32:26.550Z</lastmod>
+    <lastmod>2018-12-12T09:33:18.090Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://pystack.org/2018/06/01/openstack-rpm-package/</loc>
     
-    <lastmod>2018-12-12T09:32:09.282Z</lastmod>
+    <lastmod>2018-12-12T09:32:52.502Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pystack.org/2000/05/01/xrdp-failed-connect/</loc>
+    
+    <lastmod>2018-12-12T09:32:50.098Z</lastmod>
     
   </url>
   
@@ -19,13 +26,6 @@
     <loc>http://pystack.org/2012/10/10/python-code-snippet/</loc>
     
     <lastmod>2018-12-10T06:33:16.613Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pystack.org/2018/08/25/openstack-hotplug-nic-in-centos7/</loc>
-    
-    <lastmod>2018-09-05T06:02:52.518Z</lastmod>
     
   </url>
   

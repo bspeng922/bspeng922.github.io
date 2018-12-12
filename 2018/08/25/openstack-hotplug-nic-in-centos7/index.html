@@ -8,23 +8,23 @@
   <link rel="dns-prefetch" href="http://pystack.org">
   <title>Openstack虚拟机连接接口 | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="问题:Openstack虚拟机更换网络(先分离接口再连接接口)的时候,windows7,ubuntu都能够自动识别并配置新的网络,但是centos7更换网络的时候,网卡状态是DOWN,无法自动UP. 使用ifup命令或者重启network服务都会提示错误.手动重启虚拟机或者先ifdown再ifup网卡才能得到ip地址.  连接接口时控制台打印输出:  查看网络信息  启动(up)网卡   启动网卡">
+  <meta name="description" content="问题:Openstack虚拟机更换网络(先分离接口再连接接口)的时候,windows7,ubuntu都能够自动识别并配置新的网络,但是centos7更换网络的时候,网卡状态是DOWN,无法自动UP. 使用ifup命令或者重启network服务都会提示错误.手动重启虚拟机或者先ifdown再ifup网卡才能得到ip地址.  连接接口时控制台打印输出:">
 <meta name="keywords" content="Openstack,centos,hotplug">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Openstack虚拟机连接接口">
 <meta property="og:url" content="http://pystack.org/2018/08/25/openstack-hotplug-nic-in-centos7/index.html">
 <meta property="og:site_name" content="Pystack.org">
-<meta property="og:description" content="问题:Openstack虚拟机更换网络(先分离接口再连接接口)的时候,windows7,ubuntu都能够自动识别并配置新的网络,但是centos7更换网络的时候,网卡状态是DOWN,无法自动UP. 使用ifup命令或者重启network服务都会提示错误.手动重启虚拟机或者先ifdown再ifup网卡才能得到ip地址.  连接接口时控制台打印输出:  查看网络信息  启动(up)网卡   启动网卡">
+<meta property="og:description" content="问题:Openstack虚拟机更换网络(先分离接口再连接接口)的时候,windows7,ubuntu都能够自动识别并配置新的网络,但是centos7更换网络的时候,网卡状态是DOWN,无法自动UP. 使用ifup命令或者重启network服务都会提示错误.手动重启虚拟机或者先ifdown再ifup网卡才能得到ip地址.  连接接口时控制台打印输出:">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pystack.org/assets/img/after-plugin.png">
 <meta property="og:image" content="http://pystack.org/assets/img/ip-addr-down.png">
 <meta property="og:image" content="http://pystack.org/assets/img/ifup-eth0.png">
 <meta property="og:image" content="http://pystack.org/assets/img/ps-ef-grep-dhclient.png">
 <meta property="og:image" content="http://pystack.org/assets/img/kill-9-ifup-eth0.png">
-<meta property="og:updated_time" content="2018-09-05T06:02:52.518Z">
+<meta property="og:updated_time" content="2018-12-12T09:33:18.090Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Openstack虚拟机连接接口">
-<meta name="twitter:description" content="问题:Openstack虚拟机更换网络(先分离接口再连接接口)的时候,windows7,ubuntu都能够自动识别并配置新的网络,但是centos7更换网络的时候,网卡状态是DOWN,无法自动UP. 使用ifup命令或者重启network服务都会提示错误.手动重启虚拟机或者先ifdown再ifup网卡才能得到ip地址.  连接接口时控制台打印输出:  查看网络信息  启动(up)网卡   启动网卡">
+<meta name="twitter:description" content="问题:Openstack虚拟机更换网络(先分离接口再连接接口)的时候,windows7,ubuntu都能够自动识别并配置新的网络,但是centos7更换网络的时候,网卡状态是DOWN,无法自动UP. 使用ifup命令或者重启network服务都会提示错误.手动重启虚拟机或者先ifdown再ifup网卡才能得到ip地址.  连接接口时控制台打印输出:">
 <meta name="twitter:image" content="http://pystack.org/assets/img/after-plugin.png">
   
     <link rel="alternative" href="/atom.xml" title="Pystack.org" type="application/atom+xml">
@@ -184,8 +184,10 @@
       
         <h2 id="问题"><a href="#问题" class="headerlink" title="问题:"></a>问题:</h2><p>Openstack虚拟机更换网络(先分离接口再连接接口)的时候,windows7,ubuntu都能够自动识别并配置新的网络,但是centos7更换网络的时候,网卡状态是DOWN,无法自动UP. 使用ifup命令或者重启network服务都会提示错误.手动重启虚拟机或者先ifdown再ifup网卡才能得到ip地址.</p>
 <ul>
-<li><p>连接接口时控制台打印输出:<br><img src="/assets/img/after-plugin.png" alt=""></p>
-</li>
+<li>连接接口时控制台打印输出:<br><img src="/assets/img/after-plugin.png" alt=""></li>
+</ul>
+<a id="more"></a>
+<ul>
 <li><p>查看网络信息<br><img src="/assets/img/ip-addr-down.png" alt=""></p>
 </li>
 <li><p>启动(up)网卡<br><img src="/assets/img/ifup-eth0.png" alt=""></p>
@@ -498,15 +500,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">md5</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">large file</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AngularJS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,11 +556,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">APT</a>
+                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
+                <a href="javascript:void(0)" class="js-tag color4">APT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,19 +576,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vbs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">qos</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vbs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ftp</a>
               </li>
              
               <li class="article-tag-list-item">
