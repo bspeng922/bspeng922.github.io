@@ -4,18 +4,16 @@
 
     
   <url>
-    <loc>http://pystack.org/2018/08/25/openstack-hotplug-nic-in-centos7/</loc>
-    <lastmod>2018-12-12T09:33:18.090Z</lastmod>
+    <loc>http://pystack.org/2018/06/01/openstack-rpm-package/</loc>
+    <lastmod>2018-12-12T09:37:21.646Z</lastmod>
     <data>
         <display>
-        <title>Openstack虚拟机连接接口</title>
-        <pubTime>2018-08-25T13:39:24.000Z</pubTime>
+        <title>openstack rpm打包</title>
+        <pubTime>2018-06-01T10:39:24.000Z</pubTime>
         
-        <tag>Openstack</tag>
+        <tag>openstack</tag>
          
-        <tag>centos</tag>
-         
-        <tag>hotplug</tag>
+        <tag>rpm</tag>
          
          
            
@@ -28,16 +26,18 @@
 
     
   <url>
-    <loc>http://pystack.org/2018/06/01/openstack-rpm-package/</loc>
-    <lastmod>2018-12-12T09:32:52.502Z</lastmod>
+    <loc>http://pystack.org/2018/08/25/openstack-hotplug-nic-in-centos7/</loc>
+    <lastmod>2018-12-12T09:33:18.090Z</lastmod>
     <data>
         <display>
-        <title>openstack rpm</title>
-        <pubTime>2018-06-01T10:39:24.000Z</pubTime>
+        <title>Openstack虚拟机连接接口</title>
+        <pubTime>2018-08-25T13:39:24.000Z</pubTime>
         
-        <tag>openstack</tag>
+        <tag>Openstack</tag>
          
-        <tag>rpm</tag>
+        <tag>centos</tag>
+         
+        <tag>hotplug</tag>
          
          
            

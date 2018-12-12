@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://pystack.org/2018/08/25/openstack-hotplug-nic-in-centos7/</loc>
+    <loc>http://pystack.org/2018/06/01/openstack-rpm-package/</loc>
     
-    <lastmod>2018-12-12T09:33:18.090Z</lastmod>
+    <lastmod>2018-12-12T09:37:21.646Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://pystack.org/2018/06/01/openstack-rpm-package/</loc>
+    <loc>http://pystack.org/2018/08/25/openstack-hotplug-nic-in-centos7/</loc>
     
-    <lastmod>2018-12-12T09:32:52.502Z</lastmod>
+    <lastmod>2018-12-12T09:33:18.090Z</lastmod>
     
   </url>
   
