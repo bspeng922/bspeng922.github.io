@@ -4,6 +4,89 @@
 
     
   <url>
+    <loc>http://pystack.org/2018/06/01/openstack-rpm-package/</loc>
+    <lastmod>2018-12-12T09:25:44.847Z</lastmod>
+    <data>
+        <display>
+        <title>openstack rpm</title>
+        <pubTime>2018-06-01T10:39:24.000Z</pubTime>
+        
+        <tag>openstack</tag>
+         
+        <tag>rpm</tag>
+         
+         
+           
+             
+              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2012/10/10/python-code-snippet/</loc>
+    <lastmod>2018-12-10T06:33:16.613Z</lastmod>
+    <data>
+        <display>
+        <title>Python Code Snippet</title>
+        <pubTime>2012-10-10T11:39:24.000Z</pubTime>
+        
+        <tag>python</tag>
+         
+        <tag>openstack</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://pystack.org/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2018/09/29/xrdp-failed-connect/</loc>
+    <lastmod>2018-09-29T02:31:52.502Z</lastmod>
+    <data>
+        <display>
+        <title></title>
+        <pubTime>2018-09-29T02:31:52.502Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2018/08/25/openstack-hotplug-nic-in-centos7/</loc>
+    <lastmod>2018-09-05T06:02:52.518Z</lastmod>
+    <data>
+        <display>
+        <title>Openstack虚拟机连接接口</title>
+        <pubTime>2018-08-25T13:39:24.000Z</pubTime>
+        
+        <tag>Openstack</tag>
+         
+        <tag>centos</tag>
+         
+        <tag>hotplug</tag>
+         
+         
+           
+             
+              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://pystack.org/2015/07/29/failed-to-allocate-the-network/</loc>
     <lastmod>2018-08-01T09:29:08.966Z</lastmod>
     <data>
@@ -435,28 +518,6 @@
            
              
               <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://pystack.org/2012/10/10/python-code-snippet/</loc>
-    <lastmod>2018-05-17T11:52:00.193Z</lastmod>
-    <data>
-        <display>
-        <title>Python Code Snippet</title>
-        <pubTime>2012-10-10T11:39:24.000Z</pubTime>
-        
-        <tag>python</tag>
-         
-        <tag>openstack</tag>
-         
-         
-           
-             
-              <breadCrumb title="Python" url="http://pystack.org/categories/Python/"/>
           
         </display>
     </data>
@@ -1059,9 +1120,9 @@
          
         <tag>Virt-viewer</tag>
          
-        <tag>Linux</tag>
-         
         <tag>MinGW</tag>
+         
+        <tag>Linux</tag>
          
          
            
@@ -1085,9 +1146,9 @@
          
         <tag>Virt-viewer</tag>
          
-        <tag>ARM</tag>
-         
         <tag>Linux</tag>
+         
+        <tag>ARM</tag>
          
          
            
