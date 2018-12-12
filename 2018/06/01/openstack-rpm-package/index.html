@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pystack.org">
 <meta property="og:description" content="下载源码包http://vault.centos.org/centos/7/cloud/Source/openstack-queens/ 1wget http://vault.centos.org/centos/7/cloud/Source/openstack-queens/openstack-neutron-12.0.2-1.el7.src.rpm 安装依赖工具1234yum install r">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-12T09:25:44.847Z">
+<meta property="og:updated_time" content="2018-12-12T09:32:09.282Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="openstack rpm">
 <meta name="twitter:description" content="下载源码包http://vault.centos.org/centos/7/cloud/Source/openstack-queens/ 1wget http://vault.centos.org/centos/7/cloud/Source/openstack-queens/openstack-neutron-12.0.2-1.el7.src.rpm 安装依赖工具1234yum install r">
@@ -179,6 +179,7 @@
         <h3 id="下载源码包"><a href="#下载源码包" class="headerlink" title="下载源码包"></a>下载源码包</h3><p><a href="http://vault.centos.org/centos/7/cloud/Source/openstack-queens/" target="_blank" rel="external">http://vault.centos.org/centos/7/cloud/Source/openstack-queens/</a></p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http:<span class="regexp">//</span>vault.centos.org<span class="regexp">/centos/</span><span class="number">7</span><span class="regexp">/cloud/</span>Source<span class="regexp">/openstack-queens/</span>openstack-neutron-<span class="number">12.0</span>.<span class="number">2</span>-<span class="number">1</span>.el7.src.rpm</span><br></pre></td></tr></table></figure>
 <h3 id="安装依赖工具"><a href="#安装依赖工具" class="headerlink" title="安装依赖工具"></a>安装依赖工具</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install </span>rpm-<span class="keyword">build </span>–y</span><br><span class="line"></span><br><span class="line">groupadd mockbuild</span><br><span class="line">useradd mockbuild -g mockbuild</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="安装源码包"><a href="#安装源码包" class="headerlink" title="安装源码包"></a>安装源码包</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">rpm</span> <span class="selector-tag">-Uvh</span> <span class="selector-tag">openstack-neutron-12</span><span class="selector-class">.0</span><span class="selector-class">.2-1</span><span class="selector-class">.el7</span><span class="selector-class">.src</span><span class="selector-class">.rpm</span></span><br></pre></td></tr></table></figure>
 <h3 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">LC_ALL</span>=en_US.UTF-8</span><br></pre></td></tr></table></figure>
 <h3 id="安装包依赖"><a href="#安装包依赖" class="headerlink" title="安装包依赖"></a>安装包依赖</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install centos-release-openstack-queens</span><br><span class="line"></span><br><span class="line"><span class="keyword">cd</span> rpmbuild</span><br><span class="line">yum install `rpmbuild -bb SPECS/openstack-neutron.spec 2&gt;&amp;1 | grep <span class="string">"needed"</span>  | awk '&#123;<span class="keyword">print</span> <span class="variable">$1&#125;</span>'` -<span class="built_in">y</span></span><br></pre></td></tr></table></figure>
@@ -303,18 +304,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/06/01/openstack-timeout-when-execute-nova-or-neutron-commands/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/07/29/nova-schedule-no-valid-host-was-found/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          openstack命令超时
+          No valid host was found
         
       </div>
     </a>
   
   
-    <a href="/2018/05/16/qemu-guest-agent/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Qemu guest agent</div>
+    <a href="/2018/06/01/openstack-timeout-when-execute-nova-or-neutron-commands/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">openstack命令超时</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -521,7 +522,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
+                <a href="javascript:void(0)" class="js-tag color4">ARM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,7 +530,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ARM</a>
+                <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -677,10 +678,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">rpm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">windows</a>
               </li>
              
@@ -694,6 +691,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">region</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">rpm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -737,15 +738,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ssh</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -770,6 +771,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">url protocol</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">xrdp</a>
               </li>
             
             <div class="clearfix"></div>

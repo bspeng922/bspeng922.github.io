@@ -154,61 +154,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-xrdp-failed-connect" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>连接日志</p>
-<p>/var/log/xrdp.log</p>
-<p>[20180928-22:17:55] [INFO ] Socket 12: AF_INET6 connection received from ::ffff:10.10.86.252 port 36020<br>[20180928-22:17:55] [DEBUG] Closed socket 12 (AF_INET6 ::ffff:10.10.86.14 port 3389)<br>[20180928-22:17:55] [DEBUG] Closed socket 11 (AF_INET6 :: port 3389)<br>[20180928-22:17:55] [INFO ] Using default X.509 certificate: /etc/xrdp/cert.pem<br>[20180928-22:17:55] [INFO ] Using default X.509 key file: /etc/xrdp/key.pem<br>[20180928-22:17:55] [ERROR] Cannot read private key file /etc/xrdp/key.pem: Permission denied<br>[20180928-22:17:55] [DEBUG] TLSv1.2 enabled<br>[20180928-22:17:55] [DEBUG] TLSv1.1 enabled<br>[20180928-22:17:55] [DEBUG] TLSv1 enabled<br>[20180928-22:17:55] [DEBUG] Security layer: requested 3, selected 0<br>[20180928-22:17:55] [INFO ] connected client computer name: moose-ubuntu<br>[20180928-22:17:55] [INFO ] Non-TLS connection established from ::ffff:10.10.86.252 port 36020: encrypted with standard RDP security<br>[20180928-22:17:55] [DEBUG] xrdp_0000060b_wm_login_mode_event_00000001<br>[20180928-22:17:55] [INFO ] Loading keymap file /etc/xrdp/km-00000409.ini<br>[20180928-22:17:55] [WARN ] local keymap file for 0x00000409 found and doesn’t match built in keymap, using local keymap file<br>[20180928-22:17:55] [DEBUG] xrdp_wm_log_msg: connecting to sesman ip 127.0.0.1 port 3350<br>[20180928-22:17:56] [INFO ] xrdp_wm_log_msg: sesman connect ok<br>[20180928-22:17:56] [DEBUG] xrdp_wm_log_msg: sending login info to session manager, please wait…<br>[20180928-22:17:56] [DEBUG] return value from xrdp_mm_connect 0<br>[20180928-22:17:56] [INFO ] xrdp_wm_log_msg: login successful for display 20<br>[20180928-22:17:56] [DEBUG] xrdp_wm_log_msg: VNC started connecting<br>[20180928-22:17:56] [DEBUG] xrdp_wm_log_msg: VNC connecting to 127.0.0.1 5920<br>[20180928-22:17:59] [DEBUG] VNC error 1 after security negotiation<br>[20180928-22:17:59] [DEBUG] VNC error before sending share flag<br>[20180928-22:17:59] [DEBUG] VNC error before receiving server init<br>[20180928-22:17:59] [DEBUG] VNC error before receiving pixel format<br>[20180928-22:17:59] [DEBUG] VNC error before receiving name length<br>[20180928-22:17:59] [DEBUG] VNC error before receiving name<br>[20180928-22:17:59] [DEBUG] xrdp_wm_log_msg: VNC error - problem connecting<br>[20180928-22:17:59] [DEBUG] Closed socket 17 (AF_INET6 ::ffff:127.0.0.1 port 43460)<br>[20180928-22:17:59] [DEBUG] xrdp_wm_log_msg: some problem<br>[20180928-22:17:59] [DEBUG] xrdp_mm_module_cleanup<br>[20180928-22:17:59] [DEBUG] VNC mod_exit<br>[20180928-22:17:59] [DEBUG] Closed socket 16 (AF_INET6 ::1 port 39372)</p>
-<p>[20180928-22:19:24] [INFO ] Socket 12: AF_INET6 connection received from ::ffff:10.10.86.252 port 38076<br>[20180928-22:19:24] [DEBUG] Closed socket 12 (AF_INET6 ::ffff:10.10.86.14 port 3389)<br>[20180928-22:19:24] [DEBUG] Closed socket 11 (AF_INET6 :: port 3389)<br>[20180928-22:19:24] [INFO ] Using default X.509 certificate: /etc/xrdp/cert.pem<br>[20180928-22:19:24] [INFO ] Using default X.509 key file: /etc/xrdp/key.pem<br>[20180928-22:19:24] [ERROR] Cannot read private key file /etc/xrdp/key.pem: Permission denied<br>[20180928-22:19:24] [DEBUG] TLSv1.2 enabled<br>[20180928-22:19:24] [DEBUG] TLSv1.1 enabled<br>[20180928-22:19:24] [DEBUG] TLSv1 enabled<br>[20180928-22:19:24] [DEBUG] Security layer: requested 3, selected 0<br>[20180928-22:19:24] [INFO ] connected client computer name: moose-ubuntu<br>[20180928-22:19:24] [INFO ] Non-TLS connection established from ::ffff:10.10.86.252 port 38076: encrypted with standard RDP security<br>[20180928-22:19:24] [DEBUG] xrdp_00000638_wm_login_mode_event_00000001<br>[20180928-22:19:24] [INFO ] Loading keymap file /etc/xrdp/km-00000409.ini<br>[20180928-22:19:24] [WARN ] local keymap file for 0x00000409 found and doesn’t match built in keymap, using local keymap file<br>[20180928-22:19:24] [DEBUG] xrdp_wm_log_msg: connecting to sesman ip 127.0.0.1 port 3350<br>[20180928-22:19:25] [INFO ] xrdp_wm_log_msg: sesman connect ok<br>[20180928-22:19:25] [DEBUG] xrdp_wm_log_msg: sending login info to session manager, please wait…<br>[20180928-22:19:25] [DEBUG] return value from xrdp_mm_connect 0<br>[20180928-22:19:25] [INFO ] xrdp_wm_log_msg: login successful for display 21<br>[20180928-22:19:25] [DEBUG] xrdp_wm_log_msg: VNC started connecting<br>[20180928-22:19:25] [DEBUG] xrdp_wm_log_msg: VNC connecting to 127.0.0.1 5921<br>[20180928-22:19:28] [DEBUG] VNC error 1 after security negotiation<br>[20180928-22:19:28] [DEBUG] VNC error before sending share flag<br>[20180928-22:19:28] [DEBUG] VNC error before receiving server init<br>[20180928-22:19:28] [DEBUG] VNC error before receiving pixel format<br>[20180928-22:19:28] [DEBUG] VNC error before receiving name length<br>[20180928-22:19:28] [DEBUG] VNC error before receiving name<br>[20180928-22:19:28] [DEBUG] xrdp_wm_log_msg: VNC error - problem connecting<br>[20180928-22:19:28] [DEBUG] Closed socket 17 (AF_INET6 ::ffff:127.0.0.1 port 52608)<br>[20180928-22:19:28] [DEBUG] xrdp_wm_log_msg: some problem<br>[20180928-22:19:28] [DEBUG] xrdp_mm_module_cleanup<br>[20180928-22:19:28] [DEBUG] VNC mod_exit<br>[20180928-22:19:28] [DEBUG] Closed socket 16 (AF_INET6 ::1 port 39406)</p>
-<p>xrdp-conn-error.png</p>
-<p>/var/log/xrdp-sesman.log</p>
-<p>[20180928-22:20:51] [INFO ] A connection received from ::1 port 39440<br>[20180928-22:20:52] [INFO ] ++ created session (access granted): username root, ip ::ffff:10.10.86.252:39966 - socket: 12<br>[20180928-22:20:52] [INFO ] starting Xvnc session…<br>[20180928-22:20:52] [DEBUG] Closed socket 9 (AF_INET6 :: port 5922)<br>[20180928-22:20:52] [DEBUG] Closed socket 9 (AF_INET6 :: port 6022)<br>[20180928-22:20:52] [DEBUG] Closed socket 9 (AF_INET6 :: port 6222)<br>[20180928-22:20:52] [DEBUG] Closed socket 8 (AF_INET6 ::1 port 3350)<br>[20180928-22:20:52] [INFO ] calling auth_start_session from pid 1641<br>[20180928-22:20:52] [DEBUG] Closed socket 7 (AF_INET6 ::1 port 3350)<br>[20180928-22:20:52] [DEBUG] Closed socket 8 (AF_INET6 ::1 port 3350)<br>[20180928-22:20:52] [INFO ] Xvnc :22 -auth .Xauthority -geometry 1920x1080 -depth 8 -rfbauth /root/.vnc/sesman_root_passwd:22 -bs -nolisten tcp -localhost -dpi 96<br>[20180928-22:20:52] [CORE ] waiting for window manager (pid 1642) to exit<br>[20180928-22:20:52] [CORE ] window manager (pid 1642) did exit, cleaning up session<br>[20180928-22:20:52] [INFO ] calling auth_stop_session and auth_end from pid 1641<br>[20180928-22:20:52] [DEBUG] cleanup_sockets:<br>[20180928-22:20:52] [DEBUG] cleanup_sockets: deleting /var/run/xrdp/sockdir/xrdp_chansrv_socket_22<br>[20180928-22:20:52] [DEBUG] cleanup_sockets: failed to delete /var/run/xrdp/sockdir/xrdp_chansrv_socket_22<br>[20180928-22:20:52] [INFO ] ++ terminated session:  username root, display :22.0, session_pid 1641, ip ::ffff:10.10.86.252:39966 - socket: 12</p>
-<p>[xrdp1]<br>name=sesman-vnc<br>lib=libvnc.so<br>username=ask<br>password=ask<br>ip=127.0.0.1<br>port=-1<br>直接把端口改成5910<br>[xrdp1]<br>name=customsessionname<br>lib=libvnc.so<br>username=myusername<br>password=ask<br>ip=127.0.0.1<br>port=5910</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/29/xrdp-failed-connect/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-openstack-hotplug-nic-in-centos7" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -422,6 +367,102 @@
 
 
   
+    <article id="post-openstack-rpm-package" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/01/openstack-rpm-package/">openstack rpm</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/01/openstack-rpm-package/" class="archive-article-date">
+  	<time datetime="2018-06-01T10:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-01</time>
+</a>
+        
+        <!--<span id="busuanzi_container_page_pv">
+           阅读<span id="busuanzi_value_page_pv"></span>次
+        </span>-->
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="下载源码包"><a href="#下载源码包" class="headerlink" title="下载源码包"></a>下载源码包</h3><p><a href="http://vault.centos.org/centos/7/cloud/Source/openstack-queens/" target="_blank" rel="external">http://vault.centos.org/centos/7/cloud/Source/openstack-queens/</a></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http:<span class="regexp">//</span>vault.centos.org<span class="regexp">/centos/</span><span class="number">7</span><span class="regexp">/cloud/</span>Source<span class="regexp">/openstack-queens/</span>openstack-neutron-<span class="number">12.0</span>.<span class="number">2</span>-<span class="number">1</span>.el7.src.rpm</span><br></pre></td></tr></table></figure>
+<h3 id="安装依赖工具"><a href="#安装依赖工具" class="headerlink" title="安装依赖工具"></a>安装依赖工具</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install </span>rpm-<span class="keyword">build </span>–y</span><br><span class="line"></span><br><span class="line">groupadd mockbuild</span><br><span class="line">useradd mockbuild -g mockbuild</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2018/06/01/openstack-rpm-package/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rpm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/01/openstack-rpm-package/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-openstack-timeout-when-execute-nova-or-neutron-commands" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -487,105 +528,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/06/01/openstack-timeout-when-execute-nova-or-neutron-commands/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-openstack-rpm-package" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/01/openstack-rpm-package/">openstack rpm</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/01/openstack-rpm-package/" class="archive-article-date">
-  	<time datetime="2018-06-01T10:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-01</time>
-</a>
-        
-        <!--<span id="busuanzi_container_page_pv">
-           阅读<span id="busuanzi_value_page_pv"></span>次
-        </span>-->
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="下载源码包"><a href="#下载源码包" class="headerlink" title="下载源码包"></a>下载源码包</h3><p><a href="http://vault.centos.org/centos/7/cloud/Source/openstack-queens/" target="_blank" rel="external">http://vault.centos.org/centos/7/cloud/Source/openstack-queens/</a></p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http:<span class="regexp">//</span>vault.centos.org<span class="regexp">/centos/</span><span class="number">7</span><span class="regexp">/cloud/</span>Source<span class="regexp">/openstack-queens/</span>openstack-neutron-<span class="number">12.0</span>.<span class="number">2</span>-<span class="number">1</span>.el7.src.rpm</span><br></pre></td></tr></table></figure>
-<h3 id="安装依赖工具"><a href="#安装依赖工具" class="headerlink" title="安装依赖工具"></a>安装依赖工具</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install </span>rpm-<span class="keyword">build </span>–y</span><br><span class="line"></span><br><span class="line">groupadd mockbuild</span><br><span class="line">useradd mockbuild -g mockbuild</span><br></pre></td></tr></table></figure>
-<h3 id="安装源码包"><a href="#安装源码包" class="headerlink" title="安装源码包"></a>安装源码包</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">rpm</span> <span class="selector-tag">-Uvh</span> <span class="selector-tag">openstack-neutron-12</span><span class="selector-class">.0</span><span class="selector-class">.2-1</span><span class="selector-class">.el7</span><span class="selector-class">.src</span><span class="selector-class">.rpm</span></span><br></pre></td></tr></table></figure>
-<h3 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">LC_ALL</span>=en_US.UTF-8</span><br></pre></td></tr></table></figure>
-<h3 id="安装包依赖"><a href="#安装包依赖" class="headerlink" title="安装包依赖"></a>安装包依赖</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install centos-release-openstack-queens</span><br><span class="line"></span><br><span class="line"><span class="keyword">cd</span> rpmbuild</span><br><span class="line">yum install `rpmbuild -bb SPECS/openstack-neutron.spec 2&gt;&amp;1 | grep <span class="string">"needed"</span>  | awk '&#123;<span class="keyword">print</span> <span class="variable">$1&#125;</span>'` -<span class="built_in">y</span></span><br></pre></td></tr></table></figure>
-<h3 id="重新打包"><a href="#重新打包" class="headerlink" title="重新打包"></a>重新打包</h3><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpmbuild <span class="comment">--clean -bb SPECS/openstack-neutron.spec</span></span><br></pre></td></tr></table></figure>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> RPMS/noarch/  </span><br><span class="line">yum localinstall *<span class="string">.rpm</span></span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rpm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/01/openstack-rpm-package/">展开全文 >></a>
         </p>
       
 
@@ -1110,6 +1052,105 @@
 
 
   
+    <article id="post-configure-neutron-fwaas-v2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/22/configure-neutron-fwaas-v2/">Neutron Fwaas V2 版配置</a>
+    </h1>
+  
+
+        
+        <a href="/2018/02/22/configure-neutron-fwaas-v2/" class="archive-article-date">
+  	<time datetime="2018-02-22T06:22:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-22</time>
+</a>
+        
+        <!--<span id="busuanzi_container_page_pv">
+           阅读<span id="busuanzi_value_page_pv"></span>次
+        </span>-->
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>安装官网的文档配置fwaas v2后，创建防火墙组的时候，如果选择防火墙策略和路由器端口，防火墙的状态一直是Pengding Create，这时候删除的话也无法删除，状态变为Pending Update。</p>
+<p>创建时只选择防火墙策略或者端口是能创建成功的，创建后的状态也是active的，再添加策略或端口，状态就会像上面的一样一直是Pending Update，后台也没有什么报错信息。</p>
+        
+          <a class="article-more-a" href="/2018/02/22/configure-neutron-fwaas-v2/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">openstack</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">neutron</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">fwaas</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Openstack//" class="article-tag-list-link color5">Openstack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/02/22/configure-neutron-fwaas-v2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1272,7 +1313,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
+                <a href="javascript:void(0)" class="js-tag color4">ARM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1280,7 +1321,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ARM</a>
+                <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1428,10 +1469,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">rpm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">windows</a>
               </li>
              
@@ -1445,6 +1482,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">region</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">rpm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1488,15 +1529,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ssh</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1521,6 +1562,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">url protocol</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">xrdp</a>
               </li>
             
             <div class="clearfix"></div>
