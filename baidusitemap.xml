@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://pystack.org/2018/06/01/openstack-rpm-package/</loc>
-    <lastmod>2018-12-12T09:37:21.646Z</lastmod>
+    <lastmod>2018-12-13T02:03:18.743Z</lastmod>
     <data>
         <display>
         <title>openstack rpm打包</title>
@@ -465,9 +465,9 @@
          
         <tag>openstack</tag>
          
-        <tag>nova</tag>
-         
         <tag>libvirt</tag>
+         
+        <tag>nova</tag>
          
         <tag>qemu-guest-agent</tag>
          

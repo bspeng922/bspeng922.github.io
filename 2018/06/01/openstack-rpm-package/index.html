@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Pystack.org">
 <meta property="og:description" content="下载源码包http://vault.centos.org/centos/7/cloud/Source/openstack-queens/ 1wget http://vault.centos.org/centos/7/cloud/Source/openstack-queens/openstack-neutron-12.0.2-1.el7.src.rpm 安装依赖工具1234yum install r">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-12T09:37:21.646Z">
+<meta property="og:updated_time" content="2018-12-13T02:03:18.743Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="openstack rpm打包">
 <meta name="twitter:description" content="下载源码包http://vault.centos.org/centos/7/cloud/Source/openstack-queens/ 1wget http://vault.centos.org/centos/7/cloud/Source/openstack-queens/openstack-neutron-12.0.2-1.el7.src.rpm 安装依赖工具1234yum install r">
@@ -176,16 +176,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="下载源码包"><a href="#下载源码包" class="headerlink" title="下载源码包"></a>下载源码包</h3><p><a href="http://vault.centos.org/centos/7/cloud/Source/openstack-queens/" target="_blank" rel="external">http://vault.centos.org/centos/7/cloud/Source/openstack-queens/</a></p>
+        <h2 id="下载源码包"><a href="#下载源码包" class="headerlink" title="下载源码包"></a>下载源码包</h2><p><a href="http://vault.centos.org/centos/7/cloud/Source/openstack-queens/" target="_blank" rel="external">http://vault.centos.org/centos/7/cloud/Source/openstack-queens/</a></p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http:<span class="regexp">//</span>vault.centos.org<span class="regexp">/centos/</span><span class="number">7</span><span class="regexp">/cloud/</span>Source<span class="regexp">/openstack-queens/</span>openstack-neutron-<span class="number">12.0</span>.<span class="number">2</span>-<span class="number">1</span>.el7.src.rpm</span><br></pre></td></tr></table></figure>
-<h3 id="安装依赖工具"><a href="#安装依赖工具" class="headerlink" title="安装依赖工具"></a>安装依赖工具</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install </span>rpm-<span class="keyword">build </span>–y</span><br><span class="line"></span><br><span class="line">groupadd mockbuild</span><br><span class="line">useradd mockbuild -g mockbuild</span><br></pre></td></tr></table></figure>
+<h2 id="安装依赖工具"><a href="#安装依赖工具" class="headerlink" title="安装依赖工具"></a>安装依赖工具</h2><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install </span>rpm-<span class="keyword">build </span>–y</span><br><span class="line"></span><br><span class="line">groupadd mockbuild</span><br><span class="line">useradd mockbuild -g mockbuild</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h3 id="安装源码包"><a href="#安装源码包" class="headerlink" title="安装源码包"></a>安装源码包</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">rpm</span> <span class="selector-tag">-Uvh</span> <span class="selector-tag">openstack-neutron-12</span><span class="selector-class">.0</span><span class="selector-class">.2-1</span><span class="selector-class">.el7</span><span class="selector-class">.src</span><span class="selector-class">.rpm</span></span><br></pre></td></tr></table></figure>
-<h3 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">LC_ALL</span>=en_US.UTF-8</span><br></pre></td></tr></table></figure>
-<h3 id="安装包依赖"><a href="#安装包依赖" class="headerlink" title="安装包依赖"></a>安装包依赖</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install centos-release-openstack-queens</span><br><span class="line"></span><br><span class="line"><span class="keyword">cd</span> rpmbuild</span><br><span class="line">yum install `rpmbuild -bb SPECS/openstack-neutron.spec 2&gt;&amp;1 | grep <span class="string">"needed"</span>  | awk '&#123;<span class="keyword">print</span> <span class="variable">$1&#125;</span>'` -<span class="built_in">y</span></span><br></pre></td></tr></table></figure>
-<h3 id="修改源码"><a href="#修改源码" class="headerlink" title="修改源码"></a>修改源码</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解压压缩包 SOURCES/neutron-<span class="number">12.0</span>.<span class="number">2</span><span class="selector-class">.tar</span><span class="selector-class">.gz</span> </span><br><span class="line">修改项目源码</span><br><span class="line">重新压缩</span><br></pre></td></tr></table></figure>
-<h3 id="重新打包"><a href="#重新打包" class="headerlink" title="重新打包"></a>重新打包</h3><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpmbuild <span class="comment">--clean -bb SPECS/openstack-neutron.spec</span></span><br></pre></td></tr></table></figure>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> RPMS/noarch/  </span><br><span class="line">yum localinstall *<span class="string">.rpm</span></span><br></pre></td></tr></table></figure>
+<h2 id="安装源码包"><a href="#安装源码包" class="headerlink" title="安装源码包"></a>安装源码包</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">rpm</span> <span class="selector-tag">-Uvh</span> <span class="selector-tag">openstack-neutron-12</span><span class="selector-class">.0</span><span class="selector-class">.2-1</span><span class="selector-class">.el7</span><span class="selector-class">.src</span><span class="selector-class">.rpm</span></span><br></pre></td></tr></table></figure>
+<h2 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">LC_ALL</span>=en_US.UTF-8</span><br></pre></td></tr></table></figure>
+<h2 id="安装包依赖"><a href="#安装包依赖" class="headerlink" title="安装包依赖"></a>安装包依赖</h2><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install centos-release-openstack-queens</span><br><span class="line"></span><br><span class="line"><span class="keyword">cd</span> rpmbuild</span><br><span class="line">yum install `rpmbuild -bb SPECS/openstack-neutron.spec 2&gt;&amp;1 | grep <span class="string">"needed"</span>  | awk '&#123;<span class="keyword">print</span> <span class="variable">$1&#125;</span>'` -<span class="built_in">y</span></span><br></pre></td></tr></table></figure>
+<h2 id="修改源码"><a href="#修改源码" class="headerlink" title="修改源码"></a>修改源码</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解压压缩包 SOURCES/neutron-<span class="number">12.0</span>.<span class="number">2</span><span class="selector-class">.tar</span><span class="selector-class">.gz</span> </span><br><span class="line">修改项目源码</span><br><span class="line">重新压缩</span><br></pre></td></tr></table></figure>
+<h2 id="重新打包"><a href="#重新打包" class="headerlink" title="重新打包"></a>重新打包</h2><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpmbuild <span class="comment">--clean -bb SPECS/openstack-neutron.spec</span></span><br></pre></td></tr></table></figure>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> RPMS/noarch/  </span><br><span class="line">yum localinstall *<span class="string">.rpm</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="打包cinder的时候报错："><a href="#打包cinder的时候报错：" class="headerlink" title="打包cinder的时候报错："></a>打包cinder的时候报错：</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Warning, treated as error:</span><br><span class="line">/root/rpmbuild/BUILD/cinder-12.0.3/cinder/api/v3/attachments.py:docstring of cinder.api.v3.attachments.AttachmentsController.update:8:Cannot <span class="keyword">analyze</span> code. <span class="keyword">No</span> Pygments lexer <span class="keyword">found</span> <span class="keyword">for</span> <span class="string">"json"</span>.</span><br><span class="line"><span class="keyword">error</span>: Bad <span class="keyword">exit</span> <span class="keyword">status</span> <span class="keyword">from</span> /<span class="keyword">var</span>/tmp/rpm-tmp.pKb3Oo (%<span class="keyword">install</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">RPM <span class="keyword">build</span> <span class="keyword">errors</span>:</span><br><span class="line">    Bad <span class="keyword">exit</span> <span class="keyword">status</span> <span class="keyword">from</span> /<span class="keyword">var</span>/tmp/rpm-tmp.pKb3Oo (%<span class="keyword">install</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Warning, treated <span class="keyword">as</span> error:</span><br><span class="line">/root/rpmbuild/BUILD/cinder<span class="number">-12.0</span><span class="number">.3</span>/doc/source/admin/ts-cinder-config.rst:<span class="number">193</span>:Pygments lexer name <span class="string">u'shell'</span> <span class="keyword">is</span> <span class="keyword">not</span> known</span><br><span class="line">error: Bad exit status <span class="keyword">from</span> /var/tmp/rpm-tmp.Bn0Jub (%install)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">RPM build errors:</span><br><span class="line">    Bad exit status <span class="keyword">from</span> /var/tmp/rpm-tmp.Bn0Jub (%install)</span><br></pre></td></tr></table></figure>
+<p>需要手动安装</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install </span>pygments-<span class="keyword">json</span></span><br><span class="line"><span class="keyword">yum </span><span class="keyword">install </span>python-pygments</span><br></pre></td></tr></table></figure>
+<h2 id="打包nova的时候提示gitignore文件不存在："><a href="#打包nova的时候提示gitignore文件不存在：" class="headerlink" title="打包nova的时候提示gitignore文件不存在："></a>打包nova的时候提示gitignore文件不存在：</h2><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">creating build/lib/nova/CA</span><br><span class="line"><span class="keyword">error: </span>can't copy 'nova/CA/.gitignore': doesn't exist or not a regular file</span><br><span class="line"><span class="keyword">error: </span>Bad exit status from /var/tmp/rpm-tmp.M1KWG6 (%build)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">RPM build errors:</span><br><span class="line">    Bad exit status from /var/tmp/rpm-tmp.M1KWG6 (%build)</span><br></pre></td></tr></table></figure>
+<p>需要将spec文件中git查找那一行注释掉</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim SPECS/openstack-nova.spec</span><br><span class="line">...</span><br><span class="line"><span class="number">461</span> <span class="selector-id">#find</span> . \( -name <span class="selector-class">.gitignore</span> -o -name <span class="selector-class">.placeholder</span> \) -delete</span><br></pre></td></tr></table></figure>
 
       
 
@@ -467,14 +475,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">memcache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Openstack</a>
               </li>
              
@@ -484,6 +484,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">highcharts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">memcache</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -531,23 +539,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">neutron</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">fwaas</a>
+                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">APT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">YUM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,19 +567,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">qos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Magnum</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">nova</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">schedule</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,15 +595,23 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">virtio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Windows</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">KVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">nova</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">schedule</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">virtio</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -640,6 +632,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">master-master</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">neutron</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -675,7 +671,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">hotplug</a>
+                <a href="javascript:void(0)" class="js-tag color1">fwaas</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -767,15 +763,27 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">terminator</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">url protocol</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">terminator</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">xrdp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MinGW</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">qos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">hotplug</a>
               </li>
             
             <div class="clearfix"></div>
