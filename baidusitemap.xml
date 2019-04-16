@@ -4,8 +4,30 @@
 
     
   <url>
+    <loc>http://pystack.org/2016/12/25/kvm-usb-pass-through/</loc>
+    <lastmod>2019-04-16T09:49:27.700Z</lastmod>
+    <data>
+        <display>
+        <title>KVM Usb passthrough</title>
+        <pubTime>2016-12-25T13:39:24.000Z</pubTime>
+        
+        <tag>Openstack</tag>
+         
+        <tag>usb passthrough</tag>
+         
+         
+           
+             
+              <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://pystack.org/2018/06/01/openstack-rpm-package/</loc>
-    <lastmod>2018-12-13T02:03:18.743Z</lastmod>
+    <lastmod>2019-04-02T01:52:23.666Z</lastmod>
     <data>
         <display>
         <title>openstack rpm打包</title>
@@ -19,6 +41,43 @@
            
              
               <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2019/01/24/openstack-remove-keystone-auth/</loc>
+    <lastmod>2019-01-24T08:17:31.875Z</lastmod>
+    <data>
+        <display>
+        <title></title>
+        <pubTime>2019-01-24T08:17:31.875Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://pystack.org/2012/10/10/python-code-snippet/</loc>
+    <lastmod>2018-12-28T06:53:14.825Z</lastmod>
+    <data>
+        <display>
+        <title>Python Code Snippet</title>
+        <pubTime>2012-10-10T11:39:24.000Z</pubTime>
+        
+        <tag>python</tag>
+         
+        <tag>openstack</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://pystack.org/categories/Python/"/>
           
         </display>
     </data>
@@ -65,28 +124,6 @@
            
              
               <breadCrumb title="Openstack" url="http://pystack.org/categories/Openstack/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://pystack.org/2012/10/10/python-code-snippet/</loc>
-    <lastmod>2018-12-10T06:33:16.613Z</lastmod>
-    <data>
-        <display>
-        <title>Python Code Snippet</title>
-        <pubTime>2012-10-10T11:39:24.000Z</pubTime>
-        
-        <tag>python</tag>
-         
-        <tag>openstack</tag>
-         
-         
-           
-             
-              <breadCrumb title="Python" url="http://pystack.org/categories/Python/"/>
           
         </display>
     </data>
@@ -465,9 +502,9 @@
          
         <tag>openstack</tag>
          
-        <tag>libvirt</tag>
-         
         <tag>nova</tag>
+         
+        <tag>libvirt</tag>
          
         <tag>qemu-guest-agent</tag>
          
