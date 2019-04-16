@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pystack.org/assets/img/winusbdev.png">
 <meta property="og:image" content="http://pystack.org/assets/img/usbcontrol.png">
-<meta property="og:updated_time" content="2019-04-16T09:49:27.700Z">
+<meta property="og:updated_time" content="2019-04-16T09:52:12.033Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KVM Usb passthrough">
 <meta name="twitter:description" content="###　查看本机USB设备 1234[root@controller ~]# yum install -y usbutils[root@controller ~]# lsusbBus 003 Device 007: ID 0951:1666 Kingston Technology DataTraveler 100 G3/G4/SE9 G2">
@@ -190,7 +190,7 @@
 <h3 id="检查虚挂载"><a href="#检查虚挂载" class="headerlink" title="检查虚挂载"></a>检查虚挂载</h3><p>登录到虚拟机后会发现虚拟机自动发现了挂载的u盘设备。</p>
 <p><img src="/assets/img/winusbdev.png" alt=""></p>
 <hr>
-<h3 id="kvm支持的设备类型："><a href="#kvm支持的设备类型：" class="headerlink" title="kvm支持的设备类型："></a>kvm支持的设备类型：</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[root@controller ~]<span class="comment"># /usr/libexec/qemu-kvm  -device help</span></span><br><span class="line">...</span><br><span class="line">USB devices:</span><br><span class="line"><span class="built_in">name</span> <span class="string">"ich9-usb-ehci1"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"ich9-usb-ehci2"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"ich9-usb-uhci1"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"ich9-usb-uhci2"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"ich9-usb-uhci3"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"ich9-usb-uhci4"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"ich9-usb-uhci5"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"ich9-usb-uhci6"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"nec-usb-xhci"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"piix3-usb-uhci"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"piix4-usb-uhci"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"qemu-xhci"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"usb-ehci"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"vt82c686b-usb-uhci"</span>, bus PCI</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h3 id="kvm支持的设备类型"><a href="#kvm支持的设备类型" class="headerlink" title="kvm支持的设备类型"></a>kvm支持的设备类型</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[root@controller ~]<span class="comment"># /usr/libexec/qemu-kvm  -device help</span></span><br><span class="line">...</span><br><span class="line">USB devices:</span><br><span class="line"><span class="built_in">name</span> <span class="string">"ich9-usb-ehci1"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"ich9-usb-ehci2"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"ich9-usb-uhci1"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"ich9-usb-uhci2"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"ich9-usb-uhci3"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"ich9-usb-uhci4"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"ich9-usb-uhci5"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"ich9-usb-uhci6"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"nec-usb-xhci"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"piix3-usb-uhci"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"piix4-usb-uhci"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"qemu-xhci"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"usb-ehci"</span>, bus PCI</span><br><span class="line"><span class="built_in">name</span> <span class="string">"vt82c686b-usb-uhci"</span>, bus PCI</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <h3 id="USB控制器类型：OHCI，UHCI，EHCI，xHCI"><a href="#USB控制器类型：OHCI，UHCI，EHCI，xHCI" class="headerlink" title="USB控制器类型：OHCI，UHCI，EHCI，xHCI"></a>USB控制器类型：OHCI，UHCI，EHCI，xHCI</h3><p>简单地讲，OHCI、UHCI都是USB1.1的接口标准，而EHCI是对应USB2.0的接口标准，最新的xHCI是USB3.0的接口标准。</p>
 <ol>
 <li>OHCI（Open Host Controller Interface）是支持USB1.1的标准，但它不仅仅是针对USB，还支持其他的一些接口，比如它还支持Apple的火线（Firewire，IEEE 1394）接口。与UHCI相比，OHCI的硬件复杂，硬件做的事情更多，所以实现对应的软件驱动的任务，就相对较简单。主要用于非x86的USB，如扩展卡、嵌入式开发板的USB主控。</li>
@@ -524,6 +524,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spice</a>
               </li>
              
@@ -537,10 +541,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">windows xp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,14 +592,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">virtio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">usb passthrough</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">nova</a>
               </li>
              
@@ -629,6 +621,14 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vdagent</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">virtio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">usb passthrough</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -712,6 +712,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">keystone</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">rpm</a>
               </li>
              
@@ -756,18 +760,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">WNDA3100v2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">USB网卡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">事件日志</a>
               </li>
              
@@ -777,6 +769,18 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ssh</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">WNDA3100v2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">USB网卡</a>
               </li>
              
               <li class="article-tag-list-item">
