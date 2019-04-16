@@ -790,8 +790,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>###　查看本机USB设备</p>
-<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@controller</span> ~]<span class="meta"># yum install -y usbutils</span></span><br><span class="line"></span><br><span class="line">[root<span class="symbol">@controller</span> ~]<span class="meta"># lsusb</span></span><br><span class="line">Bus <span class="number">003</span> Device <span class="number">007</span>: ID <span class="number">0951</span>:<span class="number">1666</span> Kingston Technology DataTraveler <span class="number">100</span> G3/G4/SE9 G2</span><br></pre></td></tr></table></figure>
+        <h3 id="查看本机USB设备"><a href="#查看本机USB设备" class="headerlink" title="查看本机USB设备"></a>查看本机USB设备</h3><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@controller</span> ~]<span class="meta"># yum install -y usbutils</span></span><br><span class="line"></span><br><span class="line">[root<span class="symbol">@controller</span> ~]<span class="meta"># lsusb</span></span><br><span class="line">Bus <span class="number">003</span> Device <span class="number">007</span>: ID <span class="number">0951</span>:<span class="number">1666</span> Kingston Technology DataTraveler <span class="number">100</span> G3/G4/SE9 G2</span><br></pre></td></tr></table></figure>
+<h3 id="查看已有虚拟机"><a href="#查看已有虚拟机" class="headerlink" title="查看已有虚拟机"></a>查看已有虚拟机</h3><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@controller ~]# virsh list</span><br><span class="line"><span class="code"> Id    Name                           State</span></span><br><span class="line">----------------------------------------------------</span><br><span class="line"><span class="code"> 149   instance-00000096              running</span></span><br></pre></td></tr></table></figure>
         
           <a class="article-more-a" href="/2016/12/25/kvm-usb-pass-through/#more">more >></a>
         
@@ -1399,10 +1399,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">libvirt</a>
               </li>
              
@@ -1424,6 +1420,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">virtio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
               </li>
              
               <li class="article-tag-list-item">

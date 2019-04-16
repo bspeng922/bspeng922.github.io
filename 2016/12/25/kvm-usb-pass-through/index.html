@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="http://pystack.org">
   <title>KVM Usb passthrough | Pystack.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="###　查看本机USB设备 1234[root@controller ~]# yum install -y usbutils[root@controller ~]# lsusbBus 003 Device 007: ID 0951:1666 Kingston Technology DataTraveler 100 G3/G4/SE9 G2">
+  <meta name="description" content="查看本机USB设备1234[root@controller ~]# yum install -y usbutils[root@controller ~]# lsusbBus 003 Device 007: ID 0951:1666 Kingston Technology DataTraveler 100 G3/G4/SE9 G2 查看已有虚拟机1234[root@controller ~]# vi">
 <meta name="keywords" content="Openstack,usb passthrough">
 <meta property="og:type" content="article">
 <meta property="og:title" content="KVM Usb passthrough">
 <meta property="og:url" content="http://pystack.org/2016/12/25/kvm-usb-pass-through/index.html">
 <meta property="og:site_name" content="Pystack.org">
-<meta property="og:description" content="###　查看本机USB设备 1234[root@controller ~]# yum install -y usbutils[root@controller ~]# lsusbBus 003 Device 007: ID 0951:1666 Kingston Technology DataTraveler 100 G3/G4/SE9 G2">
+<meta property="og:description" content="查看本机USB设备1234[root@controller ~]# yum install -y usbutils[root@controller ~]# lsusbBus 003 Device 007: ID 0951:1666 Kingston Technology DataTraveler 100 G3/G4/SE9 G2 查看已有虚拟机1234[root@controller ~]# vi">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pystack.org/assets/img/winusbdev.png">
 <meta property="og:image" content="http://pystack.org/assets/img/usbcontrol.png">
-<meta property="og:updated_time" content="2019-04-16T09:52:12.033Z">
+<meta property="og:updated_time" content="2019-04-16T09:58:33.822Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KVM Usb passthrough">
-<meta name="twitter:description" content="###　查看本机USB设备 1234[root@controller ~]# yum install -y usbutils[root@controller ~]# lsusbBus 003 Device 007: ID 0951:1666 Kingston Technology DataTraveler 100 G3/G4/SE9 G2">
+<meta name="twitter:description" content="查看本机USB设备1234[root@controller ~]# yum install -y usbutils[root@controller ~]# lsusbBus 003 Device 007: ID 0951:1666 Kingston Technology DataTraveler 100 G3/G4/SE9 G2 查看已有虚拟机1234[root@controller ~]# vi">
 <meta name="twitter:image" content="http://pystack.org/assets/img/winusbdev.png">
   
     <link rel="alternative" href="/atom.xml" title="Pystack.org" type="application/atom+xml">
@@ -179,10 +179,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>###　查看本机USB设备</p>
-<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@controller</span> ~]<span class="meta"># yum install -y usbutils</span></span><br><span class="line"></span><br><span class="line">[root<span class="symbol">@controller</span> ~]<span class="meta"># lsusb</span></span><br><span class="line">Bus <span class="number">003</span> Device <span class="number">007</span>: ID <span class="number">0951</span>:<span class="number">1666</span> Kingston Technology DataTraveler <span class="number">100</span> G3/G4/SE9 G2</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
+        <h3 id="查看本机USB设备"><a href="#查看本机USB设备" class="headerlink" title="查看本机USB设备"></a>查看本机USB设备</h3><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@controller</span> ~]<span class="meta"># yum install -y usbutils</span></span><br><span class="line"></span><br><span class="line">[root<span class="symbol">@controller</span> ~]<span class="meta"># lsusb</span></span><br><span class="line">Bus <span class="number">003</span> Device <span class="number">007</span>: ID <span class="number">0951</span>:<span class="number">1666</span> Kingston Technology DataTraveler <span class="number">100</span> G3/G4/SE9 G2</span><br></pre></td></tr></table></figure>
 <h3 id="查看已有虚拟机"><a href="#查看已有虚拟机" class="headerlink" title="查看已有虚拟机"></a>查看已有虚拟机</h3><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@controller ~]# virsh list</span><br><span class="line"><span class="code"> Id    Name                           State</span></span><br><span class="line">----------------------------------------------------</span><br><span class="line"><span class="code"> 149   instance-00000096              running</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="编辑虚拟机xml文件"><a href="#编辑虚拟机xml文件" class="headerlink" title="编辑虚拟机xml文件"></a>编辑虚拟机xml文件</h3><p>编辑虚拟机对应的xml文件，移除xml文件中其它的USB设备,然后添加下面的部分</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@controller ~]# virsh edit instance-00000096 </span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">controller</span> <span class="attr">type</span>=<span class="string">'usb'</span> <span class="attr">index</span>=<span class="string">'0'</span> <span class="attr">model</span>=<span class="string">'ich9-ehci1'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">controller</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">controller</span> <span class="attr">type</span>=<span class="string">'usb'</span> <span class="attr">index</span>=<span class="string">'0'</span> <span class="attr">model</span>=<span class="string">'ich9-uhci1'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">controller</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">hostdev</span> <span class="attr">mode</span>=<span class="string">'subsystem'</span> <span class="attr">type</span>=<span class="string">'usb'</span> <span class="attr">managed</span>=<span class="string">'yes'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">source</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">vendor</span> <span class="attr">id</span>=<span class="string">'0x0951'</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">product</span> <span class="attr">id</span>=<span class="string">'0x1666'</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">hostdev</span>&gt;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <h3 id="重启虚拟机"><a href="#重启虚拟机" class="headerlink" title="重启虚拟机"></a>重启虚拟机</h3><p>修改完的虚拟机配置文件要重启后才能生效</p>
@@ -600,10 +599,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">libvirt</a>
               </li>
              
@@ -625,6 +620,10 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">virtio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">kuryr</a>
               </li>
              
               <li class="article-tag-list-item">
